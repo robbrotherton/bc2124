@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Social Psychology Lab Manual - Lab 7: Experiments continued</title>
+<title>Personality PsychologyLab Handbook - Lab 7: Data cleaning &amp; analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -72,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lab 7: Experiments continued</h1>
+      <h1 class="quarto-secondary-nav-title">Lab 7: Data cleaning &amp; analysis</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -85,9 +148,9 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Social Psychology Lab Manual</a> 
+      <a href="./">Personality Psychology<br>Lab Handbook</a> 
         <div class="sidebar-tools-main">
-    <a href="./Social-Psychology-Lab-Manual.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+    <a href="./Personality-Psychology-br-Lab-Handbook.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -101,82 +164,107 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">About this handbook</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-1.html" class="sidebar-item-text sidebar-link">Lab 1: Course Overview</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-2.html" class="sidebar-item-text sidebar-link">Lab 2: Project Planning</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-3.html" class="sidebar-item-text sidebar-link">Lab 3: Ethics and Design</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-4.html" class="sidebar-item-text sidebar-link">Lab 4: Measuring Social Psychological Constructs</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-5.html" class="sidebar-item-text sidebar-link">Lab 5: Correlation</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-6.html" class="sidebar-item-text sidebar-link">Lab 6: Experiments</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-7.html" class="sidebar-item-text sidebar-link active">Lab 7: Experiments continued</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-8.html" class="sidebar-item-text sidebar-link">Lab 8: Writing the Introduction</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-9.html" class="sidebar-item-text sidebar-link">Lab 9: Finalizing Methods</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-10.html" class="sidebar-item-text sidebar-link">Lab 10: Reporting Findings</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-11.html" class="sidebar-item-text sidebar-link">Lab 11: Interpreting Findings</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-12.html" class="sidebar-item-text sidebar-link">Lab 12: Presentations</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab-13.html" class="sidebar-item-text sidebar-link">Lab 13: Final Paper</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Course details</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Project 1: Correlation</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-2.html" class="sidebar-item-text sidebar-link">Lab 2: Project Planning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-3.html" class="sidebar-item-text sidebar-link">Lab 3: Data cleaning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-4.html" class="sidebar-item-text sidebar-link">Lab 4: Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-5.html" class="sidebar-item-text sidebar-link">Lab 5: Presentations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Project 2: Multiple Regression</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-6.html" class="sidebar-item-text sidebar-link">Lab 6: Project planning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-7.html" class="sidebar-item-text sidebar-link active">Lab 7: Data cleaning &amp; analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-8.html" class="sidebar-item-text sidebar-link">Lab 8: Visualization &amp; reporting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-9.html" class="sidebar-item-text sidebar-link">Lab 9: Presentations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Project 3: Scale design</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-10.html" class="sidebar-item-text sidebar-link">Lab 10: Scale planning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-11.html" class="sidebar-item-text sidebar-link">Lab 11: Questionnaire design</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-12.html" class="sidebar-item-text sidebar-link">Lab 12: Data collection and analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab-13.html" class="sidebar-item-text sidebar-link">Lab 13: Presentations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a-searching-the-literature.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Searching the Literature</span></a>
@@ -214,14 +302,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lab 7: Experiments continued</h1>
+<h1 class="title d-none d-lg-block">Lab 7: Data cleaning &amp; analysis</h1>
 </div>
 
 
@@ -236,52 +330,15 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="key-ideas" class="level2">
-<h2 class="anchored" data-anchor-id="key-ideas">Key ideas</h2>
+<section id="goals" class="level2">
+<h2 class="anchored" data-anchor-id="goals">Goals</h2>
 <ul>
 <li>Control conditions</li>
 <li>Factorial designs</li>
 </ul>
-<p>This week’s lab will focus on more complex experimental designs, focusing on the value of control conditions and factorial designs. These ideas are discussed more extensively in <span class="quarto-unresolved-ref">?sec-anova</span><span class="exclude-from-html">, p.&nbsp;</span>.</p>
-</section>
-<section id="suggested-reading" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-reading">Suggested reading</h2>
-<div class="references">
-<p> Symons, C. S., &amp; Johnson, B. T. (1997). The self-reference effect in memory: a meta-analysis. <em>Psychological bulletin, 121</em>(3), 371–394. <a href="https://doi.org/10.1037/0033-2909.121.3.371" class="uri">https://doi.org/10.1037/0033-2909.121.3.371</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(dv <span class="sc">~</span> iv1 <span class="sc">*</span> iv2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<p>Now you’ve written a Brief Literature review of the existing studies you’ve read you should be ready to propose your own study. This Brief Proposal will be the first step: your initial thoughts on what form your proposed research will take.</p>
-<p>Your proposal will likely not have all the methodological details at this stage, and your thinking may yet change—that’s fine. The main purpose of this brief proposal is to serve as an outline so you can start to figure out the specifics. You’ll get feedback on this which should help you nail down and refine the details moving forward. That said, the more thought you put into this now, the less work you will have to do for the following drafts.</p>
-<p>This would be a good time to familiarize yourself with <span class="quarto-unresolved-ref">?sec-writing</span> <span class="exclude-from-html">(p.&nbsp;)</span> if you haven’t already, as that is what this is building towards.</p>
-<p>Your brief proposal should include:</p>
-<ul>
-<li>Title Page
-<ul>
-<li>Same as the previous assignment, unless you’ve changed your approach enough to require a change of title</li>
-</ul></li>
-<li>Literature review
-<ul>
-<li>Include your lit review from the previous assignment, with any changes (if you’ve made them)</li>
-</ul></li>
-<li>Method
-<ul>
-<li>State the basic design format of your proposed study—is it a scale design study, a correlational design, or an experiment? State any constructs you plan to manipulate or measure</li>
-<li>For each construct, state your operational definition (i.e.&nbsp;how you actually plan to manipulate or measure the psychological constructs)</li>
-</ul></li>
-<li>Analysis
-<ul>
-<li>What is your fundamental analytic approach? Is this a correlational study where you’re looking for associations between variables, or an experimental study in which you’re looking for differences between randomly-assigned groups, or a quasi-experimental study in which you’re looking for differences between pre-existing groups? What is it, in a nutshell, that you expect to find?</li>
-</ul></li>
-<li>References
-<ul>
-<li>Include an APA-formatted reference for each study you cite</li>
-</ul></li>
-</ul>
-</section>
-<section id="notes" class="level2 exclude-from-html">
-<h2 class="exclude-from-html anchored" data-anchor-id="notes">Notes</h2>
 
 
 </section>
@@ -538,12 +595,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./lab-6.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6: Experiments</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6: Project planning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab-8.html" class="pagination-link">
-        <span class="nav-page-text">Lab 8: Writing the Introduction</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Lab 8: Visualization &amp; reporting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
