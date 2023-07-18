@@ -1,0 +1,8 @@
+# Lab 11: Questionnaire design {.unnumbered}
+
+## Goals
+
+- Generate items
+- Consider face validity
+- Decide on reponse options
+- Create your survey using Google Forms

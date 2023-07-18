@@ -1,0 +1,27 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.references p {
+  text-indent: -2em;
+  padding-left: 2em;
+}
+
+.exclude-from-html {
+  display: none;
+}
+
+.quarto-title-meta-heading {
+  display: none;
+}
+
+.math-table {
+  margin-left: 1em;
+  float: right;
+  width: 20%;
+  font-size: 0.75em;
+}
+
+.math-table th {
+  font-style: italic;
+}

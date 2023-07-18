@@ -1,0 +1,8 @@
+# Lab 10: Scale planning {.unnumbered}
+
+## Goals
+
+- Understand the process of scale design and validation
+- Pick a personality trait to design a scale around
+- Write a brief proposal of your project and expectations
+

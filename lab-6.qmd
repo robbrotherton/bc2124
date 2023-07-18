@@ -1,0 +1,9 @@
+# Lab 6: Project planning {.unnumbered}
+
+In this lab, we will start your second project: conducting a multiple regression analysis on ANES data.
+
+## Goals
+
+- Correlation vs causation
+- Independent and dependent variables
+- Between-participants and within-participants designs

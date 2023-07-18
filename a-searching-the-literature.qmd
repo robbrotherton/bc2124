@@ -1,0 +1,78 @@
+
+# Searching the Literature {#sec-searching}
+
+
+## Step 0. Keywords
+
+Start by thinking about the *keywords* that best describe the general (or specific) theme(s) of your proposal. As you are aware, in the digital world of databases and search engines, finding the right keywords is critical to lead you to the best resources. Overly specific and you might not find much of anything. Overly general and your results might not be very useful.
+
+- Brainstorm ideas and find vocabulary, synonyms, useful keywords to search.
+- Think about whether it would help to put a phrase in quotation marks. E.g. googling `attachment theory` returns around 200 million results, whereas `"attachment theory"` returns around 3 million.
+- Think about what *combination(s)* of keywords should narrow your results to the most relevant content.
+- It might help to use Boolean operators such as `AND`, `OR`, or to *exclude* certain keywords from your results, `NOT` (see <https://guides.library.barnard.edu/boolean>).
+
+Note that this will most likely be an ongoing process throughout your search; the results you find should help you tailor your keywords in an iterative process.
+
+
+## Step 1. Google it
+
+<https://www.google.com>
+
+Like everything else in life, the process of formulating a research proposal can begin with a Google search. For common psychology terms or ideas, Google will often lead you to a helpful Wikipedia article. You'll probably also see results from popular psychology websites like Psychology Today. You might also find there are books or blog posts relevant to your interests.
+
+Skimming some of these initial results can be a great way to quickly familiarize yourself with the big-picture ideas and some relevant research findings. But you should be aware that many of these kinds of resources will be *nonscholarly*. That's not intended as an insult. It just means that they are written for a general audience. The vocabulary is less specialized, and they are not peer reviewed, and they do not always have citations and references. 
+
+The sources you cite in your proposal paper should be *scholarly*. Scholarly journals and books are written for specialized readership, by scholars or experts in a field of study, describing academic research. They are “peer reviewed” by other experts as a quality control mechanism; they have citations and references; they give the affiliation of the authors (university, research institution); and they have abstracts (in the sciences and social sciences). 
+
+
+## Step 2. Google Scholar
+
+<https://scholar.google.com>
+
+Google Scholar searches the full text of scholarly articles. It casts a wide net, searching across all disciplines, and including books and other materials in addition to journal articles, so will likely find many articles not very relevant to the topic as well as those that are relevant. Some tips:
+
+- Use "allintitle:" to search in the titles only. There is no way to search in the abstracts only. 
+- Set up e-Link to show links to full-text at Columbia (go to Settings – Library links).
+- The “Cited by” info can be useful – more influential articles will be cited more often. 
+- Click the ” symbol for a search result to copy and paste the APA-style reference entry into your References section (however there are more effective ways of managing your sources and automatically generating your citations and References section; see [Managing your references](#sec-zotero))
+
+
+## Step 3. CLIO 
+
+<https://clio.columbia.edu>
+
+- I'm including this here for completeness, but generally I find searching with CLIO to be less useful for a general search than Google Scholar and less useful for a focused search than PsycInfo, so you might want to skip this step.
+- Articles+ focuses the search on peer-reviewed journal articles (among a few other scholarly publication types), so will likely be the most useful for our purposes
+- Quicksearch searches the Catalog, Articles, the Academic Commons and the CUL website.
+- Catalog (clio.columbia.edu/catalog) searches all the holdings of the CUL system.
+- Remember to use quotes for a phrase, and `*` for truncation, to find variant endings.
+
+
+## Step 4. Scholarly Databases 
+
+<http://www.columbia.edu/cgi-bin/cul/resolve?ALD2284>
+
+The link above should take you to PsycInfo, a database for scholarly psychology research (you can also serch for `psycinfo` in a CLIO quicksearch). PsycInfo gives you the ability to do much more focused searching than Google Scholar or CLIO.
+
+- You can do sequential searches and then combine them with the Boolean operators `AND`, `OR`, and `NOT` by selecting them from the dropdown boxes. 
+- You can select where your keywords should appear, i.e. in the title, abstract, or full text of articles. Selecting `Word in Major Subject Heading` can help narrow down your search to articles that are actually on the topic you’re interested in (rather than just containing the keyword). 
+- The *APA Thesaurus of Psychological Index Terms* link at the top can be useful for finding technical terms used in psychology, and other related ideas.
+
+
+## Managing your references {#sec-zotero}
+
+When you are dealing with a large number of references or multiple papers, I recommend using [Zotero](https://www.zotero.org/) to assist you. It is a free application with a browser plugin to collect article details as you are searching the literature. 
+
+- See the Barnard library’s guide to Zotero at <https://guides.library.barnard.edu/citation-management/zotero>
+- When you’re on a website looking at a journal article, the Zotero Connector browser add-on allows you to click a button to automatically download the article details into Zotero (including, if available, a PDF of the article). This allows you to easily keep track of all the articles you have found. 
+- Installing Zotero also installs a Microsoft Word plugin that allows you to insert citations in-text and automatically generate a complete, APA-formatted references section. 
+- Integration with Google Docs is available with the Zotero Connector browser extension as well.
+
+A note of caution, however: always check your work. Zotero and Google Scholar don’t always get the reference details exactly right, and it would be poor form to pass along an error committed by them.
+
+
+
+## Other ideas 
+If you find yourself stuck, or you still aren’t even sure where to begin, you can of course talk it through with Prof. Brotherton and/or your TA. And if you want an outside opinion, there are other resources available to you. Particularly, you can request a consultation with Barnard’s subject librarian for psychology: Erin Anthony; <eanthony@Barnard.Edu>
+
+The library also provides an Online Research Guide: <https://guides.library.barnard.edu/PSYC>

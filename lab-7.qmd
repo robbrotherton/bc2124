@@ -1,0 +1,13 @@
+# Lab 7: Data cleaning & analysis {.unnumbered}
+
+## Goals
+
+- Control conditions
+- Factorial designs
+
+```{r}
+#| eval: false
+
+lm(dv ~ iv1 * iv2)
+
+```

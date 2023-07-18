@@ -1,0 +1,26 @@
+# Example consent form {#sec-consent}
+
+
+
+### Barnard College Department of Psychology
+### Research Consent Form
+
+
+__Investigators:__ [*Your names and contact information*]
+
+__Description:__ This research project is being conducted for Social Psychology Lab. The experiment concerns… You will be asked to…
+
+[*Write what the task entails—not the full instructions, but a brief overview. What is the general question you are interested in? What will participants do to help you find the answer? How long is it expected to take? Make sure to be general enough to ensure your participants are not influenced toward acting in a certain way.*]
+
+__Risks and benefits:__ There are no risks associated with this experiment. The benefits are the contribution to our understanding of [[whatever your study is about]], the opportunity to experience the methods of data collection and measurement that are common in social psychology, and the opportunity to contribute data to a project used in the training of students in social psychology.
+
+__Confidentiality:__ Your data are recorded with no identifier other than a randomly assigned ID number. Data are compiled into a file with no other identifying information.
+Right to withdraw: You may withdraw from the experiment at any time, without penalty. Any data already collected will be erased.
+
+__Use of your data:__ All data reports will be based on the cumulative set of data collected. No individual results will be presented.
+
+__Contact information:__ If you want additional information about this research and your participation in it, or have any questions or concerns, please contact the instructor of this course, Rob Brotherton, at rbrotherton@barnard.edu.
+
+I have read the above information about hereby give my voluntary consent to participate.
+
+Signature ____________________________       Date ________________

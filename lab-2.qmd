@@ -1,0 +1,26 @@
+# Lab 2: Project Planning {.unnumbered}
+
+In this session we will begin the first project of the course: performing a correlational analysis using to ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
+
+
+
+## Goals
+
+- Examine the ANES dataset
+- Identify a variable for your correlation analysis
+- Search the literature to find a relevant paper
+- Formulate a brief research proposal
+
+
+
+## ANES data
+
+The dataset we will use is from the 2016 election. The reason for using this (instead of a more recent one) is that the 2016 survey included a personality scale: the TIPI (Ten-item personality inventory: ). Its inclusion allow us to look at how the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism correlate with any of the other variables recorded in the survey.
+
+
+
+## Finding relevant research
+
+
+
+

@@ -1,0 +1,67 @@
+project:
+  type: book
+  output-dir: docs
+
+title-block-author-single: "Instructor"
+title-block-published: ""
+
+book:
+  title: "Personality Psychology<br>Lab Handbook"
+  subtitle: |
+    | Barnard College
+    | Department of Psychology
+    | PSYC BC2124
+  # author: "Professor Rob Brotherton"
+  date: "1/31/2023"
+  date-format: "[Fall 2023]"
+
+  chapters:
+    - index.qmd
+    - part: "Project 1: Correlation"
+      chapters:
+        - lab-2.qmd
+        - lab-3.qmd
+        - lab-4.qmd
+        - lab-5.qmd
+    - part: "Project 2: Multiple Regression"
+      chapters:
+        - lab-6.qmd
+        - lab-7.qmd
+        - lab-8.qmd
+        - lab-9.qmd
+    - part: "Project 3: Scale design"
+      chapters:
+        - lab-10.qmd
+        - lab-11.qmd
+        - lab-12.qmd
+        - lab-13.qmd
+  appendices:
+    - a-searching-the-literature.qmd
+    - a-reading-research.qmd
+    - a-statistics.qmd
+    - a-consent-form.qmd
+    - a-debrief.qmd
+    - a-writing-a-report.qmd
+  downloads: pdf
+  # sidebar:
+  #   tools:
+  #     - icon: github
+  #       href: https://github.com/robbrotherton/bc2137/
+
+toc-depth: 2
+number-depth: 0
+
+# comments:
+#     hypothesis:
+#       theme: clean
+#       openSidebar: false
+
+crossref:
+  appendix-title: Appendix
+
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+      dark:  [darkly, custom.scss]
+

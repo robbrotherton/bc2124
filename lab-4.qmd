@@ -1,0 +1,29 @@
+# Lab 4: Analysis {.unnumbered}
+
+
+
+## Goals
+
+- Understand what the correlation statistic quantifies
+- Perform the appropriate correlational analysis on your data
+- Interpret the results
+- Write a research report detailing the analysis and results
+
+
+
+## Correlation in R
+
+```{r}
+#| eval: false
+
+df
+
+cor(df)
+
+
+correlations <- data.frame(question = tipi_vars$description,
+           cor = cor(tipi_data, ft_dem$V161095, use = "pairwise"))
+cor(tipi_data, ft_dem$V161095, use = "pairwise")
+
+
+```

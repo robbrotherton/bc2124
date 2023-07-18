@@ -1,0 +1,205 @@
+---
+toc: true
+toc-depth: 5
+---
+
+# Guide to writing a research report {#sec-writing}
+
+An important aspect of your project is to practice writing a paper according to the conventions of the field of psychology. The aim of a report is to inform the reader about an experiment or study, its procedures, its purpose, and its outcome—or, if you are writing a theoretical paper, to present a broad, coherent, evidence-based argument which synthesizes the existing literature and presents your own interpretation of how a body of work helps us understand a particular phenomenon.
+
+Effective communication is accomplished by being concise and by presenting the report in a standard format. The journal articles you read each week for the lecture, and those you read as you work on your own proposal, will provide you with an idea of the form and content of your report, though you may notice that different journals have different formatting conventions. Your paper should be written according to APA manuscript style. The authoritative source is the Publication Manual of the American Psychological Association (7th edition).
+
+[A report template is available](https://docs.google.com/document/d/1oYYjhBS9z90Xd6ux9vyMYZakD7RaBnSAh0w47PLKEw4/edit?usp=sharing). Please make a copy of it for yourself and fill in the sections as you work through the project. Ideally, I want you to spend as little time as possible thinking about *formatting* and spend your time instead on the *content*.
+
+All parts of lab reports should be typed double-spaced with 1 to 1-1/2 inch margins all around. Do not justify the right margin. All pages are numbered in the upper right corner of the page header on the same line as a “running head” consisting of a few key words of your title. Include the header and page number even on the title page.
+
+Psychological papers generally consist of these parts in this order:
+
+- Title Page (separate page, numbered page 1)
+- Abstract (separate page, numbered page 2)
+- Introduction (start on a separate page, numbered page 3)
+- Method (no page break after Introduction)
+- Results (no page break after Method) 
+- Discussion (no page break after Results) 
+- References (separate page after Discussion) 
+- Tables (each on a separate page, pages numbered sequentially)
+- Figures (each on a separate page, no page numbers or headers)
+- Appendices (each on a separate unnumbered page)
+
+
+## General tips for clear writing
+
+The goals of conciseness and clarity can only be achieved if you are a patient and careful editor of your writing. Give yourself time to read your work critically and make revisions before submitting. Is the meaning of each sentence clear? Have you omitted any important details necessary for understanding your point? Are there any repetitions that can be omitted without sacrificing clarity? Is the content of each section appropriate? An excellent way to spot awkward or wordy writing is to read the report aloud. Here are some specific issues to keep in mind:
+
+##### Tone
+Sentences in the report should be clear, concise and to the point. Usually a series of simple sentences is preferable to a single complicated sentence. Do not use exotic or complex words if plain words will do.
+
+##### Ambiguity
+Avoid ambiguity in your writing. Make sure that statements made in the same or different sections do not contradict each other. A common error is to refer to data without being specific: “the response rate was high (or low, or moderate, etc.)...” Such descriptions need a referent–high relative to what rate? “These findings were not clearcut...”—what makes findings clear-cut? Make sure the reader knows what you mean!
+
+##### Repetition of terms
+For terms that appear frequently in your report, write out the term the first time it is used, followed by the abbreviation in parentheses. You may then abbreviate later uses of the term. (But, no abbreviations should appear at the beginning of a sentence.) Do not, however, abbreviate too many terms in your report. Sentences such as: “The effect of SRI on HTMB may be mediated by SRC” are unintelligible.
+
+##### Tense
+
+At various points in your report you will be writing about existing, completed research; your interpretation of those existing findings; your future plans for your proposed study; and your interpretation of what your hypothetical findings would mean. Therefore, you will use a mix of present, past, and future/conditional tense.
+
+For much of the Introduction, you will use past tense to describe existing research and its findings:
+
+> Brotherton and Son (2020) studied the metacognitive processes underlying factual knowledge and opinion.
+
+> In previous studies, conspiracy beliefs have been shown to correlate with uncertainty (e.g. van Prooijen et al., 2013).
+
+However, your own interpretation of things should be put in present tense:
+
+> These findings suggest that claims perceived to be true are seen as matters of fact, while claims judged false tend to be seen as opinion.
+
+The Method section, in which you describe the plan for how your study would be conducted, will be largely future tense:
+
+> Participants will complete the Generic Conspiracist Beliefs scale.
+
+Likewise, the Results section:
+
+> We expect participants in the *Uncertainty prompt* condition to score higher on conspiracist ideation than participants in the *Certainty prompt* condition.
+
+An exception is that you should use the present tense when you make reference to graphs or tables (e.g., Figure 1 shows...). Here you are making a statement about the report that is present at the time of reading and not about the experiment or the analysis you intend to carry out (or already carried out in the past).
+
+The Discussion, like the Introduction, will involve a mix of past-tense summarizing of prior research, conditional-tense speculation about your future hypothetical findings, and present-tense interpretation of what it all means.
+
+> If the findings are consistent with the hypothesis it will suggest...
+
+> This would fit with the existing findings showing a correlation between...
+
+> Overall, this research would suggest that people's beliefs about political conspiracies are open to influence.
+
+Basically, use your common sense and try to write in a way that gives an accurate impression of what has already happened and what is as-yet hypothetical.
+
+
+##### Style
+When you write a psychological report, you are a scientist. Scientific writing is descriptive, and personal memoirs are inappropriate. Pronouns are almost always inappropriate unless you are telling personal story. The fact that you personally are involved in the enterprise is not directly relevant to the scientific merit of the discussion. 
+
+This tone may lead to the frequent use of passive sentences. But this use is stylistically objectionable when too many such sentences are strung together. Often a little thought will permit you to avoid both first person (I, we) and the passive voice. Consider:
+
+Poor: 
+
+>Participants will be administered twenty trials in a session.
+
+Better:
+
+> A session will consist of twenty trials.
+
+*Found*, *observed*, *showed* are almost always inappropriate. “Uncertainty impaired discrimination” is preferable to “uncertainty was found to impair discrimination.” Obviously, if you know this result, somebody found it. Unless you want to emphasize history about the process of findings, the result is important, not the process.
+
+ 
+## Sections of a Lab Report
+
+### Title Page
+
+The title page is the first page of the lab report. It contains the title, author, institution, and running head.
+
+Title. The title is centered between the left and right margins in the top half of the title page. A good title includes no more than 12 words. The first letters of all major words of the title are capitalized. In general, titles are detailed enough to distinguish one article from another. The title should reveal the central point of your experiment (the topic being studied, the key variables you are looking at, or the hypothesized outcome). The research you read for your literature review will provide appropriate examples.
+
+Your name (as author) should appear centered and double-spaced directly below the title. Double-spaced and centered underneath your name appears the institution with which you are affiliated—in this case, Barnard College.
+Running Head. The running head can be up to 50 characters long, including spaces and punctuation. It is entirely capitalized and typed flush left at the top of the title page, preceded by the words “Running head,” followed by a colon. On subsequent pages, the words “Running head” are omitted.
+Page Numbers. Each and every page (including the title page) of your manuscript 1111 should have the page number in the upper right corner, in addition to the left-aligned running head. Use the header function in your word processing program to have this appear at the top of each page in your paper. Number every page of text, including the title page and any tables that your report might include. Figures appear on pages that are not numbered.
+
+
+### Abstract
+
+The second page of the paper is the Abstract. Use the page or section break feature of your Word processor; do not just keep hitting Enter/Return until you get to the next page. This will minimize things moving around as you edit your paper.
+
+The Abstract is a single-paragraph capsule version of the paper. The abstract is short (100-200 words), but it should reflect material from each part of the report. The general topic and gist of previous research should be mentioned, the main aspects of your method must be presented, and your important anticipated results must be stated, together with an interpretive statement that summarizes your discussion. Usually you will write the Abstract last.
+
+When typing the abstract page, the word “Abstract” is centered and bolded at the top of the page, with the text beginning two spaces below. Unlike other sections of the lab report, the first word of the abstract is not indented. The abstract appears on its own page, immediately after the title page.
+
+Keywords appear after the abstract paragraph on a new line, indented and preceded by “Keywords:” in italics. The keywords themselves are not italicized, should be lowercase, and separated by commas. They don’t have to be in alphabetical order. Keywords address essential paper elements, such as the research topic, population, method, and/or application of results.
+
+
+### Introduction
+
+The Introduction begins on a new page following the Abstract (p. 3). Again, use the page break feature of your Word processor; do not just keep hitting Enter/Return until you get to the next page. The title of the report is centered at the top of the page (this section is not labeled “Introduction”), and text begins below with the first line indented. 
+The Introduction should contain background information about your project. It defines concepts described in the study and gives the reader the theoretical bases for any predictions or hypotheses you propose. 
+
+Begin by making a general statement about the broad field of inquiry. Is there a relevant real-world example that can introduce your topic? What makes this an important topic of investigation? You should be citing other sources of information to explain the logical basis for your research question. More often than not, your research is an outgrowth of prior studies, whose findings you are attempting to extend, validate, disprove or replicate. Therefore, you should mention the specific contributions of related studies. In your introduction, build a logical argument that will lead your reader to the hypothesis of your experiment. Your introduction should provide the reader with an understanding of the reason this experiment was performed.
+
+In the closing paragraph of the introduction you should state the specific goal of your study. At this point, your reader should clearly understand the variables you are examining and why. Provide a statement of your hypothesis. Clearly indicate what results were expected and what they will mean. This is a critical part of the report. which links the Introduction to the Method and Results sections.
+
+##### Citations
+
+References are cited in the Introduction and throughout the paper. In research reports, it is unusual to quote the writing of other scientists directly. Most often, the methodology, results, and conclusions of other research reports are described in your own words and then the research report is credited by citing the authors using this format:
+
+> According to a 2015 poll, 71% of Americans believe in miracles, 42% believe in ghosts, 41% believe in extrasensory perception, and 29% believe in astrology (Van der Linden, 2015).
+
+If you are describing the history of a particular line of research, question, or controversy, it may also be appropriate to use the following format, which places greater emphasis on the author.
+
+> Hofstadter (1964) argued that conspiracy theories are a constant feature of American politics.
+
+When an article with two authors is cited in parentheses in the text the names are separated by an ampersand (Jolley & Douglas, 2017). When the citation is directly in the text and not parenthesized, the authors’ names are separated by “and”:
+
+> In a study of anti-vaccine conspiracy theories, Jolley and Douglas (2017)...
+
+When there are more than two authors, only the first author is mentioned, followed by “et al.” (indicating “and all”).
+
+When several different experiments are referred to as a group, it is customary to include an alphabetical list of the authors’ names, as well as the dates of publication within the parentheses, separated by semi-colons. It can also be appropriate to include more than one parenthetical citation in a sentence, so that it is clear which cited study produced each finding:
+
+> Conspiracy theories can lead to social and political disengagement (Butler et al., 1995; Jolley & Douglas, 2013) and may help to foster political extremism (Bartlett & Miller, 2010)...
+
+### Method
+
+Start the Method section with a Level 1 heading immediately following the end of the Introduction; do not take a new page. The Method section describes the proposed conduct of the study. It should provide the reader enough information to reproduce your research. The Method section generally has the following four subsections, each with a Level 2 heading (though in the published papers you read the format may vary depending on the research and authors’ preference):
+
+##### Design
+Here you give a brief, technical statement of the design of your study. This states the psychological constructs of interest, whether they are independent or dependent variables in your study, and whether any independent variables are manipulated between- or within-participants. For example: 
+
+> A 2x2 between-participants ANOVA design will be used. The first independent variable will be participants’ behavior (cheat vs. no-cheat); the second independent variable will be participants’ treatment (respectful vs. disrespectful). The dependent variable will be participants’ perceived fairness of their treatment.
+
+You don’t need to explain how you operationalize the constructs here—you will do that in detail in the materials and/or procedure subsections.
+
+##### Participants
+Here you will explain how many participants you require for your study (based on the concept of statistical power explained in Appendix C). You should also state any special inclusion/exclusion criteria, e.g. if your study requires only adults, children, college students, if you’re seeking participants with certain characteristics, comparing nationalities, etc.
+
+##### Materials
+Here you will explain how you will operationalize all your constructs of interest. For each scale or task you will have participants complete, give all the information that would be required for another researcher to do the same study. For questionnaire scales, give the full wording of questions and response scales. For longer scales with many questions, give two or three example items and put the complete scale in an Appendix. You should also explain any videos, images, or other materials that your participants will encounter (include images as Figures in the text, or in Appendices). If you plan to administer several different measures, you can use Level 3 subheadings for each. You should also briefly explain why your chosen operationalization is appropriate; e.g. has it been used in previous research and shown to be valid and reliable? Or, if it is a scale you have designed yourself, what advantages does it have over existing scales and how can you be sure it measures what you intend it to measure?
+
+##### Procedure
+Lastly, the procedure subsection provides a step-by-step description of what participants will be required to do as they take part in your research. Mention the order of tasks, any key instructions that will be delivered either in writing or verbally by the experimenters, and any other information along these lines that you haven’t already fully explained in the Materials subsection. 
+Remember that, as a whole, the Method section must give the reader all the necessary information to run your proposed study themselves, so you shouldn’t leave anything up to guesswork. It may be useful to have a friend who isn’t familiar with your work read this section and tell you anything that remains unclear.
+
+### Results
+
+The Results section appears immediately below the Method section with no page break between sections. In published papers, the Results section describes statistical analyses that have already been carried out on the data. Your Results section will describe the intended analytical treatment of the data verbally, including anticipated numbers and illustrative figures. If you plan to perform several analyses looking at different questions, it may be helpful to use subheadings in the Results section to clarify presentation of your findings. 
+
+If you plan to manipulate the data in some way, for example by calculating an average of several different questions, begin by explaining that process. A verbal description of the expected pattern of findings (e.g. Group A is expected to score higher, on average, than Group B) should always be presented first. Then you will describe your planned inferential test (i.e. performing a t-test, ANOVA, or correlation). As you describe each anticipated finding in the text, it may be helpful to refer the reader to a figure that shows the expected trends in graphical form. Always tell the reader what to look for in tables and figures and provide sufficient explanation to make them readily intelligible. Figures and Tables are numbered consecutively and are placed after the References section at the end of your research report. Refer to figures and tables by number in the text of your report. 
+
+### Discussion
+
+The Discussion section should begin by reintroducing the general topic and hypothesis to your reader, followed by the conclusions that may be drawn from the results. Your statements should interpret the expected results and relate them to the questions raised in the Introduction. Be sure to focus the discussion on the major effect(s) found in the experiment. However, all results mentioned in the Results section should be discussed here. Be sure to describe your results as they relate to the hypothesis you developed in the Introduction section. You must also relate your findings to the wider literature which you reviewed in the Introduction—how do your findings fit with what has been found before, and what implications do your results hold for the theoretical background reviewed in the Introduction? Suggestions for further research (or for improving the present research) may be mentioned but should not be the major focus of the discussion. 
+
+After considering what it would mean if your results work out the way you expect, you should consider the other possibility—what would it mean if the data did not support your hypothesis? You may want to describe characteristics of the data or procedure that may account for the unusual findings. A discussion of unexpected results should be an occasion to propose further research to clarify the causes of surprise. If your data did not support your hypotheses, it is your job to fully consider reasons why that was the case. Perhaps your study was flawed in some way and thus failed to find the expected trends, or perhaps your study was fine and the trends you expected just don’t exist. When considering limitations, it is important to justify why something may be a limitation. You may even argue that an apparent limitation probably didn’t affect your results. So for example, if you are studying political beliefs and your data had more Democrats than Republicans that might be a limitation, but you need to make a reasoned case why that characteristic would (or wouldn’t) have affected your findings.
+The most common flaw of Discussion sections is failing the consider your own findings in relation to the existing literature reviewed in the Introduction. You should mention most of the ideas and findings mentioned in your Introduction again in the Discussion, but you shouldn’t merely repeat the same thing as before. Rather you will reevaluate those ideas in the new context of your own potential findings.
+
+### References
+
+The Reference section begins on a new page, with the title “References” as a Level 1 heading. Only include books or articles that you have cited in the text of your paper; the References section should not contain anything not mentioned in the text. Conversely, everything you do cite in the text should have a corresponding entry in the References section.
+
+Each journal article reference should include author's name, year of publication, title of article, journal name (italicized), volume number (italicized), pages on which the article appears, and the article’s DOI (digital object identifier). Book entries contain author, title (italicized), publisher name, and year of publication. References are alphabetized by authors’ last names and initials. Book and journal titles are italicized, but article titles are not. Only the first letter of the first word of book and article titles is capitalized. Journal titles should not be abbreviated. The first line of each entry begins at the left margin, and subsequent lines are indented (use the “hanging indent” feature of your word processor). Page numbers should be included for journal articles and for a chapter in an edited book.
+
+##### Examples
+
+- An article in a journal: 
+
+::: {.references}
+\hangindent=0.7cm Brotherton, R., French, C. C., & Pickering, A. D. (2013). Measuring belief in conspiracy theories: The generic conspiracist beliefs scale. *Frontiers in Personality Science and Individual Differences, 4,* 279. <https://doi.org/10.3389/fpsyg.2013.00279>
+:::
+
+- A book: 
+
+::: {.references}
+\hangindent=0.7cm Brotherton, R. (2015). *Suspicious Minds: Why We Believe Conspiracy Theories.* Bloomsbury. 
+:::
+
+- A section, chapter or essay in a book:  
+
+::: {.references}
+\hangindent=0.7cm Brotherton, R., & French, C. C. (2017). Conspiracy theories. In D. Groome & R. Roberts (Eds.), *Parapsychology: The Science of Unusual Experience* (2 edition, pp. 158–176). Psychology Press.
+:::

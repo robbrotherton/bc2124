@@ -1,0 +1,187 @@
+# Lab 3: Data cleaning {.unnumbered}
+
+You should come to this session with variables form the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform initial data cleaning and manipulation in preparation for analysis.
+
+## Goals
+
+- Get your R environment set up
+- Read the data you need into R
+- Select required variables
+- Filter the data based on completeness (and any other criteria)
+- Compute any required variables (scale means, number of items missing, etc)
+
+
+# Working with data in R
+
+## Getting R ready
+
+In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](github.com/jamesmartherus/anesr)).
+
+To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package from github. 
+
+```{r}
+#| eval: false
+
+install.packages("pak")
+
+pak::pak("jamesmartherus/anesr")
+
+```
+
+Now the necessary packages are installed on your system, but you still need to 'activate' them to make their functions and data available in your current R session.
+
+```{r}
+#| warning: false
+
+library(anesr)
+library(tidyr)
+library(dplyr)
+```
+
+
+## Getting data into R
+
+```{r}
+
+data(timeseries_2016)
+
+```
+
+When you run that line of code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.
+
+Here's what a few of the columns and rows look like:
+
+```{r}
+head(timeseries_2016)
+```
+
+You can click on the name to open
+
+### Select your variables
+
+As you can see, the data.frame contains a *lot* of variables; there are 1842 columns of data. You'll only need a few of those. So the first step is selecting out just the variables you need to work with.
+
+There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and make a vector of the IDs. The `c()` function 'collects' things together, so you can use it to collect the variable IDs.
+
+```{r}
+
+tipi_vars <- c(
+    "V162333",
+    "V162334",
+    "V162335",
+    "V162336",
+    "V162337",
+    "V162338",
+    "V162339",
+    "V162340",
+    "V162341",
+    "V162342"
+)
+
+```
+
+That works perfectly fine, and is probably the most sensible approach here. But to give you a sense of the many different ways that you can achieve the same thing in R, here's another way you could do it. This relies on the fact that the variable IDs are sequential; they are all prefixed by "V1623", and then they run from "33" to "42". So here I "paste" together that stem and that sequence of numbers, producing the same 10 variable IDs that I typed in manually before.
+
+```{r}
+tipi_vars <- paste0("V1623", 33:42)
+
+tipi_vars
+```
+
+
+```{r}
+
+tipi_data <- timeseries_2016 |> 
+  select(all_of(tipi_vars)) 
+
+```
+
+That's it! Let's see what this new subsetted data.frame looks like:
+
+```{r}
+head(tipi_data)
+```
+
+And it all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which recode missing data. So we need to do some data cleaning to handle things like that.
+
+
+### Cleaning the data
+
+There are a lot of different ways we could handle this. One way is to `filter()` the data, retaining only rows which meet certain conditions.
+
+```{r}
+
+tipi_data_complete <- tipi_data |>
+    filter(if_all(all_of(tipi_vars), ~ . %in% 1:7))
+
+```
+
+Another way would be to `mutate()` the data; that is, change certain values based on some condition.
+
+```{r}
+tipi_data_complete <- tipi_data |>
+    mutate(across(all_of(tipi_vars), ~case_when(
+        .x < 1 ~ NA,
+        TRUE ~ .x
+    )))
+
+```
+
+
+### Computing scale averages
+
+Now that the data is subsetted and recoded, the last thing to do is compute any new values. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.
+
+The TIPI has 10 questions in total, two for each of the Big 5 personality traits. So it may be desirable to compute a score for each of the 5 traits by averaging its two respective items.
+
+Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded.
+
+```{r}
+reverse_vars <- "V162333"
+
+tipi_data_complete <- tipi_data_complete |>
+    mutate(across(all_of(reverse_vars), ~ 8 - .))
+
+```
+
+Now we can go ahead and compute the averages, using `mutate()` to create new columns containing the `rowMeans()` (i.e. an average for each row) for the specified columns.
+
+```{r}
+openness_vars <- c("V162333", "V162338")
+extraversion_vars <- c("V162334", "V162339")
+
+scale_mean <- function(vars) rowMeans(across(all_of(vars)))
+
+tipi_data_complete <- tipi_data_complete |>
+    mutate(openness_mean = scale_mean(openness_vars),
+           extraversion_mean = scale_mean(extraversion_vars))
+
+```
+
+
+
+```{r}
+#| include: false
+
+# tipi_vars <- timeseries_2016_doc |> 
+#   filter(stringr::str_detect(description, "TIPI")) |> 
+#   mutate(id = toupper(id))
+
+# ft_vars <- timeseries_2016_doc |> 
+#   filter(stringr::str_detect(tolower(description), "thermo"))
+
+
+# tipi_labels <- timeseries_2016_doc |> 
+#   filter(id %in% tolower(tipi_vars)) |> 
+#   mutate(description = stringr::str_extract_all(description, "(?<=TIPI ).*$")) |> 
+#   pull(description)
+
+# tipi_data <- timeseries_2016 |> 
+#   select(all_of(tipi_vars$id)) |> 
+#   mutate(across(all_of(tipi_vars$id), as.numeric)) |> 
+#   mutate(across(all_of(tipi_vars$id), ~case_when(
+#     .x < 1 ~ NA,
+#     TRUE ~ .x
+#   )))
+
+```
