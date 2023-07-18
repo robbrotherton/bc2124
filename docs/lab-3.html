@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Course details</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Syllabus</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -305,12 +305,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
   <li><a href="#working-with-data-in-r" id="toc-working-with-data-in-r" class="nav-link" data-scroll-target="#working-with-data-in-r">Working with data in R</a>
   <ul class="collapse">
   <li><a href="#getting-r-ready" id="toc-getting-r-ready" class="nav-link" data-scroll-target="#getting-r-ready">Getting R ready</a></li>
-  <li><a href="#getting-data-into-r" id="toc-getting-data-into-r" class="nav-link" data-scroll-target="#getting-data-into-r">Getting data into R</a></li>
+  <li><a href="#getting-data-into-r" id="toc-getting-data-into-r" class="nav-link" data-scroll-target="#getting-data-into-r">Getting data into R</a>
+  <ul class="collapse">
+  <li><a href="#select-your-variables" id="toc-select-your-variables" class="nav-link" data-scroll-target="#select-your-variables">Select your variables</a></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the data</a></li>
+  <li><a href="#computing-scale-averages" id="toc-computing-scale-averages" class="nav-link" data-scroll-target="#computing-scale-averages">Computing scale averages</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -350,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Working with data in R</h1>
 <section id="getting-r-ready" class="level2">
 <h2 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h2>
-<p>In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
+<p>In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
 <p>To start exploring the data in R, you first need to set up your environment. This means installing the <code>anesr</code> package from github.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>

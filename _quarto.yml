@@ -48,7 +48,7 @@ book:
   #     - icon: github
   #       href: https://github.com/robbrotherton/bc2137/
 
-toc-depth: 2
+toc-depth: 3
 number-depth: 0
 
 # comments:

@@ -15,7 +15,7 @@ You should come to this session with variables form the ANES 2016 dataset in min
 
 ## Getting R ready
 
-In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](github.com/jamesmartherus/anesr)).
+In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
 
 To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package from github. 
 
