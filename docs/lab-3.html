@@ -340,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>You should come to this session with variables form the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform initial data cleaning and manipulation in preparation for analysis.</p>
+<p>You should begin this session with variables form the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.</p>
 <section id="goals" class="level2">
 <h2 class="anchored" data-anchor-id="goals">Goals</h2>
 <ul>
@@ -355,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Working with data in R</h1>
 <section id="getting-r-ready" class="level2">
 <h2 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h2>
-<p>In addition to containing Big 5 personality items, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
+<p>In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
 <p>To start exploring the data in R, you first need to set up your environment. This means installing the <code>anesr</code> package from github.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>
@@ -397,94 +397,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #   V161010b &lt;hvn_lbll&gt;, V161010c &lt;hvn_lbll&gt;, V161010d &lt;hvn_lbll&gt;, …</code></pre>
 </div>
 </div>
-<p>You can click on the name to open</p>
+<p>You can click on the name in the Environment pane to see the data like a spreadsheet in a new tab.</p>
 <section id="select-your-variables" class="level3">
 <h3 class="anchored" data-anchor-id="select-your-variables">Select your variables</h3>
-<p>As you can see, the data.frame contains a <em>lot</em> of variables; there are 1842 columns of data. You’ll only need a few of those. So the first step is selecting out just the variables you need to work with.</p>
-<p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and make a vector of the IDs. The <code>c()</code> function ‘collects’ things together, so you can use it to collect the variable IDs.</p>
+<p>As you can see, the data.frame contains a <em>lot</em> of variables; there are 1,842 columns of data. You’ll only need a few of those. So the first step is selecting just the variables you need to work with.</p>
+<p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use them within <code>dplyr</code>’s <code>select()</code> function. This allows us to simply type in variable names separated by commas. You can also give the columns new names when selecting,</p>
+<p>For this example I’ll look at the correlation between extraversion and the ‘feeling thermometer’ for the Democratic Party. Extraversion has two TIPI items; their IDs (from the codebook) are <code>V162333</code> and <code>V162338</code>. The ID for the Democratic Party feeling thermometer is <code>V161095</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tipi_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162333"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162334"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162335"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162336"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162337"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162338"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162339"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162340"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162341"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"V162342"</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> timeseries_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">extraversion1 =</span> <span class="st">"V162333"</span>, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>, ,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">feeling_thermometer =</span> <span class="st">"V161095"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That works perfectly fine, and is probably the most sensible approach here. But to give you a sense of the many different ways that you can achieve the same thing in R, here’s another way you could do it. This relies on the fact that the variable IDs are sequential; they are all prefixed by “V1623”, and then they run from “33” to “42”. So here I “paste” together that stem and that sequence of numbers, producing the same 10 variable IDs that I typed in manually before.</p>
+<p>Let’s see what this new data.frame looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tipi_vars <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"V1623"</span>, <span class="dv">33</span><span class="sc">:</span><span class="dv">42</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tipi_vars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "V162333" "V162334" "V162335" "V162336" "V162337" "V162338" "V162339"
- [8] "V162340" "V162341" "V162342"</code></pre>
+<pre><code># A tibble: 6 × 3
+  extraversion1 extraversion2 feeling_thermometer
+  &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;         
+1 6             5              0                 
+2 6             6             15                 
+3 6             2             50                 
+4 6             4             30                 
+5 5             7             70                 
+6 5             6             15                 </code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tipi_data <span class="ot">&lt;-</span> timeseries_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(tipi_vars)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>That’s it! Let’s see what this new subsetted data.frame looks like:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tipi_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 10
-  V162333    V162334    V162335  V162336 V162337 V162338 V162339 V162340 V162341
-  &lt;hvn_lbll&gt; &lt;hvn_lbll&gt; &lt;hvn_lb&gt; &lt;hvn_l&gt; &lt;hvn_l&gt; &lt;hvn_l&gt; &lt;hvn_l&gt; &lt;hvn_l&gt; &lt;hvn_l&gt;
-1 6          5          6        5       6       5       5       2       6      
-2 6          5          5        5       6       6       5       5       4      
-3 6          4          7        5       5       2       2       4       5      
-4 6          2          6        2       4       4       6       2       6      
-5 5          3          7        3       5       7       6       3       6      
-6 5          5          7        2       4       6       4       3       6      
-# ℹ 1 more variable: V162342 &lt;hvn_lbll&gt;</code></pre>
-</div>
-</div>
-<p>And it all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you’ll notice that there are some negative numbers in the data. That’s from survey codes which recode missing data. So we need to do some data cleaning to handle things like that.</p>
+<p>It all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you’ll notice that there are some negative numbers in the data. That’s from survey codes which record missing data. If you try to calculate an average score with those included it’ll mess up the sums, so we need to do some data cleaning to handle things like that.</p>
 </section>
 <section id="cleaning-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the data</h3>
 <p>There are a lot of different ways we could handle this. One way is to <code>filter()</code> the data, retaining only rows which meet certain conditions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tipi_data_complete <span class="ot">&lt;-</span> tipi_data <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">all_of</span>(tipi_vars), <span class="sc">~</span> . <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>), <span class="sc">~</span> . <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))  <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(feeling_thermometer <span class="sc">&gt;=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice how many rows have been removed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4270</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3540</code></pre>
+</div>
 </div>
 <p>Another way would be to <code>mutate()</code> the data; that is, change certain values based on some condition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tipi_data_complete <span class="ot">&lt;-</span> tipi_data <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(tipi_vars), <span class="sc">~</span><span class="fu">case_when</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        .x <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> .x</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    )))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># my_data_complete &lt;- my_data |&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(across(contains("extraversion"), ~case_when(</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         . &lt; 1 ~ NA,</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         TRUE ~ .</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     ))) |&gt; </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(feeling_thermometer = case_when(feeling_thermometer &lt; 0 ~ NA, TRUE ~ feeling_thermometer))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="computing-scale-averages" class="level3">
 <h3 class="anchored" data-anchor-id="computing-scale-averages">Computing scale averages</h3>
-<p>Now that the data is subsetted and recoded, the last thing to do is compute any new values. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.</p>
-<p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits. So it may be desirable to compute a score for each of the 5 traits by averaging its two respective items.</p>
-<p>Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded.</p>
+<p>Now that the data is subsetted and the missing/invalid responses are taken care of, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.</p>
+<p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits. So it may be desirable to compute a mean trait score by averaging its two respective items.</p>
+<p>Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item <code>V162333</code> is “extraverted, enthusiastic”, while item <code>V162338</code> is “reserved, quiet”. The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant’s response from 8; 1 becomes 7, 2 becomes 6, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>reverse_vars <span class="ot">&lt;-</span> <span class="st">"V162333"</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tipi_data_complete <span class="ot">&lt;-</span> tipi_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(reverse_vars), <span class="sc">~</span> <span class="dv">8</span> <span class="sc">-</span> .))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can go ahead and compute the averages, using <code>mutate()</code> to create new columns containing the <code>rowMeans()</code> (i.e.&nbsp;an average for each row) for the specified columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>openness_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"V162333"</span>, <span class="st">"V162338"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>extraversion_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"V162334"</span>, <span class="st">"V162339"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>scale_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(vars) <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(vars)))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>tipi_data_complete <span class="ot">&lt;-</span> tipi_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">openness_mean =</span> <span class="fu">scale_mean</span>(openness_vars),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">extraversion_mean =</span> <span class="fu">scale_mean</span>(extraversion_vars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> (extraversion1 <span class="sc">+</span> extraversion2) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

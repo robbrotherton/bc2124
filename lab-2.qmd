@@ -7,8 +7,8 @@ In this session we will begin the first project of the course: performing a corr
 ## Goals
 
 - Examine the ANES dataset
-- Identify a variable for your correlation analysis
-- Search the literature to find a relevant paper
+- Identify variables for your correlation analysis
+- Search the literature to find relevant research
 - Formulate a brief research proposal
 
 
@@ -22,5 +22,17 @@ The dataset we will use is from the 2016 election. The reason for using this (in
 ## Finding relevant research
 
 
+## Your hypothesis
+
+Having chosen your variables and found some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
 
 
+
+
+# Proposal
+
+A brief (one-page or so) research proposal outlining:
+
+- Your variables of interest (one should be one of the Big 5, the other any variable of your choosing)
+- Your theoretical perspective
+- Your expectations (this should follow from your theoretical perspective)

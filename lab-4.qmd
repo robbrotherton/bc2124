@@ -1,9 +1,11 @@
 # Lab 4: Analysis {.unnumbered}
 
+You will start this session with your cleaned data ready to use in R. By the end of the session you will have computed the correlation statistic, produced some visualizations of your data, and be ready to present and write up your findings.
 
 
 ## Goals
 
+- Describe and visualize your variables
 - Understand what the correlation statistic quantifies
 - Perform the appropriate correlational analysis on your data
 - Interpret the results
@@ -11,19 +13,113 @@
 
 
 
+## The correlation statistic
+
+The correlation statistic can be computed with a single line of code, as you'll see. But it's important to understand the math happening behind the scenes.
+
+
+
 ## Correlation in R
 
+Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables, filtered the data down to complete, valid responses, recoded the negatively-worded item, and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
+
 ```{r}
-#| eval: false
+#| warning: false
+#| message: false
 
-df
+library(dplyr)
+library(tidyr)
+library(anesr)
+data(timeseries_2016)
 
-cor(df)
+my_data_complete <- timeseries_2016 |> 
+    select(extraversion1 = "V162333", 
+           extraversion2 = "V162338", ,
+           feeling_thermometer = "V161095") |> 
+    filter(if_all(contains("extraversion"), ~ . %in% 1:7))  |> 
+    filter(feeling_thermometer >= 0) |> 
+    mutate(extraversion2 = 8 - extraversion2,
+           extraversion_mean = rowMeans(across(contains("extraversion"))))
+
+```
 
 
-correlations <- data.frame(question = tipi_vars$description,
-           cor = cor(tipi_data, ft_dem$V161095, use = "pairwise"))
-cor(tipi_data, ft_dem$V161095, use = "pairwise")
+The data is ready to be analyzed. The correlation between two variables can be found using the `cor()` function.
+```{r}
 
+cor(x = my_data_complete$extraversion_mean, 
+    y = my_data_complete$feeling_thermometer)
+
+```
+
+
+If you got an answer of `NA` instead of a number, it is probably because your data has some missing data. You just need to tell `cor()` to only use data for which both pairs of values are nonmissing:
+
+```{r}
+
+cor(x = my_data_complete$extraversion_mean, 
+    y = my_data_complete$feeling_thermometer,
+    use = "pairwise.complete.obs")
+
+```
+
+
+## Describing your data
+
+
+```{r}
+
+my_data_complete |> 
+    mutate(across(everything(), as.numeric)) |> 
+    pivot_longer(everything()) |> 
+    summarize(n = n(),
+              mean = mean(value), 
+              sd = sd(value),
+              .by = name)
+
+```
+
+
+## Visualizing the data
+
+```{r}
+library(ggplot2)
+
+theme_apa <- theme(
+    panel.background = element_blank(),
+    axis.line = element_line()
+)
+```
+
+
+
+```{r}
+
+my_data_complete |> 
+    ggplot(aes(x = extraversion1)) +
+    geom_histogram(binwidth = 1, color = "white") +
+    scale_x_continuous(breaks = 1:7) +
+    theme_apa
+
+my_data_complete |> 
+    ggplot(aes(x = 8 - extraversion2)) +
+    geom_histogram(binwidth = 1, color = "white") +
+    scale_x_continuous(breaks = 1:7) +
+    theme_apa
+
+
+my_data_complete |> 
+    ggplot(aes(x = extraversion_mean)) +
+    geom_histogram(binwidth = 0.5, color = "white") +
+    scale_x_continuous(breaks = 1:7) +
+    theme_apa
+
+my_data_complete |> 
+    ggplot(aes(x = extraversion_mean, y = feeling_thermometer)) +
+        geom_point(position = position_jitter(width = 0.4, height = 0), 
+               alpha = 0.1) +
+        scale_x_continuous(breaks = 1:7) +
+        scale_y_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
+        theme_apa
 
 ```
