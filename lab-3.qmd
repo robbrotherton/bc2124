@@ -139,12 +139,9 @@ my_data_complete <- my_data_complete |>
 
 ```
 
-Now we can go ahead and compute the averages, using `mutate()` to create new columns containing the `rowMeans()` (i.e. an average for each row) for the specified columns.
+Now we can go ahead and compute the average, using `mutate()` to create a new column containing the `rowMeans()` (i.e. an average for each row) for the specified columns.
 
 ```{r}
-
-my_data_complete <- my_data_complete |>
-    mutate(extraversion_mean = (extraversion1 + extraversion2) / 2)
 
 my_data_complete <- my_data_complete |>
     mutate(extraversion_mean = rowMeans(across(contains("extraversion"))))
