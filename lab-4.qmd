@@ -9,7 +9,6 @@ You will start this session with your cleaned data ready to use in R. By the end
 - Understand what the correlation statistic quantifies
 - Perform the appropriate correlational analysis on your data
 - Interpret the results
-- Write a research report detailing the analysis and results
 
 
 # Analyzing data in R
@@ -20,19 +19,18 @@ Running with my example from last week, my variables were avearge extraversion s
 #| warning: false
 #| message: false
 
-library(dplyr)
-library(tidyr)
+library(tidyverse)
 library(anesr)
 data(timeseries_2016)
 
 my_data_complete <- timeseries_2016 |> 
-    select(extraversion1 = "V162333", 
-           extraversion2 = "V162338", ,
-           feeling_thermometer = "V161095") |> 
-    filter(if_all(contains("extraversion"), ~ . %in% 1:7))  |> 
-    filter(feeling_thermometer >= 0) |> 
-    mutate(extraversion2 = 8 - extraversion2,
-           extraversion_mean = rowMeans(across(contains("extraversion"))))
+  select(extraversion1 = "V162333", 
+         extraversion2 = "V162338", ,
+         feeling_thermometer = "V161095") |> 
+  filter(if_all(contains("extraversion"), ~ . %in% 1:7))  |> 
+  filter(feeling_thermometer >= 0) |> 
+  mutate(extraversion2 = 8 - extraversion2,
+         extraversion_mean = rowMeans(across(contains("extraversion"))))
 
 ```
 
@@ -44,49 +42,65 @@ my_data_complete <- timeseries_2016 |>
 ```{r}
 
 my_data_complete |> 
-    mutate(across(everything(), as.numeric)) |> 
-    pivot_longer(everything()) |> 
-    summarize(n = n(),
-              mean = mean(value), 
-              sd = sd(value),
-              .by = name)
+  mutate(across(everything(), as.numeric)) |> 
+  pivot_longer(everything()) |> 
+  summarize(n = n(),
+            mean = mean(value), 
+            sd = sd(value),
+            .by = name)
 
 ```
 
 
 ## Visualizing the data
 
-```{r}
-library(ggplot2)
+As with most things, there are a lot of different ways of producing graphs using R. One of the most widely used and powerful is the `ggplot2` package.^[The `ggplot2` package is part of the `tidyverse`, so because we already ran `library(tidyverse)` earlier the `ggplot2` functions are already available to us. If you needed to, you could always run `library(ggplot2)` to activate it separately.] The name refers to the idea of the "grammar of graphics", and it is built around a layering approach. You first specify your data and aesthetics (what should data will go on the x and y axes), then geometry (do you want data to be represented by points or bars or as a histogram?), any scaling (e.g. what values should be labeled on each axis), and theme elements (how do you want the plot to look generally?). There can be a lot of complexity, but building things up layer by layer, gradually adding and refining elements, is a powerful and satisfying approach.
 
-theme_apa <- theme(
-    panel.background = element_blank(),
-    axis.line = element_line()
-)
+
+
+```{r}
+#| label: fig-extraverted-no-theme
+#| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
+
+my_data_complete |> 
+  ggplot(aes(x = extraversion1)) +
+  geom_histogram(binwidth = 1)
+
 ```
 
+The default theme is perfectly serviceable, but you can customize every element. Here I'll specify a couple of aspects using the `theme()` function, and I'll assign it to the name `theme_apa`. Then I can always add `theme_apa` as a layer to my plots going forward. 
+
+```{r}
+
+theme_apa <- theme(
+  panel.background = element_blank(),
+  axis.line = element_line()
+)
+
+```
 
 ```{r}
 #| label: fig-extraverted
 #| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
 
 my_data_complete |> 
-    ggplot(aes(x = extraversion1)) +
-    geom_histogram(binwidth = 1, color = "white") +
-    scale_x_continuous(breaks = 1:7) +
-    theme_apa
+  ggplot(aes(x = extraversion1)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_apa
 
 ```
+
 
 ```{r}
 #| label: fig-reserved
 #| fig-cap: Histogram of responses to "reserved, quiet" TIPI item
 
 my_data_complete |> 
-    ggplot(aes(x = 8 - extraversion2)) +
-    geom_histogram(binwidth = 1, color = "white") +
-    scale_x_continuous(breaks = 1:7) +
-    theme_apa
+  ggplot(aes(x = 8 - extraversion2)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_apa
 
 ```
 
@@ -95,10 +109,10 @@ my_data_complete |>
 #| fig-cap: Histogram of average scores on TIPI Extraversion subscale
 
 my_data_complete |> 
-    ggplot(aes(x = extraversion_mean)) +
-    geom_histogram(binwidth = 0.5, color = "white") +
-    scale_x_continuous(breaks = 1:7) +
-    theme_apa
+  ggplot(aes(x = extraversion_mean)) +
+  geom_histogram(binwidth = 0.5, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_apa
 
 ```
 
@@ -107,10 +121,10 @@ my_data_complete |>
 #| fig-cap: Histogram of responses to Democratic Party feeling thermometer
 
 my_data_complete |> 
-    ggplot(aes(x = feeling_thermometer)) +
-    geom_histogram(binwidth = 1, color = "white") +
-    scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
-    theme_apa
+  ggplot(aes(x = feeling_thermometer)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
+  theme_apa
 
 ```
 
@@ -154,11 +168,11 @@ cor(x = my_data_complete$extraversion_mean,
 #| fig-cap: Scatterplot (with jitter) of average extraversion scores and feeling thermometer scores
 
 my_data_complete |> 
-    ggplot(aes(x = extraversion_mean, y = feeling_thermometer)) +
-        geom_point(position = position_jitter(width = 0.4, height = 0), 
-               alpha = 0.1) +
-        scale_x_continuous(breaks = 1:7) +
-        scale_y_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
-        theme_apa
+  ggplot(aes(x = extraversion_mean, y = feeling_thermometer)) +
+  geom_point(position = position_jitter(width = 0.4, height = 0), 
+             alpha = 0.1) +
+  scale_x_continuous(breaks = 1:7) +
+  scale_y_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
+  theme_apa
 
 ```

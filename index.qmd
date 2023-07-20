@@ -76,7 +76,7 @@ knitr::kable(schedule) |>
 
 ```
 
-## Course details
+## Course overview
 
 This lab is designed to offer experience participating in, reading, critiquing, and proposing research addressing social psychological phenomena. The lab will usually be taken concurrently with PSYC-BC2138 Social Psychology Lecture, and will expand upon the methodological and analytic issues introduced there, as well as giving you the opportunity to explore in greater depth a topic of your choosing from within (or beyond) those covered in the lectures by proposing your own original research project.
 
@@ -114,7 +114,7 @@ Your final letter grade for the course is a product of your scores for each assi
 
 
 
-## Course Policies
+## Course policies
 
 ### Attendance & timeliness
 

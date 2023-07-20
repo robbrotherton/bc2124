@@ -3,6 +3,7 @@
 This week each project team will present their proposed project to the rest of the class.
 
 
+# Presentation 
 
 ## Guide to presenting 
 
@@ -25,11 +26,13 @@ As an audience member, you are still being graded for class participation this w
 Good questions to ask are things like “Could you clarify X”, “Had you considered Y”, or “How might this relate to Z.” One reason for presenting your project is to hopefully get some useful feedback from the audience with which to refine your final paper, so try to give the kind of feedback you hope to receive.
 
 
-## Written report
+# Written report {#sec-report}
 
-You will produce a miniature research paper reporting your project.
+You will produce a miniature research paper reporting your project. Note that each team member will produce their own individual report; even though the project has been collaborative, your write up will be your own.
 
-- Background (two or three paragraphs, including summary of relevant research and hypothesis)
-- Method
-- Results
-- Discussion
+Your report should consist of the following sections:
+
+- Introduction (two or three paragraphs, including summary of relevant research and hypothesis)
+- Method (a description of the variables you selected, the number of valid responses, and any other information about the procedures that generated the data that you think necessary to report)
+- Results (all the descriptive statistics, figures, and statistics you produced)
+- Discussion (a paragraph or two interpreting your results and drawing conclusions)

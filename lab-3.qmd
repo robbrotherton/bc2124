@@ -1,6 +1,6 @@
 # Lab 3: Data cleaning {.unnumbered}
 
-You should begin this session with variables form the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.
+You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.
 
 
 ## Goals
@@ -18,26 +18,35 @@ You should begin this session with variables form the ANES 2016 dataset in mind 
 
 In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
 
-To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package from github. 
+To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package from github. Since the package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a function for installing other packages from GitHub.
 
 ```{r}
 #| eval: false
 
-install.packages("pak")
+install.packages("devtools")
 
-pak::pak("jamesmartherus/anesr")
+devtools::install_github("jamesmartherus/anesr")
 
 ```
 
-Now the necessary packages are installed on your system, but you still need to 'activate' them to make their functions and data available in your current R session.
+
+We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the `tidyverse` to make coding these common tasks easier. The `tidyverse` can be installed like so:
+
+```{r}
+#| eval: false
+
+install.packages("tidyverse")
+
+```
+
+If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time to start a new R session.
 
 ```{r}
 #| warning: false
 #| message: false
 
 library(anesr)
-library(tidyr)
-library(dplyr)
+library(tidyverse)
 
 ```
 
