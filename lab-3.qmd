@@ -14,6 +14,9 @@ You should begin this session with variables from the ANES 2016 dataset in mind 
 
 # Working with data in R
 
+
+
+
 ## Getting R ready
 
 In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
@@ -61,13 +64,15 @@ data(timeseries_2016)
 
 When you run that line of code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.
 
-Here's what a few of the columns and rows look like:
+Typing the name of the data.frame and running that line of code will show the first few columns and rows.
 
 ```{r}
-head(timeseries_2016)
+
+timeseries_2016
+
 ```
 
-You can click on the name in the Environment pane to see the data like a spreadsheet in a new tab.
+You can also click on the name in the Environment pane to see the data like a spreadsheet in a new tab.
 
 
 
@@ -91,7 +96,7 @@ my_data <- timeseries_2016 |>
 Let's see what this new data.frame looks like:
 
 ```{r}
-head(my_data)
+my_data
 ```
 
 It all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.

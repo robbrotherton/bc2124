@@ -1,0 +1,80 @@
+# Getting started with R
+
+
+## posit.cloud
+
+You will use [posit.cloud](https://posit.cloud) to work with data in R.
+
+
+### Let's do something cool
+
+
+
+
+### Wait, what are you talking about?
+
+There are a few different names involved here, so to try and clear things up:
+
+- __R__ is a coding language
+- __RStudio__ is a software interface for using R
+- __Posit__ is the name of the company that makes RStudio
+- __posit.cloud__ provides a way of using RStudio in your web browser
+
+You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immesnely.
+
+
+# Fundamentals of R for data analysis
+
+R is a programming language well-suited to interactive data exploration and analysis. It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
+
+There are two other ideas that will help you get started coding in R.
+
+
+### Assignment
+
+The first is the assignment operator: `<-`. You assign things to a name by typing something like:
+
+```{r}
+#| eval: false
+
+name <- thing
+```
+
+The `thing` there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.
+
+```{r}
+original_numbers <- 1:10
+original_numbers
+
+doubled_numbers <- original_numbers * 2
+doubled_numbers
+```
+
+### Functions
+
+Almost everything happens inside functions.
+
+```{r}
+mean(original_numbers)
+mean(doubled_numbers)
+```
+
+
+### Piping
+
+The second is the pipe operator: `|>`. You can string together different operations in a pipeline, with the result of each line getting "piped" into the next function. For example, below I take some data (named `data`) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (`mutate`) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.
+
+```{r}
+#| eval: false
+
+data |> 
+  select(column_a, column_b) |> 
+  filter(if_all(c(column_a, column_b), ~!is.na(.))) |> 
+  mutate(column_c = rowSums(across(everything()))) |> 
+  summarize(mean_sum = mean(column_c))
+
+```
+
+There's a lot going on there, and the specifics will become clearer as we work though this project. But using the pipe operator this way can make for relatively readable code.
+
+

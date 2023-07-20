@@ -36,13 +36,12 @@ book:
         - lab-12.qmd
         - lab-13.qmd
   appendices:
-    - a-searching-the-literature.qmd
-    - a-reading-research.qmd
+    - appendix-r-basics.qmd
     - a-statistics.qmd
-    - a-consent-form.qmd
-    - a-debrief.qmd
-    - a-writing-a-report.qmd
-  downloads: pdf
+    # - a-consent-form.qmd
+    # - a-debrief.qmd
+    # - a-writing-a-report.qmd
+  # downloads: pdf
   # sidebar:
   #   tools:
   #     - icon: github

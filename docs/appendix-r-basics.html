@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Personality PsychologyLab Handbook - Lab 3: Data cleaning</title>
+<title>Personality PsychologyLab Handbook - Appendix A — Getting started with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab-4.html" rel="next">
-<link href="./lab-2.html" rel="prev">
+<link href="./a-statistics.html" rel="next">
+<link href="./lab-13.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lab 3: Data cleaning</h1>
+      <h1 class="quarto-secondary-nav-title">Appendix A — Getting started with R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-3.html" class="sidebar-item-text sidebar-link active">Lab 3: Data cleaning</a>
+  <a href="./lab-3.html" class="sidebar-item-text sidebar-link">Lab 3: Data cleaning</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix-r-basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R fundamentals</span></a>
+  <a href="./appendix-r-basics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Getting started with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -285,21 +285,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#working-with-data-in-r" id="toc-working-with-data-in-r" class="nav-link" data-scroll-target="#working-with-data-in-r">Working with data in R</a>
+  <li><a href="#posit.cloud" id="toc-posit.cloud" class="nav-link active" data-scroll-target="#posit.cloud">posit.cloud</a>
   <ul class="collapse">
-  <li><a href="#r-fundamentals" id="toc-r-fundamentals" class="nav-link" data-scroll-target="#r-fundamentals">R fundamentals</a>
+  <li><a href="#lets-do-something-cool" id="toc-lets-do-something-cool" class="nav-link" data-scroll-target="#lets-do-something-cool">Let’s do something cool</a></li>
+  <li><a href="#wait-what-are-you-talking-about" id="toc-wait-what-are-you-talking-about" class="nav-link" data-scroll-target="#wait-what-are-you-talking-about">Wait, what are you talking about?</a></li>
+  </ul></li>
+  <li><a href="#fundamentals-of-r-for-data-analysis" id="toc-fundamentals-of-r-for-data-analysis" class="nav-link" data-scroll-target="#fundamentals-of-r-for-data-analysis">Fundamentals of R for data analysis</a>
   <ul class="collapse">
   <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
-  </ul></li>
-  <li><a href="#getting-r-ready" id="toc-getting-r-ready" class="nav-link" data-scroll-target="#getting-r-ready">Getting R ready</a></li>
-  <li><a href="#getting-data-into-r" id="toc-getting-data-into-r" class="nav-link" data-scroll-target="#getting-data-into-r">Getting data into R</a>
-  <ul class="collapse">
-  <li><a href="#select-your-variables" id="toc-select-your-variables" class="nav-link" data-scroll-target="#select-your-variables">Select your variables</a></li>
-  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the data</a></li>
-  <li><a href="#computing-scale-averages" id="toc-computing-scale-averages" class="nav-link" data-scroll-target="#computing-scale-averages">Computing scale averages</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -309,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lab 3: Data cleaning</h1>
+<h1 class="title d-none d-lg-block">Appendix A — Getting started with R</h1>
 </div>
 
 
@@ -324,21 +319,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.</p>
-<section id="goals" class="level2">
-<h2 class="anchored" data-anchor-id="goals">Goals</h2>
-<ul>
-<li>Get your R environment set up</li>
-<li>Read the data you need into R</li>
-<li>Select required variables</li>
-<li>Filter the data based on completeness (and any other criteria)</li>
-<li>Compute any required variables (scale means, number of items missing, etc)</li>
-</ul>
+<section id="posit.cloud" class="level2">
+<h2 class="anchored" data-anchor-id="posit.cloud">posit.cloud</h2>
+<p>You will use <a href="https://posit.cloud">posit.cloud</a> to work with data in R.</p>
+<section id="lets-do-something-cool" class="level3">
+<h3 class="anchored" data-anchor-id="lets-do-something-cool">Let’s do something cool</h3>
 </section>
-<section id="working-with-data-in-r" class="level1">
-<h1>Working with data in R</h1>
-<section id="r-fundamentals" class="level2">
-<h2 class="anchored" data-anchor-id="r-fundamentals">R fundamentals</h2>
+<section id="wait-what-are-you-talking-about" class="level3">
+<h3 class="anchored" data-anchor-id="wait-what-are-you-talking-about">Wait, what are you talking about?</h3>
+<p>There are a few different names involved here, so to try and clear things up:</p>
+<ul>
+<li><strong>R</strong> is a coding language</li>
+<li><strong>RStudio</strong> is a software interface for using R</li>
+<li><strong>Posit</strong> is the name of the company that makes RStudio</li>
+<li><strong>posit.cloud</strong> provides a way of using RStudio in your web browser</li>
+</ul>
+<p>You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immesnely.</p>
+</section>
+</section>
+<section id="fundamentals-of-r-for-data-analysis" class="level1">
+<h1>Fundamentals of R for data analysis</h1>
 <p>R is a programming language well-suited to interactive data exploration and analysis. It might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing <code>=AVERAGE(A1:A10)</code>. In R you might type <code>mean(my_data$column_a)</code>. The specifics of the function names are different, but the basic idea is the same.</p>
 <p>There are two other ideas that will help you get started coding in R.</p>
 <section id="assignment" class="level3">
@@ -361,150 +361,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<p>Almost everything happens inside functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(original_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(doubled_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+</section>
 <section id="piping" class="level3">
 <h3 class="anchored" data-anchor-id="piping">Piping</h3>
 <p>The second is the pipe operator: <code>|&gt;</code>. You can string together different operations in a pipeline, with the result of each line getting “piped” into the next function. For example, below I take some data (named <code>data</code>) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (<code>mutate</code>) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(column_a, column_b) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">c</span>(column_a, column_b), <span class="sc">~!</span><span class="fu">is.na</span>(.))) <span class="sc">|&gt;</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column_c =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(<span class="fu">everything</span>()))) <span class="sc">|&gt;</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sum =</span> <span class="fu">mean</span>(column_c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(column_a, column_b) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">c</span>(column_a, column_b), <span class="sc">~!</span><span class="fu">is.na</span>(.))) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column_c =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(<span class="fu">everything</span>()))) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sum =</span> <span class="fu">mean</span>(column_c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There’s a lot going on there, and the specifics will become clearer as we work though this project. But using the pipe operator this way can make for relatively readable code.</p>
-</section>
-</section>
-<section id="getting-r-ready" class="level2">
-<h2 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h2>
-<p>In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
-<p>To start exploring the data in R, you first need to set up your environment. This means installing the <code>anesr</code> package from github. Since the package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the <code>devtools</code> package, which has a function for installing other packages from GitHub.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jamesmartherus/anesr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the <code>tidyverse</code> to make coding these common tasks easier. The <code>tidyverse</code> can be installed like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to ‘activate’ the packages using <code>library()</code> to make their functions and data available each time to start a new R session.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(anesr)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="getting-data-into-r" class="level2">
-<h2 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(timeseries_2016)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>When you run that line of code you won’t see any output, but you should see the name <code>timeseries_2016</code> appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you’re familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant’s answers.</p>
-<p>Typing the name of the data.frame and running that line of code will show the first few columns and rows.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>timeseries_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,270 × 1,842
-   version       V160001 V160001_orig V160101 V160101f V160101w V160102 V160102f
-   &lt;chr&gt;           &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
- 1 ANES2016Time…       1       300001   0.827    0.888        0   0.842    0.927
- 2 ANES2016Time…       2       300002   1.08     1.16         0   1.01     1.08 
- 3 ANES2016Time…       3       300003   0.388    0.416        0   0.367    0.398
- 4 ANES2016Time…       4       300004   0.360    0.385        0   0.366    0.418
- 5 ANES2016Time…       5       300006   0.647    0.693        0   0.646    0.726
- 6 ANES2016Time…       6       300007   0.706    0.759        0   0.688    0.725
- 7 ANES2016Time…       7       300008   3.96     4.25         0   4.62     4.79 
- 8 ANES2016Time…       8       300012   0.962    1.03         0   0.943    1.04 
- 9 ANES2016Time…       9       300018   0.976    1.05         0   1.01     1.07 
-10 ANES2016Time…      10       300020   0.618    0.664        0   0.600    0.638
-# ℹ 4,260 more rows
-# ℹ 1,834 more variables: V160102w &lt;dbl&gt;, V160201 &lt;dbl&gt;, V160201f &lt;dbl&gt;,
-#   V160201w &lt;dbl&gt;, V160202 &lt;dbl&gt;, V160202f &lt;dbl&gt;, V160202w &lt;dbl&gt;,
-#   V160501 &lt;hvn_lbll&gt;, V160502 &lt;hvn_lbll&gt;, V161001 &lt;hvn_lbll&gt;,
-#   V161002 &lt;hvn_lbll&gt;, V161003 &lt;hvn_lbll&gt;, V161004 &lt;hvn_lbll&gt;,
-#   V161005 &lt;hvn_lbll&gt;, V161006 &lt;hvn_lbll&gt;, V161007 &lt;hvn_lbll&gt;,
-#   V161008 &lt;hvn_lbll&gt;, V161009 &lt;hvn_lbll&gt;, V161010a &lt;hvn_lbll&gt;, …</code></pre>
-</div>
-</div>
-<p>You can also click on the name in the Environment pane to see the data like a spreadsheet in a new tab.</p>
-<section id="select-your-variables" class="level3">
-<h3 class="anchored" data-anchor-id="select-your-variables">Select your variables</h3>
-<p>As you can see, the data.frame contains a <em>lot</em> of variables; there are 1,842 columns of data. You’ll only need a few of those. So the first step is selecting just the variables you need to work with.</p>
-<p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use them within <code>dplyr</code>’s <code>select()</code> function. This allows us to simply type in variable names separated by commas. You can also give the columns new names when selecting,</p>
-<p>For this example I’ll look at the correlation between extraversion and the ‘feeling thermometer’ for the Democratic Party. Extraversion has two TIPI items; their IDs (from the codebook) are <code>V162333</code> and <code>V162338</code>. The ID for the Democratic Party feeling thermometer is <code>V161095</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> timeseries_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">extraversion1 =</span> <span class="st">"V162333"</span>, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>, ,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">feeling_thermometer =</span> <span class="st">"V161095"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Let’s see what this new data.frame looks like:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,270 × 3
-   extraversion1 extraversion2 feeling_thermometer
-   &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;         
- 1 6             5              0                 
- 2 6             6             15                 
- 3 6             2             50                 
- 4 6             4             30                 
- 5 5             7             70                 
- 6 5             6             15                 
- 7 5             1             85                 
- 8 6             3              0                 
- 9 7             1             15                 
-10 5             5             50                 
-# ℹ 4,260 more rows</code></pre>
-</div>
-</div>
-<p>It all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you’ll notice that there are some negative numbers in the data. That’s from survey codes which record missing data. If you try to calculate an average score with those included it’ll mess up the sums, so we need to do some data cleaning to handle things like that.</p>
-</section>
-<section id="cleaning-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the data</h3>
-<p>There are a lot of different ways we could handle this. One way is to <code>filter()</code> the data, retaining only rows which meet certain conditions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>), <span class="sc">~</span> . <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))  <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(feeling_thermometer <span class="sc">&gt;=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Notice how many rows have been removed:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4270</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3540</code></pre>
-</div>
-</div>
-<p>Another way would be to <code>mutate()</code> the data; that is, change certain values based on some condition.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># my_data_complete &lt;- my_data |&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(across(contains("extraversion"), ~case_when(</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         . &lt; 1 ~ NA,</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         TRUE ~ .</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     ))) |&gt; </span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(feeling_thermometer = case_when(feeling_thermometer &lt; 0 ~ NA, TRUE ~ feeling_thermometer))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="computing-scale-averages" class="level3">
-<h3 class="anchored" data-anchor-id="computing-scale-averages">Computing scale averages</h3>
-<p>Now that the data is subsetted and the missing/invalid responses are taken care of, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.</p>
-<p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits. So it may be desirable to compute a mean trait score by averaging its two respective items.</p>
-<p>Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item <code>V162333</code> is “extraverted, enthusiastic”, while item <code>V162338</code> is “reserved, quiet”. The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant’s response from 8; 1 becomes 7, 2 becomes 6, etc.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can go ahead and compute the average, using <code>mutate()</code> to create a new column containing the <code>rowMeans()</code> (i.e.&nbsp;an average for each row) for the specified columns.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
-</section>
 </section>
 </section>
 
@@ -759,13 +642,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab-2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 2: Project Planning</span>
+      <a href="./lab-13.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 13: Presentations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab-4.html" class="pagination-link">
-        <span class="nav-page-text">Lab 4: Analysis</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./a-statistics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Summary of Basic Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
