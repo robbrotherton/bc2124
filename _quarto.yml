@@ -6,12 +6,17 @@ title-block-author-single: "Instructor"
 title-block-published: ""
 
 book:
+  sidebar:
+    tools:
+      - icon: file-pdf
+        menu:
+          - text: PDF syllabus
+            url:  psyc-bc2124-syllabus-fall23.pdf
   title: "Personality Psychology<br>Lab Handbook"
   subtitle: |
     | Barnard College
     | Department of Psychology
     | PSYC BC2124
-  # author: "Professor Rob Brotherton"
   date: "1/31/2023"
   date-format: "[Fall 2023]"
 
@@ -49,6 +54,7 @@ book:
 
 toc-depth: 3
 number-depth: 0
+number-sections: false
 
 # comments:
 #     hypothesis:

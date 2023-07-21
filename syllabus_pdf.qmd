@@ -9,5 +9,5 @@ subtitle: |
   | Fall 2023
 ---
 
-{{< include ../_syllabus.qmd >}}
+{{< include _syllabus.qmd >}}
 

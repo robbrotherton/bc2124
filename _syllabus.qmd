@@ -1,7 +1,7 @@
-## Course details
+### Time, venue & instructor
 
-Section 001 time & venue: Monday 10:10-1PM, Milbank 410       
-Section 002 time & venue: Monday 1:10-4:00PM, Milbank 410
+Section 001: Monday 10:10-1PM, Milbank 410       
+Section 002: Monday 1:10-4:00PM, Milbank 410
 
 
 Instructor: Dr. Rob Brotherton (<rbrother@barnard.edu>)       
