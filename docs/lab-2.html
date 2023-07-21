@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Syllabus</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -242,12 +242,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#project-planning" id="toc-project-planning" class="nav-link" data-scroll-target="#project-planning">Project planning</a>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project overview</a>
   <ul class="collapse">
   <li><a href="#step-1.-examine-the-data" id="toc-step-1.-examine-the-data" class="nav-link" data-scroll-target="#step-1.-examine-the-data">Step 1. Examine the data</a></li>
   <li><a href="#step-2.-find-relevant-research" id="toc-step-2.-find-relevant-research" class="nav-link" data-scroll-target="#step-2.-find-relevant-research">Step 2. Find relevant research</a>
   <ul class="collapse">
-  <li><a href="#whatto-look-for" id="toc-whatto-look-for" class="nav-link" data-scroll-target="#whatto-look-for">Whatto look for</a></li>
+  <li><a href="#what-to-look-for" id="toc-what-to-look-for" class="nav-link" data-scroll-target="#what-to-look-for">What to look for</a></li>
   <li><a href="#where-to-look" id="toc-where-to-look" class="nav-link" data-scroll-target="#where-to-look">Where to look</a></li>
   </ul></li>
   <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
@@ -286,21 +286,38 @@ ul.task-list li input[type="checkbox"] {
 <li>Formulate a brief research proposal</li>
 </ul>
 </section>
-<section id="project-planning" class="level1">
-<h1>Project planning</h1>
-<p>A <em>correlation</em> refers an association between two things. It is a statement of a <em>statistical</em> relationship–a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else–for example, <a href="https://psycnet.apa.org/fulltext/2020-03328-001.html">neuroticism is correlated with lower wellbeing</a> or <a href="https://www.pnas.org/doi/10.1073/pnas.2212794120">openness is correlated with greater cognitive ability</a>–is to say that those things <em>tend</em> to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.</p>
+<section id="project-overview" class="level1">
+<h1>Project overview</h1>
+<p>A <em>correlation</em> refers an association between two things. It is a statement of a statistical relationship–a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else–for example, <a href="https://psycnet.apa.org/fulltext/2020-03328-001.html">neuroticism is correlated with lower wellbeing</a> or <a href="https://www.pnas.org/doi/10.1073/pnas.2212794120">openness is correlated with greater cognitive ability</a>–is to say that those things <em>tend</em> to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.</p>
 <p>Of course, these kind of correlations aren’t just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to operationally define those constructs; what statistical analyses are appropriate; and what conclusions may be drawn.</p>
 <p>With this project, you will examine a correlation between a personality trait and some other construct of your choosing by analyzing existing data.</p>
 <section id="step-1.-examine-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-1.-examine-the-data">Step 1. Examine the data</h2>
-<p>The dataset we will use is from the <a href="https://electionstudies.org/">American National Election Studies (ANES)</a>, academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (instead of more recent data) is that the 2016 survey included a personality scale: the Ten-item Personality Inventory (TIPI: <a href="https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf">Gosling et al., 2003</a>). This allow us to look at how the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism correlate with any of the other variables recorded in the survey.</p>
+<p>The dataset we will use is from the <a href="https://electionstudies.org/">American National Election Studies (ANES)</a>, academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (instead of more recent data) is that the 2016 survey included a personality scale: the Ten-item Personality Inventory (TIPI: <a href="https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf">Gosling et al., 2003</a>). This scale is a short measure of the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. For your project, you will pick one of these traits and investigate its correlation with one of the other constructs recorded in the survey.</p>
+<p>To see what variables were recorded, you will skim the <a href="https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf">Codebook</a>. This is a pdf document that details the survey methodology exhaustively, including listing every question that was asked. It’s not fun reading, but it is your guide to picking out .</p>
+<p>To give you an idea of what you will find: many of the variables have to do with people’s political preferences and actions (voting preferences, approval of various political actors, etc).</p>
+<ul>
+<li>Demographic variables (age, race, gender, marital status, education, income, etc)</li>
+<li>Knowledge/intelligence (WORDSUM: a vocab test that is a common proxy for IQ; questions about political general knowledge)</li>
+<li>Religiosity</li>
+<li>Security/anxiety about various things… risks of vaccines, financial security,</li>
+<li>Affect - feeling thermometers</li>
+<li>Life satisfaction</li>
+<li>Conspiracy beliefs (is Barack Obama Muslim? Did the U.S. government know about 9/11 in advance?)</li>
+<li>Opinionatedness (R forms opinions about everything; Important for R to hold strong opinions; It bothers R to remain neutral)</li>
+<li>Stereotypes, sexism</li>
+<li>Authoritarianism (child-rearing style), traditionalism, conservatism, social trust</li>
+<li>Equalitarianism</li>
+<li>Patriotism</li>
+<li>Media exposure and attention</li>
+</ul>
 </section>
 <section id="step-2.-find-relevant-research" class="level2">
 <h2 class="anchored" data-anchor-id="step-2.-find-relevant-research">Step 2. Find relevant research</h2>
 <p>Real research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found of these (or related) personality traits.</p>
-<section id="whatto-look-for" class="level3">
-<h3 class="anchored" data-anchor-id="whatto-look-for">Whatto look for</h3>
-<p>A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review or meta-analysis<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> paper.</p>
+<section id="what-to-look-for" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-look-for">What to look for</h3>
+<p>A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review paper or meta-analysis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 <section id="where-to-look" class="level3">
 <h3 class="anchored" data-anchor-id="where-to-look">Where to look</h3>
@@ -689,12 +706,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Syllabus</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -1,0 +1,13 @@
+---
+format: pdf
+output-file: psyc-bc2124-syllabus-fall23.pdf
+title: PERSONALITY PSYCHOLOGY LAB
+subtitle: |
+  | PSYC BC2124
+  | Barnard College
+  | Department of Psychology
+  | Fall 2023
+---
+
+{{< include ../_syllabus.qmd >}}
+

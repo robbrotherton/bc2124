@@ -13,9 +13,9 @@ In this session we will begin the first project of the course: performing a corr
 - Formulate a brief research proposal
 
 
-# Project planning
+# Project overview
 
-A *correlation*  refers an association between two things. It is a statement of a *statistical* relationship--a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else--for example, [neuroticism is correlated with lower wellbeing](https://psycnet.apa.org/fulltext/2020-03328-001.html) or [openness is correlated with greater cognitive ability](https://www.pnas.org/doi/10.1073/pnas.2212794120)--is to say that those things *tend* to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.
+A *correlation*  refers an association between two things. It is a statement of a statistical relationship--a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else--for example, [neuroticism is correlated with lower wellbeing](https://psycnet.apa.org/fulltext/2020-03328-001.html) or [openness is correlated with greater cognitive ability](https://www.pnas.org/doi/10.1073/pnas.2212794120)--is to say that those things *tend* to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.
 
 Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to operationally define those constructs; what statistical analyses are appropriate; and what conclusions may be drawn.
 
@@ -24,7 +24,25 @@ With this project, you will examine a correlation between a personality trait an
 
 ## Step 1. Examine the data
 
-The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (instead of more recent data) is that the 2016 survey included a personality scale: the Ten-item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This allow us to look at how the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism correlate with any of the other variables recorded in the survey.
+The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (instead of more recent data) is that the 2016 survey included a personality scale: the Ten-item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. For your project, you will pick one of these traits and investigate its correlation with one of the other constructs recorded in the survey.
+
+To see what variables were recorded, you will skim the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). This is a pdf document that details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to picking out .
+
+To give you an idea of what you will find: many of the variables have to do with people's political preferences and actions (voting preferences, approval of various political actors, etc).
+
+- Demographic variables (age, race, gender, marital status, education, income, etc)
+- Knowledge/intelligence (WORDSUM: a vocab test that is a common proxy for IQ; questions about political general knowledge)
+- Religiosity 
+- Security/anxiety about various things... risks of vaccines, financial security,
+- Affect - feeling thermometers
+- Life satisfaction
+- Conspiracy beliefs (is Barack Obama Muslim? Did the U.S. government know about 9/11 in advance?)
+- Opinionatedness (R forms opinions about everything; Important for R to hold strong opinions; It bothers R to remain neutral)
+- Stereotypes, sexism
+- Authoritarianism (child-rearing style), traditionalism, conservatism, social trust
+- Equalitarianism
+- Patriotism
+- Media exposure and attention
 
 
 
@@ -32,9 +50,9 @@ The dataset we will use is from the [American National Election Studies (ANES)](
 
 Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found of these (or related) personality traits.
 
-### Whatto look for
+### What to look for
 
-A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review or meta-analysis^[A meta-analysis pools the findings of many individual studies by different researchers into a single analysis.] paper.
+A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review paper or meta-analysis.^[A meta-analysis pools the findings of many individual studies by different researchers into a single analysis.]
 
 
 ### Where to look
