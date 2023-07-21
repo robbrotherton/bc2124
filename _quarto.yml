@@ -37,7 +37,7 @@ book:
         - lab-13.qmd
   appendices:
     - appendix-r-basics.qmd
-    - a-statistics.qmd
+    # - a-statistics.qmd
     # - a-consent-form.qmd
     # - a-debrief.qmd
     # - a-writing-a-report.qmd
