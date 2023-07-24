@@ -11,7 +11,7 @@ You will start this session with your cleaned data ready to use in R. By the end
 - Interpret the results
 
 
-# Analyzing data in R
+## Analyzing data in R
 
 Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables, filtered the data down to complete, valid responses, recoded the negatively-worded item, and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
 
@@ -36,7 +36,7 @@ my_data_complete <- timeseries_2016 |>
 
 
 
-## Describing your data
+### Describing your data
 
 
 ```{r}
@@ -52,7 +52,7 @@ my_data_complete |>
 ```
 
 
-## Visualizing the data
+### Visualizing the data
 
 As with most things, there are a lot of different ways of producing graphs using R. One of the most widely used and powerful is the `ggplot2` package.^[The `ggplot2` package is part of the `tidyverse`, so because we already ran `library(tidyverse)` earlier the `ggplot2` functions are already available to us. If you needed to, you could always run `library(ggplot2)` to activate it separately.] The name refers to the idea of the "grammar of graphics", and it is built around a layering approach. You first specify your data and aesthetics (what should data will go on the x and y axes), then geometry (do you want data to be represented by points or bars or as a histogram?), any scaling (e.g. what values should be labeled on each axis), and theme elements (how do you want the plot to look generally?). There can be a lot of complexity, but building things up layer by layer, gradually adding and refining elements, is a powerful and satisfying approach.
 
@@ -130,15 +130,15 @@ my_data_complete |>
 
 
 
-# Correlation analysis
+## Correlation analysis
 
-## The correlation statistic
+### The correlation statistic
 
 The correlation statistic can be computed with a single line of code, as you'll see. But it's important to understand the math happening behind the scenes.
 
 
 
-## Correlation in R
+### Correlation in R
 
 
 

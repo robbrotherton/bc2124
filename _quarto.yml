@@ -12,13 +12,14 @@ book:
         menu:
           - text: PDF syllabus
             url:  psyc-bc2124-syllabus-fall23.pdf
-  title: "Personality Psychology<br>Lab Handbook"
+  title: "Personality Psychology Lab Handbook"
   subtitle: |
     | Barnard College
     | Department of Psychology
     | PSYC BC2124
   date: "1/31/2023"
   date-format: "[Fall 2023]"
+  output-file: "Personality-Psychology-Lab-Handbook-Fall-2023.pdf"
 
   chapters:
     - index.qmd
@@ -65,6 +66,7 @@ crossref:
   appendix-title: Appendix
 
 format:
+  pdf: default
   html:
     theme:
       light: [flatly, custom.scss]

@@ -1,3 +1,7 @@
+
+__Pre-requisites__: PSYC BC1001 Introduction to Psychology; PSYC BC1101 Statistics; PSYC BC 1024 Research Methods  
+__Co-requisite__: PSYC BC2125 Personality Psychology
+
 ### Time, venue & instructor
 
 Section 001: Monday 10:10-1PM, Milbank 410       
@@ -10,7 +14,7 @@ Office hour: TBC
 
 
 
-### Course overview
+## Course overview
 
 This lab will usually be taken concurrently with BC2125 Personality lecture. It will expand upon some of the theoretical, methodological and analytic issues introduced there, as well as giving you the opportunity to explore topics of your choosing from within (or beyond) those covered in the lectures in greater depth though hands-on experience with research design and data analysis.
 

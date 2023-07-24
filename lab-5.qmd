@@ -3,9 +3,9 @@
 This week each project team will present their proposed project to the rest of the class.
 
 
-# Presentation 
+## Presentation 
 
-## Guide to presenting 
+### Guide to presenting 
 
 Each team will give a two-minute presentation, accompanied by a single PowerPoint slide, which should encapsulate the motivation, methods, anticipated findings, and interpretation of your proposed project.
 Two minutes is not a lot of time. Apparently, people speak at a rate of around 125 to 150 words per minute on average. So a 2-minute presentation will be no more than around 300 words. The single-slide, not-many-words format demands clarity, conciseness, and being bold to spark the audience’s interest in your topic.
@@ -19,14 +19,14 @@ After your two-minute talk you’ll take a few questions from the audience, and 
 Each pair will be allotted five minutes total for their talk and Q&A. Going over time and/or failing to leave time for questions will impact your presentation grade. It is up to each pair to decide how to divide up the two-minute talk, and to practice to make sure the presentation is to time.
 
 
-## Guide to watching presentations
+### Guide to watching presentations
 
 As an audience member, you are still being graded for class participation this week. That means giving everyone else’s presentation the attention and enthusiasm it deserves, and rewarding their hard work with questions. (Going to the trouble of putting together a presentation only for nobody to have anything to say about it is not a good feeling.)
 
 Good questions to ask are things like “Could you clarify X”, “Had you considered Y”, or “How might this relate to Z.” One reason for presenting your project is to hopefully get some useful feedback from the audience with which to refine your final paper, so try to give the kind of feedback you hope to receive.
 
 
-# Written report {#sec-report}
+## Written report {#sec-report}
 
 You will produce a miniature research paper reporting your project. Note that each team member will produce their own individual report; even though the project has been collaborative, your write up will be your own.
 

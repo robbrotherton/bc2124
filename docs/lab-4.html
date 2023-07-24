@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Personality PsychologyLab Handbook - Lab 4: Analysis</title>
+<title>Personality Psychology Lab Handbook - Lab 4: Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Personality Psychology<br>Lab Handbook</a> 
+      <a href="./">Personality Psychology Lab Handbook</a> 
         <div class="sidebar-tools-main">
     <a href="" title="" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-file-pdf"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
@@ -332,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Interpret the results</li>
 </ul>
 </section>
-<section id="analyzing-data-in-r" class="level1">
-<h1>Analyzing data in R</h1>
+<section id="analyzing-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="analyzing-data-in-r">Analyzing data in R</h2>
 <p>Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables, filtered the data down to complete, valid responses, recoded the negatively-worded item, and computed an extraversion mean score. To refresh your memory, here’s the entire pipeline from start to finish:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -349,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2,</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="describing-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="describing-your-data">Describing your data</h2>
+<section id="describing-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="describing-your-data">Describing your data</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.numeric)) <span class="sc">|&gt;</span> </span>
@@ -370,8 +370,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="visualizing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-the-data">Visualizing the data</h2>
+<section id="visualizing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-data">Visualizing the data</h3>
 <p>As with most things, there are a lot of different ways of producing graphs using R. One of the most widely used and powerful is the <code>ggplot2</code> package.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The name refers to the idea of the “grammar of graphics”, and it is built around a layering approach. You first specify your data and aesthetics (what should data will go on the x and y axes), then geometry (do you want data to be represented by points or bars or as a histogram?), any scaling (e.g.&nbsp;what values should be labeled on each axis), and theme elements (how do you want the plot to look generally?). There can be a lot of complexity, but building things up layer by layer, gradually adding and refining elements, is a powerful and satisfying approach.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="sc">|&gt;</span> </span>
@@ -385,7 +385,7 @@ Defaulting to continuous.</code></pre>
 <div id="fig-extraverted-no-theme" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-extraverted-no-theme-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Histogram of responses to “extraverted, enthusiastic” TIPI item</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Histogram of responses to “extraverted, enthusiastic” TIPI item</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -407,7 +407,7 @@ Defaulting to continuous.</code></pre>
 <div id="fig-extraverted" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-extraverted-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Histogram of responses to “extraverted, enthusiastic” TIPI item</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Histogram of responses to “extraverted, enthusiastic” TIPI item</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -422,7 +422,7 @@ Defaulting to continuous.</code></pre>
 <div id="fig-reserved" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-reserved-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Histogram of responses to “reserved, quiet” TIPI item</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Histogram of responses to “reserved, quiet” TIPI item</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -437,7 +437,7 @@ Defaulting to continuous.</code></pre>
 <div id="fig-extraversion-mean" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-extraversion-mean-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Histogram of average scores on TIPI Extraversion subscale</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Histogram of average scores on TIPI Extraversion subscale</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -452,21 +452,21 @@ Defaulting to continuous.</code></pre>
 <div id="fig-thermometer" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-thermometer-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Histogram of responses to Democratic Party feeling thermometer</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Histogram of responses to Democratic Party feeling thermometer</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="correlation-analysis" class="level1">
-<h1>Correlation analysis</h1>
-<section id="the-correlation-statistic" class="level2">
-<h2 class="anchored" data-anchor-id="the-correlation-statistic">The correlation statistic</h2>
+<section id="correlation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-analysis">Correlation analysis</h2>
+<section id="the-correlation-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="the-correlation-statistic">The correlation statistic</h3>
 <p>The correlation statistic can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.</p>
 </section>
-<section id="correlation-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="correlation-in-r">Correlation in R</h2>
+<section id="correlation-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-in-r">Correlation in R</h3>
 <p>The data is ready to be analyzed. The correlation between two variables can be found using the <code>cor()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> my_data_complete<span class="sc">$</span>extraversion_mean, </span>
@@ -496,7 +496,7 @@ Defaulting to continuous.</code></pre>
 <div id="fig-scatter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab-4_files/figure-html/fig-scatter-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Scatterplot (with jitter) of average extraversion scores and feeling thermometer scores</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Scatterplot (with jitter) of average extraversion scores and feeling thermometer scores</figcaption><p></p>
 </figure>
 </div>
 </div>

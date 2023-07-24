@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Personality PsychologyLab Handbook - Lab 3: Data cleaning</title>
+<title>Personality Psychology Lab Handbook - Lab 3: Data cleaning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Personality Psychology<br>Lab Handbook</a> 
+      <a href="./">Personality Psychology Lab Handbook</a> 
         <div class="sidebar-tools-main">
     <a href="" title="" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-file-pdf"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
@@ -292,12 +292,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#working-with-data-in-r" id="toc-working-with-data-in-r" class="nav-link" data-scroll-target="#working-with-data-in-r">Working with data in R</a>
   <ul class="collapse">
   <li><a href="#getting-r-ready" id="toc-getting-r-ready" class="nav-link" data-scroll-target="#getting-r-ready">Getting R ready</a></li>
-  <li><a href="#getting-data-into-r" id="toc-getting-data-into-r" class="nav-link" data-scroll-target="#getting-data-into-r">Getting data into R</a>
-  <ul class="collapse">
+  <li><a href="#getting-data-into-r" id="toc-getting-data-into-r" class="nav-link" data-scroll-target="#getting-data-into-r">Getting data into R</a></li>
   <li><a href="#select-your-variables" id="toc-select-your-variables" class="nav-link" data-scroll-target="#select-your-variables">Select your variables</a></li>
   <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the data</a></li>
   <li><a href="#computing-scale-averages" id="toc-computing-scale-averages" class="nav-link" data-scroll-target="#computing-scale-averages">Computing scale averages</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,10 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Compute any required variables (scale means, number of items missing, etc)</li>
 </ul>
 </section>
-<section id="working-with-data-in-r" class="level1">
-<h1>Working with data in R</h1>
-<section id="getting-r-ready" class="level2">
-<h2 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h2>
+<section id="working-with-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-data-in-r">Working with data in R</h2>
+<section id="getting-r-ready" class="level3">
+<h3 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h3>
 <p>In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
 <p>To start exploring the data in R, you first need to set up your environment. This means installing the <code>anesr</code> package from github. Since the package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the <code>devtools</code> package, which has a function for installing other packages from GitHub.</p>
 <div class="cell">
@@ -354,8 +352,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="getting-data-into-r" class="level2">
-<h2 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h2>
+<section id="getting-data-into-r" class="level3">
+<h3 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(timeseries_2016)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -387,6 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>You can also click on the name in the Environment pane to see the data like a spreadsheet in a new tab.</p>
+</section>
 <section id="select-your-variables" class="level3">
 <h3 class="anchored" data-anchor-id="select-your-variables">Select your variables</h3>
 <p>As you can see, the data.frame contains a <em>lot</em> of variables; there are 1,842 columns of data. You’ll only need a few of those. So the first step is selecting just the variables you need to work with.</p>
@@ -465,7 +464,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
-</section>
 </section>
 </section>
 

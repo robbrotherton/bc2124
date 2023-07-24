@@ -8,7 +8,7 @@ You will use [posit.cloud](https://posit.cloud) to work with data in R.
 
 ### Let's do something cool
 
-
+Once you have a posit.cloud account, click this link.
 
 
 ### Wait, what are you talking about?

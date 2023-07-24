@@ -12,12 +12,12 @@ You should begin this session with variables from the ANES 2016 dataset in mind 
 - Compute any required variables (scale means, number of items missing, etc)
 
 
-# Working with data in R
+## Working with data in R
 
 
 
 
-## Getting R ready
+### Getting R ready
 
 In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
 
@@ -54,7 +54,7 @@ library(tidyverse)
 ```
 
 
-## Getting data into R
+### Getting data into R
 
 ```{r}
 
