@@ -1,13 +1,124 @@
 # Lab 7: Data cleaning & analysis {.unnumbered}
 
-## Goals
+### Goals
 
-- Control conditions
-- Factorial designs
+- Read the data you need into R
+- Select required variables
+- Filter the data based on completeness (and any other criteria)
+- Compute any required variables (scale means, number of items missing, etc)
+
+## Multiple Regression in R
+
+### Data wrangling
+
+Building on the correlation example, we will include additional variables of interest - conscientiousness and agreeableness - to examine how these factors, along with extraversion, collectively predict feelings towards the Democratic party. Similar to the correlation project, we will start by cleaning and filtering the data, recoding the negatively-worded items (taking care to note which ones need recoding; it's not always the second question), and computing mean scores for each Big 5 trait.
+
+Here is the pipeline to prepare the data:
 
 ```{r}
-#| eval: false
+#| warning: false
+#| message: false
 
-lm(dv ~ iv1 * iv2)
+library(tidyverse)
+library(anesr)
+data(timeseries_2016)
+
+my_data_complete <- timeseries_2016 |> 
+  select(extraversion1 = "V162333", 
+         extraversion2 = "V162338",
+         conscientiousness1 = "V162335", 
+         conscientiousness2 = "V162340",
+         agreeableness1 = "V162334", 
+         agreeableness2 = "V162339",
+         feeling_thermometer = "V161095") |> 
+  filter(if_all(everything(), ~ . >= 0))  |>
+  mutate(extraversion2 = 8 - extraversion2,
+         conscientiousness2 = 8 - conscientiousness2,
+         agreeableness1 = 8 - agreeableness1,
+         extraversion_mean = rowMeans(across(contains("extraversion"))),
+         conscientiousness_mean = rowMeans(across(contains("conscientiousness"))),
+         agreeableness_mean = rowMeans(across(contains("agreeableness"))))
 
 ```
+
+
+### Describing your variables
+
+Just as in the previous lab, you'll need to compute the mean and standard deviation for each of your variables. Use the same process, replacing the variable names with your new ones:
+
+```{r}
+my_data_complete |>
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  group_by(variable) |> 
+  summarize(count_valid = n(),
+            mean = mean(value), 
+            sd = sd(value))
+
+```
+
+
+### Visualizing the data
+
+You can create histograms for each of your new variables, just like you did for extraversion. Since there are 
+
+```{r}
+theme_apa <- theme(
+  panel.background = element_blank(),
+  axis.line = element_line()
+)
+```
+
+```{r}
+
+my_data_complete |>
+  select(extraversion1:agreeableness2) |> 
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  ggplot(aes(x = value)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  facet_wrap(~variable, nrow = 3) +
+  theme_apa
+
+```
+
+
+```{r}
+
+my_data_complete |>
+  select(contains("mean")) |> 
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  ggplot(aes(x = value)) +
+  geom_histogram(binwidth = 0.5, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  facet_wrap(~variable, nrow = 3) +
+  theme_apa
+
+```
+
+
+## Regression analysis
+
+Now we'll perform a multiple regression analysis. This allows us to examine the relationship between one dependent variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).
+
+```{r}
+model <- lm(feeling_thermometer ~ extraversion_mean + conscientiousness_mean + agreeableness_mean, data = my_data_complete)
+
+summary(model)
+```
+
+
+The summary() function will output the results of your regression analysis. For each predictor, you'll see an estimate of the relationship between that predictor and the outcome variable, controlling for the other predictors. These are your regression coefficients. You'll also see a t-value and a p-value for each predictor, which tell you whether each predictor is significantly related to the outcome variable, controlling for the other predictors. The summary will also include information on the overall model fit.
+
+
+### Visualizing a regression model
+
+Finally, as you did in the correlation project, you'll want to create a scatterplot to visualize the relationships between your predictors and the outcome variable. This will be more complex than in the correlation project, since you now have more variables to include.

@@ -1,6 +1,6 @@
 # Lab 8: Visualization & reporting {.unnumbered}
 
-## Goals
+### Goals
 
 - Style and contents of an APA Introduction section
 - How to frame previous findings to create a coherent and compelling justification

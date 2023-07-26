@@ -3,7 +3,7 @@
 You will start this session with your cleaned data ready to use in R. By the end of the session you will have computed the correlation statistic, produced some visualizations of your data, and be ready to present and write up your findings.
 
 
-## Goals
+### Goals
 
 - Describe and visualize your variables
 - Understand what the correlation statistic quantifies
@@ -25,10 +25,9 @@ data(timeseries_2016)
 
 my_data_complete <- timeseries_2016 |> 
   select(extraversion1 = "V162333", 
-         extraversion2 = "V162338", ,
+         extraversion2 = "V162338",
          feeling_thermometer = "V161095") |> 
-  filter(if_all(contains("extraversion"), ~ . %in% 1:7))  |> 
-  filter(feeling_thermometer >= 0) |> 
+  filter(if_all(everything(), ~ . >= 0)) |> 
   mutate(extraversion2 = 8 - extraversion2,
          extraversion_mean = rowMeans(across(contains("extraversion"))))
 
@@ -38,24 +37,50 @@ my_data_complete <- timeseries_2016 |>
 
 ### Describing your data
 
+The most common descriptive statistics are the mean ($M$) and standard deviation ($SD$). You should compute and report these for each variable in your analysis.
+
+You can find the mean of each column in a data.frame using R's built-in `colMeans()` function.
+
+```{r}
+colMeans(my_data_complete)
+```
+
+There's no built-in equivalent for finding the standard deviation of columns, but there is a basic `sd()` function, which you could apply to each column in turn:
 
 ```{r}
 
-my_data_complete |> 
-  mutate(across(everything(), as.numeric)) |> 
-  pivot_longer(everything()) |> 
-  summarize(n = n(),
+sd(my_data_complete$extraversion1)
+sd(my_data_complete$extraversion2)
+
+# etc
+
+```
+
+This might be a perfectly appropriate approach, but with a lot of variables it might not be the most efficient (and it kind of violates the DRY principle: don't repeat yourself).
+
+A slightly more complicated but very powerful approach is to use `tidyverse` functions to reshape the data and `summarize()` each of the variables. First, transform the structure of the data using `pivot_longer()`. This produces a data.frame with just two columns, one with all the numeric scores ("value"), and the other labeling which column each value came from ("variable"). Then we `group_by(variable)`, meaning that any subsequent computations will be performed separately for each variable. Finally we pipe the data.frame into the `summarize()` function. There you can create any number of named variables, each computing some kind of summary. Since the data is grouped, each variable ("extraversion1", extraversion2", etc) gets its own count, mean, and standard deviation.
+
+```{r}
+my_data_complete |>
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  group_by(variable) |> 
+  summarize(count_valid = n(),
             mean = mean(value), 
-            sd = sd(value),
-            .by = name)
+            sd = sd(value))
 
 ```
 
 
 ### Visualizing the data
 
+In addition to reporting the mean and standard deviation, it is useful to visualize the distribution of the data. This can reveal nuances that are not obvious in those single numeric summary values.
+
 As with most things, there are a lot of different ways of producing graphs using R. One of the most widely used and powerful is the `ggplot2` package.^[The `ggplot2` package is part of the `tidyverse`, so because we already ran `library(tidyverse)` earlier the `ggplot2` functions are already available to us. If you needed to, you could always run `library(ggplot2)` to activate it separately.] The name refers to the idea of the "grammar of graphics", and it is built around a layering approach. You first specify your data and aesthetics (what should data will go on the x and y axes), then geometry (do you want data to be represented by points or bars or as a histogram?), any scaling (e.g. what values should be labeled on each axis), and theme elements (how do you want the plot to look generally?). There can be a lot of complexity, but building things up layer by layer, gradually adding and refining elements, is a powerful and satisfying approach.
 
+Here's a simple histogram of the first extraversion item. I pipe the data into the `ggplot()` function, specifying that I want the `extraversion1` column to be represented as the `x` aesthetic. Then I add geometry using `geom_histogram`. That geom function automatically computes bins and counts; here I just specify I want a `binwidth` of 1, i.e. each column of the histogram will represent one scale point. Note that ggplot layers are added using `+` rather than the usual `|>` pipe.
 
 
 ```{r}
@@ -68,6 +93,7 @@ my_data_complete |>
 
 ```
 
+
 The default theme is perfectly serviceable, but you can customize every element. Here I'll specify a couple of aspects using the `theme()` function, and I'll assign it to the name `theme_apa`. Then I can always add `theme_apa` as a layer to my plots going forward. 
 
 ```{r}
@@ -79,6 +105,8 @@ theme_apa <- theme(
 
 ```
 
+I'll also customize the "breaks" on the x-axis (where the ticks and numeric labels go) and the axis labels.
+
 ```{r}
 #| label: fig-extraverted
 #| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
@@ -87,22 +115,29 @@ my_data_complete |>
   ggplot(aes(x = extraversion1)) +
   geom_histogram(binwidth = 1, color = "white") +
   scale_x_continuous(breaks = 1:7) +
+  labs(x = "Responses to extraversion item 1: extraverted, enthusiastic",
+       y = "Number of responses") +
   theme_apa
 
 ```
 
+Here's a histogram of the other TIPI extraversion item.
 
 ```{r}
 #| label: fig-reserved
 #| fig-cap: Histogram of responses to "reserved, quiet" TIPI item
 
 my_data_complete |> 
-  ggplot(aes(x = 8 - extraversion2)) +
+  ggplot(aes(x = extraversion2)) +
   geom_histogram(binwidth = 1, color = "white") +
   scale_x_continuous(breaks = 1:7) +
+  labs(x = "Responses to extraversion item 2: reserved, quiet (reverse-coded)",
+       y = "Number of responses") +
   theme_apa
 
 ```
+
+And here's a histogram of the average extraversion scores I computed.
 
 ```{r}
 #| label: fig-extraversion-mean
@@ -112,9 +147,15 @@ my_data_complete |>
   ggplot(aes(x = extraversion_mean)) +
   geom_histogram(binwidth = 0.5, color = "white") +
   scale_x_continuous(breaks = 1:7) +
+  labs(x = "Average scores across both TIPI extraversion items",
+       y = "Count") +
   theme_apa
 
 ```
+
+Notice that while both individual extraversion items were a bit skewed, the distribution of averages is approximately normally-distributioned (albeit with a big spike in the middle).
+
+Lastly, I'll make a histogram of the feeling thermometer variable.
 
 ```{r}
 #| label: fig-thermometer
@@ -124,10 +165,13 @@ my_data_complete |>
   ggplot(aes(x = feeling_thermometer)) +
   geom_histogram(binwidth = 1, color = "white") +
   scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
+  labs(x = "Responses to Democratic Party feeling thermometer",
+       y = "Count") +
   theme_apa
 
 ```
 
+I chose a binwidth of 1, which isn't necessarily the most appropriate value for a 0 to 100, but it does reveal an interesting distribution of responses. People's responses are not evenly distributed across the 0 to 100 scale; rather, some values (particularly multiples of 10) are chosen much more frequently than others.
 
 
 ## Correlation analysis
@@ -161,6 +205,16 @@ cor(x = my_data_complete$extraversion_mean,
 
 ```
 
+The `cor.test()` function goes further than `cor()`, giving you the $p$-value (necessary for determining statistical significance) and some other information about the correlation.
+
+```{r}
+
+cor.test(x = my_data_complete$extraversion_mean, 
+         y = my_data_complete$feeling_thermometer)
+```
+
+
+Lastly, let's make a scatterplot visualizing the correlation.
 
 
 ```{r}
@@ -176,3 +230,5 @@ my_data_complete |>
   theme_apa
 
 ```
+
+You can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.

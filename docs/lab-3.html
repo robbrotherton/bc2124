@@ -321,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.</p>
-<section id="goals" class="level2">
-<h2 class="anchored" data-anchor-id="goals">Goals</h2>
+<section id="goals" class="level3">
+<h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <ul>
 <li>Get your R environment set up</li>
 <li>Read the data you need into R</li>
@@ -354,10 +354,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="getting-data-into-r" class="level3">
 <h3 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h3>
+<p>Often getting your data into R involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, if you needed to you could download the ANES 2016 data file as a .csv from the ANES website and read it into R. However, the <code>anesr</code> package contains the data so you don’t need to download it separately. Instead you can make it available by running this line of code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(timeseries_2016)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When you run that line of code you won’t see any output, but you should see the name <code>timeseries_2016</code> appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you’re familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant’s answers.</p>
+<p>When you execute the code you won’t see any output, but you should see the name <code>timeseries_2016</code> appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you’re familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant’s answers.</p>
 <p>Typing the name of the data.frame and running that line of code will show the first few columns and rows.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>timeseries_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -389,12 +390,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="select-your-variables" class="level3">
 <h3 class="anchored" data-anchor-id="select-your-variables">Select your variables</h3>
 <p>As you can see, the data.frame contains a <em>lot</em> of variables; there are 1,842 columns of data. You’ll only need a few of those. So the first step is selecting just the variables you need to work with.</p>
-<p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use them within <code>dplyr</code>’s <code>select()</code> function. This allows us to simply type in variable names separated by commas. You can also give the columns new names when selecting,</p>
-<p>For this example I’ll look at the correlation between extraversion and the ‘feeling thermometer’ for the Democratic Party. Extraversion has two TIPI items; their IDs (from the codebook) are <code>V162333</code> and <code>V162338</code>. The ID for the Democratic Party feeling thermometer is <code>V161095</code>.</p>
+<p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use them within <code>dplyr</code>’s <code>select()</code> function. This allows us to simply type in variable names separated by commas.</p>
+<p>For this example I’ll look at the correlation between extraversion and the Democratic part feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are <code>V162333</code> and <code>V162338</code>. The ID for the Democratic Party feeling thermometer is <code>V161095</code>. Since I’ll probably forget which ID is which, I’ll give the columns more meaningful names as I select them.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> timeseries_2016 <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">extraversion1 =</span> <span class="st">"V162333"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>, ,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">feeling_thermometer =</span> <span class="st">"V161095"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s see what this new data.frame looks like:</p>
@@ -421,50 +422,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="cleaning-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the data</h3>
-<p>There are a lot of different ways we could handle this. One way is to <code>filter()</code> the data, retaining only rows which meet certain conditions.</p>
+<p>There are a lot of different ways we could handle this. One way is to <code>filter()</code> the data, retaining only rows which meet certain conditions.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple. We know that any positive values are valid and any negative values should be dropped.</p>
+<p>To implement this as a <code>filter()</code>, we can use the <code>if_all()</code> function; i.e., we are going to select some columns and if all the values in those columns meet some condition the row will be retained. To select the columns we can use the <code>everything()</code> function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, <code>~ . &gt;= 0</code>, articulates the condition. The <code>~</code> prefix is necessary because instead of naming one specific column to refer to its values we use <code>.</code> as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>), <span class="sc">~</span> . <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))  <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(feeling_thermometer <span class="sc">&gt;=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notice how many rows have been removed:</p>
+<p>Notice that the number of rows in the data.frame has changed, because rows that didn’t meet that condition have been dropped.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4270</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3540</code></pre>
 </div>
 </div>
-<p>Another way would be to <code>mutate()</code> the data; that is, change certain values based on some condition.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># my_data_complete &lt;- my_data |&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(across(contains("extraversion"), ~case_when(</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         . &lt; 1 ~ NA,</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         TRUE ~ .</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     ))) |&gt; </span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(feeling_thermometer = case_when(feeling_thermometer &lt; 0 ~ NA, TRUE ~ feeling_thermometer))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>After filtering to keep only rows with complete data, we’re left with 3,540 valid responses.</p>
 </section>
 <section id="computing-scale-averages" class="level3">
 <h3 class="anchored" data-anchor-id="computing-scale-averages">Computing scale averages</h3>
-<p>Now that the data is subsetted and the missing/invalid responses are taken care of, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.</p>
-<p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits. So it may be desirable to compute a mean trait score by averaging its two respective items.</p>
+<p>Now that we have selected our columns and filtered out missing/invalid responses, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.</p>
+<p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits, so it may be desirable to compute a mean trait score by averaging its two respective items.</p>
 <p>Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item <code>V162333</code> is “extraverted, enthusiastic”, while item <code>V162338</code> is “reserved, quiet”. The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant’s response from 8; 1 becomes 7, 2 becomes 6, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can go ahead and compute the average, using <code>mutate()</code> to create a new column containing the <code>rowMeans()</code> (i.e.&nbsp;an average for each row) for the specified columns.</p>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can go ahead and compute the average, using <code>mutate()</code> to create a new column (named <code>extraversion_mean</code>) consisting of the <code>rowMeans()</code> (i.e.&nbsp;an average for each row) <code>across()</code> the specified columns (those for which the column name <code>contains("extraversion")</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Another way would be to <code>mutate()</code> the data, changing the invalid response codes into the value <code>NA</code>, R’s special value to indicate missing data. This could be achieved like so:</p>
+<pre><code>my_data_complete &lt;- my_data |&gt;
+  mutate(across(everything(), ~replace(., . &lt; 0, NA)))</code></pre>
+<p>That would mutate (i.e.&nbsp;change values) across every column. You can read the second part (after the <code>~</code>) as “replace the original values (indicated by the placeholder <code>.</code>) where the value is less than zero with <code>NA</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If the data wasn’t as simple or if we just wanted to be more explicit about things, we could filter based on valid responses for each item. For example, valid reponses to the feeling thermometer item are are anything from 0 to 100; anything else is invalid. Therefore we could write a <code>filter()</code> condition stating that <code>feeling_thermometer</code> (the name of the column) values must be <code>%in%</code> the set of values from <code>0:100</code>:</p>
+<pre><code>my_data_complete &lt;- my_data |&gt;
+  filter(feeling_thermometer %in% 0:100,
+         extraversion1 %in% 1:7,
+         extraversion2 %in% 1:7)</code></pre>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

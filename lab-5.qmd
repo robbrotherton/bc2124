@@ -1,27 +1,26 @@
 # Lab 5: Presentations {.unnumbered}
 
-This week each project team will present their proposed project to the rest of the class.
+This week each project team will present their project to the rest of the class. After that, you will be ready to write up your findings. Note that presentations (and all the preceding work) will be a group effort, but written reports must be completed individually.
 
 
 ## Presentation 
 
 ### Guide to presenting 
 
-Each team will give a two-minute presentation, accompanied by a single PowerPoint slide, which should encapsulate the motivation, methods, anticipated findings, and interpretation of your proposed project.
-Two minutes is not a lot of time. Apparently, people speak at a rate of around 125 to 150 words per minute on average. So a 2-minute presentation will be no more than around 300 words. The single-slide, not-many-words format demands clarity, conciseness, and being bold to spark the audience’s interest in your topic.
+Each team will give a short presentation which should encapsulate the motivation, methods, anticipated findings, and interpretation of your proposed project. Aim for clarity, conciseness, and being bold to spark the audience’s interest in your topic and findings.
 
-Avoid simply reading excerpts from your paper. That would be boring, and would probably take up too many words. Make it fun and interesting. Try to grab the audience’s attention and hit them with just the most important points of your ideas. 
+Avoid simply reading excerpts from your paper. That would be boring, and would probably take up too many words. Make it fun and interesting. Try to grab the audience’s attention and hit them with just the most important points of your ideas.
 
-You will also have a single PowerPoint slide to accompany your presentation. Make it count. You can’t just cram a load of text on there, because nobody will be able to read it. Plus, it’d distract from what you’re saying. Make it a visual aid that somehow supports or clarifies what you’re saying. It might be a visual representation of your design, a key piece of your experimental stimuli, a graph of your expected results, or just a pertinent meme which conveys the motivation for your question.
+Make your slides count. You can’t just cram a load of text on there, because nobody will be able to read it. Plus, it’d distract from what you’re saying. Make it a visual aid that somehow supports or clarifies what you’re saying. It might be a visual representation of your design, a key piece of your experimental stimuli, a graph of your expected results, or just a pertinent meme which conveys the motivation for your question.
 
-After your two-minute talk you’ll take a few questions from the audience, and your responsiveness will contribute toward your grade as well as the quality of your presentation itself (remember a perfectly acceptable answer if often: “Good question; I don’t know the answer!”). It’s not usually an issue, but just in case your audience is left speechless, I suggest coming with a couple of questions or thoughts of your own that you can throw at the audience to spark more questions.
+After your presentation the group will take a few questions from the audience, and your responsiveness will contribute toward your grade as well as the quality of your presentation itself (remember a perfectly acceptable answer if often: “Good question; I don’t know the answer!”). It’s not usually an issue, but just in case your audience is left speechless, I suggest coming with a couple of questions or thoughts of your own that you can throw at the audience to spark more questions.
 
-Each pair will be allotted five minutes total for their talk and Q&A. Going over time and/or failing to leave time for questions will impact your presentation grade. It is up to each pair to decide how to divide up the two-minute talk, and to practice to make sure the presentation is to time.
+It is up to each group to decide how to divide up the talk, and to practice to make sure the presentation is to time.
 
 
 ### Guide to watching presentations
 
-As an audience member, you are still being graded for class participation this week. That means giving everyone else’s presentation the attention and enthusiasm it deserves, and rewarding their hard work with questions. (Going to the trouble of putting together a presentation only for nobody to have anything to say about it is not a good feeling.)
+As an audience member, you are still being graded for class participation. That means giving everyone else’s presentation the attention and enthusiasm it deserves, and rewarding their hard work with questions. (Going to the trouble of putting together a presentation only for nobody to have anything to say about it is not a good feeling.)
 
 Good questions to ask are things like “Could you clarify X”, “Had you considered Y”, or “How might this relate to Z.” One reason for presenting your project is to hopefully get some useful feedback from the audience with which to refine your final paper, so try to give the kind of feedback you hope to receive.
 

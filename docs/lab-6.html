@@ -226,6 +226,13 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project overview</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-choose-your-dataset-and-variables" id="toc-step-1.-choose-your-dataset-and-variables" class="nav-link" data-scroll-target="#step-1.-choose-your-dataset-and-variables">Step 1. Choose your dataset and variables</a></li>
+  <li><a href="#step-2.-find-relevant-research" id="toc-step-2.-find-relevant-research" class="nav-link" data-scroll-target="#step-2.-find-relevant-research">Step 2. Find relevant research</a></li>
+  <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
+  </ul></li>
+  <li><a href="#your-proposal" id="toc-your-proposal" class="nav-link" data-scroll-target="#your-proposal">Your proposal</a></li>
   </ul>
 </nav>
     </div>
@@ -249,14 +256,44 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In this lab, you will start your second project: conducting a multiple regression analysis on ANES data.</p>
-<section id="goals" class="level2">
-<h2 class="anchored" data-anchor-id="goals">Goals</h2>
+<p>In this lab, you will start your second project: conducting a multiple regression analysis using ANES data.</p>
+<section id="goals" class="level3">
+<h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <ul>
 <li>Understand the idea of multiple regression</li>
 <li>Identify variables for your analysis</li>
 <li>Search the literature to find relevant research</li>
 <li>Formulate a brief research proposal</li>
+</ul>
+</section>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project overview</h2>
+<p>Multiple regression goes beyond simple correlations and captures the relationships between multiple <strong>predictor</strong> variables and a single <strong>outcome</strong> variable. It allows us to see the combined impact of multiple variables on one outcome, and how these predictors may interact with each other to affect the outcome. This can provide valuable insights into how the relationship between one predictor and the outcome might depend on the level of another predictor.</p>
+<p>For instance, researchers might examine how several Big Five personality traits like extraversion, conscientiousness, and neuroticism can predict job satisfaction. Similarly, variables such as age, education, and openness might be used in a multiple regression analysis to predict political ideologies. Like with correlations, this doesn’t mean that every extroverted, conscientious, and emotionally stable person will always be satisfied with their job, or that all older, educated, and open individuals are politically aligned in the same way. It’s about general tendencies rather than strict rules.</p>
+<p>Like correlation, regression studies involve determining which psychological constructs to study, how to operationally define those constructs, and how to measure them. They then use these definitions and measurements to explore relationships, using appropriate statistical analyses.</p>
+<p>With this project, you will dive deeper into the interplay between personality traits and other constructs, using multiple regression analysis to explore how a combination of predictors contributes to an outcome of your choice by analyzing existing data. This will empower you to better understand the complex interactions that shape human behavior and personality, beyond simple one-to-one relationships.</p>
+<section id="step-1.-choose-your-dataset-and-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.-choose-your-dataset-and-variables">Step 1. Choose your dataset and variables</h3>
+<p>We will again use data from the ANES. I suggest that you use the 2016 dataset again; you may even look a the same variables you did with Project 1 and just add one or more new predictors. However, if you’re feeling ambitious or limited by what’s available in the 2016 dataset you may choose a different one (the most recent is from 2022), or even use the cumulative timeseries data which combines data from across the many years the study has been conducted (this would be a good choice if you want to see how the passage of time might have contributed to a change on some outcome of interest).</p>
+</section>
+<section id="step-2.-find-relevant-research" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.-find-relevant-research">Step 2. Find relevant research</h3>
+<p>As with Project 1, your approach here should be informed by what has come before. Once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found of these (or related) personality traits.</p>
+</section>
+<section id="step-3.-articulate-your-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h3>
+<p>Having chosen your variables and found some relevant research to inform your theoretical perspective about how the variables are (or aren’t) associated, you should be able to articulate your <em>hypothesis</em>. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by computing the regression model.</p>
+<p>A choice you will make at this point is whether you will study the simple additive effect of your predictors, or whether you will look at the <strong>interaction</strong> between your predictors. An interaction effect means that two (or more) variables combined have a significantly larger effect on a feature as compared to the sum of the individual variables alone.</p>
+<p>The general hypothesis of a multiple regression is that there is a relationship between the predictor variables and the outcome variable; in other words, the predictors allow us to predict scores on the outcome more accurately than you would expect if the variables we unrelated.</p>
+</section>
+</section>
+<section id="your-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="your-proposal">Your proposal</h2>
+<p>At the start of next week’s class, each project team will give a short, informal presentation of their research proposal. This should outline:</p>
+<ul>
+<li>Your variables of interest</li>
+<li>Your theoretical perspective (based on the research you found)</li>
+<li>Your expectations (this should follow from your theoretical perspective)</li>
 </ul>
 
 
