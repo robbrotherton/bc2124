@@ -1,0 +1,16 @@
+# Grading rubric
+
+For each presentation and project report you will receive a score out of 100 according to the rubric below.
+
+Note that presentations will be given jointly. In general, grades will be the same for all group members as it is expected that group members will contribute equally to the presentation; however, exceptions may be made when it is clear that group members did not all contribute equally.
+
+Also note that even though projects will be a group effort, the written reports will be completed individually.
+
+| Grade | Point range | Description |
+|:-:|:---:|-----------------------|
+| A+      | 97-100 | Outstanding and exceptional work. The report clearly articulates the problem, purpose, methods, and results. There is evidence of critical thought, and the report goes beyond the assignment requirements in terms of analysis or presentation. The report demonstrates a sophisticated understanding of the concepts and techniques used. The report is free of errors and is clearly and professionally written. |
+| A      | 90-97 | Excellent work. The report clearly articulates the problem, purpose, methods, and results. There is evidence of critical thought. The report demonstrates a strong understanding of the concepts and techniques used. The report is virtually free of errors and is clearly and professionally written. |
+| B      | 80-89 | Above average work. The report articulates the problem, purpose, methods, and results. There is some evidence of critical thought. The report demonstrates a good understanding of the concepts and techniques used. There are minor errors in the report, but the writing is generally clear and professional. |
+| C      | 70-79 | Satisfactory work. The report articulates the problem, purpose, methods, and results but may lack clarity or detail. There is minimal evidence of critical thought. The report demonstrates an acceptable understanding of the concepts and techniques used. There are noticeable errors in the report, and the writing could be improved. |
+| D      | 60-69 | 	Below average work. The report does not clearly articulate the problem, purpose, methods, or results. There is little to no evidence of critical thought. The report demonstrates a minimal understanding of the concepts and techniques used. There are significant errors in the report, and the writing is unclear. |
+| F      | <60 | Unsatisfactory work. The report does not articulate the problem, purpose, methods, or results. There is no evidence of critical thought. The report demonstrates a lack of understanding of the concepts and techniques used. The report is filled with errors, and the writing is poor. |
