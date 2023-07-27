@@ -3,12 +3,12 @@
 
 ## posit.cloud
 
-You will use [posit.cloud](https://posit.cloud) to work with data in R.
+You will use posit.cloud to write R code and work with data in RStudio. To use it you'll just need to [sign up for a free account](https://login.posit.cloud/register).
 
 
 ### Let's do something cool
 
-Once you have a posit.cloud account, click this link.
+Once you have a posit.cloud account, [click this link](https://posit.cloud/content/6251706).
 
 
 ### Wait, what are you talking about?
@@ -20,19 +20,36 @@ There are a few different names involved here, so to try and clear things up:
 - __Posit__ is the name of the company that makes RStudio
 - __posit.cloud__ provides a way of using RStudio in your web browser
 
-You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immesnely.
+You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immensely.
 
 
-# Fundamentals of R for data analysis
+## Fundamentals of R for data analysis
 
 R is a programming language well-suited to interactive data exploration and analysis. It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
 
-There are two other ideas that will help you get started coding in R.
+Here are some of the basics to help you get started coding in R.
 
+### RStudio
+
+RStudio is the interface we'll use to write and run R code and see its output. The interface has 4 panels, each with a few tabs:
+
+![](rstudio-interface.png)
+
+- Top-left: Code editor / data viewer
+  - You will type code here
+  - You can run a line of code by clicking on it and pressing Ctrl/Cmd + Enter on your keyboard
+- Bottom-left: R console
+  - You can type code directly and run it by pressing enter.
+  - You won't be saving your code as a document like when you type in in the editor, so this is useful for just testing something before you commit it to your working document
+- Top-right: Environment
+  - As you excute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.
+  - You can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane
+- Bottom-right: Files/folders, plot viewer, help window
+  - You can navigate the file tree, and you will see any plots you create appear here
 
 ### Assignment
 
-The first is the assignment operator: `<-`. You assign things to a name by typing something like:
+R has a fancy assignment operator: `<-`.[^assignment-note] You assign things to a name by typing something like:
 
 ```{r}
 #| eval: false
@@ -60,9 +77,37 @@ mean(doubled_numbers)
 ```
 
 
+You can also nest functions inside one another.
+
+```{r}
+sqrt(mean(original_numbers))
+```
+
+A function generally has one or more "arguments", to which you supply parameters. For example, the `mean()` function's first argument is the set of numbers you want to compute the mean of; in the previous examples `original_numbers` and `doubled_numbers` were the parameters I supplied. You don't necessarily have to type the name of the argument, but it can be helpful. The `seq()` function, for example, produces a sequence of numbers according to three arguments, `from`, `to`, and `by`.
+
+```{r}
+seq(from = 1, to = 10, by = 2)
+```
+
+When you don't type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:
+
+```{r}
+seq(1, 10, 2)
+```
+
+
+You can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.
+
+```{r}
+#| eval: false
+?mean
+```
+
+Running the code will bring up the function's help documentation in RStudio's Help pane.
+
 ### Piping
 
-The second is the pipe operator: `|>`. You can string together different operations in a pipeline, with the result of each line getting "piped" into the next function. For example, below I take some data (named `data`) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (`mutate`) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.
+You can string together different operations in a pipeline using the pipe operator: `|>`.[^old-pipe] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `data`) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (`mutate`) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.
 
 ```{r}
 #| eval: false
@@ -77,4 +122,8 @@ data |>
 
 There's a lot going on there, and the specifics will become clearer as we work though this project. But using the pipe operator this way can make for relatively readable code.
 
+[^assignment-note]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
+
+
+[^old-pipe]: If you're looking at R code from beyond this handbook (e.g. looking up help elsewhere) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 

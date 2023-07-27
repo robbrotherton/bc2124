@@ -289,6 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#fundamentals-of-r-for-data-analysis" id="toc-fundamentals-of-r-for-data-analysis" class="nav-link" data-scroll-target="#fundamentals-of-r-for-data-analysis">Fundamentals of R for data analysis</a>
   <ul class="collapse">
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
   <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
@@ -318,10 +319,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="posit.cloud" class="level2">
 <h2 class="anchored" data-anchor-id="posit.cloud">posit.cloud</h2>
-<p>You will use <a href="https://posit.cloud">posit.cloud</a> to work with data in R.</p>
+<p>You will use posit.cloud to write R code and work with data in RStudio. To use it you’ll just need to <a href="https://login.posit.cloud/register">sign up for a free account</a>.</p>
 <section id="lets-do-something-cool" class="level3">
 <h3 class="anchored" data-anchor-id="lets-do-something-cool">Let’s do something cool</h3>
-<p>Once you have a posit.cloud account, click this link.</p>
+<p>Once you have a posit.cloud account, <a href="https://posit.cloud/content/6251706">click this link</a>.</p>
 </section>
 <section id="wait-what-are-you-talking-about" class="level3">
 <h3 class="anchored" data-anchor-id="wait-what-are-you-talking-about">Wait, what are you talking about?</h3>
@@ -332,16 +333,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Posit</strong> is the name of the company that makes RStudio</li>
 <li><strong>posit.cloud</strong> provides a way of using RStudio in your web browser</li>
 </ul>
-<p>You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immesnely.</p>
+<p>You can install R and RStudio on your own computer for free and do things that way, but using the cloud-based RStudio via posit.cloud simplifies things immensely.</p>
 </section>
 </section>
-<section id="fundamentals-of-r-for-data-analysis" class="level1">
-<h1>Fundamentals of R for data analysis</h1>
+<section id="fundamentals-of-r-for-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentals-of-r-for-data-analysis">Fundamentals of R for data analysis</h2>
 <p>R is a programming language well-suited to interactive data exploration and analysis. It might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing <code>=AVERAGE(A1:A10)</code>. In R you might type <code>mean(my_data$column_a)</code>. The specifics of the function names are different, but the basic idea is the same.</p>
-<p>There are two other ideas that will help you get started coding in R.</p>
+<p>Here are some of the basics to help you get started coding in R.</p>
+<section id="rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<p>RStudio is the interface we’ll use to write and run R code and see its output. The interface has 4 panels, each with a few tabs:</p>
+<p><img src="rstudio-interface.png" class="img-fluid"></p>
+<ul>
+<li>Top-left: Code editor / data viewer
+<ul>
+<li>You will type code here</li>
+<li>You can run a line of code by clicking on it and pressing Ctrl/Cmd + Enter on your keyboard</li>
+</ul></li>
+<li>Bottom-left: R console
+<ul>
+<li>You can type code directly and run it by pressing enter.</li>
+<li>You won’t be saving your code as a document like when you type in in the editor, so this is useful for just testing something before you commit it to your working document</li>
+</ul></li>
+<li>Top-right: Environment
+<ul>
+<li>As you excute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.</li>
+<li>You can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane</li>
+</ul></li>
+<li>Bottom-right: Files/folders, plot viewer, help window
+<ul>
+<li>You can navigate the file tree, and you will see any plots you create appear here</li>
+</ul></li>
+</ul>
+</section>
 <section id="assignment" class="level3">
 <h3 class="anchored" data-anchor-id="assignment">Assignment</h3>
-<p>The first is the assignment operator: <code>&lt;-</code>. You assign things to a name by typing something like:</p>
+<p>R has a fancy assignment operator: <code>&lt;-</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> You assign things to a name by typing something like:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> thing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -372,21 +399,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 11</code></pre>
 </div>
 </div>
+<p>You can also nest functions inside one another.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(original_numbers))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.345208</code></pre>
+</div>
+</div>
+<p>A function generally has one or more “arguments”, to which you supply parameters. For example, the <code>mean()</code> function’s first argument is the set of numbers you want to compute the mean of; in the previous examples <code>original_numbers</code> and <code>doubled_numbers</code> were the parameters I supplied. You don’t necessarily have to type the name of the argument, but it can be helpful. The <code>seq()</code> function, for example, produces a sequence of numbers according to three arguments, <code>from</code>, <code>to</code>, and <code>by</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5 7 9</code></pre>
+</div>
+</div>
+<p>When you don’t type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5 7 9</code></pre>
+</div>
+</div>
+<p>You can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Running the code will bring up the function’s help documentation in RStudio’s Help pane.</p>
 </section>
 <section id="piping" class="level3">
 <h3 class="anchored" data-anchor-id="piping">Piping</h3>
-<p>The second is the pipe operator: <code>|&gt;</code>. You can string together different operations in a pipeline, with the result of each line getting “piped” into the next function. For example, below I take some data (named <code>data</code>) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (<code>mutate</code>) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.</p>
+<p>You can string together different operations in a pipeline using the pipe operator: <code>|&gt;</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The result of each line of code gets “piped” into the function on the next line as its first argument. For example, below I take some data (named <code>data</code>) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (<code>mutate</code>) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(column_a, column_b) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">c</span>(column_a, column_b), <span class="sc">~!</span><span class="fu">is.na</span>(.))) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column_c =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(<span class="fu">everything</span>()))) <span class="sc">|&gt;</span> </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sum =</span> <span class="fu">mean</span>(column_c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(column_a, column_b) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">c</span>(column_a, column_b), <span class="sc">~!</span><span class="fu">is.na</span>(.))) <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column_c =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(<span class="fu">everything</span>()))) <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sum =</span> <span class="fu">mean</span>(column_c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There’s a lot going on there, and the specifics will become clearer as we work though this project. But using the pipe operator this way can make for relatively readable code.</p>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Most other coding languages tend to use a boring <code>=</code> for assignment. Sure it’s nice not having to type an extra character, but there’s a keyboard shortcut to quickly add an <code>&lt;-</code> in RStudio: Option/Alt + <code>-</code>. And philosophically, the <code>&lt;-</code> arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the <code>=</code> arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, <code>=</code> also works for assignment in R.)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you’re looking at R code from beyond this handbook (e.g.&nbsp;looking up help elsewhere) you may see a different pipe: <code>%&gt;%</code>. The <code>|&gt;</code> pipe, called the “native” pipe, was only included as a feature of base R relatively recently. Until then, the <code>%&gt;%</code> pipe was provided by an external package (called <code>magrittr</code>. <a href="https://magrittr.tidyverse.org/logo.png">Get it?</a>). In practice the pipes work similarly, so you can often just replace <code>%&gt;%</code> with <code>|&gt;</code> and it’ll work fine, but it’s worth being aware of.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
