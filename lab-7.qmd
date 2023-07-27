@@ -7,7 +7,7 @@
 - Filter the data based on completeness (and any other criteria)
 - Compute any required variables (scale means, number of items missing, etc)
 
-## Multiple Regression in R
+## Data wrangling, description, and visualization
 
 ### Data wrangling
 
@@ -105,7 +105,9 @@ my_data_complete |>
 ```
 
 
-## Regression analysis
+## The regression analysis
+
+### Simple linear regression
 
 Now we'll perform a multiple regression analysis. This allows us to examine the relationship between one dependent variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).
 
@@ -116,9 +118,30 @@ summary(model)
 ```
 
 
-The summary() function will output the results of your regression analysis. For each predictor, you'll see an estimate of the relationship between that predictor and the outcome variable, controlling for the other predictors. These are your regression coefficients. You'll also see a t-value and a p-value for each predictor, which tell you whether each predictor is significantly related to the outcome variable, controlling for the other predictors. The summary will also include information on the overall model fit.
+The summary() function will output the results of your regression analysis. For each predictor, you'll see an estimate of the relationship between that predictor and the outcome variable, controlling for the other predictors. For instance, if you have a predictor like 'Age', the Estimate for 'Age' would indicate how much the response variable changes on average with a one-unit increase in 'Age', holding all other predictors constant.
+
+You'll also see a t-value and a p-value for each predictor, which tell you whether each predictor is significantly related to the outcome variable, controlling for the other predictors.
+
+The last part of the output gives the overall model fit. Multiple R-squared is the proportion of variance in the outcome variable that can be explained by the predictor variables, and Adjusted R-squared is a version of R-squared adjusted for the number of predictors.
+
+Finally, the F-statistic and its corresponding p-value assess the overall significance of the model. If the p-value associated with this F-statistic is less than your significance level, you can reject the null hypothesis that all the regression coefficients are zero.
 
 
-### Visualizing a regression model
+#### Visualizing a regression model
 
 Finally, as you did in the correlation project, you'll want to create a scatterplot to visualize the relationships between your predictors and the outcome variable. This will be more complex than in the correlation project, since you now have more variables to include.
+
+
+### Regression with interaction
+
+When specifying a regression model which includes the interaction between two predictors, the only difference is that you separate the names of the predictor variables with a `*` rather than `+`.
+
+```{r}
+model <- lm(feeling_thermometer ~ conscientiousness_mean * agreeableness_mean, data = my_data_complete)
+
+summary(model)
+```
+
+If the interaction term is significant, it's also important to conduct a post hoc analysis to probe the interaction. This often involves plotting the interaction or calculating the effect of one variable at different levels of the other variable, to get a clearer understanding of how the predictors interact to affect the outcome.
+
+Keep in mind that interpreting interaction terms can be complex. It is crucial to consider the nature of your variables, the context of your research, and the practical significance of the interactions, not just the statistical significance.

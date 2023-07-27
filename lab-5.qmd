@@ -1,4 +1,4 @@
-# Lab 5: Presentations {.unnumbered}
+# Lab 5: Presentation & report {.unnumbered}
 
 This week each project team will present their project to the rest of the class. After that, you will be ready to write up your findings. Note that presentations (and all the preceding work) will be a group effort, but written reports must be completed individually.
 
@@ -13,7 +13,7 @@ Avoid simply reading excerpts from your paper. That would be boring, and would p
 
 Make your slides count. You can’t just cram a load of text on there, because nobody will be able to read it. Plus, it’d distract from what you’re saying. Make it a visual aid that somehow supports or clarifies what you’re saying. It might be a visual representation of your design, a key piece of your experimental stimuli, a graph of your expected results, or just a pertinent meme which conveys the motivation for your question.
 
-After your presentation the group will take a few questions from the audience, and your responsiveness will contribute toward your grade as well as the quality of your presentation itself (remember a perfectly acceptable answer if often: “Good question; I don’t know the answer!”). It’s not usually an issue, but just in case your audience is left speechless, I suggest coming with a couple of questions or thoughts of your own that you can throw at the audience to spark more questions.
+After your presentation the group will take a few questions from the audience, and your responsiveness will contribute toward your grade as well as the quality of your presentation itself (remember a perfectly acceptable answer if often: “Good question; I don’t know the answer! But here are some thoughts...”). It’s not usually an issue, but just in case your audience is left speechless, I suggest coming with a couple of questions or thoughts of your own that you can throw at the audience to spark more questions ("You might be wondering...").
 
 It is up to each group to decide how to divide up the talk, and to practice to make sure the presentation is to time.
 
@@ -29,9 +29,28 @@ Good questions to ask are things like “Could you clarify X”, “Had you cons
 
 You will produce a miniature research paper reporting your project. Note that each team member will produce their own individual report; even though the project has been collaborative, your write up will be your own.
 
+### Format
+
 Your report should consist of the following sections:
 
 - Introduction (two or three paragraphs, including summary of relevant research and hypothesis)
 - Method (a description of the variables you selected, the number of valid responses, and any other information about the procedures that generated the data that you think necessary to report)
-- Results (all the descriptive statistics, figures, and statistics you produced)
+- Results (a technical report of any descriptive statistics, figures, and statistics you produced)
 - Discussion (a paragraph or two interpreting your results and drawing conclusions)
+
+### Deadline
+
+The report is due by the next class (see late policy from [Syllabus @sec-late-policy]).
+
+### Grading
+
+You will receive a score out of 100 for your report.
+
+| Grade | Point range | Description |
+|:-:|:---:|-----------------------|
+| A+      | 97-100 | Outstanding and exceptional work. The report clearly articulates the problem, purpose, methods, and results. There is evidence of critical thought, and the report goes beyond the assignment requirements in terms of analysis or presentation. The report demonstrates a sophisticated understanding of the concepts and techniques used. The report is free of errors and is clearly and professionally written. |
+| A      | 90-97 | Excellent work. The report clearly articulates the problem, purpose, methods, and results. There is evidence of critical thought. The report demonstrates a strong understanding of the concepts and techniques used. The report is virtually free of errors and is clearly and professionally written. |
+| B      | 80-89 | Above average work. The report articulates the problem, purpose, methods, and results. There is some evidence of critical thought. The report demonstrates a good understanding of the concepts and techniques used. There are minor errors in the report, but the writing is generally clear and professional. |
+| C      | 70-79 | Satisfactory work. The report articulates the problem, purpose, methods, and results but may lack clarity or detail. There is minimal evidence of critical thought. The report demonstrates an acceptable understanding of the concepts and techniques used. There are noticeable errors in the report, and the writing could be improved. |
+| D      | 60-69 | 	Below average work. The report does not clearly articulate the problem, purpose, methods, or results. There is little to no evidence of critical thought. The report demonstrates a minimal understanding of the concepts and techniques used. There are significant errors in the report, and the writing is unclear. |
+| F      | <60 | Unsatisfactory work. The report does not articulate the problem, purpose, methods, or results. There is no evidence of critical thought. The report demonstrates a lack of understanding of the concepts and techniques used. The report is filled with errors, and the writing is poor. |

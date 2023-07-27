@@ -1,8 +1,12 @@
-# Lab 8: Visualization & reporting {.unnumbered}
+# Lab 8: Visualization & interpretation {.unnumbered}
 
 ### Goals
 
-- Style and contents of an APA Introduction section
-- How to frame previous findings to create a coherent and compelling justification
-- APA style for citations & references
+- Check the assumptions of multiple regression have been met
+- Visualize your regression model
+- Interpret the findings
+
+## Checking model assumptions
+
+
 

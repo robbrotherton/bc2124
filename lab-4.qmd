@@ -13,7 +13,7 @@ You will start this session with your cleaned data ready to use in R. By the end
 
 ## Analyzing data in R
 
-Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables, filtered the data down to complete, valid responses, recoded the negatively-worded item, and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
+Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables; filtered the data down to complete, valid responses; recoded the negatively-worded item; and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
 
 ```{r}
 #| warning: false
@@ -37,7 +37,7 @@ my_data_complete <- timeseries_2016 |>
 
 ### Describing your data
 
-The most common descriptive statistics are the mean ($M$) and standard deviation ($SD$). You should compute and report these for each variable in your analysis.
+The most common descriptive statistics are the mean ($M$) and standard deviation ($SD$). You should report these for each variable in your analysis.
 
 You can find the mean of each column in a data.frame using R's built-in `colMeans()` function.
 
@@ -205,7 +205,7 @@ cor(x = my_data_complete$extraversion_mean,
 
 ```
 
-The `cor.test()` function goes further than `cor()`, giving you the $p$-value (necessary for determining statistical significance) and some other information about the correlation.
+The `cor.test()` function goes further than `cor()`, giving you the $p$-value necessary for determining statistical significance^[Remember that, by convention, psychologists generally use $\alpha = .05$ as the criterion for statistical significance, meaning that if our data has less than a 5% chance of occurring under the null hypothesis we reject the null and tentatively accept the alternative hypothesis that the variables are associated.] and some other information about the correlation.
 
 ```{r}
 
@@ -231,4 +231,4 @@ my_data_complete |>
 
 ```
 
-You can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.
+You can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant $p$-value, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.

@@ -4,5 +4,5 @@
 
 - Generate items
 - Consider face validity
-- Decide on reponse options
+- Decide on response options
 - Create your survey using Google Forms

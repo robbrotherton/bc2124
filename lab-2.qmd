@@ -29,7 +29,7 @@ To get you started, here are some of the things you will find:
 -   **Media exposure and attention**
 -   **Demographic variables** (age, race, gender, marital status, education, income, religion, etc)
 -   **Political knowledge and general intelligence**
--   Feeling thermometers (0 to 100 scales of warmth of feeling towards various political actors and groups, like the president, democrats, Black Lives Matter)
+-   **Feeling thermometers** (0 to 100 scales of warmth of feeling towards various political actors and groups, like the president, democrats, Black Lives Matter)
 -   **Conspiracy beliefs** (is Barack Obama Muslim? Did the U.S. government know about 9/11 in advance?)
 -   **Personality traits or personality-adjacent attitudes** (religiosity; authoritarianism; traditionalism; conservatism; social trust; stereotypes; sexism; equalitarianism; patriotism; opinionatedness; security/anxiety about various things like personal finances, vaccine risks, etc; life satisfaction)
 

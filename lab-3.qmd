@@ -73,7 +73,7 @@ You can also click on the name in the Environment pane to see the data like a sp
 
 As you can see, the data.frame contains a *lot* of variables; there are 1,842 columns of data. You'll only need a few of those. So the first step is selecting just the variables you need to work with.
 
-There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use them within `dplyr`'s `select()` function. This allows us to simply type in variable names separated by commas.
+There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use the `select()` function.[^tidyverse-note] This allows us to simply type in variable names separated by commas.
 
 For this example I'll look at the correlation between extraversion and the Democratic part feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are `V162333` and `V162338`. The ID for the Democratic Party feeling thermometer is `V161095`. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
 
@@ -122,7 +122,7 @@ Now that we have selected our columns and filtered out missing/invalid responses
 
 The TIPI has 10 questions in total, two for each of the Big 5 personality traits, so it may be desirable to compute a mean trait score by averaging its two respective items.
 
-Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item `V162333` is "extraverted, enthusiastic", while item `V162338` is "reserved, quiet". The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant's response from 8; 1 becomes 7, 2 becomes 6, etc.
+Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item `V162333` (which I renamed `extraversion1`) is "extraverted, enthusiastic", while item `V162338` (renamed `extraversion2`) is "reserved, quiet". The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant's response from 8; 1 becomes 7, 2 becomes 6, etc.
 
 ```{r}
 
@@ -140,16 +140,24 @@ my_data_complete <- my_data_complete |>
 
 ```
 
+Let's see how it looks.
 
+```{r}
+my_data_complete
+```
+
+We have our two extraversion items (one reverse-coded), the feeling thermometer rating, and the computed extraversion mean scores for each of the 3,540 participants with complete data. We're ready to analyze the data!
+
+[^tidyverse-note]: The `select()` function, along with `filter()`, `mutate()`, `across()`, `everything()`, and others that you'll see in my example code, is part of the `tidyverse` family of packages (specifically these all come from the `dplyr` package, but we'll also use functions from other `tidyverse` packages like `tidyr` and `ggplot2`). There are other ways to do all these things without using `tidyverse` packages, just relying on what's referred to as "base" R functions. The `tidyverse` approach just makes this kind of data manipulation generally easier and makes the code more interpretable. If you're curious to see how base R and tidyverse functions differ in syntax, a good place to start is <https://dplyr.tidyverse.org/articles/base.html>.
 
 [^1]: Another way would be to `mutate()` the data, changing the invalid response codes into the value `NA`, R's special value to indicate missing data. This could be achieved like so:
 
         my_data_complete <- my_data |>
           mutate(across(everything(), ~replace(., . < 0, NA)))
 
-    That would mutate (i.e. change values) across every column. You can read the second part (after the `~`) as "replace the original values (indicated by the placeholder `.`) where the value is less than zero with `NA`.
+    That would mutate (i.e. change values) across every column. You can read the second part (after the `~`) as "replace the original values (indicated by the placeholder `.`), where the value is less than zero, with `NA`.
 
-[^2]: If the data wasn't as simple or if we just wanted to be more explicit about things, we could filter based on valid responses for each item. For example, valid reponses to the feeling thermometer item are are anything from 0 to 100; anything else is invalid. Therefore we could write a `filter()` condition stating that `feeling_thermometer` (the name of the column) values must be `%in%` the set of values from `0:100`:
+[^2]: If the data wasn't as simple or if we just wanted to be more explicit about things, we could filter based on valid responses for each item. For example, valid reponses to the feeling thermometer item are are anything from 0 to 100; anything else is invalid. Therefore we could write a `filter()` condition stating that `feeling_thermometer` (the name of the column) values must be `%in%` the set of values from `0:100`. Likewise for each of the extraversion columns, rows will be retained only if their values are `%in%` the range `1:7`.
 
         my_data_complete <- my_data |>
           filter(feeling_thermometer %in% 0:100,

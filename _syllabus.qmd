@@ -75,7 +75,7 @@ In-person attendance of every lab session is expected, and you should expect to 
 When you are attending, please arrive on time for class. Frequent lateness will impact your participation grade.
 
 
-### Assignment deadlines & late policy
+### Assignment deadlines & late policy {#sec-late-policy}
 
 Assignments are listed in the class schedule next to the class in which details about completing the assignment will be provided. The assignment must be completed and submitted before the following class, i.e. requirements for the first presentation slide will be explained in class on 10/2, and the slide must be submitted before the next class on 10/9.
 

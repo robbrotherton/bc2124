@@ -4,7 +4,7 @@ In this lab, you will start your second project: conducting a multiple regressio
 
 ### Goals
 
-- Understand the idea of multiple regression
+- Understand the purpose of multiple regression
 - Identify variables for your analysis
 - Search the literature to find relevant research
 - Formulate a brief research proposal
@@ -12,9 +12,9 @@ In this lab, you will start your second project: conducting a multiple regressio
 
 ## Project overview
 
-Multiple regression goes beyond simple correlations and captures the relationships between multiple __predictor__ variables and a single __outcome__ variable. It allows us to see the combined impact of multiple variables on one outcome, and how these predictors may interact with each other to affect the outcome. This can provide valuable insights into how the relationship between one predictor and the outcome might depend on the level of another predictor.
+Multiple regression goes beyond simple correlations and captures the relationships between multiple __predictor__ variables and a single __outcome__ variable. It allows us to see the combined impact of multiple variables on one outcome, and how these predictors may interact with each other to affect the outcome. This can provide valuable insights into how the relationship between one predictor and the outcome might depend on another predictor.
 
-For instance, researchers might examine how several Big Five personality traits like extraversion, conscientiousness, and neuroticism can predict job satisfaction. Similarly, variables such as age, education, and openness might be used in a multiple regression analysis to predict political ideologies. Like with correlations, this doesn't mean that every extroverted, conscientious, and emotionally stable person will always be satisfied with their job, or that all older, educated, and open individuals are politically aligned in the same way. It's about general tendencies rather than strict rules. 
+For instance, researchers might examine how [one or more Big Five personality traits interact with age to predict job satisfaction](https://journals.sagepub.com/doi/pdf/10.1177/0306307016687990). Similarly, variables such as [income, education, and openness might be used in a multiple regression analysis to predict political ideology](https://www.annualreviews.org/doi/10.1146/annurev-polisci-051010-111659). Like with correlations, this doesn't mean that every extroverted, conscientious, and emotionally stable person will always be satisfied with their job, or that all educated, and open individuals are politically aligned in the same way. It's about general tendencies rather than strict rules. 
 
 Like correlation, regression studies involve determining which psychological constructs to study, how to operationally define those constructs, and how to measure them. They then use these definitions and measurements to explore relationships, using appropriate statistical analyses.
 
@@ -25,11 +25,13 @@ With this project, you will dive deeper into the interplay between personality t
 
 We will again use data from the ANES. I suggest that you use the 2016 dataset again; you may even look a the same variables you did with Project 1 and just add one or more new predictors. However, if you're feeling ambitious or limited by what's available in the 2016 dataset you may choose a different one (the most recent is from 2022), or even use the cumulative timeseries data which combines data from across the many years the study has been conducted (this would be a good choice if you want to see how the passage of time might have contributed to a change on some outcome of interest).
 
+You should pick one outcome variable (which should be continuous, i.e. scores cover some numeric range rather than discrete categories), and at least two / up to four predictor variables (at least one of which is a TIPI Big Five trait).
+
 
 
 ### Step 2. Find relevant research
 
-As with Project 1, your approach here should be informed by what has come before. Once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found of these (or related) personality traits.
+As with Project 1, your approach and expectations should be informed by what has come before. Once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found out about these (or related) personality traits and outcomes.
 
 
 
@@ -37,9 +39,9 @@ As with Project 1, your approach here should be informed by what has come before
 
 Having chosen your variables and found some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by computing the regression model.
 
-A choice you will make at this point is whether you will study the simple additive effect of your predictors, or whether you will look at the __interaction__ between your predictors. An interaction effect means that two (or more) variables combined have a significantly larger effect on a feature as compared to the sum of the individual variables alone.
-
 The general hypothesis of a multiple regression is that there is a relationship between the predictor variables and the outcome variable; in other words, the predictors allow us to predict scores on the outcome more accurately than you would expect if the variables we unrelated.
+
+A choice you will make at this point is whether you will study the simple additive effect of your predictors, or whether you will look at the __interaction__ between your predictors. An interaction effect means that two (or more) variables combined have a significantly larger effect on the outcome variable as compared to the sum of the individual variables alone. If you have two predictors, I would suggest looking at their interaction; if you want to include more than two predictors, just look at their additive effect.
 
 
 
