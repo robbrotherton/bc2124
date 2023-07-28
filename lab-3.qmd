@@ -1,6 +1,6 @@
 # Lab 3: Data cleaning {.unnumbered}
 
-You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and perform necessary data cleaning and manipulation in preparation for analysis.
+You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
 
 ### Goals
 
@@ -16,7 +16,7 @@ You should begin this session with variables from the ANES 2016 dataset in mind 
 
 In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
 
-To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package from github. Since the package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a function for installing other packages from GitHub.
+To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package. Usually packages can be installed from within R using the `install.packages()` function. However since the `anesr` package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a special function for installing packages from GitHub.
 
 ```{r}
 #| eval: false
@@ -49,7 +49,7 @@ library(tidyverse)
 
 ### Getting data into R
 
-Often getting your data into R involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, if you needed to you could download the ANES 2016 data file as a .csv from the ANES website and read it into R. However, the `anesr` package contains the data so you don't need to download it separately. Instead you can make it available by running this line of code:
+Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you could download the ANES 2016 data file as a .csv from the ANES website and read it into R that way. However, the `anesr` package contains the data so you don't need to download it separately. Instead you can make it available by running this line of code:
 
 ```{r}
 
@@ -67,7 +67,7 @@ timeseries_2016
 
 ```
 
-You can also click on the name in the Environment pane to see the data like a spreadsheet in a new tab.
+You can also click on the name in the Environment pane to view the data in a new tab.
 
 ### Select your variables
 
@@ -75,7 +75,7 @@ As you can see, the data.frame contains a *lot* of variables; there are 1,842 co
 
 There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use the `select()` function.[^tidyverse-note] This allows us to simply type in variable names separated by commas.
 
-For this example I'll look at the correlation between extraversion and the Democratic part feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are `V162333` and `V162338`. The ID for the Democratic Party feeling thermometer is `V161095`. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
+For this example I'll look at the correlation between extraversion and the Democratic party feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are `V162333` and `V162338`. The ID for the Democratic Party feeling thermometer is `V161095`. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
 
 ```{r}
 
@@ -92,15 +92,15 @@ Let's see what this new data.frame looks like:
 my_data
 ```
 
-It all looks good so far. But if you inspect the data more extensively (click the name in your Environment and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.
+It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.
 
 ### Cleaning the data
 
 There are a lot of different ways we could handle this. One way is to `filter()` the data, retaining only rows which meet certain conditions.[^1]
 
-The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple. We know that any positive values are valid and any negative values should be dropped.
+The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple: only positive values are valid and should be retained.
 
-To implement this as a `filter()`, we can use the `if_all()` function; i.e., we are going to select some columns and if all the values in those columns meet some condition the row will be retained. To select the columns we can use the `everything()` function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, `~ . >= 0`, articulates the condition. The `~` prefix is necessary because instead of naming one specific column to refer to its values we use `.` as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.[^2] 
+To implement this as a `filter()`, we can use the `if_all()` function; i.e., we are going to select some columns and *if all* the values in those columns meet some condition the row will be retained. To select the columns we can use the `everything()` function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, `~ . >= 0`, articulates the condition. The `~` prefix is necessary because instead of naming one specific column to refer to its values we use `.` as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.[^2] 
 
 ```{r}
 my_data_complete <- my_data |> 
