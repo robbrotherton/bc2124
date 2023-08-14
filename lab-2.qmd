@@ -2,68 +2,68 @@
 
 In this session we will begin the first project of the course: performing a correlational analysis using the ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
 
+
 ### Goals
 
--   Examine the ANES 2016 dataset
--   Identify variables for your correlation analysis
+-   Identify the variables for your correlation analysis
 -   Search the literature to find relevant research
--   Formulate a brief research proposal
+-   Formulate a brief research proposal with your group
+
 
 ## Project overview
 
 A *correlation* refers an association between two things. It is a statement of a statistical relationship--a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else--for example, [neuroticism is correlated with lower wellbeing](https://psycnet.apa.org/fulltext/2020-03328-001.html) or [openness is correlated with greater cognitive ability](https://www.pnas.org/doi/10.1073/pnas.2212794120)--is to say that those things *tend* to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.
 
-Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to operationally define those constructs; what statistical analyses are appropriate; and what conclusions may be drawn.
+Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn.
 
-With this project, you will examine a correlation between a personality trait and some other construct of your choosing by analyzing existing data.
+With this project, you will examine a correlation between a personality trait and another construct of your choosing by analyzing existing data.
+
 
 ### Step 1. Examine the data
 
-The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (instead of more recent data) is that the 2016 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the Big 5 personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. For your project, you will pick one of these traits and investigate its correlation with one of the other constructs recorded in the survey.
+The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (rather than more recent data) is that the 2016 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the "Big Five" personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. 
 
-To see what variables were recorded, you will skim the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). The codebook details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to picking out the question or construct that interests you the most.
+For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For correlation, you will have two variables. You can think of one as the "predictor" and the other as the "outcome"; you want to see if the predictor has any association with the outcome.
 
-To get you started, here are some of the things you will find:
+Your __predictor__ variable will be one of the Big Five traits:
 
--   **Political preferences and behavior** (as you'd expect for a survey about politics, there are many questions about voting intentions, approval of various political actors, policy preferences, etc)
--   **Media exposure and attention**
--   **Demographic variables** (age, race, gender, marital status, education, income, religion, etc)
--   **Political knowledge and general intelligence**
--   **Feeling thermometers** (0 to 100 scales of warmth of feeling towards various political actors and groups, like the president, democrats, Black Lives Matter)
--   **Conspiracy beliefs** (is Barack Obama Muslim? Did the U.S. government know about 9/11 in advance?)
--   **Personality traits or personality-adjacent attitudes** (religiosity; authoritarianism; traditionalism; conservatism; social trust; stereotypes; sexism; equalitarianism; patriotism; opinionatedness; security/anxiety about various things like personal finances, vaccine risks, etc; life satisfaction)
+- Extraversion (V162333 & V162338)
+- Agreeableness (V162334 & V162339)
+- Conscientiousness (V162335 & V162340)
+- Neuroticism (V162336 & V162341)
+- Openness (V162337 & V162342)
 
-### Step 2. Find relevant research
 
-Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found of these (or related) personality traits.
+Your __outcome__ variable will be one of the feeling thermometer questions for the two main presidential candidates:
 
-#### What to look for
+- Democratic presidential candidate (V162078)
+- Republican presidential candidate (V162079)
 
-A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review paper or meta-analysis.[^lab-2-1]
 
-[^lab-2-1]: A meta-analysis pools the findings of many individual studies by different researchers into a single analysis.
+To see how each of these constructs were measured, you will look up the variable IDs in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). The codebook details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to understanding what was measured and how it was measured.
 
-#### Where to look
 
-##### [Google Scholar](https://scholar.google.com)
+### Step 2. Read relevant research
 
-Google Scholar searches the full text of scholarly articles. It casts a wide net, searching across all disciplines, and including books and other materials in addition to journal articles, so will likely find many articles not very relevant to the topic as well as those that are relevant.
+Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found of these (or related) personality traits.
 
-##### [APA PsycINFO](http://www.columbia.edu/cgi-bin/cul/resolve?ALD2284)
+A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
-The link above should take you to PsycINFO, a database for scholarly psychology research (you can also search for `psycinfo` in a CLIO quicksearch). PsycInfo gives you the ability to do more focused searching than Google Scholar.
+Gerber, A. S., Huber, G. A., Doherty, D., & Dowling, C. M. (2011). [The big five personality traits in the political arena.](https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-051010-111659) *Annual Review of Political Science, 14,* 265-287.
 
--   You can add many keywords and combine them with the Boolean operators `AND`, `OR`, and `NOT` by selecting them from the dropdown boxes.
--   You can select where your keywords should appear, i.e. in the title, abstract, or full text of articles. Selecting `Word in Major Subject Heading` can help narrow down your search to articles that are actually on the topic you're interested in (rather than just containing the keyword).
+Cooper, C. A., Golden, L., & Socha, A. (2013). [The big five personality factors and mass politics.](https://onlinelibrary-wiley-com.ezproxy.cul.columbia.edu/doi/full/10.1111/j.1559-1816.2012.00982.x) *Journal of Applied Social Psychology, 43(1)*, 68-82.
+
 
 ### Step 3. Articulate your hypothesis
 
-Having chosen your variables and found some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
+Having determined your variables and read some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
 
-## Your proposal
 
-At the start of next week's class, each project team will give a short, informal presentation of their research proposal. This should outline:
+## To do for next time
 
--   Your variables of interest (one should be one of the Big 5; the other any variable of your choosing)
--   Your theoretical perspective (based on the research you found)
--   Your expectations (this should follow from your theoretical perspective)
+Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)).
+
+The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.
+
+
+
