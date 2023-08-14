@@ -13,7 +13,8 @@ You will start this session with your cleaned data ready to use in R. By the end
 
 ## Analyzing data in R
 
-Running with my example from last week, my variables were avearge extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables; filtered the data down to complete, valid responses; recoded the negatively-worded item; and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
+Running with my example from last week, my variables were average extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables; filtered the data down to complete, valid responses; recoded the negatively-worded item; and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
+
 
 ```{r}
 #| warning: false
