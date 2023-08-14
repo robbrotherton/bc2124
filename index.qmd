@@ -24,3 +24,14 @@ number-sections: false
 }
 </style>
 
+<script>
+function function1() {
+  var toc = document.querySelector("#TOC");
+  var link = document.createElement("a");
+  link.innerHTML = "<i class='bi bi-file-pdf'></i> Download syllabus as PDF";
+  toc.appendChild(link);
+  link.href = "syllabus.pdf";
+}
+
+function1();
+</script>

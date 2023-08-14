@@ -1,6 +1,6 @@
 ---
 format: pdf
-output-file: psyc-bc2124-syllabus-fall23.pdf
+output-file: syllabus.pdf
 title: PERSONALITY PSYCHOLOGY LAB
 subtitle: |
   | PSYC BC2124

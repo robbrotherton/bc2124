@@ -1,17 +1,18 @@
 project:
   type: book
   output-dir: docs
+  resources: syllabus.pdf
 
 title-block-author-single: "Instructor"
 title-block-published: ""
 
 book:
-  sidebar:
-    tools:
-      - icon: file-pdf
-        menu:
-          - text: Download PDF syllabus
-            url:  psyc-bc2124-syllabus-fall23.pdf
+  # sidebar:
+  #   tools:
+  #     - icon: file-pdf
+  #       menu:
+  #         - text: Download PDF syllabus
+  #           url:  psyc-bc2124-syllabus-fall23.pdf
   title: "Personality Psychology Lab Handbook"
   subtitle: |
     | Barnard College
