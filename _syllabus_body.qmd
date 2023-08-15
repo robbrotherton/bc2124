@@ -1,5 +1,29 @@
+```{r}
+#| echo: false
 
-__Pre-requisites__: PSYC BC1001 Introduction to Psychology; PSYC BC1101 Statistics; PSYC BC 1024 Research Methods  
+schedule <- tibble::tribble(
+  ~"Date", ~"Topic", ~"Assignment*",
+  "9/11",   "Course overview",           "",
+  "9/18",   "Project planning",          "",
+  "9/25",   "Data cleaning",             "",
+  "10/2",   "Analysis",                  "Presentation slide",
+  "10/9",   "Presentations",             "Project 1 report",
+  "10/16",  "Project planning",          "",
+  "10/23",  "Data cleaning & analysis",  "",
+  "10/30",  "Visualization & reporting", "Presentation slide",
+  "11/6",   "No class (academic holiday)","",
+  "11/13",  "Presentations",             "Project 2 report",
+  "11/20",  "Scale planning",            "",
+  "11/27",  "Questionnaire design",      "",
+  "12/4",   "Analysis & reporting",      "Presentation slide",
+  "12/11",  "Presentations",             "Project 3 report"
+)
+
+no_class_row <- stringr::str_which(schedule$Topic, "No class")
+
+```
+
+__Pre-requisites__: PSYC BC1001 Introduction to Psychology; PSYC BC1101 Statistics; PSYC BC1024 Research Methods  
 __Co-requisite__: PSYC BC2125 Personality Psychology
 
 ### Time, venue & instructor
@@ -77,7 +101,7 @@ When you are attending, please arrive on time for class. Frequent lateness will 
 
 ### Assignment deadlines & late policy {#sec-late-policy}
 
-Assignments are listed in the class schedule next to the class in which details about completing the assignment will be provided. The assignment must be completed and submitted before the following class, i.e. requirements for the first presentation slide will be explained in class on 10/2, and the slide must be submitted before the next class on 10/9.
+Assignments are listed in the class schedule next to the class in which details about completing the assignment will be provided. The assignment must be completed and submitted before the following class, i.e. requirements for the first presentation slide will be explained in class on `r schedule$Date[4]`, and the slide must be submitted before the next class on `r schedule$Date[5]`.
 
 For the written project reports, a grade penalty of 5 points will be applied for each day (or part thereof) that an assignment is late (up to a maximum of 6 days; work not submitted before the next lab will receive a score of zero). For example, if your work is A+ quality but is submitted a day-and-a-half late, you will only receive a B+. This policy is intended to incentivize timely submission while easing the stress of genuine emergencies. When things come up that prevent timely submission you can prioritize accordingly, knowing that a small penalty on one assignment for this lab will not tank your final grade.
 
@@ -102,30 +126,12 @@ It is always important to recognize the different pressures, burdens, and stress
 ```{r}
 #| echo: false
 
-schedule <- tibble::tribble(
-  ~"Date", ~"Topic", ~"Assignment*",
-  "9/11",   "Course overview",           "",
-  "9/18",   "Project planning",          "",
-  "9/25",   "Data cleaning",             "",
-  "10/2",   "Analysis",                  "Presentation slide",
-  "10/9",   "Presentations",             "Project 1 report",
-  "10/16",  "Project planning",          "",
-  "10/23",  "Data cleaning & analysis",  "",
-  "10/30",  "Visualization & reporting", "Presentation slide",
-  "11/6",   "No class (academic holiday)","",
-  "11/13",  "Presentations",             "Project 2 report",
-  "11/20",  "Scale planning",            "",
-  "11/27",  "Questionnaire design",      "",
-  "12/4",   "Analysis & reporting",      "Presentation slide",
-  "12/11",  "Presentations",             "Project 3 report"
-)
-
 knitr::kable(schedule) |>
-  kableExtra::row_spec(12, italic = TRUE, color = "#BBBBBB") |>
+  kableExtra::row_spec(no_class_row, italic = TRUE, color = "#BBBBBB") |>
   kableExtra::pack_rows("Project 1: Correlation", 2, 5, indent = FALSE) |>
   kableExtra::pack_rows("Project 2: Multiple regression", 6, 10, indent = FALSE) |>
   kableExtra::pack_rows("Project 3: Scale design", 11, 14, indent = FALSE) |>
-  kableExtra::add_footnote("*due by the following class.", notation = "symbol") |>
+  kableExtra::add_footnote("due by the following class", notation = "symbol") |>
   kableExtra::kable_styling(full_width = TRUE)
 
 ```
