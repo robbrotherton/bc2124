@@ -112,10 +112,10 @@ schedule <- tibble::tribble(
   "10/16",  "Project planning",          "",
   "10/23",  "Data cleaning & analysis",  "",
   "10/30",  "Visualization & reporting", "Presentation slide",
-  "11/6",   "Presentations",             "Project 2 report",
-  "11/13",  "Scale planning",            "",
-  "11/20",  "Questionnaire design",      "",
-  "11/27",  "No class (Thanksgiving)",   "",
+  "11/6",   "No class (academic holiday)","",
+  "11/13",  "Presentations",             "Project 2 report",
+  "11/20",  "Scale planning",            "",
+  "11/27",  "Questionnaire design",      "",
   "12/4",   "Analysis & reporting",      "Presentation slide",
   "12/11",  "Presentations",             "Project 3 report"
 )
@@ -123,8 +123,8 @@ schedule <- tibble::tribble(
 knitr::kable(schedule) |>
   kableExtra::row_spec(12, italic = TRUE, color = "#BBBBBB") |>
   kableExtra::pack_rows("Project 1: Correlation", 2, 5, indent = FALSE) |>
-  kableExtra::pack_rows("Project 2: Multiple regression", 6, 9, indent = FALSE) |>
-  kableExtra::pack_rows("Project 3: Scale design", 10, 14, indent = FALSE) |>
+  kableExtra::pack_rows("Project 2: Multiple regression", 6, 10, indent = FALSE) |>
+  kableExtra::pack_rows("Project 3: Scale design", 11, 14, indent = FALSE) |>
   kableExtra::add_footnote("*due by the following class.", notation = "symbol") |>
   kableExtra::kable_styling(full_width = TRUE)
 

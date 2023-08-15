@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: docs
   resources: syllabus.pdf
-  pre-render: render_syllabus.r
+  pre-render: _render_syllabus.r
 
 
 title-block-author-single: "Instructor"

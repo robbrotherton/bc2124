@@ -11,7 +11,7 @@ number-sections: false
 
 ## Course details
 
-{{< include _syllabus.qmd >}}
+{{< include _syllabus_body.qmd >}}
 
 
 <style>

@@ -6,7 +6,7 @@ In this session we will begin the first project of the course: performing a corr
 ### Goals
 
 -   Identify the variables for your correlation analysis
--   Search the literature to find relevant research
+-   Read some relevant research
 -   Articulate your hypothesis
 
 
