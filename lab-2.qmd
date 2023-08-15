@@ -7,7 +7,7 @@ In this session we will begin the first project of the course: performing a corr
 
 -   Identify the variables for your correlation analysis
 -   Search the literature to find relevant research
--   Formulate a brief research proposal with your group
+-   Articulate your hypothesis
 
 
 ## Project overview
@@ -23,7 +23,7 @@ With this project, you will examine a correlation between a personality trait an
 
 The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (rather than more recent data) is that the 2016 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the "Big Five" personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. 
 
-For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For correlation, you will have two variables. You can think of one as the "predictor" and the other as the "outcome"; you want to see if the predictor has any association with the outcome.
+For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For this kind of correlation analysis you will have two variables. You can think of one as the "predictor" and the other as the "outcome"; you want to see if the predictor has any association with the outcome.
 
 Your __predictor__ variable will be one of the Big Five traits:
 
@@ -40,23 +40,28 @@ Your __outcome__ variable will be one of the feeling thermometer questions for t
 - Republican presidential candidate (V162079)
 
 
-To see how each of these constructs were measured, you will look up the variable IDs in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). The codebook details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to understanding what was measured and how it was measured.
+To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). The codebook details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to understanding what was measured and how it was measured.
 
 
 ### Step 2. Read relevant research
 
-Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found of these (or related) personality traits.
+Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found about these (or related) personality traits.
 
 A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
+::: {.references}
 Gerber, A. S., Huber, G. A., Doherty, D., & Dowling, C. M. (2011). [The big five personality traits in the political arena.](https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-051010-111659) *Annual Review of Political Science, 14,* 265-287.
 
 Cooper, C. A., Golden, L., & Socha, A. (2013). [The big five personality factors and mass politics.](https://onlinelibrary-wiley-com.ezproxy.cul.columbia.edu/doi/full/10.1111/j.1559-1816.2012.00982.x) *Journal of Applied Social Psychology, 43(1)*, 68-82.
-
+:::
 
 ### Step 3. Articulate your hypothesis
 
-Having determined your variables and read some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
+Having determined your variables and read some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectation about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
+
+The main issue that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association strong enough that it doesn't just seem to be attributable to chance variation in the data (even random data will produce spurious correlations by chance some of the time; see [spuriouscorrelations.com](https://spuriouscorrelations.com#stat897f4cbec4629379cd566c68c3f40c5f)).
+
+If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong of a correlation you expect it to be (i.e. weak, moderate, strong; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
 
 
 ## To do for next time

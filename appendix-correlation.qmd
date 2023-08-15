@@ -1,161 +1,29 @@
 
+# Correlation
 
-::: {#container}
-:::
+When you measure two variables and wish to know if scores on one measure are related to scores on the other, you calculate the correlation coefficient. This quantifies the extent to which changes on one measure are related to changes on the other. For example, if higher scores on measure X are associated with higher scores on measure Y, there is a positive correlation. If higher scores on measure X are associated with lower scores on measure Y, there is a negative correlation. No correlation means that scores on X are unrelated to scores on Y.
 
-<input id="target-r" type="range" min=-1 max = 1 step = 0.01>
+## Calculating the correlation coefficient
 
+To calculate the correlation between two variables, you must first calculate the Sum Product, $SP$.  The mathematical formula is:
 
-```{ojs}
-//| echo: false
-jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+$$
+SP = (X-M_X)(Y-M_Y)
+$$
 
-chart = {
+Notice that $X - M_X$ and $Y - M_Y$ are deviation scores, just like we calculated for the standard deviation. Here we have two variables, $X$ and $Y$, so the equation is telling us to calculate the deviation of each score from its respective mean. We then multiply each deviation for variable $X$ by its counterpart deviation from variable $Y$. These are the “products,” meaning multiplied deviation scores. Finally, the  tells us to add up all those products, giving the “sum of products,” $SP$.
 
-const width = 500
-const height = 400
+Once we have calculated $SP$, the correlation coefficient, symbolized by $r$ is calculated using the following equation:
 
-const xScale = d3.scaleLinear()
-  .domain([-0.1, 1.1])
-  .range([0, width])
-let yScale = d3.scaleLinear()
-  .domain([0, 1])
-  .range([height, 0])
+$$
+r = \dfrac{SP}{\sqrt{SS_X SS_Y}}
+$$
 
-
-  
-const svg = d3.select("#container").append("svg")
-  .attr("width", width)
-  .attr("height", height)
-  
-const meanLines = svg.append("g")
-const axisLines = svg.append("g")
-
-axisLines.append("line")
-  .attr("class", "axis-line")
-  .attr("x1", 1).attr("x2", width)
-  .attr("y1", height - 1).attr("y2", height - 1)
-  .style("stroke", "black")
-axisLines.append("line")
-  .attr("class", "axis-line")
-  .attr("x1", 1).attr("x2", 1)
-  .attr("y1", height - 1).attr("y2", 1)
-  .style("stroke", "black")
-
-const rInput = d3.select("#target-r");
-
-rInput.on("input", () => updateChart(rInput.property("value")))
-
-let data = makeInitialData(100);
-  
+Here, $SS_X$ and $SS_Y$ are the Sums of Squares for each variable. Multiplying them and taking the square root gets us a measure of the variability in $X$ and $Y$ separately. The numerator, $SP$, represents the covariability of $X$ and $Y$. So the equation results in covariability as a proportion of all variability. It can range from $-1$, meaning a perfect negative correlation, to $0$, meaning no correlation at all, to $+1$, meaning a perfect positive correlation.
 
 
-function makeInitialData(n) {
-    let arr = [];
-    for (var i = 0; i < n; i++) {
-        var A = Math.random();
-        var B = Math.random();
-        arr.push({xVal: A, y0: B});
-    }
-    return arr;
-}
+## Effect size for correlation {#sec-cor-effect-size}
 
-function computeYValue(x, y, r) {
- return x * r + y * Math.pow(1 - Math.pow(r, 2), 0.5);
-}
+The correlation coefficient is a measure of effect size. It's absolute value can range from 0 to 1.
 
-
-function updateChart(targetR) {
-  
-  let newData = [];
-  
-  for (let i = 0; i < data.length; i++) {
-    newData.push({
-      xVal: data[i].xVal,
-      yVal: computeYValue(data[i].xVal, data[i].y0, targetR)
-    });
-  }
-  
-  let yLimits = [
-    Math.min(...newData.map(obj => obj.yVal)) - 0.1,
-    Math.max(...newData.map(obj => obj.yVal)) + 0.1
-  ];
-
-  yScale.domain(yLimits);
-  
-  svg.selectAll("circle").remove()
-  svg.selectAll("circle").data(newData).enter().append("circle")
-    .attr("cx", d => xScale(d.xVal))
-    .attr("r", 2)
-    .attr("cy", d => yScale(d.yVal));
-    
-  let xArr = newData.map(obj => obj.xVal);
-  let yArr = newData.map(obj => obj.yVal);
-  
-  let meanX = jStat.mean(xArr);
-  let meanY = jStat.mean(yArr);
-  
-  meanLines.selectAll("line").remove()
-  meanLines.append("line")
-    .attr("x1", xScale(0)).attr("x2", xScale(1))
-    .attr("y1", yScale(meanY)).attr("y2", yScale(meanY))
-    .attr("stroke", "black")
-  meanLines.append("line")
-    .attr("x1", xScale(meanX)).attr("x2", xScale(meanX))
-    .attr("y1", yScale(yLimits[0] + 0.1)).attr("y2", yScale(yLimits[1] - 0.1))
-    .attr("stroke", "black")
-    
-  drawDeviationPolygons(meanX, meanY, yLimits);
-  
-  let actualR = jStat.corrcoeff(xArr, yArr);
-  console.log("target r: " + targetR);
-  console.log("actual r: " + actualR);
-  
-}
-
-function drawDeviationPolygons(meanX, meanY, yLimits) {
-  
-  meanLines.selectAll("polygon").remove()
-  
-  // positive x & y
-  meanLines.append("polygon")
-    .attr("points", [[xScale(meanX), yScale(yLimits[1] - 0.1)],
-                     [xScale(1), yScale(yLimits[1] - 0.1)],
-                     [xScale(1), yScale(meanY)],
-                     [xScale(meanX), yScale(meanY)]])
-    .attr("fill", "green")
-    .attr("opacity", 0.2)
-  // negative x & y
-  meanLines.append("polygon")
-    .attr("points", [[xScale(0), yScale(meanY)],
-                     [xScale(meanX), yScale(meanY)],
-                     [xScale(meanX), yScale(yLimits[0] + 0.1)],
-                     [xScale(0), yScale(yLimits[0] + 0.1)]])
-    .attr("fill", "green")
-    .attr("opacity", 0.2)
-    
-  // negative x, positive y
-  meanLines.append("polygon")
-    .attr("points", [[xScale(meanX), yScale(yLimits[1] - 0.1)],
-                     [xScale(meanX), yScale(meanY)],
-                     [xScale(0), yScale(meanY)],
-                     [xScale(0), yScale(yLimits[1] - 0.1)]])
-    .attr("fill", "red")
-    .attr("opacity", 0.2)
-  // positive x, negative y
-  meanLines.append("polygon")
-    .attr("points", [[xScale(meanX), yScale(meanY)],
-                     [xScale(1), yScale(meanY)],
-                     [xScale(1), yScale(yLimits[0] + 0.1)],
-                     [xScale(meanX), yScale(yLimits[0] + 0.1)]])
-    .attr("fill", "red")
-    .attr("opacity", 0.2)
-}
-
-updateChart(rInput.property("value"));
-
-
-}
-
-
-```
+As a rule of thumb, in psychology, correlations of less than around $\pm 0.30$ are considered weak, around $\pm 0.30$ to $\pm 0.70$ are considered moderate, and greater than around $\pm 0.70$ are considered large.
