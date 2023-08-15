@@ -2,6 +2,8 @@ project:
   type: book
   output-dir: docs
   resources: syllabus.pdf
+  pre-render: quarto render syllabus_pdf.qmd
+
 
 title-block-author-single: "Instructor"
 title-block-published: ""
