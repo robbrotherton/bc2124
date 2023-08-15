@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: docs
   resources: syllabus.pdf
-  pre-render: quarto render syllabus_pdf.qmd
+  pre-render: render_syllabus.r
 
 
 title-block-author-single: "Instructor"
