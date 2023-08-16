@@ -47,11 +47,8 @@ book:
   appendices:
     - appendix-r-basics.qmd
     - appendix-correlation.qmd
+    - appendix-regression.qmd
     - appendix-rubric.qmd
-    # - a-statistics.qmd
-    # - a-consent-form.qmd
-    # - a-debrief.qmd
-    # - a-writing-a-report.qmd
   # downloads: pdf
   # sidebar:
   #   tools:

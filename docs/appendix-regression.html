@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Personality Psychology Lab Handbook</title>
+<title>Personality Psychology Lab Handbook - Appendix C — Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab-2.html" rel="next">
+<link href="./appendix-rubric.html" rel="next">
+<link href="./appendix-correlation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,9 +63,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Personality Psychology Lab Handbook</h1>
+      <h1 class="quarto-secondary-nav-title">Appendix C — Regression</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -102,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Syllabus</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -215,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Regression</span></a>
+  <a href="./appendix-regression.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -234,24 +233,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#course-details" id="toc-course-details" class="nav-link active" data-scroll-target="#course-details">Course details</a>
+  <li><a href="#calculating-multiple-regression" id="toc-calculating-multiple-regression" class="nav-link active" data-scroll-target="#calculating-multiple-regression">Calculating Multiple Regression</a></li>
+  <li><a href="#evaluating-the-model" id="toc-evaluating-the-model" class="nav-link" data-scroll-target="#evaluating-the-model">Evaluating the model</a>
   <ul class="collapse">
-  <li><a href="#time-venue-instructor" id="toc-time-venue-instructor" class="nav-link" data-scroll-target="#time-venue-instructor">Time, venue &amp; instructor</a></li>
+  <li><a href="#overall-model-fit" id="toc-overall-model-fit" class="nav-link" data-scroll-target="#overall-model-fit">Overall model fit</a></li>
   </ul></li>
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview">Course overview</a>
-  <ul class="collapse">
-  <li><a href="#class-format-participation" id="toc-class-format-participation" class="nav-link" data-scroll-target="#class-format-participation">Class format &amp; participation</a></li>
-  <li><a href="#workload" id="toc-workload" class="nav-link" data-scroll-target="#workload">Workload</a></li>
-  <li><a href="#final-grades" id="toc-final-grades" class="nav-link" data-scroll-target="#final-grades">Final Grades</a></li>
-  </ul></li>
-  <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course policies</a>
-  <ul class="collapse">
-  <li><a href="#attendance-timeliness" id="toc-attendance-timeliness" class="nav-link" data-scroll-target="#attendance-timeliness">Attendance &amp; timeliness</a></li>
-  <li><a href="#sec-late-policy" id="toc-sec-late-policy" class="nav-link" data-scroll-target="#sec-late-policy">Assignment deadlines &amp; late policy</a></li>
-  <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic integrity</a></li>
-  <li><a href="#academic-accommodations-and-general-wellness" id="toc-academic-accommodations-and-general-wellness" class="nav-link" data-scroll-target="#academic-accommodations-and-general-wellness">Academic accommodations and general wellness</a></li>
-  </ul></li>
-  <li><a href="#class-schedule" id="toc-class-schedule" class="nav-link" data-scroll-target="#class-schedule">Class schedule</a></li>
+  <li><a href="#interpreting-the-regression-coefficients" id="toc-interpreting-the-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-the-regression-coefficients">Interpreting the regression coefficients</a></li>
   </ul>
 </nav>
     </div>
@@ -260,10 +247,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Personality Psychology Lab Handbook</h1>
-<p class="subtitle lead"></p><p>Barnard College<br>
-Department of Psychology<br>
-PSYC BC2124</p><p></p>
+<h1 class="title d-none d-lg-block">Appendix C — Regression</h1>
 </div>
 
 
@@ -271,12 +255,6 @@ PSYC BC2124</p><p></p>
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading"></div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Fall 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,215 +262,43 @@ PSYC BC2124</p><p></p>
 
 </header>
 
-<blockquote class="blockquote">
-<p>Human personalities are rather like fractals. It is not just that what we do in the large-scale narratives of our lives—love, career, friendships—tends to be somewhat consistent over time, with us often repeating the same kinds of triumph or mistakes. Rather, what we do in tiny interactions like the way we shop, dress or talk to a stranger on a train or decorate our houses, shows the same kinds of patterns as can be observed from examining a whole life.</p>
-<p>– <cite>Daniel Nettle, <a href="http://www.columbia.edu/cgi-bin/cul/resolve?clio14146523">Personality: What Makes You the Way You Are</a></cite></p>
-</blockquote>
-<section id="course-details" class="level2">
-<h2 class="anchored" data-anchor-id="course-details">Course details</h2>
-<div class="cell">
-
-</div>
-<p><strong>Pre-requisites</strong>: PSYC BC1001 Introduction to Psychology; PSYC BC1101 Statistics; PSYC BC1024 Research Methods<br>
-<strong>Co-requisite</strong>: PSYC BC2125 Personality Psychology</p>
-<section id="time-venue-instructor" class="level3">
-<h3 class="anchored" data-anchor-id="time-venue-instructor">Time, venue &amp; instructor</h3>
-<p>Section 001: Monday 10:10-1PM, Milbank 410<br>
-Section 002: Monday 1:10-4:00PM, Milbank 410</p>
-<p>Instructor: Dr.&nbsp;Rob Brotherton (<a href="mailto:rbrother@barnard.edu" class="email">rbrother@barnard.edu</a>)<br>
-Office hour: TBC</p>
+<p>In multiple regression, you have a dependent variable (the outcome you want to predict) and two or more independent variables (predictors) that you believe might influence the outcome. The goal is to create a model that best represents the relationship between the predictors and the outcome.</p>
+<p>When you want to predict a single outcome variable based on multiple predictor variables, you use multiple regression. This extends the idea of correlation where two variables are related to looking at how a combination of predictors relates to an outcome. For example, we might want to predict a person’s job satisfaction based on their salary, commute time, and relationship with their supervisor. Each of these predictors can contribute to the prediction, and multiple regression tells us how much each one matters while considering the influence of the others.</p>
+<section id="calculating-multiple-regression" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-multiple-regression">Calculating Multiple Regression</h2>
+<p>The equation of the regression line in a simple case (with only one predictor) can be represented as:</p>
+<p><span class="math display">\[
+Y = b_0 + b_1X_1
+\]</span></p>
+<p>Here, <span class="math inline">\(Y\)</span> is the predicted value of the dependent variable, <span class="math inline">\(b_0\)</span> is the intercept, <span class="math inline">\(b_1\)</span> is the regression coefficient for predictor <span class="math inline">\(X_1\)</span>, and <span class="math inline">\(X_1\)</span> is the value of the predictor. The intercept and regression coefficient are calculated such that the overall differences between the observed values of the dependent variable and the predicted values from the model are minimized. This method finds the best-fitting line (plane in multiple dimensions) that minimizes the sum of squared differences between observed and predicted values. This line is often referred to as the best-fit line.</p>
+<p>In multiple regression, when there are multiple predictors, the equation extends to:</p>
+<p><span class="math display">\[
+Y = b_0 + b_1X_1 + b_2X_2 + \ldots + b_kX_k
+\]</span></p>
+<p>Where <span class="math inline">\(k\)</span> is the number of predictors.</p>
+<p>To calculate multiple regression, you use a method that minimizes the differences between the observed values of the dependent variable and the predicted values from the model. This method finds the best-fitting line (plane in multiple dimensions) that minimizes the sum of squared differences between observed and predicted values. This line is often referred to as the regression line or hyperplane.</p>
+</section>
+<section id="evaluating-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-the-model">Evaluating the model</h2>
+<section id="overall-model-fit" class="level3">
+<h3 class="anchored" data-anchor-id="overall-model-fit">Overall model fit</h3>
+<p>The effect size for multiple regression is often reported using the <span class="math inline">\(F\)</span>-statistic and its associated <span class="math inline">\(p\)</span>-value. The F-statistic tests whether the overall model is a significant improvement over a model with no predictors. The <span class="math inline">\(p\)</span>-value associated with the <span class="math inline">\(F\)</span>-statistic helps determine whether the predictors, as a group, have a significant effect on the dependent variable.</p>
+<section id="effect-size" class="level4">
+<h4 class="anchored" data-anchor-id="effect-size">Effect size</h4>
+<p>Remember, as with correlation, understanding the context of the variables you’re working with is crucial. Just like with correlations, effect sizes can be interpreted as small, moderate, or large, based on the context and established benchmarks in your field.</p>
+<p>R-squared (<span class="math inline">\(R^2\)</span>) is a measure that tells you the proportion of the variability in the dependent variable that’s explained by the predictors in the model. It ranges from 0 to 1, where a higher value indicates a better fit. However, adding more predictors can artificially inflate <span class="math inline">\(R^2\)</span>, which is why we use adjusted R-squared. Adjusted R-squared takes into account the number of predictors and provides a more accurate representation of model fit.</p>
+<p>The multiple correlation coefficient, (R), represents the correlation between the observed and predicted values of the outcome. It gives us an idea of how well our set of predictors predicts the outcome together. The square of (R), (R^2), represents the proportion of variance in the outcome that’s explained by the predictors. For example, an (R^2) of 0.40 means that our predictors explain 40% of the variance in the outcome.</p>
+<p>The (R^2) value is a measure of effect size in multiple regression. Like the correlation coefficient, its value can range from 0 to 1.</p>
+<p>As a rule of thumb: - (R^2) values of around 0.02 are considered small - (R^2) values of around 0.13 are considered medium - (R^2) values of around 0.26 are considered large</p>
+<p>This might differ somewhat from the thresholds you’re familiar with for simple correlation because the interpretation is slightly different; here, we’re looking at the proportion of variance explained by all predictors combined.</p>
 </section>
 </section>
-<section id="course-overview" class="level2">
-<h2 class="anchored" data-anchor-id="course-overview">Course overview</h2>
-<p>This lab will usually be taken concurrently with BC2125 Personality lecture. It will expand upon some of the theoretical, methodological and analytic issues introduced there, as well as giving you the opportunity to explore topics of your choosing from within (or beyond) those covered in the lectures in greater depth through hands-on experience with research design and data analysis.</p>
-<p>The semester is broken into 3 projects. The first will involve planning and executing a correlational analysis of existing data. The second will involve performing a multiple regression analysis on existing data. The third project will involve designing and pilot-testing a novel scale to measure an aspect of personality. Through these projects you will gain experience in formulating psychological research questions pertaining to personality; collecting, analyzing and visualizing data; and interpreting and communicating your findings. Projects will be undertaken in groups; group members will collaborate on design and analysis. Each project will culminate in an in-class group presentation and submission of a brief individual write up of your project.</p>
-<section id="class-format-participation" class="level3">
-<h3 class="anchored" data-anchor-id="class-format-participation">Class format &amp; participation</h3>
-<p>Labs are substantially more interactive and discussion-based than the traditional lecture format, and depend on everyone’s active participation in class discussions and activity as well as group work focused around the projects. Your active participation across the semester will therefore contribute a substantial portion of your grade.</p>
-<p>If you have questions, thoughts, or ideas you want to share, feel free to do so at any time (while keeping within the bounds of polite conversation, obviously–don’t interrupt or talk over other people! But do feel free to respond to others without having to raise your hand or wait to be called on). Everyone will get the most out of this lab when the discussion can develop organically and everyone feels free to be part of the conversation if &amp; when they have something to add.</p>
-<p>Being part of the in-person discussion is one obvious way to participate, but it’s not the only way. Different people have different styles of participation, and the lab is designed to try and accommodate and encourage different approaches. Your level of engagement with your project partner(s), your TA and Prof.&nbsp;Brotherton as you work through your projects is also an important form of participation. You can also participate by coming to office hours.</p>
-<p>At a minimum (i.e.&nbsp;for a passing grade), I’ll be looking for some form of participation (loosely defined) from you every week. Higher participation grades will be earned through regular, enthusiastic, productive participation (note that quality is more important than quantity).</p>
 </section>
-<section id="workload" class="level3">
-<h3 class="anchored" data-anchor-id="workload">Workload</h3>
-<p>As a general rule for the amount of time students should expect to commit to classes, the college suggests three hours per week in or outside of class per credit. Since this class is worth 1.5 credits, that corresponds to 4.5 hours per week, split between time in the classroom and time spent completing the associated assignments.</p>
-</section>
-<section id="final-grades" class="level3">
-<h3 class="anchored" data-anchor-id="final-grades">Final Grades</h3>
-<p>Your numeric score for the course is a product of your scores for each assignment, weighted as follows:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped">
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Weight (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Participation (over the course of the semester)</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Presentations</td>
-<td style="text-align: right;">30</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Reports</td>
-<td style="text-align: right;">60</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Final grades are determined according to the following boundaries:</p>
-<pre><code>Letter grade:  A+ A  A- B+ B  B- C+ C  C- D  F
-Numeric score: 97 93 90 87 83 80 77 73 70 60 &lt;60</code></pre>
-</section>
-</section>
-<section id="course-policies" class="level2">
-<h2 class="anchored" data-anchor-id="course-policies">Course policies</h2>
-<section id="attendance-timeliness" class="level3">
-<h3 class="anchored" data-anchor-id="attendance-timeliness">Attendance &amp; timeliness</h3>
-<p>In-person attendance of every lab session is expected, and you should expect to stay for the full duration of the lab. Normally it is departmental policy to remove students who miss more than two lab sessions from the course; however, given ongoing revisions to college-wide health-related policies, exceptions may be made. If you are feeling unwell, you should not come to class and notify me of nonattendance before class if possible.</p>
-<p>When you are attending, please arrive on time for class. Frequent lateness will impact your participation grade.</p>
-</section>
-<section id="sec-late-policy" class="level3">
-<h3 class="anchored" data-anchor-id="sec-late-policy">Assignment deadlines &amp; late policy</h3>
-<p>Assignments are listed in the class schedule next to the class in which details about completing the assignment will be provided. The assignment must be completed and submitted before the following class, i.e.&nbsp;requirements for the first presentation slide will be explained in class on 10/2, and the slide must be submitted before the next class on 10/9.</p>
-<p>For the written project reports, a grade penalty of 5 points will be applied for each day (or part thereof) that an assignment is late (up to a maximum of 6 days; work not submitted before the next lab will receive a score of zero). For example, if your work is A+ quality but is submitted a day-and-a-half late, you will only receive a B+. This policy is intended to incentivize timely submission while easing the stress of genuine emergencies. When things come up that prevent timely submission you can prioritize accordingly, knowing that a small penalty on one assignment for this lab will not tank your final grade.</p>
-<p>Late submission for the presentation slides will not be possible; failure to submit a link to your slides in advance of the presentation will obviously limit your presentation grade.</p>
-</section>
-<section id="academic-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="academic-integrity">Academic integrity</h3>
-<p>Students are expected to follow the Barnard Honor Code, available at <a href="https://barnard.edu/honor-code" class="uri">https://barnard.edu/honor-code</a>.</p>
-<p>Note that while you will collaborate with group members on the design, analysis, and presentation of research projects, you may not collaborate on the written report: each group member must write their own individual reports.</p>
-</section>
-<section id="academic-accommodations-and-general-wellness" class="level3">
-<h3 class="anchored" data-anchor-id="academic-accommodations-and-general-wellness">Academic accommodations and general wellness</h3>
-<p>It is always important to recognize the different pressures, burdens, and stressors you may be facing, whether personal, emotional, physical, financial, mental, or academic. The faculty and administration recognize this, and are prepared to provide assistance to students in need. I encourage you to seek advice from your advisor, Dean, the <a href="https://barnard.edu/disability-services">Center for Accessibility Resources &amp; Disability Services (CARDS)</a>, or <a href="https://barnard.edu/health-wellness">Barnard Health &amp; Wellness</a> as needed. Please let me know of any issues you wish to share with me that you feel are impacting your ability to complete the course to the best of your ability. Though it isn’t always easy, it is better to proactively seek help rather than letting problems build up.</p>
-</section>
-</section>
-<section id="class-schedule" class="level2">
-<h2 class="anchored" data-anchor-id="class-schedule">Class schedule</h2>
-<div class="cell">
-<div class="cell-output-display">
-
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Date </th>
-   <th style="text-align:left;"> Topic </th>
-   <th style="text-align:left;"> Assignment* </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 9/11 </td>
-   <td style="text-align:left;"> Course overview </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr grouplength="4"><td colspan="3" style="border-bottom: 1px solid;"><strong>Project 1: Correlation</strong></td></tr>
-<tr>
-   <td style="text-align:left;"> 9/18 </td>
-   <td style="text-align:left;"> Project planning </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9/25 </td>
-   <td style="text-align:left;"> Data cleaning </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10/2 </td>
-   <td style="text-align:left;"> Analysis </td>
-   <td style="text-align:left;"> Presentation slide </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10/9 </td>
-   <td style="text-align:left;"> Presentations </td>
-   <td style="text-align:left;"> Project 1 report </td>
-  </tr>
-  <tr grouplength="5"><td colspan="3" style="border-bottom: 1px solid;"><strong>Project 2: Multiple regression</strong></td></tr>
-<tr>
-   <td style="text-align:left;"> 10/16 </td>
-   <td style="text-align:left;"> Project planning </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10/23 </td>
-   <td style="text-align:left;"> Data cleaning &amp; analysis </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10/30 </td>
-   <td style="text-align:left;"> Visualization &amp; reporting </td>
-   <td style="text-align:left;"> Presentation slide </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-style: italic;color: #BBBBBB !important;"> 11/6 </td>
-   <td style="text-align:left;font-style: italic;color: #BBBBBB !important;"> No class (academic holiday) </td>
-   <td style="text-align:left;font-style: italic;color: #BBBBBB !important;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 11/13 </td>
-   <td style="text-align:left;"> Presentations </td>
-   <td style="text-align:left;"> Project 2 report </td>
-  </tr>
-  <tr grouplength="4"><td colspan="3" style="border-bottom: 1px solid;"><strong>Project 3: Scale design</strong></td></tr>
-<tr>
-   <td style="text-align:left;"> 11/20 </td>
-   <td style="text-align:left;"> Scale planning </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 11/27 </td>
-   <td style="text-align:left;"> Questionnaire design </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12/4 </td>
-   <td style="text-align:left;"> Analysis &amp; reporting </td>
-   <td style="text-align:left;"> Presentation slide </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12/11 </td>
-   <td style="text-align:left;"> Presentations </td>
-   <td style="text-align:left;"> Project 3 report </td>
-  </tr>
-</tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup>*</sup> due by the following class</td>
-</tr>
-</tfoot>
-</table>
-
-</div>
-</div>
-<style>
-#title-block-header {
-  text-align: center;
-}
-
-#title-block-header.quarto-title-block.default .quarto-title-meta {
-  display: unset;
-}
-</style>
-<script>
-function function1() {
-  var toc = document.querySelector("#TOC");
-  var link = document.createElement("a");
-  link.innerHTML = "<i class='bi bi-file-pdf'></i> Download syllabus as PDF";
-  toc.appendChild(link);
-  link.href = "syllabus.pdf";
-}
-
-function1();
-</script>
+<section id="interpreting-the-regression-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-regression-coefficients">Interpreting the regression coefficients</h2>
+<p>In multiple regression, we don’t just have a single correlation coefficient. Instead, we have a regression coefficient for each predictor variable, represented as (B). The (B) coefficient tells us about the relationship between the predictor and the outcome when all other predictors are held constant. The mathematical calculations are more complex than for a simple correlation and typically rely on matrix algebra. For our purposes, though, we need to know what the coefficients represent.</p>
+<p>If (B) is positive, it means that as the predictor increases, the outcome also tends to increase, holding all else constant. If (B) is negative, then as the predictor increases, the outcome tends to decrease. A (B) of zero means the predictor doesn’t have a unique effect on the outcome when considering other predictors.</p>
+<p>The regression coefficients (<span class="math inline">\(b\)</span> values) represent the change in the dependent variable for a unit change in the corresponding predictor while holding other predictors constant. Positive coefficients indicate a positive relationship, while negative coefficients indicate a negative relationship.</p>
 
 
 </section>
@@ -762,10 +568,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./appendix-correlation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Correlation</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab-2.html" class="pagination-link">
-        <span class="nav-page-text">Lab 2: Project Planning</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix-rubric.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">Grading rubric</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

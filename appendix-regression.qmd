@@ -1,0 +1,63 @@
+
+# Regression
+
+In multiple regression, you have a dependent variable (the outcome you want to predict) and two or more independent variables (predictors) that you believe might influence the outcome. The goal is to create a model that best represents the relationship between the predictors and the outcome.
+
+When you want to predict a single outcome variable based on multiple predictor variables, you use multiple regression. This extends the idea of correlation where two variables are related to looking at how a combination of predictors relates to an outcome. For example, we might want to predict a person's job satisfaction based on their salary, commute time, and relationship with their supervisor. Each of these predictors can contribute to the prediction, and multiple regression tells us how much each one matters while considering the influence of the others.
+
+
+## Calculating Multiple Regression
+
+
+The equation of the regression line in a simple case (with only one predictor) can be represented as:
+
+$$
+Y = b_0 + b_1X_1
+$$
+
+Here, $Y$ is the predicted value of the dependent variable, $b_0$ is the intercept, $b_1$ is the regression coefficient for predictor $X_1$, and $X_1$ is the value of the predictor. The intercept and regression coefficient are calculated such that the overall differences between the observed values of the dependent variable and the predicted values from the model are minimized. This method finds the best-fitting line (plane in multiple dimensions) that minimizes the sum of squared differences between observed and predicted values. This line is often referred to as the best-fit line.
+
+In multiple regression, when there are multiple predictors, the equation extends to:
+
+$$
+Y = b_0 + b_1X_1 + b_2X_2 + \ldots + b_kX_k
+$$
+
+Where $k$ is the number of predictors.
+
+To calculate multiple regression, you use a method that minimizes the differences between the observed values of the dependent variable and the predicted values from the model. This method finds the best-fitting line (plane in multiple dimensions) that minimizes the sum of squared differences between observed and predicted values. This line is often referred to as the regression line or hyperplane.
+
+
+
+## Evaluating the model
+
+### Overall model fit
+
+The effect size for multiple regression is often reported using the $F$-statistic and its associated $p$-value. The F-statistic tests whether the overall model is a significant improvement over a model with no predictors. The $p$-value associated with the $F$-statistic helps determine whether the predictors, as a group, have a significant effect on the dependent variable.
+
+#### Effect size
+
+Remember, as with correlation, understanding the context of the variables you're working with is crucial. Just like with correlations, effect sizes can be interpreted as small, moderate, or large, based on the context and established benchmarks in your field.
+
+R-squared ($R^2$) is a measure that tells you the proportion of the variability in the dependent variable that's explained by the predictors in the model. It ranges from 0 to 1, where a higher value indicates a better fit. However, adding more predictors can artificially inflate $R^2$, which is why we use adjusted R-squared. Adjusted R-squared takes into account the number of predictors and provides a more accurate representation of model fit.
+
+The multiple correlation coefficient, \(R\), represents the correlation between the observed and predicted values of the outcome. It gives us an idea of how well our set of predictors predicts the outcome together. The square of \(R\), \(R^2\), represents the proportion of variance in the outcome that's explained by the predictors. For example, an \(R^2\) of 0.40 means that our predictors explain 40% of the variance in the outcome.
+
+
+The \(R^2\) value is a measure of effect size in multiple regression. Like the correlation coefficient, its value can range from 0 to 1.
+
+As a rule of thumb:
+- \(R^2\) values of around 0.02 are considered small
+- \(R^2\) values of around 0.13 are considered medium
+- \(R^2\) values of around 0.26 are considered large
+
+This might differ somewhat from the thresholds you're familiar with for simple correlation because the interpretation is slightly different; here, we're looking at the proportion of variance explained by all predictors combined.
+
+
+## Interpreting the regression coefficients
+
+In multiple regression, we don't just have a single correlation coefficient. Instead, we have a regression coefficient for each predictor variable, represented as \(B\). The \(B\) coefficient tells us about the relationship between the predictor and the outcome when all other predictors are held constant. The mathematical calculations are more complex than for a simple correlation and typically rely on matrix algebra. For our purposes, though, we need to know what the coefficients represent.
+
+If \(B\) is positive, it means that as the predictor increases, the outcome also tends to increase, holding all else constant. If \(B\) is negative, then as the predictor increases, the outcome tends to decrease. A \(B\) of zero means the predictor doesn't have a unique effect on the outcome when considering other predictors.
+
+The regression coefficients ($b$ values) represent the change in the dependent variable for a unit change in the corresponding predictor while holding other predictors constant. Positive coefficients indicate a positive relationship, while negative coefficients indicate a negative relationship.

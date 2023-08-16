@@ -213,6 +213,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appendix-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./appendix-rubric.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Grading rubric</span></a>
   </div>
 </li>
@@ -230,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project overview</a>
   <ul class="collapse">
-  <li><a href="#step-1.-choose-your-dataset-and-variables" id="toc-step-1.-choose-your-dataset-and-variables" class="nav-link" data-scroll-target="#step-1.-choose-your-dataset-and-variables">Step 1. Choose your dataset and variables</a></li>
+  <li><a href="#step-1.-choose-your-variables" id="toc-step-1.-choose-your-variables" class="nav-link" data-scroll-target="#step-1.-choose-your-variables">Step 1. Choose your variables</a></li>
   <li><a href="#step-2.-find-relevant-research" id="toc-step-2.-find-relevant-research" class="nav-link" data-scroll-target="#step-2.-find-relevant-research">Step 2. Find relevant research</a></li>
   <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
   </ul></li>
@@ -258,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In this lab, you will start your second project: conducting a multiple regression analysis using ANES data.</p>
+<p>In this lab, you will start your second project: conducting a multiple regression analysis using the same 2016 ANES data.</p>
 <section id="goals" class="level3">
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <ul>
@@ -274,14 +279,202 @@ ul.task-list li input[type="checkbox"] {
 <p>For instance, researchers might examine how <a href="https://journals.sagepub.com/doi/pdf/10.1177/0306307016687990">one or more Big Five personality traits interact with age to predict job satisfaction</a>. Similarly, variables such as <a href="https://www.annualreviews.org/doi/10.1146/annurev-polisci-051010-111659">income, education, and openness might be used in a multiple regression analysis to predict political ideology</a>. Like with correlations, this doesn’t mean that every extroverted, conscientious, and emotionally stable person will always be satisfied with their job, or that all educated, and open individuals are politically aligned in the same way. It’s about general tendencies rather than strict rules.</p>
 <p>Like correlation, regression studies involve determining which psychological constructs to study, how to operationally define those constructs, and how to measure them. They then use these definitions and measurements to explore relationships, using appropriate statistical analyses.</p>
 <p>With this project, you will dive deeper into the interplay between personality traits and other constructs, using multiple regression analysis to explore how a combination of predictors contributes to an outcome of your choice by analyzing existing data. This will empower you to better understand the complex interactions that shape human behavior and personality, beyond simple one-to-one relationships.</p>
-<section id="step-1.-choose-your-dataset-and-variables" class="level3">
-<h3 class="anchored" data-anchor-id="step-1.-choose-your-dataset-and-variables">Step 1. Choose your dataset and variables</h3>
-<p>We will again use data from the ANES. I suggest that you use the 2016 dataset again; you may even look a the same variables you did with Project 1 and just add one or more new predictors. However, if you’re feeling ambitious or limited by what’s available in the 2016 dataset you may choose a different one (the most recent is from 2022), or even use the cumulative timeseries data which combines data from across the many years the study has been conducted (this would be a good choice if you want to see how the passage of time might have contributed to a change on some outcome of interest).</p>
-<p>You should pick one outcome variable (which should be continuous, i.e.&nbsp;scores cover some numeric range rather than discrete categories), and at least two / up to four predictor variables (at least one of which is a TIPI Big Five trait).</p>
+<section id="step-1.-choose-your-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.-choose-your-variables">Step 1. Choose your variables</h3>
+<p>We will again use data from the 2016 ANES survey. For regression, you can again think of your variables as predictors and outcome. You will still have a single outcome variable; however unlike the correlation analysis you did before, this time you will have more than one predictor. Again, the full dataset has more than 1,800 variables, so I’m going to constrain your choices; however, this time I’m giving you more freedom to choose.</p>
+<p>Your <strong>predictor</strong> variables will be any of the Big Five traits:</p>
+<ul>
+<li>Extraversion (V162333 &amp; V162338)</li>
+<li>Agreeableness (V162334 &amp; V162339)</li>
+<li>Conscientiousness (V162335 &amp; V162340)</li>
+<li>Neuroticism (V162336 &amp; V162341)</li>
+<li>Openness (V162337 &amp; V162342)</li>
+</ul>
+<p>Your <strong>outcome</strong> variable will be any one of the feeling thermometer questions. Here are all the subjects of feeling thermometer variables you can choose from:</p>
+<div class="cell">
+
+</div>
+<ul>
+<li>
+Democratic Presidential Cand (V161086)
+</li>
+<li>
+Republican Presidential Cand (V161087)
+</li>
+<li>
+Libertarian Presidential Cand (V161088)
+</li>
+<li>
+Green Party Presidential Cand (V161089)
+</li>
+<li>
+Democratic Vice-Pres Cand (V161090)
+</li>
+<li>
+Republican Vice-Pres Cand (V161091)
+</li>
+<li>
+Previous President (V161092)
+</li>
+<li>
+Bill Clinton (V161093)
+</li>
+<li>
+Libertarian Vice-Pres Cand (V161094)
+</li>
+<li>
+Democratic Party (V161095)
+</li>
+<li>
+Republican Party (V161096)
+</li>
+<li>
+Democratic Presidential Candidate (V162078)
+</li>
+<li>
+Republican Presidential Candidate (V162079)
+</li>
+<li>
+Libertarian Presidential Candidate (V162080)
+</li>
+<li>
+Green Party Presidential Candidate (V162081)
+</li>
+<li>
+House Democratic Candidate (V162082)
+</li>
+<li>
+House Republican Candidate (V162083)
+</li>
+<li>
+House Ind/3rd-Party Candidate (V162084)
+</li>
+<li>
+Senate Democratic Candidate (V162085)
+</li>
+<li>
+Senate Republican Candidate (V162086)
+</li>
+<li>
+Senate Ind/3rd-Party Candidate (V162087)
+</li>
+<li>
+Sr.&nbsp;Senator In State Without Race (V162088)
+</li>
+<li>
+Jr.&nbsp;Senator In State Without Race (V162089)
+</li>
+<li>
+Nonrunning Senator In State W/Race (V162090)
+</li>
+<li>
+Democratic Vice Presidential Cand (V162091)
+</li>
+<li>
+Republican Vice Presidential Cand (V162092)
+</li>
+<li>
+John Roberts (V162093)
+</li>
+<li>
+Pope Francis (V162094)
+</li>
+<li>
+Christian Fundamentalists (V162095)
+</li>
+<li>
+Feminists (V162096)
+</li>
+<li>
+Liberals (V162097)
+</li>
+<li>
+Labor Unions (V162098)
+</li>
+<li>
+Poor People (V162099)
+</li>
+<li>
+Big Business (V162100)
+</li>
+<li>
+Conservatives (V162101)
+</li>
+<li>
+The U.s. Supreme Court (V162102)
+</li>
+<li>
+Gay Men And Lesbians (V162103)
+</li>
+<li>
+Congress (V162104)
+</li>
+<li>
+Rich People (V162105)
+</li>
+<li>
+Muslims (V162106)
+</li>
+<li>
+Christians (V162107)
+</li>
+<li>
+Jews (V162108)
+</li>
+<li>
+Tea Party (V162109)
+</li>
+<li>
+Police (V162110)
+</li>
+<li>
+Transgender People (V162111)
+</li>
+<li>
+Scientists (V162112)
+</li>
+<li>
+Black Lives Matter (V162113)
+</li>
+<li>
+Asian-Americans (V162310)
+</li>
+<li>
+Hispanics (V162311)
+</li>
+<li>
+Blacks (V162312)
+</li>
+<li>
+Illegal Immigrants (V162313)
+</li>
+<li>
+Whites (V162314)
+</li>
+</ul>
 </section>
 <section id="step-2.-find-relevant-research" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-find-relevant-research">Step 2. Find relevant research</h3>
-<p>As with Project 1, your approach and expectations should be informed by what has come before. Once you have an idea of what variables you would like to analyze, you will search the literature to see what other researchers have found out about these (or related) personality traits and outcomes.</p>
+<p>As with Project 1, your approach and expectations should be informed by what has come before. Last time you didn’t have so much choice of variables so I was able to point you to some relevant research. This time you have a wider choice so you’ll have to find relevant research yourself about these (or related) personality traits.</p>
+<section id="what-to-look-for" class="level4">
+<h4 class="anchored" data-anchor-id="what-to-look-for">What to look for</h4>
+<p>A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review paper or meta-analysis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="where-to-look" class="level4">
+<h4 class="anchored" data-anchor-id="where-to-look">Where to look</h4>
+<section id="google-scholar" class="level5">
+<h5 class="anchored" data-anchor-id="google-scholar"><a href="https://scholar.google.com">Google Scholar</a></h5>
+<p>Google Scholar searches the full text of scholarly articles. It casts a wide net, searching across all disciplines, and including books and other materials in addition to journal articles, so will likely find many articles not very relevant to the topic as well as those that are relevant.</p>
+</section>
+<section id="apa-psycinfo" class="level5">
+<h5 class="anchored" data-anchor-id="apa-psycinfo"><a href="http://www.columbia.edu/cgi-bin/cul/resolve?ALD2284">APA PsycINFO</a></h5>
+<p>The link above should take you to PsycINFO, a database for scholarly psychology research (you can also search for <code>psycinfo</code> in a CLIO quicksearch). PsycInfo gives you the ability to do more focused searching than Google Scholar.</p>
+<ul>
+<li>You can add many keywords and combine them with the Boolean operators <code>AND</code>, <code>OR</code>, and <code>NOT</code> by selecting them from the dropdown boxes.</li>
+<li>You can select where your keywords should appear, i.e.&nbsp;in the title, abstract, or full text of articles. Selecting <code>Word in Major Subject Heading</code> can help narrow down your search to articles that are actually on the topic you’re interested in (rather than just containing the keyword).</li>
+</ul>
+</section>
+</section>
 </section>
 <section id="step-3.-articulate-your-hypothesis" class="level3">
 <h3 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h3>
@@ -300,6 +493,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>A meta-analysis pools the findings of many individual studies by different researchers into a single analysis.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
