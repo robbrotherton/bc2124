@@ -1,37 +1,52 @@
-# Lab 10: Scale planning {.unnumbered}
+# Lab 10: Project planning {.unnumbered}
 
-My hope is that at this point you are feeling a sense of accomplishment at what you have achieved through the secondary data analysis projects so far, but that you're also feeling a bit limited by choice of variables you had and the inability to decide what exactly to measure or how to measure it. In this lab we'll begin the final project: devising and piloting a novel measure of a personality trait of your choice.
-
-
-## Goals
-
-- Understand the process of scale design and validation
-- Pick a personality trait to design a scale around
-- Write a brief proposal of your project and expectations
+My hope is that at this point you are feeling a sense of accomplishment at what you have achieved through the projects so far, but that you're also feeling a bit limited by the constrained choice of variables you had. In this lab we'll begin the final project: you will execute a project of your own design, with the freedom to choose any variables you like from the full data set.
 
 
-## Scale design
+### Goals
 
-Scale design is a fundamental aspect of empirical psychology. Psychological constructs such as personality traits, intelligence, attitudes, or mental health conditions are abstract and not directly observable. Psychologists use scales, or tests, to measure these constructs, translating abstract ideas into quantifiable variables. For instance, the Big Five personality traits are typically measured using self-report scales like the Ten-Item Personality Inventory (TIPI) or the NEO-PI-R.
-
-Creating a good psychological scale involves several steps. First, researchers need to clearly define the construct they want to measure. Then, they develop a set of items, or questions, that reflect the construct. These items should be clear, easy to understand, and specific to the construct. After developing the items, researchers typically pilot the scale on a small sample to check that the items measure what they're supposed to. The scale is then refined based on this pilot data. Once the scale is finalized, it can be used in research.
-
-Importantly, creating a scale is not a one-time process. Scales need to be validated – tested to make sure they're measuring what they're supposed to. This involves collecting data and conducting statistical analyses to check the reliability (consistency of the scale) and validity (whether the scale measures the construct it is supposed to) of the scale.
-
-In this project, you will take on the role of a scale developer, designing a new scale to measure a construct of your choosing. You'll begin by defining your construct, generating a set of items, and establishing a response format. You'll then create a plan to pilot and validate your scale. This project will provide you with firsthand experience of the challenges and rewards of psychological measurement and get you thinking about underexplored aspects of personality.
+- Decide on an analysis and identify the relevant variables
+- Find some relevant research
+- Articulate your hypotheses
 
 
-### Step 1. Decide what aspect of personality you want to measure
 
-Brainstorm ideas with your group. Something relevant to your personality experience.
+## Project overview
 
-To give you some ideas, here are a few existing personality scales. 
+For this project you will use multiple regression to look at the relationships among an outcome variable and two or more predictors. You have free choice of outcome and predictors. The process for getting started planning your design is the same as before.
 
+
+### Step 1. Decide on your constructs/operational definitions
+
+The full ANES dataset contains more than 1,000 columns, each representing a different variable that was measured. Not all of these are equally relevant to personality, but you will find many questions that pertain to fundamental psychological concepts. The aim is to come up with a research question and design that allows you to meaningfully examine some aspect of personality psychology. 
+
+Here are some suggestions for constructs you might consider analyzing, for which there are relevant questions in the 2016 ANES dataset:
+
+- Big 5 personality traits (no reason you can't stick with one or more of these as part of your analysis)
+- Feeling thermometers (affect towards various political actors/groups)
+- Ideology/partisanship
+- Media consumption
+- Self-efficacy
+- Perceived threats
+- Trust
+- Political knowledge
+- Authoritarianism
+- Stereotypes
+- Policy preferences
+- Conspiracy beliefs
+- Religiosity
+- Life experiences
 
 
 ### Step 2. Find relevant research
 
-Once you have an idea for what personality construct you want to measure. 
+You should search the literature (using Google Scholar or PsycINFO, as before) and find at least one published research paper that pertains to the constructs you want to look at.
 
 
-### Step 3. Come up with a plan
+### Step 3. Articulate your hypotheses
+
+As before, you should be able to describe:
+
+- The constructs you are interested in
+- The operational definitions used to measure those constructs in the ANES survey
+- You hypothesis about how your constructs are related

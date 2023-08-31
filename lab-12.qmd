@@ -1,2 +1,2 @@
-# Lab 12: Data collection and analysis {.unnumbered}
+# Lab 12: Visualization and reporting {.unnumbered}
 
