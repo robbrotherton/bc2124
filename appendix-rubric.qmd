@@ -1,4 +1,4 @@
-# Grading rubric
+# Grading rubric {#sec-rubric}
 
 For each presentation and project report you will receive a score out of 100 according to the rubric below.
 

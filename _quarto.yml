@@ -32,13 +32,13 @@ book:
         - lab-3.qmd
         - lab-4.qmd
         - lab-5.qmd
-    - part: "Project 2: Multiple Regression"
+    - part: "Project 2: Regression"
       chapters:
         - lab-6.qmd
         - lab-7.qmd
         - lab-8.qmd
         - lab-9.qmd
-    - part: "Project 3: Scale design"
+    - part: "Project 3: Regression 2"
       chapters:
         - lab-10.qmd
         - lab-11.qmd

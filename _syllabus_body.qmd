@@ -128,7 +128,7 @@ It is always important to recognize the different pressures, burdens, and stress
 knitr::kable(schedule) |>
   kableExtra::row_spec(no_class_row, italic = TRUE, color = "#BBBBBB") |>
   kableExtra::pack_rows("Project 1: Correlation", 2, 5, indent = FALSE) |>
-  kableExtra::pack_rows("Project 2: Regression 1", 6, 10, indent = FALSE) |>
+  kableExtra::pack_rows("Project 2: Multiple regression", 6, 10, indent = FALSE) |>
   kableExtra::pack_rows("Project 3: Regression 2", 11, 14, indent = FALSE) |>
   kableExtra::add_footnote("due by the following class", notation = "symbol") |>
   kableExtra::kable_styling(full_width = TRUE)
