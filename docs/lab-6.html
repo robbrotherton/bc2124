@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.78">
+<meta name="generator" content="quarto-1.3.310">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -70,11 +70,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lab 6: Project planning</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab-6.html">Project 2: Regression</a></li><li class="breadcrumb-item"><a href="./lab-6.html">Lab 6: Project planning</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -82,20 +87,20 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Personality Psychology Lab Handbook</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -105,75 +110,87 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Project 1: Correlation</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Project 1: Correlation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-2.html" class="sidebar-item-text sidebar-link">Lab 2: Project Planning</a>
+  <a href="./lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Project Planning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-3.html" class="sidebar-item-text sidebar-link">Lab 3: Data cleaning</a>
+  <a href="./lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Data preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-4.html" class="sidebar-item-text sidebar-link">Lab 4: Analysis</a>
+  <a href="./lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-5.html" class="sidebar-item-text sidebar-link">Lab 5: Presentation &amp; report</a>
+  <a href="./lab-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: Presentation &amp; report</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Project 2: Regression</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Project 2: Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-6.html" class="sidebar-item-text sidebar-link active">Lab 6: Project planning</a>
+  <a href="./lab-6.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 6: Project planning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-7.html" class="sidebar-item-text sidebar-link">Lab 7: Data cleaning &amp; analysis</a>
+  <a href="./lab-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7: Data preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-8.html" class="sidebar-item-text sidebar-link">Lab 8: Visualization &amp; interpretation</a>
+  <a href="./lab-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8: Visualization &amp; interpretation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-9.html" class="sidebar-item-text sidebar-link">Lab 9: Presentation &amp; report</a>
+  <a href="./lab-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 9: Presentation &amp; report</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Project 3: Regression 2</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Project 3: Regression 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-10.html" class="sidebar-item-text sidebar-link">Lab 10: Project planning</a>
+  <a href="./lab-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 10: Project planning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -183,20 +200,23 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-12.html" class="sidebar-item-text sidebar-link">Lab 12: Visualization and reporting</a>
+  <a href="./lab-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 12: Visualization and reporting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab-13.html" class="sidebar-item-text sidebar-link">Lab 13: Presentation &amp; report</a>
+  <a href="./lab-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 13: Presentation &amp; report</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -226,6 +246,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -237,9 +258,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#step-1.-choose-your-variables" id="toc-step-1.-choose-your-variables" class="nav-link" data-scroll-target="#step-1.-choose-your-variables">Step 1. Choose your variables</a></li>
   <li><a href="#step-2.-find-relevant-research" id="toc-step-2.-find-relevant-research" class="nav-link" data-scroll-target="#step-2.-find-relevant-research">Step 2. Find relevant research</a></li>
-  <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
+  <li><a href="#step-3.-articulate-your-design-and-hypothesis" id="toc-step-3.-articulate-your-design-and-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-design-and-hypothesis">Step 3. Articulate your design and hypothesis</a></li>
   </ul></li>
-  <li><a href="#your-proposal" id="toc-your-proposal" class="nav-link" data-scroll-target="#your-proposal">Your proposal</a></li>
   </ul>
 </nav>
     </div>
@@ -248,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lab 6: Project planning</h1>
+<h1 class="title">Lab 6: Project planning</h1>
 </div>
 
 
@@ -275,14 +295,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project overview</h2>
-<p>Multiple regression goes beyond simple correlations and captures the relationships between multiple <strong>predictor</strong> variables and a single <strong>outcome</strong> variable. It allows us to see the combined impact of multiple variables on one outcome, and how these predictors may interact with each other to affect the outcome. This can provide valuable insights into how the relationship between one predictor and the outcome might depend on another predictor.</p>
-<p>For instance, researchers might examine how <a href="https://journals.sagepub.com/doi/pdf/10.1177/0306307016687990">one or more Big Five personality traits interact with age to predict job satisfaction</a>. Similarly, variables such as <a href="https://www.annualreviews.org/doi/10.1146/annurev-polisci-051010-111659">income, education, and openness might be used in a multiple regression analysis to predict political ideology</a>. Like with correlations, this doesn’t mean that every extroverted, conscientious, and emotionally stable person will always be satisfied with their job, or that all educated, and open individuals are politically aligned in the same way. It’s about general tendencies rather than strict rules.</p>
-<p>Like correlation, regression studies involve determining which psychological constructs to study, how to operationally define those constructs, and how to measure them. They then use these definitions and measurements to explore relationships, using appropriate statistical analyses.</p>
-<p>With this project, you will dive deeper into the interplay between personality traits and other constructs, using multiple regression analysis to explore how a combination of predictors contributes to an outcome of your choice by analyzing existing data. This will empower you to better understand the complex interactions that shape human behavior and personality, beyond simple one-to-one relationships.</p>
+<p>With this project, you will dive deeper into the interplay between personality traits and other constructs, using multiple regression analysis to explore how several predictors are associated with an outcome of your choice. Multiple regression allows us to see the <em>combined</em> impact of multiple variables on an outcome variable, potentially revealing more complexity than the one-to-one correlations of Project 1.</p>
+<p>For instance, researchers might examine how <a href="https://journals.sagepub.com/doi/pdf/10.1177/0306307016687990">one or more Big Five personality traits interact with age to predict job satisfaction</a>. Similarly, variables such as <a href="https://www.annualreviews.org/doi/10.1146/annurev-polisci-051010-111659">income, education, and openness might be used in a multiple regression analysis to predict political ideology</a>. Like with correlations, this doesn’t mean that every extroverted, conscientious, and emotionally stable person will be highly satisfied with their job, or that all educated, open individuals are politically aligned in the same way. It’s about general tendencies rather than strict rules.</p>
+<p>Like correlation, regression studies involve determining which psychological constructs to study, how to operationally define those constructs, and how to measure them. As you saw in Project 1, the operational definitions have already been determined–the survey designers already asked the questions. But it will be up to you to make sense of what psychological constructs those operational definitions really represent and to consider the strengths, limitations, and implications for your analysis and interpretation.</p>
 <section id="step-1.-choose-your-variables" class="level3">
 <h3 class="anchored" data-anchor-id="step-1.-choose-your-variables">Step 1. Choose your variables</h3>
-<p>We will again use data from the 2016 ANES survey. For regression, you can again think of your variables as predictors and outcome. You will still have a single outcome variable; however unlike the correlation analysis you did before, this time you will have more than one predictor. Again, the full dataset has more than 1,800 variables, so I’m going to constrain your choices; however, this time I’m giving you more freedom to choose.</p>
-<p>Your <strong>predictor</strong> variables will be any of the Big Five traits:</p>
+<p>We will again use data from the 2016 ANES survey. For your regression, you will still have a single outcome variable; however unlike the correlation analysis you did before, this time you will have more than one predictor. Again, the full dataset has more than 1,800 variables so I’m going to constrain your choices; however, this time I’m giving you more freedom to select an outcome variable that most interests you.</p>
+<p>Your <strong>predictor</strong> variables will be at least two of the Big Five traits:</p>
 <ul>
 <li>Extraversion (V162333 &amp; V162338)</li>
 <li>Agreeableness (V162334 &amp; V162339)</li>
@@ -291,9 +310,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Openness (V162337 &amp; V162342)</li>
 </ul>
 <p>Your <strong>outcome</strong> variable will be any one of the feeling thermometer questions. Here are all the subjects of feeling thermometer variables you can choose from:</p>
-<div class="cell">
-
-</div>
 <ul>
 <li>
 Democratic Presidential Cand (V161086)
@@ -455,7 +471,7 @@ Whites (V162314)
 </section>
 <section id="step-2.-find-relevant-research" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-find-relevant-research">Step 2. Find relevant research</h3>
-<p>As with Project 1, your approach and expectations should be informed by what has come before. Last time you didn’t have so much choice of variables so I was able to point you to some relevant research. This time you have a wider choice so you’ll have to find relevant research yourself about these (or related) personality traits.</p>
+<p>As with Project 1, your approach and expectations should be informed by what has come before. Last time you didn’t have so much choice of variables so I was able to point you to some relevant research. This time you have a wider choice so you’ll have to find relevant research yourself about these (or related) personality traits. In particular, what psychological construct(s) do you think your feeling thermometer variable might reflect or relate to?</p>
 <section id="what-to-look-for" class="level4">
 <h4 class="anchored" data-anchor-id="what-to-look-for">What to look for</h4>
 <p>A published, scholarly journal article detailing an empirical finding relevant to your variables of interest. This might be a paper reporting one or several individual studies that the researchers conducted, or it may be a review paper or meta-analysis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
@@ -476,23 +492,18 @@ Whites (V162314)
 </section>
 </section>
 </section>
-<section id="step-3.-articulate-your-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h3>
-<p>Having chosen your variables and found some relevant research to inform your theoretical perspective about how the variables are (or aren’t) associated, you should be able to articulate your <em>hypothesis</em>. This is a formal statement of your expectations about how the variables are associated, and it will be tested quantitatively by computing the regression model.</p>
-<p>The general hypothesis of a multiple regression is that there is a relationship between the predictor variables and the outcome variable; in other words, the predictors allow us to predict scores on the outcome more accurately than you would expect if the variables we unrelated.</p>
-<p>A choice you will make at this point is whether you will study the simple additive effect of your predictors, or whether you will look at the <strong>interaction</strong> between your predictors. An interaction effect means that two (or more) variables combined have a significantly larger effect on the outcome variable as compared to the sum of the individual variables alone. If you have two predictors, I would suggest looking at their interaction; if you want to include more than two predictors, just look at their additive effect.</p>
-</section>
-</section>
-<section id="your-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="your-proposal">Your proposal</h2>
-<p>At the start of next week’s class, each project team will give a short, informal presentation of their research proposal. This should outline:</p>
+<section id="step-3.-articulate-your-design-and-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.-articulate-your-design-and-hypothesis">Step 3. Articulate your design and hypothesis</h3>
+<p>As before, you should be able to state your:</p>
 <ul>
-<li>Your variables of interest</li>
-<li>Your theoretical perspective (based on the research you found)</li>
-<li>Your expectations (this should follow from your theoretical perspective)</li>
+<li><strong>Operational definitions</strong> (that is, the specific questions that participants were asked, per the codebook)</li>
+<li>The <strong>constructs</strong> that those operational definitions measure</li>
+<li>Your <strong>hypotheses</strong></li>
 </ul>
+<p>The hypotheses are formal statements of your expectations about how the variables are associated, and will be tested quantitatively by computing the regression model. The general hypothesis of a multiple regression is that there is a relationship between the predictor variables and the outcome variable; in other words, all the predictors in combination allow us to predict scores on the outcome more accurately than you would expect if the predictors were unrelated to the outcome. This is referred to as the test of ‘overall model fit’. You can also hypothesize about each individual predictor; you may expect some predictors to be more strongly predictive of the outcome variable than others, or you might even expect certain predictors to be unrelated to the outcome.</p>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -644,9 +655,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -711,6 +736,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -754,7 +865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -772,7 +883,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab-7.html" class="pagination-link">
-        <span class="nav-page-text">Lab 7: Data cleaning &amp; analysis</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Lab 7: Data preparation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

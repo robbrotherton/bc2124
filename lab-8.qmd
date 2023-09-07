@@ -2,11 +2,53 @@
 
 ### Goals
 
-- Check the assumptions of multiple regression have been met
-- Visualize your regression model
+<!-- - Check the assumptions of multiple regression have been met -->
+- Compute your regression model
 - Interpret the findings
 
-## Checking model assumptions
+<!-- ## Checking model assumptions -->
 
+
+## Regression analysis
+
+Now we'll perform a multiple regression analysis. This allows us to examine the relationship between the single outcome variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(anesr)
+data(timeseries_2016)
+
+my_data_complete <- timeseries_2016 |> 
+  select(extraversion1 = "V162333", 
+         extraversion2 = "V162338",
+         conscientiousness1 = "V162335", 
+         conscientiousness2 = "V162340",
+         agreeableness1 = "V162334", 
+         agreeableness2 = "V162339",
+         feeling_thermometer = "V161095") |> 
+  filter(if_all(everything(), ~ . >= 0))  |>
+  mutate(extraversion2 = 8 - extraversion2,
+         conscientiousness2 = 8 - conscientiousness2,
+         agreeableness1 = 8 - agreeableness1,
+         extraversion_mean = rowMeans(across(contains("extraversion"))),
+         conscientiousness_mean = rowMeans(across(contains("conscientiousness"))),
+         agreeableness_mean = rowMeans(across(contains("agreeableness"))))
+
+```
+
+```{r}
+model <- lm(feeling_thermometer ~ extraversion_mean + conscientiousness_mean + agreeableness_mean, data = my_data_complete)
+
+summary(model)
+```
+
+
+Under "Coefficients" you'll see an "Estimate" of the relationship between that predictor and the outcome variable, controlling for the other predictors. You'll also see a $t$-value and a $p$-value for each predictor, which tell you whether each predictor is significantly related to the outcome variable, controlling for the other predictors. The Estimate indicates how much the outcome variable changes on average with a one-unit increase in the predictor, holding all other predictors constant. So in this example, a one-point increase in conscientiousness predicts a $~1.6$ unit decrease on the feeling thermometer. A one-point increase in agreeableness predicts a $~1.2$ unit increase on the feeling thermometer. Both of these predictors are significantly associated with the feeling thermometer variable. Extraversion, however, is not a significant predictor; knowledge of somebody's extraversion score cannot reliably predict their feeling thermometer response.
+
+The last part of the output gives the overall model fit. "Multiple R-squared" is the proportion of variance in the outcome variable that can be explained by the predictor variables, and Adjusted R-squared is a version of R-squared adjusted for the number of predictors.
+
+Finally, the $F$-statistic and its corresponding $p$-value assess the overall statistical significance of the model. If the $p$-value is less than your desired significance level you can reject the null hypothesis that all the regression coefficients are zero.
 
 
