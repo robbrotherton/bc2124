@@ -1,5 +1,30 @@
 # Lab 9: Presentation & report {.unnumbered}
 
-Present in class.
+This week each project team will present their project to the rest of the class. After that, you will be ready to write up your findings. Note that presentations (and all the preceding work) will be a group effort, but written reports must be completed individually.
 
-Write up due by next class.
+
+## Presentation 
+
+The guide to delivering an effective presentation is the [same as last time](lab-5.qmd). My main advice this time is to focus on making your interpretation of the combined and individual relationships between predictors and outcome as clear and convincing as possible. This complexity can be tricky to get your head around, and even trickier to explain to someone else. The best presentations will make the logic of your regression model and its results as easy to follow as possible.
+
+
+## Written report {#sec-report}
+
+You will again produce a miniature research paper reporting your project. Note that each team member will produce their own individual report; even though the project has been collaborative, your write up will be your own.
+
+### Format
+
+Your report should consist of the following sections:
+
+- Introduction (two or three paragraphs, including the general research question; summary of relevant research; and hypothesis)
+- Method (a description of your variables, the number of valid responses, and any other information about the procedures that generated the data that you think necessary to report)
+- Results (a technical report of any descriptive statistics, figures, and statistics you produced)
+- Discussion (a paragraph or two interpreting your results and drawing conclusions)
+
+### Deadline
+
+The report is due by the next class (see late policy from [Syllabus @sec-late-policy]).
+
+## Grading
+
+As before you will receive a scores out of 100 for your presentation and report. See @sec-rubric for general qualitative criteria which will be assessed in the context of the expectations detailed above.

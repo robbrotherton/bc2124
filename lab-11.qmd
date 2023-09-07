@@ -48,3 +48,19 @@ my_data |>
 my_data |> 
   mutate(age_group = case_when(age < 30 ~ "Young", age >= 30 ~ "Old"))
 ```
+
+
+
+<!-- ### Regression with interaction -->
+
+<!-- When specifying a regression model which includes the interaction between two predictors, the only difference is that you separate the names of the predictor variables with a `*` rather than `+`. -->
+
+<!-- ```{r} -->
+<!-- model <- lm(feeling_thermometer ~ conscientiousness_mean * agreeableness_mean, data = my_data_complete) -->
+
+<!-- summary(model) -->
+<!-- ``` -->
+
+<!-- If the interaction term is significant, it's also important to conduct a post hoc analysis to probe the interaction. This often involves plotting the interaction or calculating the effect of one variable at different levels of the other variable, to get a clearer understanding of how the predictors interact to affect the outcome. -->
+
+<!-- Keep in mind that interpreting interaction terms can be complex. It is crucial to consider the nature of your variables, the context of your research, and the practical significance of the interactions, not just the statistical significance. -->
