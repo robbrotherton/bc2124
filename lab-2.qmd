@@ -57,18 +57,24 @@ Cooper, C. A., Golden, L., & Socha, A. (2013). [The big five personality factors
 
 ### Step 3. Articulate your hypothesis
 
-Having determined your variables and read some relevant research to inform your theoretical perspective about how the variables are (or aren't) associated, you should be able to articulate your *hypothesis*. This is a formal statement of your expectation about how the variables are associated, and it will be tested quantitatively by calculating a correlation statistic.
+By this point you should be able to state your:
 
-The main issue that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association strong enough that it doesn't just seem to be attributable to chance variation in the data (even random data will produce spurious correlations by chance some of the time; see [spuriouscorrelations.com](https://spuriouscorrelations.com#stat897f4cbec4629379cd566c68c3f40c5f)).
+- __Operational definitions__ (that is, the specific questions that participants were asked and how they could answer, per the codebook)
+- The __constructs__ that those operational definitions measure (i.e. does the question measure perceived threat *in general*? Or some more specific form of perceived threat?)
+- Your __hypothesis__
 
-If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong of a correlation you expect it to be (i.e. weak, moderate, strong; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
+Your hypothesis is a formal statement of your expectation about how your constructs are (or aren't) associated, and it will be tested quantitatively by calculating a correlation statistic.
+
+The main question that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association consistent enough that it doesn't just seem to be attributable to chance variation in the data?^[Even random data will produce spurious correlations by chance some of the time; see [spuriouscorrelations.com](https://spuriouscorrelations.com#stat897f4cbec4629379cd566c68c3f40c5f)]
+
+If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong you expect it to be (i.e. weak, moderate, strong; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
 
 
-## To do for next time
+<!-- ## To do for next time -->
 
-Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)).
+<!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
 
-The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.
+<!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
 
 
 

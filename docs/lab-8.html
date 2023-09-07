@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Personality Psychology Lab Handbook - Lab 8: Visualization &amp; interpretation</title>
+<title>Personality Psychology Lab Handbook - Lab 8: Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab-6.html">Project 2: Regression</a></li><li class="breadcrumb-item"><a href="./lab-8.html">Lab 8: Visualization &amp; interpretation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab-6.html">Project 2: Regression</a></li><li class="breadcrumb-item"><a href="./lab-8.html">Lab 8: Analysis</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab-8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 8: Visualization &amp; interpretation</span></a>
+ <span class="menu-text">Lab 8: Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -290,7 +290,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#computing-regression-in-r" id="toc-computing-regression-in-r" class="nav-link" data-scroll-target="#computing-regression-in-r">Computing regression in R</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results">Interpreting the results</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 8: Visualization &amp; interpretation</h1>
+<h1 class="title">Lab 8: Analysis</h1>
 </div>
 
 
@@ -318,18 +323,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <!-- - Check the assumptions of multiple regression have been met -->
 <ul>
+<li>Visualize relationships between predictors and outcome</li>
 <li>Compute your regression model</li>
 <li>Interpret the findings</li>
 </ul>
 <!-- ## Checking model assumptions -->
 </section>
-<section id="regression-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="regression-analysis">Regression analysis</h2>
-<p>Now we’ll perform a multiple regression analysis. This allows us to examine the relationship between the single outcome variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).</p>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>Previously, we visualized a bivariate correlation using a scatterplot. One way of visualizing a regression when the predictors are all measured on the same scale (as they are in this project) is to essentially produce several scatterplots overlaid on top of one another. The outcome variable will always be on the Y axis, and the values of the predictors on the X axis. Color (or some other aesthetic) is used to differentiate the different predictors.</p>
+<p>This can be achieved by reshaping the data into long-format as we have done before. Here, however, as a parameter in <code>pivot_longer()</code> I specify <code>-feeling_thermometer</code>, meaning I want every column <em>except</em> the feeling thermometer to be pivoted longer. That keeps <code>feeling_thermometer</code> as a unique column of its own, duplicating its value across rows for each of the three predictor variables. The reshaped data can then be piped into <code>ggplot()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(feeling_thermometer <span class="sc">~</span> extraversion_mean <span class="sc">+</span> conscientiousness_mean <span class="sc">+</span> agreeableness_mean, <span class="at">data =</span> my_data_complete)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(feeling_thermometer, <span class="fu">contains</span>(<span class="st">"mean"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>feeling_thermometer) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> feeling_thermometer, <span class="at">color =</span> name)) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>), <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Don't know how to automatically pick scale for object of type &lt;haven_labelled&gt;.
+Defaulting to continuous.
+`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab-8_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This kind of visualization doesn’t map on to the regression model perfectly; it essentially shows three bivariate correlations, while the regression model, in quantifying the relationship between each predictor and the outcome, also controls for the relationship between the predictor and the other predictors in the model. And with more than 3 or so predictors it can get visually messy and hard to easily interpret.</p>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="computing-regression-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="computing-regression-in-r">Computing regression in R</h3>
+<p>Now we’ll compute the regression model. The model quantifies the relationship between the single outcome variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).</p>
+<p>The <code>lm()</code> function compute a linear model. The first argument is a formula with the generic form <code>outcome ~ predictor_1 + predictor_2 + predictor_3 ...</code>. The second argument is <code>data</code>; the formula specifies the names of columns in a data.frame where the relevant values can be found, therefore the <code>data =</code> argument is necessary to point R to the data.frame containing those columns.</p>
+<p>By itself, the <code>lm()</code> function doesn’t output all the information we need to report about the regression model. That’s why I pipe the output of <code>lm()</code> into the <code>summary()</code> function, which outputs all the necessary information to the console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(feeling_thermometer <span class="sc">~</span> extraversion_mean <span class="sc">+</span> conscientiousness_mean <span class="sc">+</span> agreeableness_mean, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> my_data_complete) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -354,11 +387,17 @@ Multiple R-squared:  0.00422,   Adjusted R-squared:  0.003373
 F-statistic: 4.981 on 3 and 3526 DF,  p-value: 0.001893</code></pre>
 </div>
 </div>
+<!-- ### Checking model assumptions -->
+<!-- The assumptions of linearity, independence, homoscedasticity, multicollinearity, and normality were assessed and met. -->
+</section>
+<section id="interpreting-the-results" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-results">Interpreting the results</h3>
 <p>Under “Coefficients” you’ll see an “Estimate” of the relationship between that predictor and the outcome variable, controlling for the other predictors. You’ll also see a <span class="math inline">\(t\)</span>-value and a <span class="math inline">\(p\)</span>-value for each predictor, which tell you whether each predictor is significantly related to the outcome variable, controlling for the other predictors. The Estimate indicates how much the outcome variable changes on average with a one-unit increase in the predictor, holding all other predictors constant. So in this example, a one-point increase in conscientiousness predicts a <span class="math inline">\(~1.6\)</span> unit decrease on the feeling thermometer. A one-point increase in agreeableness predicts a <span class="math inline">\(~1.2\)</span> unit increase on the feeling thermometer. Both of these predictors are significantly associated with the feeling thermometer variable. Extraversion, however, is not a significant predictor; knowledge of somebody’s extraversion score cannot reliably predict their feeling thermometer response.</p>
 <p>The last part of the output gives the overall model fit. “Multiple R-squared” is the proportion of variance in the outcome variable that can be explained by the predictor variables, and Adjusted R-squared is a version of R-squared adjusted for the number of predictors.</p>
 <p>Finally, the <span class="math inline">\(F\)</span>-statistic and its corresponding <span class="math inline">\(p\)</span>-value assess the overall statistical significance of the model. If the <span class="math inline">\(p\)</span>-value is less than your desired significance level you can reject the null hypothesis that all the regression coefficients are zero.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
