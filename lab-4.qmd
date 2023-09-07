@@ -181,13 +181,14 @@ I chose a binwidth of 1, which isn't necessarily the most appropriate value for 
 
 The correlation statistic can be computed with a single line of code, as you'll see. But it's important to understand the math happening behind the scenes.
 
+If you need to refresh your memory from a past statistics class, refer to [the correlation statistic Appendix](appendix-correlation.qmd).
+
 
 
 ### Correlation in R
 
+The correlation between two variables can be found using the `cor()` function.
 
-
-The data is ready to be analyzed. The correlation between two variables can be found using the `cor()` function.
 ```{r}
 
 cor(x = my_data_complete$extraversion_mean, 
@@ -232,4 +233,6 @@ my_data_complete |>
 
 ```
 
-You can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant $p$-value, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.
+Most of that will look familiar from the previous plots we made. The only major difference is that instead of making a histogram I'm making a scatterplot, for which the "geometry" is points rather than histogram bars. Therefore I use `geom_point()` rather than `geom_histogram()` for the geometry layer. One new element is the `position = position_jitter()` part inside `geom_point()`. Its purpose is to add some random noise to each individual data point, moving it to the left or right a little bit along the x-axis. This is helpful here since there are many data points but only 5 possible answers along each axis. Try making the graph without including the jitter; it'll just look like a grid of points. Any pattern in the data will likely be hard to see. It may seem counterintuitive to change the data by adding randomness, but for the purposes of the visualization, doing so actually makes any patterns easier to detect.
+
+Looking at the scatterplot, you can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant $p$-value, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.

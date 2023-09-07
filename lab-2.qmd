@@ -14,7 +14,7 @@ In this session we will begin the first project of the course: performing a corr
 
 A *correlation* refers an association between two things. It is a statement of a statistical relationship--a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else--for example, [neuroticism is correlated with lower wellbeing](https://psycnet.apa.org/fulltext/2020-03328-001.html) or [openness is correlated with greater cognitive ability](https://www.pnas.org/doi/10.1073/pnas.2212794120)--is to say that those things *tend* to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.
 
-Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn.
+Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.
 
 With this project, you will examine a correlation between a personality trait and another construct of your choosing by analyzing existing data.
 
@@ -40,7 +40,7 @@ Your __outcome__ variable will be one of the feeling thermometer questions for t
 - Republican presidential candidate (V162079)
 
 
-To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). The codebook details the survey methodology exhaustively, including listing every question that was asked. It's not fun reading, but it is your guide to understanding what was measured and how it was measured.
+To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf).
 
 
 ### Step 2. Read relevant research

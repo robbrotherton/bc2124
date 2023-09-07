@@ -36,7 +36,7 @@ install.packages("tidyverse")
 
 ```
 
-If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time to start a new R session.
+If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time you start a new R session.
 
 ```{r}
 #| warning: false
