@@ -10,6 +10,8 @@ You will use posit.cloud to write R code and work with data in RStudio. To use i
 
 Once you have a posit.cloud account, [click this link](https://posit.cloud/content/6251706).
 
+Once the project is up and running, click on `anes.R` in the bottom-right pane to open some analysis code.
+
 
 ### Wait, what are you talking about?
 
