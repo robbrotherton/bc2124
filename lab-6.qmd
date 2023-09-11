@@ -29,7 +29,7 @@ Your __predictor__ variables will be at least two of the Big Five traits:
 - Extraversion (V162333 & V162338)
 - Agreeableness (V162334 & V162339)
 - Conscientiousness (V162335 & V162340)
-- Neuroticism (V162336 & V162341)
+- Emotional stability^[This is generally referred to as *Neuroticism*, but the TIPI quantifies the trait such that higher scores indicate the inverse of neuroticism, i.e. emotional stability.] (V162336 & V162341)
 - Openness (V162337 & V162342)
 
 
