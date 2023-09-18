@@ -34,10 +34,11 @@ Your __predictor__ variable will be one of the Big Five traits:
 - Openness (V162337 & V162342)
 
 
-Your __outcome__ variable will be one of the feeling thermometer questions for the two main presidential candidates:
+Your __outcome__ variable will be one of the following "feeling thermometer" questions, referring to the two main presidential candidates, political parties, or liberals/conservatives in general:
 
-- Democratic presidential candidate (V162078)
-- Republican presidential candidate (V162079)
+- Democratic presidential candidate (V162078) OR Republican presidential candidate (V162079)
+- Democratic party (V161095) OR Republican party (V161096)
+- Liberals (V162097) OR Conservatives (V162101)
 
 
 To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf).
