@@ -26,4 +26,28 @@ Here, $SS_X$ and $SS_Y$ are the Sums of Squares for each variable. Multiplying t
 
 The correlation coefficient is a measure of effect size. It's absolute value can range from 0 to 1.
 
-As a rule of thumb, in psychology, correlations of less than around $\pm 0.30$ are considered weak, around $\pm 0.30$ to $\pm 0.70$ are considered moderate, and greater than around $\pm 0.70$ are considered large.
+You may see some "rules of thumb" about interpreting the "effect size" of correlations in psychology. Cohen (1977) proposed that correlations of less than around $\pm 0.30$ should be considered weak; around $\pm 0.30$ to $\pm 0.70$ considered moderate; and greater than around $\pm 0.70$ considered large.
+
+However, more recent researchers have proposed more nuanced and empirically-grounded interpretations. [Funder and Ozer (2019)](https://doi.org/10.1177/2515245919847202) proposed the following:
+
+```{r}
+#| echo: false
+
+
+funder <- tibble::tribble(
+  ~"<i>r</i>", ~"Description",
+  "0.05", "Very small for the explanation of single events but potentially consequential in longer run",
+  "0.10", "Still small at the level of single events but potentially more ultimately consequential",
+  "0.20", "Medium effect of some explanatory and practical use even in the short run",
+  "0.30", "Large effect that is potentially powerful in both the short and the long run",
+  "0.40", "A very large effect in the context of psychological research; likely to be a gross overestimate"
+)
+
+# - .05: Very small for the explanation of single events but potentially consequential in longer run
+# - .10: Still small at the level of single events but potentially more ultimately consequential
+# - .20: Medium effect of some explanatory and practical use even in the short run
+# - .30: Large effect that is potentially powerful in both the short and the long run
+# - .40: A very large effect in the context of psychological research; likely to be a gross overestimate
+
+knitr::kable(funder)
+```

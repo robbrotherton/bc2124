@@ -207,7 +207,7 @@
     "href": "appendix-correlation.html#sec-cor-effect-size",
     "title": "Appendix B — Correlation",
     "section": "Effect size for correlation",
-    "text": "Effect size for correlation\nThe correlation coefficient is a measure of effect size. It’s absolute value can range from 0 to 1.\nAs a rule of thumb, in psychology, correlations of less than around \\(\\pm 0.30\\) are considered weak, around \\(\\pm 0.30\\) to \\(\\pm 0.70\\) are considered moderate, and greater than around \\(\\pm 0.70\\) are considered large."
+    "text": "Effect size for correlation\nThe correlation coefficient is a measure of effect size. It’s absolute value can range from 0 to 1.\nYou may see some “rules of thumb” about interpreting the “effect size” of correlations in psychology. Cohen (1977) proposed that correlations of less than around \\(\\pm 0.30\\) should be considered weak; around \\(\\pm 0.30\\) to \\(\\pm 0.70\\) considered moderate; and greater than around \\(\\pm 0.70\\) considered large.\nHowever, more recent researchers have proposed more nuanced and empirically-grounded interpretations. Funder and Ozer (2019) proposed the following:\n\n\n\n\n\n\n\n\n\nr\nDescription\n\n\n\n\n0.05\nVery small for the explanation of single events but potentially consequential in longer run\n\n\n0.10\nStill small at the level of single events but potentially more ultimately consequential\n\n\n0.20\nMedium effect of some explanatory and practical use even in the short run\n\n\n0.30\nLarge effect that is potentially powerful in both the short and the long run\n\n\n0.40\nA very large effect in the context of psychological research; likely to be a gross overestimate"
   },
   {
     "objectID": "appendix-regression.html#calculating-multiple-regression",
