@@ -33,7 +33,7 @@ Your __predictor__ variables will be at least two of the Big Five traits:
 - Openness (V162337 & V162342)
 
 
-Your __outcome__ variable will be any one of the feeling thermometer questions. Here are all the subjects of feeling thermometer variables you can choose from:
+Your __outcome__ variable will be any one of the [feeling thermometer](https://electionstudies.org/wp-content/uploads/2018/03/2007ANES_Gallup_QuestionComparisons.pdf) questions. Here are all the subjects of feeling thermometer variables you can choose from:
 
 ```{r}
 #| echo: false
