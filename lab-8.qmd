@@ -55,21 +55,21 @@ my_data_complete |>
   select(feeling_thermometer, contains("mean")) |> 
   pivot_longer(-feeling_thermometer) |> 
   ggplot(aes(x = value, y = feeling_thermometer, color = name)) +
-  geom_point(position = position_jitter(width = 0.4), alpha = 0.3) +
-  geom_smooth() + 
+  geom_point(position = position_jitter(width = 0.4), alpha = 0.3, seed = 1) +
+  geom_smooth(method = "lm") + 
   theme_apa
 ```
 
-This kind of visualization doesn't map on to the regression model perfectly; it essentially shows three bivariate correlations, while the regression model, in quantifying the relationship between each predictor and the outcome, also controls for the relationship between the predictor and the other predictors in the model. And with more than 3 or so predictors it can get visually messy and hard to easily interpret.
+This kind of visualization doesn't map on to the regression model perfectly; it essentially shows three bivariate correlations, while the regression model, in quantifying the relationship between each predictor and the outcome, also controls for the relationship between the predictor and the other predictors in the model. And with more than 3 or so predictors it can get visually messy and hard to easily interpret. For this project's design, however, it seems an appropriate choice.
 
 
 ## Analysis
 
 ### Computing regression in R
 
-Now we'll compute the regression model. The model quantifies the relationship between the single outcome variable (in this case, feeling_thermometer) and several independent variables (extraversion_mean, conscientiousness_mean, and agreeableness_mean).
+Now we'll compute the regression model. The model quantifies the relationship between the single outcome variable (in this case, `feeling_thermometer`) and several independent variables (`extraversion_mean`, `conscientiousness_mean`, and `agreeableness_mean`).
 
-The `lm()` function compute a linear model. The first argument is a formula with the generic form `outcome ~ predictor_1 + predictor_2 + predictor_3 ...`. The second argument is `data`; the formula specifies the names of columns in a data.frame where the relevant values can be found, therefore the `data = ` argument is necessary to point R to the data.frame containing those columns.
+The `lm()` function compute a linear model. The first argument is a formula with the generic form `outcome ~ predictor_1 + predictor_2 + predictor_3 ...`, where those generic names will be replaced with the relevant column names from your data.frame. The second argument is `data`; the formula specifies the names of columns in a data.frame where the relevant values can be found, therefore the `data = ` argument is necessary to point R to the data.frame containing those columns.
 
 By itself, the `lm()` function doesn't output all the information we need to report about the regression model. That's why I pipe the output of `lm()` into the `summary()` function, which outputs all the necessary information to the console.
 
