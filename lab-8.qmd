@@ -55,7 +55,7 @@ my_data_complete |>
   select(feeling_thermometer, contains("mean")) |> 
   pivot_longer(-feeling_thermometer) |> 
   ggplot(aes(x = value, y = feeling_thermometer, color = name)) +
-  geom_point(position = position_jitter(width = 0.4), alpha = 0.3, seed = 1) +
+  geom_point(position = position_jitter(width = 0.4, seed = 1), alpha = 0.3) +
   geom_smooth(method = "lm") + 
   theme_apa
 ```

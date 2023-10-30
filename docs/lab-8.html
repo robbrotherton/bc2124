@@ -338,13 +338,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(feeling_thermometer, <span class="fu">contains</span>(<span class="st">"mean"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>feeling_thermometer) <span class="sc">|&gt;</span> </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> feeling_thermometer, <span class="at">color =</span> name)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>), <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">seed =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">seed =</span> <span class="dv">1</span>), <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_point(position = position_jitter(width = 0.4), alpha = 0.3, :
-Ignoring unknown parameters: `seed`</code></pre>
-</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;haven_labelled&gt;.
 Defaulting to continuous.
@@ -364,9 +360,9 @@ Defaulting to continuous.
 <p>The <code>lm()</code> function compute a linear model. The first argument is a formula with the generic form <code>outcome ~ predictor_1 + predictor_2 + predictor_3 ...</code>, where those generic names will be replaced with the relevant column names from your data.frame. The second argument is <code>data</code>; the formula specifies the names of columns in a data.frame where the relevant values can be found, therefore the <code>data =</code> argument is necessary to point R to the data.frame containing those columns.</p>
 <p>By itself, the <code>lm()</code> function doesn’t output all the information we need to report about the regression model. That’s why I pipe the output of <code>lm()</code> into the <code>summary()</code> function, which outputs all the necessary information to the console.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(feeling_thermometer <span class="sc">~</span> extraversion_mean <span class="sc">+</span> conscientiousness_mean <span class="sc">+</span> agreeableness_mean, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> my_data_complete) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(feeling_thermometer <span class="sc">~</span> extraversion_mean <span class="sc">+</span> conscientiousness_mean <span class="sc">+</span> agreeableness_mean, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> my_data_complete) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
