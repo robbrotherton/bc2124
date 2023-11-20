@@ -18,9 +18,11 @@ For this project you will use multiple regression to look at the relationships a
 
 ### Step 1. Decide on your constructs/operational definitions
 
-The full ANES dataset contains more than 1,000 columns, each representing a different variable that was measured. Not all of these are equally relevant to personality, but you will find many questions that pertain to fundamental psychological concepts. The aim is to come up with a research question and design that allows you to meaningfully examine some aspect of personality psychology. 
+The full ANES 2016 dataset contains more than 1,000 columns, each representing a different variable that was measured. Not all of these are equally relevant to personality, but you will find many questions that pertain to fundamental psychological concepts. The aim is to come up with a research question and design that allows you to meaningfully examine some aspect of personality psychology. 
 
-Here are some suggestions for constructs you might consider analyzing, for which there are relevant questions in the 2016 ANES dataset:
+You can find all the variables listed in the [codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf). Since there isn't much of a roadmap, you might also look at the [2020 Methodology Report document](https://electionstudies.org/wp-content/uploads/2022/08/anes_timeseries_2020_methodology_report.pdf#page=16), which gives more of an overview of question categories. (There's no reason you can't use the 2020 data if you wish, as long as you don't intend to use the TIPI scale since it wasn't included in the 2020 survey.)
+
+Here are some suggestions for constructs you might consider analyzing, for which there are relevant questions in the ANES dataset:
 
 - Big 5 personality traits (no reason you can't stick with one or more of these as part of your analysis)
 - Feeling thermometers (affect towards various political actors/groups)
