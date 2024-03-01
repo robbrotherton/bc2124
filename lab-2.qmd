@@ -2,6 +2,8 @@
 
 In this session we will begin the first project of the course: performing a correlational analysis using the ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
 
+<!-- this will become a project involving using the GSS data to examine look for Big 5 differences between selected zodiac signs
+-->
 
 ### Goals
 
