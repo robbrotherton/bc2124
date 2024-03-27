@@ -1,13 +1,13 @@
 # Lab 2: Project Planning {.unnumbered}
 
-In this session we will begin the first project of the course: performing a correlational analysis using the ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
+In this session we will begin the first project of the course: investigating personality differences between people with different astrological starsigns. By the end of the session you will have a plan for your project
 
 <!-- this will become a project involving using the GSS data to examine look for Big 5 differences between selected zodiac signs
 -->
 
 ### Goals
 
--   Identify the variables for your correlation analysis
+-   Identify the variables for your analysis
 -   Read some relevant research
 -   Articulate your hypothesis
 
@@ -53,9 +53,16 @@ Real research doesn't happen in a vacuum; research plans and expectations should
 A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
 ::: {.references}
-Gerber, A. S., Huber, G. A., Doherty, D., & Dowling, C. M. (2011). [The big five personality traits in the political arena.](https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-051010-111659) *Annual Review of Political Science, 14,* 265-287.
 
-Cooper, C. A., Golden, L., & Socha, A. (2013). [The big five personality factors and mass politics.](https://onlinelibrary-wiley-com.ezproxy.cul.columbia.edu/doi/full/10.1111/j.1559-1816.2012.00982.x) *Journal of Applied Social Psychology, 43(1)*, 68-82.
+Mayo, J., White, O., & EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2
+
+Smithers, A. G., & Cooper, H. J. (1978). Personality and season of birth. The journal of social psychology, 105(2), 237-241.
+
+Clarke, D., Gabriels, T., & Barnes, J. (1996). [Astrological signs as determinants of extroversion and emotionality: An empirical study.](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226) *The Journal of Psychology, 130(2),* 131--140. https://doi.org/10.1080/00223980.1996.9914995
+
+Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). An empirical study of personality and astrological factors. Journal of Psychology, 110(2), 275.
+
+McGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.
 :::
 
 ### Step 3. Articulate your hypothesis
