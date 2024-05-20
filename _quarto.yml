@@ -21,7 +21,7 @@ book:
     | Department of Psychology
     | PSYC BC2124
   date: "1/31/2023"
-  date-format: "[Fall 2023]"
+  date-format: "[Fall 2024]"
   output-file: Personality-Psychology-Lab-Handbook
 
   chapters:
