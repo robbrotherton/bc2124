@@ -27,23 +27,19 @@ The dataset we will use is from the [American National Election Studies (ANES)](
 
 For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For this kind of correlation analysis you will have two variables. You can think of one as the "predictor" and the other as the "outcome"; you want to see if the predictor has any association with the outcome.
 
-Your __predictor__ variable will be one of the Big Five traits:
+Your __dependent__ variable will be one of the Big Five traits:
 
-- Extraversion (V162333 & V162338)
-- Agreeableness (V162334 & V162339)
-- Conscientiousness (V162335 & V162340)
-- Neuroticism (V162336 & V162341)
-- Openness (V162337 & V162342)
-
-
-Your __outcome__ variable will be one of the following "feeling thermometer" questions, referring to the two main presidential candidates, political parties, or liberals/conservatives in general:
-
-- Democratic presidential candidate (V162078) OR Republican presidential candidate (V162079)
-- Democratic party (V161095) OR Republican party (V161096)
-- Liberals (V162097) OR Conservatives (V162101)
+- Extraversion (`big5a1` & `big5a2`)
+- Agreeableness (`big5b1` & `big5b2`)
+- Conscientiousness (`big5c1` & `big5c2`)
+- Neuroticism (`big5d1` & `big5d2`)
+- Openness (`big5e1` & `big5e2`)
 
 
-To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf).
+Your __quasi-independent__ variable will be Zodiac star-sign. Specifically, you will select two groups to compare (e.g. Leo versus Virgo).
+
+
+To see exactly how these constructs were measured you will look up the variable IDs (the `big5xx` codes in parentheses above) in the [Codebook](https://gss.norc.org/documents/codebook/gss_codebook.pdf).
 
 
 ### Step 2. Read relevant research
