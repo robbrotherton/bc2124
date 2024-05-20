@@ -26,19 +26,19 @@ book:
 
   chapters:
     - index.qmd
-    - part: "Project 1: Correlation"
+    - part: "Project 1: $t$-test"
       chapters:
         - lab-2.qmd
         - lab-3.qmd
         - lab-4.qmd
         - lab-5.qmd
-    - part: "Project 2: Regression"
+    - part: "Project 2: Correlation"
       chapters:
         - lab-6.qmd
         - lab-7.qmd
         - lab-8.qmd
         - lab-9.qmd
-    - part: "Project 3: Regression 2"
+    - part: "Project 3: Regression"
       chapters:
         - lab-10.qmd
         - lab-11.qmd
