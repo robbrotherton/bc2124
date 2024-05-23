@@ -199,19 +199,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_2_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Data preparation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_3_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_4_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lab 5: Presentation &amp; report</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation &amp; report</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +269,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-t-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span>-tests: Comparing Group Means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span>-test</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -333,6 +333,11 @@ window.Quarto = {
 </header>
 
 
+<style>
+  #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
+    content: unset;
+  }
+</style>
 <p>In multiple regression, you have a dependent variable (the outcome you want to predict) and two or more independent variables (predictors) that you believe might influence the outcome. The goal is to create a model that best represents the relationship between the predictors and the outcome.</p>
 <p>When you want to predict a single outcome variable based on multiple predictor variables, you use multiple regression. This extends the idea of correlation where two variables are related to looking at how a combination of predictors relates to an outcome. For example, we might want to predict a person’s job satisfaction based on their salary, commute time, and relationship with their supervisor. Each of these predictors can contribute to the prediction, and multiple regression tells us how much each one matters while considering the influence of the others.</p>
 <section id="calculating-multiple-regression" class="level2" data-number="D.1">

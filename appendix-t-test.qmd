@@ -1,4 +1,10 @@
-# $t$-tests: Comparing Group Means
+<style>
+  #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
+    content: unset;
+  }
+</style>
+
+# $t$-test
 
 When you want to compare the means of two groups to see if they differ significantly, you can use a $t$-test. It's a statistical test that helps determine if the difference in sample means (averages) is likely due to random chance or if it's unlikely enough to infer a true difference in the population means.
 
@@ -6,15 +12,15 @@ When you want to compare the means of two groups to see if they differ significa
 
 There are three main types of $t$-tests:
 
-1.  **one-sample t-test**: compares the mean of a single group to a known value or population mean.
+1.  **Single-sample $t$-test**: compares the mean of a single group to a known value or population mean.
 
-2.  **independent samples t-test**: compares the means of two independent groups.
+2.  **Independent samples $t$-test**: compares the means of two independent groups.
 
-3.  **paired samples t-test**: compares means from the same group at different times (e.g., before and after a treatment).
+3.  **Paired samples $t$-test**: compares means from the same group at different times (e.g., before and after a treatment).
 
 ## Calculating the t-statistic
 
-for an independent samples t-test, the formula for the t-statistic is:
+For an independent samples $t$-test, the formula for the $t$-statistic is:
 
 $$
 t = \frac{(M_1 - M_2)}{\sqrt{\frac{S^2_1}{n_1} + \frac{S^2_2}{n_2}}}
@@ -22,17 +28,35 @@ $$
 
 Where:
 
-\- $M_1$ and $M_2$ are the means of the two groups.
+- $M_1$ and $M_2$ are the means of the two groups.
 
-\- $S^2_1$ and $S^2_2$ are the variances of the two groups.
+- $S^2_1$ and $S^2_2$ are the variances of the two groups.
 
-\- $n_1$ and $n_2$ are the sample sizes of the two groups.
+- $n_1$ and $n_2$ are the sample sizes of the two groups.
 
-this formula essentially measures the difference between the group means relative to the variability of the scores within each group.
+This formula essentially measures the difference between the group means relative to the variability of the scores within each group.
 
 ## Interpreting the $t$-statistic
 
 After calculating the $t$-statistic, you compare it to a critical value from the $t$-distribution table, which depends on your chosen significance level (typically $0.05$) and the degrees of freedom. If your calculated $t$-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).
+
+## Confidence Intervals
+
+For each point estimate--that is, each group mean--a confidence interval (CI) can be calculated. The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really $\mu = 3.25$, then 95% of 95% CIs would include $M = 3.25$ within their range.
+
+Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.
+
+
+$$
+M \pm t_{critical} \times \sqrt{\frac{s^2}{n} }
+$$
+
+Where:
+
+- $M$ is the sample mean.
+- $t_{critical}$ is the critical value from the $t$-distribution for your chosen significance level.
+- $s^2$ is the sample's standard deviation squared (i.e. variance).
+- $n$ is the sample size.
 
 ## Effect size for $t$-tests
 

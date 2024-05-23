@@ -9,6 +9,11 @@
   content: ":";
 }
 
+
+#quarto-sidebar-section-4 > li > div > a > span > span.chapter-number::before {
+  content: unset;
+}
+
 .references p {
   text-indent: -2em;
   padding-left: 2em;

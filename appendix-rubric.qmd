@@ -1,3 +1,9 @@
+<style>
+  #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
+    content: unset;
+  }
+</style>
+
 # Grading rubric {#sec-rubric}
 
 For each presentation and project report you will receive a score out of 100 according to the rubric below.

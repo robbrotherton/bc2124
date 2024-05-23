@@ -1,7 +1,6 @@
 # Project Planning
 
-In this session we will begin the first project of the course: investigating personality differences between people with different astrological starsigns. By the end of the session you will have a plan for your project
-
+In this session we will begin the first project of the course: investigating personality differences between people with different astrological star signs. By the end of the session you will have a plan for your project.
 
 ### Goals
 
@@ -9,45 +8,59 @@ In this session we will begin the first project of the course: investigating per
 -   Read some relevant research
 -   Articulate your hypothesis
 
-
 ## Project overview
 
-A *correlation* refers an association between two things. It is a statement of a statistical relationship--a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else--for example, [neuroticism is correlated with lower wellbeing](https://psycnet.apa.org/fulltext/2020-03328-001.html) or [openness is correlated with greater cognitive ability](https://www.pnas.org/doi/10.1073/pnas.2212794120)--is to say that those things *tend* to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.
+One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particularly trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.
 
-Of course, these kind of correlations aren't just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.
+### Comparing groups: the $t$-test
 
-With this project, you will examine a correlation between a personality trait and another construct of your choosing by analyzing existing data.
+The way we compare groups like this is to statistically test the "null hypothesis" ($H_0$) using a $t$-test. $H_0$ states that there is *no difference* between the group averages at all. The $t$-test quantifies exactly how much our sample averages do differ and put it in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn't a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently improbably to have occurred if there really is no difference; we reject $H_0$ and tentatively accept the "alternative hypothesis", ($H_1$) which states that there *is* a difference between the groups.
 
+Note that this is a statistical statement about a general tendency, not a rigid law. If we reject the null hypothesis, we're saying that there seems to be a difference in the groups averages, not that everyone in one group scores higher than everyone in the other group.
 
-### Step 1. Examine the data
+Note also that this kind of analysis, and all the empirical findings you learn about in the personality psychology lecture (and beyond) are the product of research and statistical procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.
 
-The dataset we will use is from the [American National Election Studies (ANES)](https://electionstudies.org/), academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (rather than more recent data) is that the 2016 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the "Big Five" personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. 
+## Step 1. Examine the data
 
-For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For this kind of correlation analysis you will have two variables. You can think of one as the "predictor" and the other as the "outcome"; you want to see if the predictor has any association with the outcome.
+The dataset we will use is from the [General Social Survey (GSS)](https://gss.norc.org/). Here's a description from the GSS website:
 
-Your __dependent__ variable will be one of the Big Five traits:
+::: callout-note
+## GSS description
 
-- Extraversion (`big5a1` & `big5a2`)
-- Agreeableness (`big5b1` & `big5b2`)
-- Conscientiousness (`big5c1` & `big5c2`)
-- Neuroticism (`big5d1` & `big5d2`)
-- Openness (`big5e1` & `big5e2`)
+The General Social Survey (GSS) is a nationally representative survey of adults in the United States conducted since 1972. The GSS collects data on contemporary American society in order to monitor and explain trends in opinions, attitudes and behaviors. The GSS has adapted questions from earlier surveys, thereby allowing researchers to conduct comparisons for up to 80 years.
 
+The GSS contains a standard core of demographic, behavioral, and attitudinal questions, plus topics of special interest. Among the topics covered are civil liberties, crime and violence, intergroup tolerance, morality, national spending priorities, psychological well-being, social mobility, and stress and traumatic events.
 
-Your __quasi-independent__ variable will be Zodiac star-sign. Specifically, you will select two groups to compare (e.g. Leo versus Virgo).
+Altogether, the GSS is the single best source for sociological and attitudinal trend data covering the United States. It allows researchers to examine the structure and functioning of society in general, as well as the role played by relevant subgroups and to compare the United States to other nations.
 
+The GSS aims to make high-quality data easily accessible to scholars, students, policy-makers, and others, with minimal cost and waiting.
 
-To see exactly how these constructs were measured you will look up the variable IDs (the `big5xx` codes in parentheses above) in the [Codebook](https://gss.norc.org/documents/codebook/gss_codebook.pdf).
+From <https://gss.norc.org/About-The-GSS>
+:::
 
+Specifically, for this project we will use data collected in 2006. The reason for using this (rather than more recent data) is that the 2006 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: [Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). This scale is a short measure of the "Big Five" personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.
 
-### Step 2. Read relevant research
+For this project, you will pick one of these traits and see whether it differs between people of different star signs. For this kind of analysis you will have two variables.
 
-Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found about these (or related) personality traits.
+Your **dependent** variable will be one of the Big Five traits:
+
+-   Extraversion (`big5a1` & `big5a2`)
+-   Agreeableness (`big5b1` & `big5b2`)
+-   Conscientiousness (`big5c1` & `big5c2`)
+-   Neuroticism (`big5d1` & `big5d2`)
+-   Openness (`big5e1` & `big5e2`)
+
+Your **quasi-independent** variable will be Zodiac star sign (`zodiac`). Specifically, you will select two groups to compare (e.g. Leo versus Virgo).
+
+To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the `big5xx` and `zodiac` codes in parentheses above) in the [GSS Codebook](https://gss.norc.org/documents/codebook/gss_codebook.pdf).
+
+## Step 2. Read relevant research
+
+Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.
 
 A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
-::: {.references}
-
+::: references
 Mayo, J., White, O., & EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2
 
 Smithers, A. G., & Cooper, H. J. (1978). Personality and season of birth. The journal of social psychology, 105(2), 237-241.
@@ -59,26 +72,20 @@ Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). An empirical study 
 McGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.
 :::
 
-### Step 3. Articulate your hypothesis
+## Step 3. Articulate your hypothesis
 
 By this point you should be able to state your:
 
-- __Operational definitions__ (that is, the specific questions that participants were asked and how they could answer, per the codebook)
-- The __constructs__ that those operational definitions measure (i.e. does the question measure perceived political preferences *in general*? Or some more specific form of affiliation/alignment?)
-- Your __hypothesis__
+-   **Operational definitions** (that is, the specific questions that participants were asked and how they could answer, per the codebook)
+-   The **constructs** that those operational definitions measure (i.e. does the question measure perceived political preferences *in general*? Or some more specific form of affiliation/alignment?)
+-   Your **hypothesis**
 
-Your hypothesis is a formal statement of your expectation about how your constructs are (or aren't) associated, and it will be tested quantitatively by calculating a correlation statistic.
+Your hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn't just seem to be attributable to chance variation in the data?
 
-The main question that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association consistent enough that it doesn't just seem to be attributable to chance variation in the data?^[Even random data will produce spurious correlations by chance some of the time; see [spuriouscorrelations.com](https://spuriouscorrelations.com#stat897f4cbec4629379cd566c68c3f40c5f)]
-
-If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong you expect it to be (i.e. weak, moderate, strong; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
-
+If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
 
 <!-- ## To do for next time -->
 
 <!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
 
 <!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
-
-
-

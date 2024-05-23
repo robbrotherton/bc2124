@@ -1,6 +1,6 @@
 # Data preparation
 
-You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
+You should begin this session with your Big 5 trait (dependent variable) and Zodiac signs (quais-independent variable) in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
 
 ### Goals
 
@@ -14,20 +14,8 @@ You should begin this session with variables from the ANES 2016 dataset in mind 
 
 ### Getting R ready
 
-In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
+To start exploring the data in R, you first need to set up your environment. While "base" R (meaning all the functions built in to the R langauge) can do everything we need, a feature of R that makes it well-suited for data analysis is that you can easily install additional "packages" that make common tasks, like data cleaning and visualization, even easier. In particular, we will use a family of realted packages called the "tidyverse". Usually this would need to be installed like so:
 
-To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package. Usually packages can be installed from within R using the `install.packages()` function. However since the `anesr` package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a special function for installing packages from GitHub.
-
-```{r}
-#| eval: false
-
-install.packages("devtools")
-
-devtools::install_github("jamesmartherus/anesr")
-
-```
-
-We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the `tidyverse` to make coding these common tasks easier. The `tidyverse` can be installed like so:
 
 ```{r}
 #| eval: false
@@ -36,38 +24,27 @@ install.packages("tidyverse")
 
 ```
 
-If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time you start a new R session.
+However the Projects template I set up for you in posit.cloud already has the package installed. You will, however, need to 'activate' the packages using `library()` to make their functions available.
 
 ```{r}
 #| warning: false
 #| message: false
 
-library(anesr)
 library(tidyverse)
 
 ```
 
 ### Getting data into R
 
-Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you could download the ANES 2016 data file as a .csv from the ANES website and read it into R that way. However, the `anesr` package contains the data so you don't need to download it separately. Instead you can make it available by running this line of code:
+Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you can go to the GSS website and download the data in a variety of forms. For our convenience, I have already done that. Your posit.cloud project has a folder called `data` and inside that folder there is a file named `gss_2006.csv`. To start working with that data, we first need to 'read' it into R.
 
 ```{r}
 
-data(timeseries_2016)
+data <- read_csv("data/gss_2006.csv")
 
 ```
 
-When you execute the code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.
-
-Typing the name of the data.frame and running that line of code will show the first few columns and rows.
-
-```{r}
-
-timeseries_2016
-
-```
-
-You can also click on the name in the Environment pane to view the data in a new tab.
+When you execute the code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.In fact, you can also click on the name in the Environment pane to view the data in a new tab, just like looking at a spreadsheet.
 
 ### Select your variables
 
@@ -79,20 +56,19 @@ For this example I'll look at the correlation between extraversion and the Democ
 
 ```{r}
 
-my_data <- timeseries_2016 |> 
-  select(extraversion1 = "V162333", 
-         extraversion2 = "V162338",
-         feeling_thermometer = "V161095")
-
+data <- data |> 
+  select(extraversion1 = big5a1, 
+         extraversion2 = big5a2,
+         zodiac)
 ```
 
 Let's see what this new data.frame looks like:
 
 ```{r}
-my_data
+head(data)
 ```
 
-It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.
+It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that the Zodiac data is coded as numbers; it would be helpful to turn those into labels. Also you might have noticed when looking in the codebook that one of your personality questions is worded positively (so that higher numbers mean a higher score on that personality trait) but the other is worded negatively (so that higher scores mean less of that trait). We need to make those consistent by reverse-coding the negatively-worded one before we can compute an average score.
 
 ### Cleaning the data
 
@@ -103,8 +79,13 @@ The ANES coding scheme uses negative values for the various kinds of missing or 
 To implement this as a `filter()`, we can use the `if_all()` function; i.e., we are going to select some columns and *if all* the values in those columns meet some condition the row will be retained. To select the columns we can use the `everything()` function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, `~ . >= 0`, articulates the condition. The `~` prefix is necessary because instead of naming one specific column to refer to its values we use `.` as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.[^2] 
 
 ```{r}
-my_data_complete <- my_data |> 
-  filter(if_all(everything(), ~ . >= 0))
+data_cleaned <- data |> 
+  filter(zodiac %in% c(5, 12)) |> 
+  mutate(extraversion1 = 6 - extraversion1,
+         extraversion_mean = rowMeans(across(c(extraversion1, extraversion2))),
+         zodiac_name = ifelse(zodiac == 5, "Leo", "Pisces"))
+
+t.test(formula = extraversion_mean ~ zodiac_name, data = data_cleaned, var.equal = TRUE)
 ```
 
 Notice that the number of rows in the data.frame has changed, because rows that didn't meet that condition have been dropped.

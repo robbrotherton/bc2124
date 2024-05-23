@@ -1,4 +1,4 @@
-# Lab 3: Data preparation
+# Data preparation
 
 You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
 

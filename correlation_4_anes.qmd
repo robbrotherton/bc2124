@@ -1,4 +1,4 @@
-# Lab 5: Presentation & report
+# Presentation & report
 
 This week each project team will present their project to the rest of the class. After that, you will be ready to write up your findings. Note that presentations (and all the preceding work) will be a group effort, but written reports must be completed individually.
 

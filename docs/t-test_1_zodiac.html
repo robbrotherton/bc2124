@@ -199,19 +199,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_2_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Data preparation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_3_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation_4_anes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lab 5: Presentation &amp; report</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation &amp; report</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +269,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-t-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span>-tests: Comparing Group Means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span>-test</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -305,10 +305,11 @@ window.Quarto = {
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview"><span class="header-section-number">2.1</span> Project overview</a>
   <ul class="collapse">
-  <li><a href="#step-1.-examine-the-data" id="toc-step-1.-examine-the-data" class="nav-link" data-scroll-target="#step-1.-examine-the-data">Step 1. Examine the data</a></li>
-  <li><a href="#step-2.-read-relevant-research" id="toc-step-2.-read-relevant-research" class="nav-link" data-scroll-target="#step-2.-read-relevant-research">Step 2. Read relevant research</a></li>
-  <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
+  <li><a href="#comparing-groups-the-t-test" id="toc-comparing-groups-the-t-test" class="nav-link" data-scroll-target="#comparing-groups-the-t-test">Comparing groups: the <span class="math inline">\(t\)</span>-test</a></li>
   </ul></li>
+  <li><a href="#step-1.-examine-the-data" id="toc-step-1.-examine-the-data" class="nav-link" data-scroll-target="#step-1.-examine-the-data"><span class="header-section-number">2.2</span> Step 1. Examine the data</a></li>
+  <li><a href="#step-2.-read-relevant-research" id="toc-step-2.-read-relevant-research" class="nav-link" data-scroll-target="#step-2.-read-relevant-research"><span class="header-section-number">2.3</span> Step 2. Read relevant research</a></li>
+  <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis"><span class="header-section-number">2.4</span> Step 3. Articulate your hypothesis</a></li>
   </ul>
 </nav>
     </div>
@@ -334,7 +335,7 @@ window.Quarto = {
 </header>
 
 
-<p>In this session we will begin the first project of the course: investigating personality differences between people with different astrological starsigns. By the end of the session you will have a plan for your project</p>
+<p>In this session we will begin the first project of the course: investigating personality differences between people with different astrological star signs. By the end of the session you will have a plan for your project.</p>
 <section id="goals" class="level3">
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <ul>
@@ -345,13 +346,36 @@ window.Quarto = {
 </section>
 <section id="project-overview" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="project-overview"><span class="header-section-number">2.1</span> Project overview</h2>
-<p>A <em>correlation</em> refers an association between two things. It is a statement of a statistical relationship–a general tendency, rather than a rigid law. To say that some aspect of personality is correlated with something else–for example, <a href="https://psycnet.apa.org/fulltext/2020-03328-001.html">neuroticism is correlated with lower wellbeing</a> or <a href="https://www.pnas.org/doi/10.1073/pnas.2212794120">openness is correlated with greater cognitive ability</a>–is to say that those things <em>tend</em> to go together. Not everyone who scores high on neuroticism will have lower wellbeing than anyone low on neuroticism, but there is some tendency for the two to go together on the whole.</p>
-<p>Of course, these kind of correlations aren’t just facts found lying around in nature; they are empirical findings produced by researchers. All the findings you learn about in the personality psychology lecture (and beyond) are the product of research procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.</p>
-<p>With this project, you will examine a correlation between a personality trait and another construct of your choosing by analyzing existing data.</p>
-<section id="step-1.-examine-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-1.-examine-the-data">Step 1. Examine the data</h3>
-<p>The dataset we will use is from the <a href="https://electionstudies.org/">American National Election Studies (ANES)</a>, academic surveys of voters in the United States conducted before and after every presidential election, going back to the 1940s. Specifically, for this project we will use data collected around the 2016 election. The reason for using this (rather than more recent data) is that the 2016 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: <a href="https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf">Gosling et al., 2003</a>). This scale is a short measure of the “Big Five” personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.</p>
-<p>For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For this kind of correlation analysis you will have two variables. You can think of one as the “predictor” and the other as the “outcome”; you want to see if the predictor has any association with the outcome.</p>
+<p>One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particularly trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.</p>
+<section id="comparing-groups-the-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-groups-the-t-test">Comparing groups: the <span class="math inline">\(t\)</span>-test</h3>
+<p>The way we compare groups like this is to statistically test the “null hypothesis” (<span class="math inline">\(H_0\)</span>) using a <span class="math inline">\(t\)</span>-test. <span class="math inline">\(H_0\)</span> states that there is <em>no difference</em> between the group averages at all. The <span class="math inline">\(t\)</span>-test quantifies exactly how much our sample averages do differ and put it in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn’t a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently improbably to have occurred if there really is no difference; we reject <span class="math inline">\(H_0\)</span> and tentatively accept the “alternative hypothesis”, (<span class="math inline">\(H_1\)</span>) which states that there <em>is</em> a difference between the groups.</p>
+<p>Note that this is a statistical statement about a general tendency, not a rigid law. If we reject the null hypothesis, we’re saying that there seems to be a difference in the groups averages, not that everyone in one group scores higher than everyone in the other group.</p>
+<p>Note also that this kind of analysis, and all the empirical findings you learn about in the personality psychology lecture (and beyond) are the product of research and statistical procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.</p>
+</section>
+</section>
+<section id="step-1.-examine-the-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-1.-examine-the-data"><span class="header-section-number">2.2</span> Step 1. Examine the data</h2>
+<p>The dataset we will use is from the <a href="https://gss.norc.org/">General Social Survey (GSS)</a>. Here’s a description from the GSS website:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+GSS description
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The General Social Survey (GSS) is a nationally representative survey of adults in the United States conducted since 1972. The GSS collects data on contemporary American society in order to monitor and explain trends in opinions, attitudes and behaviors. The GSS has adapted questions from earlier surveys, thereby allowing researchers to conduct comparisons for up to 80 years.</p>
+<p>The GSS contains a standard core of demographic, behavioral, and attitudinal questions, plus topics of special interest. Among the topics covered are civil liberties, crime and violence, intergroup tolerance, morality, national spending priorities, psychological well-being, social mobility, and stress and traumatic events.</p>
+<p>Altogether, the GSS is the single best source for sociological and attitudinal trend data covering the United States. It allows researchers to examine the structure and functioning of society in general, as well as the role played by relevant subgroups and to compare the United States to other nations.</p>
+<p>The GSS aims to make high-quality data easily accessible to scholars, students, policy-makers, and others, with minimal cost and waiting.</p>
+<p>From <a href="https://gss.norc.org/About-The-GSS" class="uri">https://gss.norc.org/About-The-GSS</a></p>
+</div>
+</div>
+<p>Specifically, for this project we will use data collected in 2006. The reason for using this (rather than more recent data) is that the 2006 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: <a href="https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf">Gosling et al., 2003</a>). This scale is a short measure of the “Big Five” personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.</p>
+<p>For this project, you will pick one of these traits and see whether it differs between people of different star signs. For this kind of analysis you will have two variables.</p>
 <p>Your <strong>dependent</strong> variable will be one of the Big Five traits:</p>
 <ul>
 <li>Extraversion (<code>big5a1</code> &amp; <code>big5a2</code>)</li>
@@ -360,12 +384,12 @@ window.Quarto = {
 <li>Neuroticism (<code>big5d1</code> &amp; <code>big5d2</code>)</li>
 <li>Openness (<code>big5e1</code> &amp; <code>big5e2</code>)</li>
 </ul>
-<p>Your <strong>quasi-independent</strong> variable will be Zodiac star-sign. Specifically, you will select two groups to compare (e.g.&nbsp;Leo versus Virgo).</p>
-<p>To see exactly how these constructs were measured you will look up the variable IDs (the <code>big5xx</code> codes in parentheses above) in the <a href="https://gss.norc.org/documents/codebook/gss_codebook.pdf">Codebook</a>.</p>
+<p>Your <strong>quasi-independent</strong> variable will be Zodiac star sign (<code>zodiac</code>). Specifically, you will select two groups to compare (e.g.&nbsp;Leo versus Virgo).</p>
+<p>To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the <code>big5xx</code> and <code>zodiac</code> codes in parentheses above) in the <a href="https://gss.norc.org/documents/codebook/gss_codebook.pdf">GSS Codebook</a>.</p>
 </section>
-<section id="step-2.-read-relevant-research" class="level3">
-<h3 class="anchored" data-anchor-id="step-2.-read-relevant-research">Step 2. Read relevant research</h3>
-<p>Real research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found about these (or related) personality traits.</p>
+<section id="step-2.-read-relevant-research" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="step-2.-read-relevant-research"><span class="header-section-number">2.3</span> Step 2. Read relevant research</h2>
+<p>Real research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.</p>
 <p>A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything; pick one of these papers to skim to give you an idea of what has been found.</p>
 <div class="references">
 <p>Mayo, J., White, O., &amp; EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2</p>
@@ -375,29 +399,21 @@ window.Quarto = {
 <p>McGrew, J. H., &amp; McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.</p>
 </div>
 </section>
-<section id="step-3.-articulate-your-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h3>
+<section id="step-3.-articulate-your-hypothesis" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis"><span class="header-section-number">2.4</span> Step 3. Articulate your hypothesis</h2>
 <p>By this point you should be able to state your:</p>
 <ul>
 <li><strong>Operational definitions</strong> (that is, the specific questions that participants were asked and how they could answer, per the codebook)</li>
 <li>The <strong>constructs</strong> that those operational definitions measure (i.e.&nbsp;does the question measure perceived political preferences <em>in general</em>? Or some more specific form of affiliation/alignment?)</li>
 <li>Your <strong>hypothesis</strong></li>
 </ul>
-<p>Your hypothesis is a formal statement of your expectation about how your constructs are (or aren’t) associated, and it will be tested quantitatively by calculating a correlation statistic.</p>
-<p>The main question that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association consistent enough that it doesn’t just seem to be attributable to chance variation in the data?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong you expect it to be (i.e.&nbsp;weak, moderate, strong; see <a href="appendix-correlation.html#sec-cor-effect-size">Appendix B</a>).</p>
+<p>Your hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn’t just seem to be attributable to chance variation in the data?</p>
+<p>If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e.&nbsp;a weak, moderate, or strong effect size; see <a href="appendix-correlation.html#sec-cor-effect-size">Appendix B</a>).</p>
 <!-- ## To do for next time -->
 <!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
 <!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Even random data will produce spurious correlations by chance some of the time; see <a href="https://spuriouscorrelations.com#stat897f4cbec4629379cd566c68c3f40c5f">spuriouscorrelations.com</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->

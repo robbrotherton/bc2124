@@ -1,4 +1,4 @@
-# Lab 4: Analysis
+# Analysis
 
 You will start this session with your cleaned data ready to use in R. By the end of the session you will have computed the correlation statistic, produced some visualizations of your data, and be ready to present and write up your findings.
 
