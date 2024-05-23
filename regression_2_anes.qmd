@@ -1,0 +1,120 @@
+# Data preparation
+
+### Goals
+
+- Read the data you need into R
+- Select required variables
+- Filter the data based on completeness (and any other criteria)
+- Compute any required variables (scale means, number of items missing, etc)
+
+
+## Data preparation
+
+Building on the correlation example, we will include additional variables of interest - conscientiousness and agreeableness - to examine how these factors, along with extraversion, collectively predict feelings towards the Democratic party. Similar to the correlation project, we will start by cleaning and filtering the data, recoding the negatively-worded TIPI items (taking care to note which ones need recoding; it's not always the second question), and computing mean scores for each Big 5 trait.
+
+Here is the pipeline to prepare the data:
+
+```{r}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(anesr)
+data(timeseries_2016)
+
+my_data_complete <- timeseries_2016 |> 
+  select(extraversion1 = "V162333", 
+         extraversion2 = "V162338",
+         conscientiousness1 = "V162335", 
+         conscientiousness2 = "V162340",
+         agreeableness1 = "V162334", 
+         agreeableness2 = "V162339",
+         feeling_thermometer = "V161095") |> 
+  filter(if_all(everything(), ~ . >= 0))  |>
+  mutate(extraversion2 = 8 - extraversion2,
+         conscientiousness2 = 8 - conscientiousness2,
+         agreeableness1 = 8 - agreeableness1,
+         extraversion_mean = rowMeans(across(contains("extraversion"))),
+         conscientiousness_mean = rowMeans(across(contains("conscientiousness"))),
+         agreeableness_mean = rowMeans(across(contains("agreeableness"))))
+
+```
+
+
+## Describing your variables
+
+Just as in the previous lab, you'll need to compute the mean and standard deviation for each of your variables. Use the same process, replacing the variable names with your new ones:
+
+```{r}
+my_data_complete |>
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  group_by(variable) |> 
+  summarize(count_valid = n(),
+            mean = mean(value), 
+            sd = sd(value))
+
+```
+
+
+## Visualizing the data
+
+You can create histograms for each of your new variables, just like you did for extraversion. Since there are so many, rather than producing individual plots, I'm going to use the `pivot_longer()`, like we've done before grouping and summarizing several variables. In this case, however, we won't `summarize()`. Instead, the long-formatted data gets piped into `ggplot()`, and a `facet_wrap()` layer is added. That produces several sub-plots ("facets") based on the formula provided within the function. In this case, I want subplots for each different `variable` (the column with the names of the different variables), so the formula is just `~variable`. So the whole layer can be read as "facet wrap the plots by the different values of the "variable" column."
+
+```{r}
+#| include: false
+theme_apa <- theme(
+  panel.background = element_blank(),
+  axis.line = element_line()
+)
+```
+
+```{r}
+
+my_data_complete |>
+  select(extraversion1:agreeableness2) |> 
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  ggplot(aes(x = value)) +
+  facet_wrap(~variable, nrow = 3) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_apa
+
+```
+
+Now I'll do the same for the 3 computed trait-means.
+
+```{r}
+
+my_data_complete |>
+  select(contains("mean")) |> 
+  pivot_longer(everything(), 
+               names_to = "variable", 
+               values_to = "value", 
+               values_transform = as.numeric) |> 
+  ggplot(aes(x = value)) +
+  facet_wrap(~variable, nrow = 3) +
+  geom_histogram(binwidth = 0.5, color = "white") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_apa
+
+```
+
+Lastly, you'll make a histogram for your feeling thermometer. I'll leave this as a exercise for you, since the code for this single graph will be very close to what you did in Project 1 (i.e., since you're just graphing a single variable you won't need to `pivot_longer()` here.
+
+```{r}
+#| echo: false
+
+my_data_complete |>
+  ggplot(aes(x = feeling_thermometer)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = seq(0, 100, 10)) +
+  theme_apa
+
+```
+

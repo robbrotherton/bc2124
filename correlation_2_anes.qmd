@@ -1,0 +1,169 @@
+# Lab 3: Data preparation
+
+You should begin this session with variables from the ANES 2016 dataset in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
+
+### Goals
+
+-   Get your R environment set up
+-   Read the data you need into R
+-   Select required variables
+-   Filter the data based on completeness (and any other criteria)
+-   Compute any required variables (scale means, number of items missing, etc)
+
+## Working with data in R
+
+### Getting R ready
+
+In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
+
+To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package. Usually packages can be installed from within R using the `install.packages()` function. However since the `anesr` package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a special function for installing packages from GitHub.
+
+```{r}
+#| eval: false
+
+install.packages("devtools")
+
+devtools::install_github("jamesmartherus/anesr")
+
+```
+
+We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the `tidyverse` to make coding these common tasks easier. The `tidyverse` can be installed like so:
+
+```{r}
+#| eval: false
+
+install.packages("tidyverse")
+
+```
+
+If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time you start a new R session.
+
+```{r}
+#| warning: false
+#| message: false
+
+library(anesr)
+library(tidyverse)
+
+```
+
+### Getting data into R
+
+Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you could download the ANES 2016 data file as a .csv from the ANES website and read it into R that way. However, the `anesr` package contains the data so you don't need to download it separately. Instead you can make it available by running this line of code:
+
+```{r}
+
+data(timeseries_2016)
+
+```
+
+When you execute the code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.
+
+Typing the name of the data.frame and running that line of code will show the first few columns and rows.
+
+```{r}
+
+timeseries_2016
+
+```
+
+You can also click on the name in the Environment pane to view the data in a new tab.
+
+### Select your variables
+
+As you can see, the data.frame contains a *lot* of variables; there are 1,842 columns of data. You'll only need a few of those. So the first step is selecting just the variables you need to work with.
+
+There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use the `select()` function.[^tidyverse-note] This allows us to simply type in variable names separated by commas.
+
+For this example I'll look at the correlation between extraversion and the Democratic party feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are `V162333` and `V162338`. The ID for the Democratic Party feeling thermometer is `V161095`. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
+
+```{r}
+
+my_data <- timeseries_2016 |> 
+  select(extraversion1 = "V162333", 
+         extraversion2 = "V162338",
+         feeling_thermometer = "V161095")
+
+```
+
+Let's see what this new data.frame looks like:
+
+```{r}
+my_data
+```
+
+It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.
+
+### Cleaning the data
+
+There are a lot of different ways we could handle this. One way is to `filter()` the data, retaining only rows which meet certain conditions.[^1]
+
+The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple: only positive values are valid and should be retained.
+
+To implement this as a `filter()`, we can use the `if_all()` function; i.e., we are going to select some columns and *if all* the values in those columns meet some condition the row will be retained. To select the columns we can use the `everything()` function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, `~ . >= 0`, articulates the condition. The `~` prefix is necessary because instead of naming one specific column to refer to its values we use `.` as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.[^2] 
+
+```{r}
+my_data_complete <- my_data |> 
+  filter(if_all(everything(), ~ . >= 0))
+```
+
+Notice that the number of rows in the data.frame has changed, because rows that didn't meet that condition have been dropped.
+
+```{r}
+nrow(my_data)
+nrow(my_data_complete) 
+```
+
+After filtering to keep only rows with complete data, we're left with `r format(nrow(my_data_complete), big.mark = ",")` valid responses.
+
+### Computing scale averages
+
+Now that we have selected our columns and filtered out missing/invalid responses, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.
+
+The TIPI has 10 questions in total, two for each of the Big 5 personality traits, so it may be desirable to compute a mean trait score by averaging its two respective items.
+
+Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item `V162333` (which I renamed `extraversion1`) is "extraverted, enthusiastic", while item `V162338` (renamed `extraversion2`) is "reserved, quiet". The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant's response from 8; 1 becomes 7, 2 becomes 6, etc.
+
+```{r}
+
+my_data_complete <- my_data_complete |>
+    mutate(extraversion2 = 8 - extraversion2)
+
+```
+
+Now we can go ahead and compute the average, using `mutate()` to create a new column (named `extraversion_mean`) consisting of the `rowMeans()` (i.e. an average for each row) `across()` the specified columns (those for which the column name `contains("extraversion")`.
+
+```{r}
+
+my_data_complete <- my_data_complete |>
+    mutate(extraversion_mean = rowMeans(across(contains("extraversion"))))
+
+```
+
+Let's see how it looks.
+
+```{r}
+my_data_complete
+```
+
+We have our two extraversion items (one reverse-coded), the feeling thermometer rating, and the computed extraversion mean scores for each of the 3,540 participants with complete data. We're ready to analyze the data!
+
+[^tidyverse-note]: The `select()` function, along with `filter()`, `mutate()`, `across()`, `everything()`, and others that you'll see in my example code, is part of the `tidyverse` family of packages (specifically these all come from the `dplyr` package, but we'll also use functions from other `tidyverse` packages like `tidyr` and `ggplot2`). There are other ways to do all these things without using `tidyverse` packages, just relying on what's referred to as "base" R functions. The `tidyverse` approach just makes this kind of data manipulation generally easier and makes the code more interpretable. If you're curious to see how base R and tidyverse functions differ in syntax, a good place to start is <https://dplyr.tidyverse.org/articles/base.html>.
+
+[^1]: Another way would be to `mutate()` the data, changing the invalid response codes into the value `NA`, R's special value to indicate missing data. This could be achieved like so:
+
+        my_data_complete <- my_data |>
+          mutate(across(everything(), ~replace(., . < 0, NA)))
+
+    That would mutate (i.e. change values) across every column. You can read the second part (after the `~`) as "replace the original values (indicated by the placeholder `.`), where the value is less than zero, with `NA`.
+
+[^2]: If the data wasn't as simple or if we just wanted to be more explicit about things, we could filter based on valid responses for each item. For example, valid reponses to the feeling thermometer item are are anything from 0 to 100; anything else is invalid. Therefore we could write a `filter()` condition stating that `feeling_thermometer` (the name of the column) values must be `%in%` the set of values from `0:100`. Likewise for each of the extraversion columns, rows will be retained only if their values are `%in%` the range `1:7`.
+
+        my_data_complete <- my_data |>
+          filter(feeling_thermometer %in% 0:100,
+                 extraversion1 %in% 1:7,
+                 extraversion2 %in% 1:7)
+
+
+
+

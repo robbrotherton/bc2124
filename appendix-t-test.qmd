@@ -1,0 +1,57 @@
+# $t$-tests: Comparing Group Means
+
+When you want to compare the means of two groups to see if they differ significantly, you can use a $t$-test. It's a statistical test that helps determine if the difference in sample means (averages) is likely due to random chance or if it's unlikely enough to infer a true difference in the population means.
+
+## Types of $t$-tests
+
+There are three main types of $t$-tests:
+
+1.  **one-sample t-test**: compares the mean of a single group to a known value or population mean.
+
+2.  **independent samples t-test**: compares the means of two independent groups.
+
+3.  **paired samples t-test**: compares means from the same group at different times (e.g., before and after a treatment).
+
+## Calculating the t-statistic
+
+for an independent samples t-test, the formula for the t-statistic is:
+
+$$
+t = \frac{(M_1 - M_2)}{\sqrt{\frac{S^2_1}{n_1} + \frac{S^2_2}{n_2}}}
+$$
+
+Where:
+
+\- $M_1$ and $M_2$ are the means of the two groups.
+
+\- $S^2_1$ and $S^2_2$ are the variances of the two groups.
+
+\- $n_1$ and $n_2$ are the sample sizes of the two groups.
+
+this formula essentially measures the difference between the group means relative to the variability of the scores within each group.
+
+## Interpreting the $t$-statistic
+
+After calculating the $t$-statistic, you compare it to a critical value from the $t$-distribution table, which depends on your chosen significance level (typically $0.05$) and the degrees of freedom. If your calculated $t$-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).
+
+## Effect size for $t$-tests
+
+The effect size for a $t$-test is often measured using Cohen's d, which standardizes the difference between the means. the formula is:
+
+$$
+d = \frac{M_1 - M_2}{\sqrt{\frac{(S^2_1 + S^2_2)}{2}}}
+$$
+
+Cohen suggested the following thresholds for interpreting $d$:
+
+-   0.2 = small effect
+
+-   0.5 = medium effect
+
+-   0.8 = large effect
+
+However, context matters, and these rules of thumb might not always apply. It's crucial to consider the practical significance and the specific field of study.
+
+## Summary
+
+The $t$-test is a fundamental tool in statistics for comparing group means. It helps you determine whether observed differences are likely to be real or just due to random chance. By understanding the calculation and interpretation of the $t$-statistic and effect size, you can make informed decisions about your data.

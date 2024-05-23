@@ -28,24 +28,25 @@ book:
     - index.qmd
     - part: "Project 1: $t$-test"
       chapters:
-        - lab-2.qmd
-        - lab-3.qmd
-        - lab-4.qmd
-        - lab-5.qmd
+        - t-test_1_zodiac.qmd
+        - t-test_2_zodiac.qmd
+        - t-test_3_zodiac.qmd
+        - t-test_4_zodiac.qmd
     - part: "Project 2: Correlation"
       chapters:
-        - lab-6.qmd
-        - lab-7.qmd
-        - lab-8.qmd
-        - lab-9.qmd
+        - correlation_1_anes.qmd
+        - correlation_2_anes.qmd
+        - correlation_3_anes.qmd
+        - correlation_4_anes.qmd
     - part: "Project 3: Regression"
       chapters:
-        - lab-10.qmd
-        - lab-11.qmd
-        - lab-12.qmd
-        - lab-13.qmd
+        - regression_1_anes.qmd
+        - regression_2_anes.qmd
+        - regression_3_anes.qmd
+        - regression_4_anes.qmd
   appendices:
     - appendix-r-basics.qmd
+    - appendix-t-test.qmd
     - appendix-correlation.qmd
     - appendix-regression.qmd
     - appendix-rubric.qmd
@@ -69,6 +70,9 @@ crossref:
 
 format:
   html:
+    number-sections: true
+    number-depth: 2
+    number-offset: 1
     theme:
       light: [flatly, custom.scss]
       dark:  [darkly, custom.scss]

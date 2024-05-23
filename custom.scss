@@ -2,6 +2,13 @@
 
 /*-- scss:rules --*/
 
+.chapter-number::before {
+  content: "Lab ";
+}
+.chapter-number::after {
+  content: ":";
+}
+
 .references p {
   text-indent: -2em;
   padding-left: 2em;
