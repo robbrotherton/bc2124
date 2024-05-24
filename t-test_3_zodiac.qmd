@@ -1,19 +1,18 @@
 # Analysis
 
-You will start this session with your cleaned data ready to use in R. By the end of the session you will have computed the correlation statistic, produced some visualizations of your data, and be ready to present and write up your findings.
+You will start this session with your cleaned data ready to use in R. By the end of the session you will have computed the test statistic, produced some visualizations of your data, and be ready to present and write up your findings.
 
 
 ### Goals
 
-- Describe and visualize your variables
-- Understand what the correlation statistic quantifies
-- Perform the appropriate correlational analysis on your data
+- Describe and visualize your data
+- Perform the appropriate analysis
 - Interpret the results
 
 
 ## Analyzing data in R
 
-Running with my example from last week, my variables were average extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables; filtered the data down to complete, valid responses; recoded the negatively-worded item; and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
+Running with my example from last week, I want to compare average extraversion scores between Leos and Pisces. I made a data.frame with just those columns; recoded the Zodiac labels and reverse-scored one of the extraversion items; and computed an extraversion mean score. To refresh your memory, here's the entire pipeline from start to finish:
 
 
 ```{r}
@@ -21,37 +20,34 @@ Running with my example from last week, my variables were average extraversion s
 #| message: false
 
 library(tidyverse)
-library(anesr)
-data(timeseries_2016)
 
-my_data_complete <- timeseries_2016 |> 
-  select(extraversion1 = "V162333", 
-         extraversion2 = "V162338",
-         feeling_thermometer = "V161095") |> 
-  filter(if_all(everything(), ~ . >= 0)) |> 
-  mutate(extraversion2 = 8 - extraversion2,
-         extraversion_mean = rowMeans(across(contains("extraversion"))))
-
+data_cleaned <- read_csv("data/gss_2006.csv") |> 
+  select(extraversion1 = big5a1, 
+         extraversion2 = big5a2,
+         zodiac) |> 
+  mutate(zodiac = factor(zodiac, levels = c(5, 12), labels = c("Leo", "Pisces"))) |> 
+  mutate(extraversion2 = 6 - extraversion2) |> 
+  mutate(extraversion_mean = rowMeans(across(c(extraversion1, extraversion2)))) |> 
+  drop_na()
 ```
-
-
 
 ### Describing your data
 
 The most common descriptive statistics are the mean ($M$) and standard deviation ($SD$). You should report these for each variable in your analysis.
 
-You can find the mean of each column in a data.frame using R's built-in `colMeans()` function.
+You can find a mean using R's built-in `mean()` function.
 
 ```{r}
-colMeans(my_data_complete)
+sd(data_cleaned$extraversion1)
+sd(data_cleaned$extraversion2)
 ```
 
 There's no built-in equivalent for finding the standard deviation of columns, but there is a basic `sd()` function, which you could apply to each column in turn:
 
 ```{r}
 
-sd(my_data_complete$extraversion1)
-sd(my_data_complete$extraversion2)
+sd(data_cleaned$extraversion1)
+sd(data_cleaned$extraversion2)
 
 # etc
 
@@ -59,21 +55,29 @@ sd(my_data_complete$extraversion2)
 
 This might be a perfectly appropriate approach, but with a lot of variables it might not be the most efficient (and it kind of violates the DRY principle: don't repeat yourself).
 
-A slightly more complicated but very powerful approach is to use `tidyverse` functions to reshape the data and `summarize()` each of the variables. First, transform the structure of the data using `pivot_longer()`. This produces a data.frame with just two columns, one with all the numeric scores ("value"), and the other labeling which column each value came from ("variable"). Then we `group_by(variable)`, meaning that any subsequent computations will be performed separately for each variable. Finally we pipe the data.frame into the `summarize()` function. There you can create any number of named variables, each computing some kind of summary. Since the data is grouped, each variable ("extraversion1", extraversion2", etc) gets its own count, mean, and standard deviation.
+A more powerful approach is to use `tidyverse` `summarize()` function. There you can create any number of named variables, each computing some kind of summary. The biggest advantage is you can specific a grouping variable using the `.by` argument. This means that each of the statistics you ask for will be computed separately for each category of the grouping variable.
 
 ```{r}
-my_data_complete |>
-  pivot_longer(everything(), 
-               names_to = "variable", 
-               values_to = "value", 
-               values_transform = as.numeric) |> 
-  group_by(variable) |> 
-  summarize(count_valid = n(),
-            mean = mean(value), 
-            sd = sd(value))
-
+data_cleaned |>
+  summarize(n = n(),
+            mean = mean(extraversion_mean), 
+            sd = sd(extraversion_mean),
+            .by = zodiac)
 ```
 
+
+```{r}
+ci <- function(x) {
+  qt(.975, df = length(x) - 1) * sqrt( var(x) / length(x) )
+}
+
+summary <- data_cleaned |>
+  summarize(n = n(),
+            mean = mean(extraversion_mean), 
+            sd = sd(extraversion_mean),
+            ci = ci(extraversion_mean),
+            .by = zodiac)
+```
 
 ### Visualizing the data
 
@@ -88,7 +92,7 @@ Here's a simple histogram of the first extraversion item. I pipe the data into t
 #| label: fig-extraverted-no-theme
 #| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
 
-my_data_complete |> 
+data_cleaned |> 
   ggplot(aes(x = extraversion1)) +
   geom_histogram(binwidth = 1)
 
@@ -112,11 +116,11 @@ I'll also customize the "breaks" on the x-axis (where the ticks and numeric labe
 #| label: fig-extraverted
 #| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
 
-my_data_complete |> 
+data_cleaned |> 
   ggplot(aes(x = extraversion1)) +
   geom_histogram(binwidth = 1, color = "white") +
-  scale_x_continuous(breaks = 1:7) +
-  labs(x = "Responses to extraversion item 1: extraverted, enthusiastic",
+  scale_x_continuous(breaks = 1:5) +
+  labs(x = "Responses to extraversion item 1: reserved",
        y = "Number of responses") +
   theme_apa
 
@@ -128,11 +132,11 @@ Here's a histogram of the other TIPI extraversion item.
 #| label: fig-reserved
 #| fig-cap: Histogram of responses to "reserved, quiet" TIPI item
 
-my_data_complete |> 
+data_cleaned |> 
   ggplot(aes(x = extraversion2)) +
   geom_histogram(binwidth = 1, color = "white") +
-  scale_x_continuous(breaks = 1:7) +
-  labs(x = "Responses to extraversion item 2: reserved, quiet (reverse-coded)",
+  scale_x_continuous(breaks = 1:5) +
+  labs(x = "Responses to extraversion item 2: outgoing, sociable",
        y = "Number of responses") +
   theme_apa
 
@@ -144,7 +148,7 @@ And here's a histogram of the average extraversion scores I computed.
 #| label: fig-extraversion-mean
 #| fig-cap: Histogram of average scores on TIPI Extraversion subscale
 
-my_data_complete |> 
+data_cleaned |> 
   ggplot(aes(x = extraversion_mean)) +
   geom_histogram(binwidth = 0.5, color = "white") +
   scale_x_continuous(breaks = 1:7) +
@@ -154,85 +158,34 @@ my_data_complete |>
 
 ```
 
-Notice that while both individual extraversion items were a bit skewed, the distribution of averages is approximately normally-distributioned (albeit with a big spike in the middle).
+Notice that while both individual extraversion items were a bit skewed, the distribution of averages is approximately normally-distributed (albeit with a big spike in the middle).
 
-Lastly, I'll make a histogram of the feeling thermometer variable.
 
 ```{r}
-#| label: fig-thermometer
-#| fig-cap: Histogram of responses to Democratic Party feeling thermometer
-
-my_data_complete |> 
-  ggplot(aes(x = feeling_thermometer)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
-  labs(x = "Responses to Democratic Party feeling thermometer",
-       y = "Count") +
+summary |> 
+  ggplot(aes(x = zodiac, y = mean)) +
+  geom_col() +
+  geom_errorbar(aes(ymax = mean + ci, ymin = mean - ci), width = 0.2) +
+  coord_cartesian(ylim = c(1, 5)) +
   theme_apa
-
 ```
 
-I chose a binwidth of 1, which isn't necessarily the most appropriate value for a 0 to 100, but it does reveal an interesting distribution of responses. People's responses are not evenly distributed across the 0 to 100 scale; rather, some values (particularly multiples of 10) are chosen much more frequently than others.
+## Hypothesis test
 
+### The $t$ statistic
 
-## Correlation analysis
+The $t$-test can be computed with a single line of code, as you'll see. But it's important to understand the math happening behind the scenes.
 
-### The correlation statistic
-
-The correlation statistic can be computed with a single line of code, as you'll see. But it's important to understand the math happening behind the scenes.
-
-If you need to refresh your memory from a past statistics class, refer to [the correlation statistic Appendix](appendix-correlation.qmd).
+If you need to refresh your memory from a past statistics class, refer to [the $t$-test Appendix](appendix-t-test.qmd).
 
 
 
-### Correlation in R
+### The $t$-test
 
-The correlation between two variables can be found using the `cor()` function.
+R has a built-in `t.test()` function.
 
 ```{r}
-
-cor(x = my_data_complete$extraversion_mean, 
-    y = my_data_complete$feeling_thermometer)
-
+t.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)
 ```
 
 
-If you got an answer of `NA` instead of a number, it is probably because your data has some missing data. You just need to tell `cor()` to only use data for which both pairs of values are nonmissing:
-
-```{r}
-
-cor(x = my_data_complete$extraversion_mean, 
-    y = my_data_complete$feeling_thermometer,
-    use = "pairwise.complete.obs")
-
-```
-
-The `cor.test()` function goes further than `cor()`, giving you the $p$-value necessary for determining statistical significance^[Remember that, by convention, psychologists generally use $\alpha = .05$ as the criterion for statistical significance, meaning that if our data has less than a 5% chance of occurring under the null hypothesis we reject the null and tentatively accept the alternative hypothesis that the variables are associated.] and some other information about the correlation.
-
-```{r}
-
-cor.test(x = my_data_complete$extraversion_mean, 
-         y = my_data_complete$feeling_thermometer)
-```
-
-
-Lastly, let's make a scatterplot visualizing the correlation.
-
-
-```{r}
-#| label: fig-scatter
-#| fig-cap: Scatterplot (with jitter) of average extraversion scores and feeling thermometer scores
-
-my_data_complete |> 
-  ggplot(aes(x = extraversion_mean, y = feeling_thermometer)) +
-  geom_point(position = position_jitter(width = 0.4, height = 0, seed = 1), 
-             alpha = 0.1) +
-  scale_x_continuous(breaks = 1:7) +
-  scale_y_continuous(breaks = seq(from = 0, to = 100, by = 10)) +
-  theme_apa
-
-```
-
-Most of that will look familiar from the previous plots we made. The only major difference is that instead of making a histogram I'm making a scatterplot, for which the "geometry" is points rather than histogram bars. Therefore I use `geom_point()` rather than `geom_histogram()` for the geometry layer. One new element is the `position = position_jitter()` part inside `geom_point()`. Its purpose is to add some random noise to each individual data point, moving it to the left or right a little bit along the x-axis. This is helpful here since there are many data points but only 5 possible answers along each axis. Try making the graph without including the jitter; it'll just look like a grid of points. Any pattern in the data will likely be hard to see. It may seem counterintuitive to change the data by adding randomness, but for the purposes of the visualization, doing so actually makes any patterns easier to detect.
-
-Looking at the scatterplot, you can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant $p$-value, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.

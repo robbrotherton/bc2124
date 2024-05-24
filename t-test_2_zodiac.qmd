@@ -14,8 +14,7 @@ You should begin this session with your Big 5 trait (dependent variable) and Zod
 
 ### Getting R ready
 
-To start exploring the data in R, you first need to set up your environment. While "base" R (meaning all the functions built in to the R langauge) can do everything we need, a feature of R that makes it well-suited for data analysis is that you can easily install additional "packages" that make common tasks, like data cleaning and visualization, even easier. In particular, we will use a family of realted packages called the "tidyverse". Usually this would need to be installed like so:
-
+To start exploring the data in R, you first need to set up your environment. While "base" R (meaning all the functions built in to the R language) can do everything we need, a feature of R that makes it well-suited for data analysis is that you can easily install additional "packages" that make common tasks, like data cleaning and visualization, even easier. In particular, we will use a family of related packages called the "tidyverse". Usually this would need to be installed like so:
 
 ```{r}
 #| eval: false
@@ -24,7 +23,7 @@ install.packages("tidyverse")
 
 ```
 
-However the Projects template I set up for you in posit.cloud already has the package installed. You will, however, need to 'activate' the packages using `library()` to make their functions available.
+However the Projects template I set up for you in posit.cloud already has the package installed. Packages only need to be installed once, so there's no need for you to do so again. You will, however, need to 'activate' the packages using `library()` to make their functions available.
 
 ```{r}
 #| warning: false
@@ -44,15 +43,19 @@ data <- read_csv("data/gss_2006.csv")
 
 ```
 
-When you execute the code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.In fact, you can also click on the name in the Environment pane to view the data in a new tab, just like looking at a spreadsheet.
+When you execute the code you won't see any output, but you should see the name `data` (or whatever name you assigned the result of `read_csv()` to) appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers. In fact, you can also click on the name in the Environment pane to view the data in a new tab, just like looking at a spreadsheet. Or you can see a preview of the full spreadsheet using code:
+
+```{r}
+head(data)
+```
 
 ### Select your variables
 
-As you can see, the data.frame contains a *lot* of variables; there are 1,842 columns of data. You'll only need a few of those. So the first step is selecting just the variables you need to work with.
+As you can see, the data.frame contains a *lot* of variables; there are `r ncol(data)` columns of data. You'll only need a few of those. So the first step is selecting just the variables you need to work with.
 
-There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use the `select()` function.[^tidyverse-note] This allows us to simply type in variable names separated by commas.
+There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and pipe the full data.frame into the `select()` function.[^t-test_2_zodiac-1] This allows us to simply type in variable names separated by commas. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
 
-For this example I'll look at the correlation between extraversion and the Democratic party feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are `V162333` and `V162338`. The ID for the Democratic Party feeling thermometer is `V161095`. Since I'll probably forget which ID is which, I'll give the columns more meaningful names as I select them.
+[^t-test_2_zodiac-1]: The `select()` function, along with `filter()`, `mutate()`, `across()`, `everything()`, and others that you'll see in my example code, is part of the `tidyverse` family of packages (specifically these all come from the `dplyr` package, but we'll also use functions from other `tidyverse` packages like `tidyr` and `ggplot2`). There are other ways to do all these things without using `tidyverse` packages, just relying on what's referred to as "base" R functions. The `tidyverse` approach just makes this kind of data manipulation generally easier and makes the code more interpretable. If you're curious to see how base R and tidyverse functions differ in syntax, a good place to start is <https://dplyr.tidyverse.org/articles/base.html>.
 
 ```{r}
 
@@ -66,85 +69,87 @@ Let's see what this new data.frame looks like:
 
 ```{r}
 head(data)
+
 ```
 
-It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that the Zodiac data is coded as numbers; it would be helpful to turn those into labels. Also you might have noticed when looking in the codebook that one of your personality questions is worded positively (so that higher numbers mean a higher score on that personality trait) but the other is worded negatively (so that higher scores mean less of that trait). We need to make those consistent by reverse-coding the negatively-worded one before we can compute an average score.
+Another useful thing you can ask for is a `summary()` of your data.frame:
+
+```{r}
+summary(data)
+```
+
+I also recommend that you always inspect the data more extensively by eye (click the name in your Environment to open a tab showing the data and scroll down a bit). Generally it's looking good, but there are a few issues we need to address before we can properly describe and analyze the data.
 
 ### Cleaning the data
 
-There are a lot of different ways we could handle this. One way is to `filter()` the data, retaining only rows which meet certain conditions.[^1]
+You'll notice that the Zodiac data is coded as numbers; it would be helpful to turn those into labels. Also you might have noticed when looking in the codebook that one of your personality questions is worded positively (so that higher numbers mean a higher score on that personality trait) but the other is worded negatively (so that higher scores mean less of that trait). We need to make those consistent by reverse-coding the negatively-worded one before we can compute an average score.
 
-The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple: only positive values are valid and should be retained.
+#### Re-labelling categorical variables
 
-To implement this as a `filter()`, we can use the `if_all()` function; i.e., we are going to select some columns and *if all* the values in those columns meet some condition the row will be retained. To select the columns we can use the `everything()` function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, `~ . >= 0`, articulates the condition. The `~` prefix is necessary because instead of naming one specific column to refer to its values we use `.` as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.[^2] 
+First let's label the `zodiac` column. The original data is recorded as the numbers 1 through 12 corresponding to the 12 star signs. Since R doesn't know any better, it assumes these numbers should be treated as regular numbers, so it will compute an average score and things like that even though you and I know it doesn't make a lot of sense to compute the average star sign for a bunch of people. It would make more sense to turn that variable into a "factor", meaning a categorical variable. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as `NA`).
 
 ```{r}
 data_cleaned <- data |> 
-  filter(zodiac %in% c(5, 12)) |> 
-  mutate(extraversion1 = 6 - extraversion1,
-         extraversion_mean = rowMeans(across(c(extraversion1, extraversion2))),
-         zodiac_name = ifelse(zodiac == 5, "Leo", "Pisces"))
-
-t.test(formula = extraversion_mean ~ zodiac_name, data = data_cleaned, var.equal = TRUE)
+  mutate(zodiac = factor(zodiac, levels = c(5, 12), labels = c("Leo", "Pisces")))
 ```
 
-Notice that the number of rows in the data.frame has changed, because rows that didn't meet that condition have been dropped.
+#### Re-coding numeric variables
+
+For the personality trait questions, or goal is to eventually average each participants' answers to the two questions. However, remember that one question is positively-worded and the other negatively-worded, so it wouldn't make sense to average them together just yet. To add to the confusion, as the codebook shows, the original data is coded so that 1 indicates "strongly agree" and 5 indicates "strongly disagree". We want higher scores to indicate more of the trait in question, so we need to be careful about this.
+
+For extraversion, item `big5a1` (which I renamed `extraversion1`) is "reserved", while item `big5a2` (renamed `extraversion2`) is "outgoing, sociable". Since the right now a higher numeric score means the participant *disagreed* with the description, for the first question, a higher score means more extraversion. It is actually the second question--the positively-worded one--that we need to reverse-code.
+
+Since answers can range from 1 to 5, an easy way to reverse the scores is to subtract the participant's response from 6; 1 becomes 5, 2 becomes 4, etc.
 
 ```{r}
-nrow(my_data)
-nrow(my_data_complete) 
+data_cleaned <- data_cleaned |> 
+  mutate(extraversion2 = 6 - extraversion2)
 ```
 
-After filtering to keep only rows with complete data, we're left with `r format(nrow(my_data_complete), big.mark = ",")` valid responses.
+Make sure to identify the correct item for your trait; for some it is the first question whereas for others it is the second.
 
-### Computing scale averages
+#### Computing a scale average
 
-Now that we have selected our columns and filtered out missing/invalid responses, the last thing to do is compute any new values required for analysis. As an example, if you have a scale which has multiple questions asking about a particular construct, it is often necessary to compute an average score for each participant.
-
-The TIPI has 10 questions in total, two for each of the Big 5 personality traits, so it may be desirable to compute a mean trait score by averaging its two respective items.
-
-Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item `V162333` (which I renamed `extraversion1`) is "extraverted, enthusiastic", while item `V162338` (renamed `extraversion2`) is "reserved, quiet". The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant's response from 8; 1 becomes 7, 2 becomes 6, etc.
+Now that both questions are scored consistently, the only thing that remains is to compute the average of the two for each participant.
 
 ```{r}
-
-my_data_complete <- my_data_complete |>
-    mutate(extraversion2 = 8 - extraversion2)
-
+data_cleaned <- data_cleaned |> 
+  mutate(extraversion_mean = rowMeans(across(c(extraversion1, extraversion2))))
+  
 ```
 
-Now we can go ahead and compute the average, using `mutate()` to create a new column (named `extraversion_mean`) consisting of the `rowMeans()` (i.e. an average for each row) `across()` the specified columns (those for which the column name `contains("extraversion")`.
+#### Handle missing data
+
+One last thing; notice that the data contains a *lot* of missing data now, because we dropped anyone who wasn't one of the two star signs we were interested in, and a lot of people were missing the Big 5 data in the first place. We might as well tidy things up, because if someone is missing one or both of the personality average score or star sign, they are no use to us.
 
 ```{r}
-
-my_data_complete <- my_data_complete |>
-    mutate(extraversion_mean = rowMeans(across(contains("extraversion"))))
-
+data_cleaned <- data_cleaned |> 
+  drop_na()
 ```
 
 Let's see how it looks.
 
 ```{r}
-my_data_complete
+summary(data_cleaned)
 ```
 
-We have our two extraversion items (one reverse-coded), the feeling thermometer rating, and the computed extraversion mean scores for each of the 3,540 participants with complete data. We're ready to analyze the data!
+Phew. We have our two extraversion items (one reverse-coded), the Zodiac labels, and the computed extraversion mean scores for each of the `r nrow(data_cleaned)` participants with complete data. We're ready to analyze the data!
 
-[^tidyverse-note]: The `select()` function, along with `filter()`, `mutate()`, `across()`, `everything()`, and others that you'll see in my example code, is part of the `tidyverse` family of packages (specifically these all come from the `dplyr` package, but we'll also use functions from other `tidyverse` packages like `tidyr` and `ggplot2`). There are other ways to do all these things without using `tidyverse` packages, just relying on what's referred to as "base" R functions. The `tidyverse` approach just makes this kind of data manipulation generally easier and makes the code more interpretable. If you're curious to see how base R and tidyverse functions differ in syntax, a good place to start is <https://dplyr.tidyverse.org/articles/base.html>.
+Notice that the number of rows in the data.frame has changed, because rows that didn't meet that condition have been dropped.
 
-[^1]: Another way would be to `mutate()` the data, changing the invalid response codes into the value `NA`, R's special value to indicate missing data. This could be achieved like so:
+```{r}
+nrow(data)
+nrow(data_cleaned) 
+```
 
-        my_data_complete <- my_data |>
-          mutate(across(everything(), ~replace(., . < 0, NA)))
+```{r}
+#| echo: false
+leos <- nrow(filter(data_cleaned, zodiac == "Leo"))
+pisces <- nrow(filter(data_cleaned, zodiac == "Pisces"))
+```
 
-    That would mutate (i.e. change values) across every column. You can read the second part (after the `~`) as "replace the original values (indicated by the placeholder `.`), where the value is less than zero, with `NA`.
+After filtering to keep only rows with complete data, we're left with `r format(nrow(data_cleaned), big.mark = ",")` valid responses (`r leos` Leos and `r pisces` Pisces).
 
-[^2]: If the data wasn't as simple or if we just wanted to be more explicit about things, we could filter based on valid responses for each item. For example, valid reponses to the feeling thermometer item are are anything from 0 to 100; anything else is invalid. Therefore we could write a `filter()` condition stating that `feeling_thermometer` (the name of the column) values must be `%in%` the set of values from `0:100`. Likewise for each of the extraversion columns, rows will be retained only if their values are `%in%` the range `1:7`.
-
-        my_data_complete <- my_data |>
-          filter(feeling_thermometer %in% 0:100,
-                 extraversion1 %in% 1:7,
-                 extraversion2 %in% 1:7)
-
-
-
-
+```{r}
+t.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)
+```
