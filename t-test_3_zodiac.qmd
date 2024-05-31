@@ -29,28 +29,18 @@ data_cleaned <- read_csv("data/gss_2006.csv") |>
   mutate(extraversion2 = 6 - extraversion2) |> 
   mutate(extraversion_mean = rowMeans(across(c(extraversion1, extraversion2)))) |> 
   drop_na()
+
 ```
 
 ### Describing your data
 
 The most common descriptive statistics are the mean ($M$) and standard deviation ($SD$). You should report these for each variable in your analysis.
 
-You can find a mean using R's built-in `mean()` function.
+You can find these for a set of numbers using R's built-in `mean()` and `sd()` functions.
 
 ```{r}
+mean(data_cleaned$extraversion1)
 sd(data_cleaned$extraversion1)
-sd(data_cleaned$extraversion2)
-```
-
-There's no built-in equivalent for finding the standard deviation of columns, but there is a basic `sd()` function, which you could apply to each column in turn:
-
-```{r}
-
-sd(data_cleaned$extraversion1)
-sd(data_cleaned$extraversion2)
-
-# etc
-
 ```
 
 This might be a perfectly appropriate approach, but with a lot of variables it might not be the most efficient (and it kind of violates the DRY principle: don't repeat yourself).
@@ -114,7 +104,7 @@ I'll also customize the "breaks" on the x-axis (where the ticks and numeric labe
 
 ```{r}
 #| label: fig-extraverted
-#| fig-cap: Histogram of responses to "extraverted, enthusiastic" TIPI item
+#| fig-cap: Histogram of responses to "reserved" TIPI item
 
 data_cleaned |> 
   ggplot(aes(x = extraversion1)) +
@@ -126,11 +116,11 @@ data_cleaned |>
 
 ```
 
-Here's a histogram of the other TIPI extraversion item.
+Here's a histogram of the other extraversion item.
 
 ```{r}
 #| label: fig-reserved
-#| fig-cap: Histogram of responses to "reserved, quiet" TIPI item
+#| fig-cap: Histogram of responses to "outgoing, sociable" TIPI item
 
 data_cleaned |> 
   ggplot(aes(x = extraversion2)) +
@@ -161,15 +151,6 @@ data_cleaned |>
 Notice that while both individual extraversion items were a bit skewed, the distribution of averages is approximately normally-distributed (albeit with a big spike in the middle).
 
 
-```{r}
-summary |> 
-  ggplot(aes(x = zodiac, y = mean)) +
-  geom_col() +
-  geom_errorbar(aes(ymax = mean + ci, ymin = mean - ci), width = 0.2) +
-  coord_cartesian(ylim = c(1, 5)) +
-  theme_apa
-```
-
 ## Hypothesis test
 
 ### The $t$ statistic
@@ -188,4 +169,14 @@ R has a built-in `t.test()` function.
 t.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)
 ```
 
+### Visualizing the difference
+
+```{r}
+summary |> 
+  ggplot(aes(x = zodiac, y = mean)) +
+  geom_col() +
+  geom_errorbar(aes(ymax = mean + ci, ymin = mean - ci), width = 0.2) +
+  coord_cartesian(ylim = c(1, 5)) +
+  theme_apa
+```
 

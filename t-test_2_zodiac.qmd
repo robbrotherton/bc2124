@@ -86,7 +86,9 @@ You'll notice that the Zodiac data is coded as numbers; it would be helpful to t
 
 #### Re-labelling categorical variables
 
-First let's label the `zodiac` column. The original data is recorded as the numbers 1 through 12 corresponding to the 12 star signs. Since R doesn't know any better, it assumes these numbers should be treated as regular numbers, so it will compute an average score and things like that even though you and I know it doesn't make a lot of sense to compute the average star sign for a bunch of people. It would make more sense to turn that variable into a "factor", meaning a categorical variable. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as `NA`).
+First let's label the `zodiac` column. The original data is recorded as the numbers 1 through 12 corresponding to the 12 star signs. Since R doesn't know any better, it assumes these numbers should be treated as regular numbers, so it will compute an average score and things like that even though you and I know it doesn't make a lot of sense to compute the average star sign for a bunch of people. It would make more sense to turn that variable into a "factor", meaning a categorical variable. 
+
+To change something about the data like this, we can use the `mutate()` function. It can either create a new column or change the data in an existing column, depending on the name you specific first. After the name, the equals sign indicates what that column will contain. In this case, we use the `factor()` function to create the new factor data. It consists of the original numeric `zodiac` data where the original score (the `level` of the resulting factor) is either 5 or 12; those numbers will be assigned `labels` "Leo" and "Pisces" respectively. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as `NA`).
 
 ```{r}
 data_cleaned <- data |> 
@@ -97,9 +99,9 @@ data_cleaned <- data |>
 
 For the personality trait questions, or goal is to eventually average each participants' answers to the two questions. However, remember that one question is positively-worded and the other negatively-worded, so it wouldn't make sense to average them together just yet. To add to the confusion, as the codebook shows, the original data is coded so that 1 indicates "strongly agree" and 5 indicates "strongly disagree". We want higher scores to indicate more of the trait in question, so we need to be careful about this.
 
-For extraversion, item `big5a1` (which I renamed `extraversion1`) is "reserved", while item `big5a2` (renamed `extraversion2`) is "outgoing, sociable". Since the right now a higher numeric score means the participant *disagreed* with the description, for the first question, a higher score means more extraversion. It is actually the second question--the positively-worded one--that we need to reverse-code.
+For extraversion, item `big5a1` (which I renamed `extraversion1`) is "reserved", while item `big5a2` (renamed `extraversion2`) is "outgoing, sociable". Since right now a higher numeric score means the participant *disagreed* with the description, for the first question, a higher score means more extraversion. It is actually the second question--the positively-worded one--that we need to reverse-code.
 
-Since answers can range from 1 to 5, an easy way to reverse the scores is to subtract the participant's response from 6; 1 becomes 5, 2 becomes 4, etc.
+Since answers can range from 1 to 5, an easy way to reverse the scores is to subtract the participant's response from 6; 1 becomes 5, 2 becomes 4, etc. (Note the use of `mutate()` again to computationally change something about the data.)
 
 ```{r}
 data_cleaned <- data_cleaned |> 
@@ -110,7 +112,7 @@ Make sure to identify the correct item for your trait; for some it is the first 
 
 #### Computing a scale average
 
-Now that both questions are scored consistently, the only thing that remains is to compute the average of the two for each participant.
+Now that both questions are scored consistently, the only thing that remains is to compute the average of the two for each participant. We'll create this new column using `mutate()` once again. The average score is computed by the `rowMeans()` function, which produces an average score for each row in the data. We need to tell it which columns to average across, using the `across()` function within which we specify the two personality trait columns by name.
 
 ```{r}
 data_cleaned <- data_cleaned |> 
@@ -149,7 +151,3 @@ pisces <- nrow(filter(data_cleaned, zodiac == "Pisces"))
 ```
 
 After filtering to keep only rows with complete data, we're left with `r format(nrow(data_cleaned), big.mark = ",")` valid responses (`r leos` Leos and `r pisces` Pisces).
-
-```{r}
-t.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)
-```
