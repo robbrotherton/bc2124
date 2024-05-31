@@ -3,6 +3,9 @@
   #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
     content: unset;
   }
+  #title-block-header > nav > ol > li:nth-child(2) > a > span.chapter-number::before {
+    content: unset;
+  }
 </style>
 ```
 # $t$-test

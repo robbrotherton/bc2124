@@ -72,11 +72,33 @@
     ]
   },
   {
-    "objectID": "t-test_1_zodiac.html#footnotes",
-    "href": "t-test_1_zodiac.html#footnotes",
+    "objectID": "t-test_1_zodiac.html#step-1.-examine-the-data",
+    "href": "t-test_1_zodiac.html#step-1.-examine-the-data",
     "title": "2  Project Planning",
-    "section": "",
-    "text": "Even random data will produce spurious correlations by chance some of the time; see spuriouscorrelations.com↩︎",
+    "section": "2.2 Step 1. Examine the data",
+    "text": "2.2 Step 1. Examine the data\nThe dataset we will use is from the General Social Survey (GSS). Here’s a description from the GSS website:\n\n\n\n\n\n\nGSS description\n\n\n\nThe General Social Survey (GSS) is a nationally representative survey of adults in the United States conducted since 1972. The GSS collects data on contemporary American society in order to monitor and explain trends in opinions, attitudes and behaviors. The GSS has adapted questions from earlier surveys, thereby allowing researchers to conduct comparisons for up to 80 years.\nThe GSS contains a standard core of demographic, behavioral, and attitudinal questions, plus topics of special interest. Among the topics covered are civil liberties, crime and violence, intergroup tolerance, morality, national spending priorities, psychological well-being, social mobility, and stress and traumatic events.\nAltogether, the GSS is the single best source for sociological and attitudinal trend data covering the United States. It allows researchers to examine the structure and functioning of society in general, as well as the role played by relevant subgroups and to compare the United States to other nations.\nThe GSS aims to make high-quality data easily accessible to scholars, students, policy-makers, and others, with minimal cost and waiting.\nFrom https://gss.norc.org/About-The-GSS\n\n\nSpecifically, for this project we will use data collected in 2006. The reason for using this (rather than more recent data) is that the 2006 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: Gosling et al., 2003). This scale is a short measure of the “Big Five” personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.\nFor this project, you will pick one of these traits and see whether it differs between people of different star signs. For this kind of analysis you will have two variables.\nYour dependent variable will be one of the Big Five traits:\n\nExtraversion (big5a1 & big5a2)\nAgreeableness (big5b1 & big5b2)\nConscientiousness (big5c1 & big5c2)\nNeuroticism (big5d1 & big5d2)\nOpenness (big5e1 & big5e2)\n\nYour quasi-independent variable will be Zodiac star sign (zodiac). Specifically, you will select two groups to compare (e.g. Leo versus Virgo).\nTo see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the big5xx and zodiac codes in parentheses above) in the GSS Codebook.",
+    "crumbs": [
+      "Project 1: $t$-test",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
+    ]
+  },
+  {
+    "objectID": "t-test_1_zodiac.html#step-2.-read-relevant-research",
+    "href": "t-test_1_zodiac.html#step-2.-read-relevant-research",
+    "title": "2  Project Planning",
+    "section": "2.3 Step 2. Read relevant research",
+    "text": "2.3 Step 2. Read relevant research\nReal research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.\nA real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything; pick one of these papers to skim to give you an idea of what has been found.\n\nMayo, J., White, O., & EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2\nSmithers, A. G., & Cooper, H. J. (1978). Personality and season of birth. The journal of social psychology, 105(2), 237-241.\nClarke, D., Gabriels, T., & Barnes, J. (1996). Astrological signs as determinants of extroversion and emotionality: An empirical study. The Journal of Psychology, 130(2), 131–140. https://doi.org/10.1080/00223980.1996.9914995\nSaklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). An empirical study of personality and astrological factors. Journal of Psychology, 110(2), 275.\nMcGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.",
+    "crumbs": [
+      "Project 1: $t$-test",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
+    ]
+  },
+  {
+    "objectID": "t-test_1_zodiac.html#step-3.-articulate-your-hypothesis",
+    "href": "t-test_1_zodiac.html#step-3.-articulate-your-hypothesis",
+    "title": "2  Project Planning",
+    "section": "2.4 Step 3. Articulate your hypothesis",
+    "text": "2.4 Step 3. Articulate your hypothesis\nBy this point you should be able to state your:\n\nOperational definitions (that is, the specific questions that participants were asked and how they could answer, per the codebook)\nThe constructs that those operational definitions measure (i.e. does the question measure perceived political preferences in general? Or some more specific form of affiliation/alignment?)\nYour hypothesis\n\nYour hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn’t just seem to be attributable to chance variation in the data?\nIf you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see Appendix B).",
     "crumbs": [
       "Project 1: $t$-test",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
@@ -138,11 +160,11 @@
     ]
   },
   {
-    "objectID": "t-test_3_zodiac.html#correlation-analysis",
-    "href": "t-test_3_zodiac.html#correlation-analysis",
+    "objectID": "t-test_3_zodiac.html#hypothesis-test",
+    "href": "t-test_3_zodiac.html#hypothesis-test",
     "title": "4  Analysis",
-    "section": "4.2 Correlation analysis",
-    "text": "4.2 Correlation analysis\n\nThe correlation statistic\nThe correlation statistic can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.\nIf you need to refresh your memory from a past statistics class, refer to the correlation statistic Appendix.\n\n\nCorrelation in R\nThe correlation between two variables can be found using the cor() function.\n\ncor(x = my_data_complete$extraversion_mean, \n    y = my_data_complete$feeling_thermometer)\n\n[1] -0.01012898\n\n\nIf you got an answer of NA instead of a number, it is probably because your data has some missing data. You just need to tell cor() to only use data for which both pairs of values are nonmissing:\n\ncor(x = my_data_complete$extraversion_mean, \n    y = my_data_complete$feeling_thermometer,\n    use = \"pairwise.complete.obs\")\n\n[1] -0.01012898\n\n\nThe cor.test() function goes further than cor(), giving you the \\(p\\)-value necessary for determining statistical significance2 and some other information about the correlation.\n\ncor.test(x = my_data_complete$extraversion_mean, \n         y = my_data_complete$feeling_thermometer)\n\n\n    Pearson's product-moment correlation\n\ndata:  my_data_complete$extraversion_mean and my_data_complete$feeling_thermometer\nt = -0.60251, df = 3538, p-value = 0.5469\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n -0.04305838  0.02282241\nsample estimates:\n        cor \n-0.01012898 \n\n\nLastly, let’s make a scatterplot visualizing the correlation.\n\nmy_data_complete |&gt; \n  ggplot(aes(x = extraversion_mean, y = feeling_thermometer)) +\n  geom_point(position = position_jitter(width = 0.4, height = 0, seed = 1), \n             alpha = 0.1) +\n  scale_x_continuous(breaks = 1:7) +\n  scale_y_continuous(breaks = seq(from = 0, to = 100, by = 10)) +\n  theme_apa\n\n\n\n\n\n\n\nFigure 4.6: Scatterplot (with jitter) of average extraversion scores and feeling thermometer scores\n\n\n\n\n\nMost of that will look familiar from the previous plots we made. The only major difference is that instead of making a histogram I’m making a scatterplot, for which the “geometry” is points rather than histogram bars. Therefore I use geom_point() rather than geom_histogram() for the geometry layer. One new element is the position = position_jitter() part inside geom_point(). Its purpose is to add some random noise to each individual data point, moving it to the left or right a little bit along the x-axis. This is helpful here since there are many data points but only 5 possible answers along each axis. Try making the graph without including the jitter; it’ll just look like a grid of points. Any pattern in the data will likely be hard to see. It may seem counterintuitive to change the data by adding randomness, but for the purposes of the visualization, doing so actually makes any patterns easier to detect.\nLooking at the scatterplot, you can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant \\(p\\)-value, visually it doesn’t look like there’s much of an association between the feeling thermometer responses and extraversion scores.",
+    "section": "4.2 Hypothesis test",
+    "text": "4.2 Hypothesis test\n\nThe \\(t\\) statistic\nThe \\(t\\)-test can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.\nIf you need to refresh your memory from a past statistics class, refer to the \\(t\\)-test Appendix.\n\n\nThe \\(t\\)-test\nR has a built-in t.test() function.\n\nt.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  extraversion_mean by zodiac\nt = 1.916, df = 246, p-value = 0.05652\nalternative hypothesis: true difference in means between group Leo and group Pisces is not equal to 0\n95 percent confidence interval:\n -0.005610518  0.406626738\nsample estimates:\n   mean in group Leo mean in group Pisces \n            3.386555             3.186047 \n\n\n\n\nVisualizing the difference\n\nsummary |&gt; \n  ggplot(aes(x = zodiac, y = mean)) +\n  geom_col() +\n  geom_errorbar(aes(ymax = mean + ci, ymin = mean - ci), width = 0.2) +\n  coord_cartesian(ylim = c(1, 5)) +\n  theme_apa",
     "crumbs": [
       "Project 1: $t$-test",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Analysis</span>"
@@ -663,50 +685,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>E</span>  <span class='chapter-title'>Grading rubric</span>"
-    ]
-  },
-  {
-    "objectID": "t-test_1_zodiac.html#step-1.-examine-the-data",
-    "href": "t-test_1_zodiac.html#step-1.-examine-the-data",
-    "title": "2  Project Planning",
-    "section": "2.2 Step 1. Examine the data",
-    "text": "2.2 Step 1. Examine the data\nThe dataset we will use is from the General Social Survey (GSS). Here’s a description from the GSS website:\n\n\n\n\n\n\nGSS description\n\n\n\nThe General Social Survey (GSS) is a nationally representative survey of adults in the United States conducted since 1972. The GSS collects data on contemporary American society in order to monitor and explain trends in opinions, attitudes and behaviors. The GSS has adapted questions from earlier surveys, thereby allowing researchers to conduct comparisons for up to 80 years.\nThe GSS contains a standard core of demographic, behavioral, and attitudinal questions, plus topics of special interest. Among the topics covered are civil liberties, crime and violence, intergroup tolerance, morality, national spending priorities, psychological well-being, social mobility, and stress and traumatic events.\nAltogether, the GSS is the single best source for sociological and attitudinal trend data covering the United States. It allows researchers to examine the structure and functioning of society in general, as well as the role played by relevant subgroups and to compare the United States to other nations.\nThe GSS aims to make high-quality data easily accessible to scholars, students, policy-makers, and others, with minimal cost and waiting.\nFrom https://gss.norc.org/About-The-GSS\n\n\nSpecifically, for this project we will use data collected in 2006. The reason for using this (rather than more recent data) is that the 2006 survey included a personality scale: the Ten-Item Personality Inventory (TIPI: Gosling et al., 2003). This scale is a short measure of the “Big Five” personality traits of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.\nFor this project, you will pick one of these traits and see whether it differs between people of different star signs. For this kind of analysis you will have two variables.\nYour dependent variable will be one of the Big Five traits:\n\nExtraversion (big5a1 & big5a2)\nAgreeableness (big5b1 & big5b2)\nConscientiousness (big5c1 & big5c2)\nNeuroticism (big5d1 & big5d2)\nOpenness (big5e1 & big5e2)\n\nYour quasi-independent variable will be Zodiac star sign (zodiac). Specifically, you will select two groups to compare (e.g. Leo versus Virgo).\nTo see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the big5xx and zodiac codes in parentheses above) in the GSS Codebook.",
-    "crumbs": [
-      "Project 1: $t$-test",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
-    ]
-  },
-  {
-    "objectID": "t-test_1_zodiac.html#step-2.-read-relevant-research",
-    "href": "t-test_1_zodiac.html#step-2.-read-relevant-research",
-    "title": "2  Project Planning",
-    "section": "2.3 Step 2. Read relevant research",
-    "text": "2.3 Step 2. Read relevant research\nReal research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.\nA real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything; pick one of these papers to skim to give you an idea of what has been found.\n\nMayo, J., White, O., & EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2\nSmithers, A. G., & Cooper, H. J. (1978). Personality and season of birth. The journal of social psychology, 105(2), 237-241.\nClarke, D., Gabriels, T., & Barnes, J. (1996). Astrological signs as determinants of extroversion and emotionality: An empirical study. The Journal of Psychology, 130(2), 131–140. https://doi.org/10.1080/00223980.1996.9914995\nSaklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). An empirical study of personality and astrological factors. Journal of Psychology, 110(2), 275.\nMcGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.",
-    "crumbs": [
-      "Project 1: $t$-test",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
-    ]
-  },
-  {
-    "objectID": "t-test_1_zodiac.html#step-3.-articulate-your-hypothesis",
-    "href": "t-test_1_zodiac.html#step-3.-articulate-your-hypothesis",
-    "title": "2  Project Planning",
-    "section": "2.4 Step 3. Articulate your hypothesis",
-    "text": "2.4 Step 3. Articulate your hypothesis\nBy this point you should be able to state your:\n\nOperational definitions (that is, the specific questions that participants were asked and how they could answer, per the codebook)\nThe constructs that those operational definitions measure (i.e. does the question measure perceived political preferences in general? Or some more specific form of affiliation/alignment?)\nYour hypothesis\n\nYour hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn’t just seem to be attributable to chance variation in the data?\nIf you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see Appendix B).",
-    "crumbs": [
-      "Project 1: $t$-test",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Planning</span>"
-    ]
-  },
-  {
-    "objectID": "t-test_3_zodiac.html#hypothesis-test",
-    "href": "t-test_3_zodiac.html#hypothesis-test",
-    "title": "4  Analysis",
-    "section": "4.2 Hypothesis test",
-    "text": "4.2 Hypothesis test\n\nThe \\(t\\) statistic\nThe \\(t\\)-test can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.\nIf you need to refresh your memory from a past statistics class, refer to the \\(t\\)-test Appendix.\n\n\nThe \\(t\\)-test\nR has a built-in t.test() function.\n\nt.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  extraversion_mean by zodiac\nt = 1.916, df = 246, p-value = 0.05652\nalternative hypothesis: true difference in means between group Leo and group Pisces is not equal to 0\n95 percent confidence interval:\n -0.005610518  0.406626738\nsample estimates:\n   mean in group Leo mean in group Pisces \n            3.386555             3.186047 \n\n\n\n\nVisualizing the difference\n\nsummary |&gt; \n  ggplot(aes(x = zodiac, y = mean)) +\n  geom_col() +\n  geom_errorbar(aes(ymax = mean + ci, ymin = mean - ci), width = 0.2) +\n  coord_cartesian(ylim = c(1, 5)) +\n  theme_apa",
-    "crumbs": [
-      "Project 1: $t$-test",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Analysis</span>"
     ]
   }
 ]
