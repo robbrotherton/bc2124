@@ -1,6 +1,6 @@
 # Project planning
 
-In this lab, you will start your second project: conducting a multiple regression analysis using the same 2016 ANES data.
+In this lab, you will start your final project: conducting a multiple regression analysis using the same 2016 ANES data.
 
 ### Goals
 
@@ -62,7 +62,7 @@ html_list <- paste0("<ul>", paste0(thermometers, collapse = ""), "</ul>")
 
 ### Step 2. Find relevant research
 
-As with Project 1, your approach and expectations should be informed by what has come before. Last time you didn't have so much choice of variables so I was able to point you to some relevant research. This time you have a wider choice so you'll have to find relevant research yourself about these (or related) personality traits. In particular, what psychological construct(s) do you think your feeling thermometer variable might reflect or relate to?
+As with the previous projects, your approach and expectations should be informed by what has come before. Previously you didn't have so much choice of variables so I was able to point you to some relevant research. This time you have a wider choice so you'll have to find relevant research yourself about these (or related) personality traits. In particular, what psychological construct(s) do you think your feeling thermometer variable might reflect or relate to?
 
 #### What to look for
 

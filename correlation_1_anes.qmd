@@ -1,6 +1,6 @@
 # Project Planning
 
-In this session we will begin the first project of the course: performing a correlational analysis using the ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
+In this session we will begin the next project of the course: performing a correlational analysis using the ANES 2016 dataset. By the end of the session you will have a plan for your analysis.
 
 
 ### Goals
