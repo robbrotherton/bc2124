@@ -337,12 +337,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#analyzing-data-in-r" id="toc-analyzing-data-in-r" class="nav-link" data-scroll-target="#analyzing-data-in-r"><span class="header-section-number">8.1</span> Analyzing data in R</a>
+  <li><a href="#analyzing-data-in-r" id="toc-analyzing-data-in-r" class="nav-link" data-scroll-target="#analyzing-data-in-r">Analyzing data in R</a>
   <ul class="collapse">
   <li><a href="#describing-your-data" id="toc-describing-your-data" class="nav-link" data-scroll-target="#describing-your-data">Describing your data</a></li>
   <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data">Visualizing the data</a></li>
   </ul></li>
-  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis"><span class="header-section-number">8.2</span> Correlation analysis</a>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation analysis</a>
   <ul class="collapse">
   <li><a href="#the-correlation-statistic" id="toc-the-correlation-statistic" class="nav-link" data-scroll-target="#the-correlation-statistic">The correlation statistic</a></li>
   <li><a href="#correlation-in-r" id="toc-correlation-in-r" class="nav-link" data-scroll-target="#correlation-in-r">Correlation in R</a></li>
@@ -382,8 +382,8 @@ window.Quarto = {
 <li>Interpret the results</li>
 </ul>
 </section>
-<section id="analyzing-data-in-r" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="analyzing-data-in-r"><span class="header-section-number">8.1</span> Analyzing data in R</h2>
+<section id="analyzing-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="analyzing-data-in-r">Analyzing data in R</h2>
 <p>Running with my example from last week, my variables were average extraversion scores and the Democratic Party feeling thermometer score. I made a data.frame with just those variables; filtered the data down to complete, valid responses; recoded the negatively-worded item; and computed an extraversion mean score. To refresh your memory, here’s the entire pipeline from start to finish:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -569,8 +569,8 @@ Figure&nbsp;8.5: Histogram of responses to Democratic Party feeling thermometer
 <p>I chose a binwidth of 1, which isn’t necessarily the most appropriate value for a 0 to 100, but it does reveal an interesting distribution of responses. People’s responses are not evenly distributed across the 0 to 100 scale; rather, some values (particularly multiples of 10) are chosen much more frequently than others.</p>
 </section>
 </section>
-<section id="correlation-analysis" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="correlation-analysis"><span class="header-section-number">8.2</span> Correlation analysis</h2>
+<section id="correlation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-analysis">Correlation analysis</h2>
 <section id="the-correlation-statistic" class="level3">
 <h3 class="anchored" data-anchor-id="the-correlation-statistic">The correlation statistic</h3>
 <p>The correlation statistic can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.</p>

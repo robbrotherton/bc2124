@@ -5,7 +5,7 @@ This week each project team will present their project to the rest of the class.
 
 ## Presentation 
 
-The guide to delivering an effective presentation is the [same as last time](lab-5.qmd). My main advice this time is to focus on making your interpretation of the combined and individual relationships between predictors and outcome as clear and convincing as possible. This complexity can be tricky to get your head around, and even trickier to explain to someone else. The best presentations will make the logic of your regression model and its results as easy to follow as possible.
+The guide to delivering an effective presentation is the [same as last time](t-test_4_zodiac.qmd). My main advice this time is to focus on making your interpretation of the combined and individual relationships between predictors and outcome as clear and convincing as possible. This complexity can be tricky to get your head around, and even trickier to explain to someone else. The best presentations will make the logic of your regression model and its results as easy to follow as possible.
 
 
 ## Written report {#sec-report}

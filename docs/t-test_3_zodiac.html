@@ -337,12 +337,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#analyzing-data-in-r" id="toc-analyzing-data-in-r" class="nav-link" data-scroll-target="#analyzing-data-in-r"><span class="header-section-number">4.1</span> Analyzing data in R</a>
+  <li><a href="#analyzing-data-in-r" id="toc-analyzing-data-in-r" class="nav-link" data-scroll-target="#analyzing-data-in-r">Analyzing data in R</a>
   <ul class="collapse">
   <li><a href="#describing-your-data" id="toc-describing-your-data" class="nav-link" data-scroll-target="#describing-your-data">Describing your data</a></li>
   <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data">Visualizing the data</a></li>
   </ul></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test"><span class="header-section-number">4.2</span> Hypothesis test</a>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis test</a>
   <ul class="collapse">
   <li><a href="#the-t-statistic" id="toc-the-t-statistic" class="nav-link" data-scroll-target="#the-t-statistic">The <span class="math inline">\(t\)</span> statistic</a></li>
   <li><a href="#the-t-test" id="toc-the-t-test" class="nav-link" data-scroll-target="#the-t-test">The <span class="math inline">\(t\)</span>-test</a></li>
@@ -382,8 +382,8 @@ window.Quarto = {
 <li>Interpret the results</li>
 </ul>
 </section>
-<section id="analyzing-data-in-r" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="analyzing-data-in-r"><span class="header-section-number">4.1</span> Analyzing data in R</h2>
+<section id="analyzing-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="analyzing-data-in-r">Analyzing data in R</h2>
 <p>Running with my example from last week, I want to compare average extraversion scores between Leos and Pisces. I made a data.frame with just those columns; recoded the Zodiac labels and reverse-scored one of the extraversion items; and computed an extraversion mean score. To refresh your memory, here’s the entire pipeline from start to finish:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -538,8 +538,8 @@ Figure&nbsp;4.4: Histogram of average scores on TIPI Extraversion subscale
 <p>Notice that while both individual extraversion items were a bit skewed, the distribution of averages is approximately normally-distributed (albeit with a big spike in the middle).</p>
 </section>
 </section>
-<section id="hypothesis-test" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="hypothesis-test"><span class="header-section-number">4.2</span> Hypothesis test</h2>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis test</h2>
 <section id="the-t-statistic" class="level3">
 <h3 class="anchored" data-anchor-id="the-t-statistic">The <span class="math inline">\(t\)</span> statistic</h3>
 <p>The <span class="math inline">\(t\)</span>-test can be computed with a single line of code, as you’ll see. But it’s important to understand the math happening behind the scenes.</p>

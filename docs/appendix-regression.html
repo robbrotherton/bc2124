@@ -302,12 +302,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#calculating-multiple-regression" id="toc-calculating-multiple-regression" class="nav-link active" data-scroll-target="#calculating-multiple-regression"><span class="header-section-number">D.1</span> Calculating Multiple Regression</a></li>
-  <li><a href="#evaluating-the-model" id="toc-evaluating-the-model" class="nav-link" data-scroll-target="#evaluating-the-model"><span class="header-section-number">D.2</span> Evaluating the model</a>
+  <li><a href="#calculating-multiple-regression" id="toc-calculating-multiple-regression" class="nav-link active" data-scroll-target="#calculating-multiple-regression">Calculating Multiple Regression</a></li>
+  <li><a href="#evaluating-the-model" id="toc-evaluating-the-model" class="nav-link" data-scroll-target="#evaluating-the-model">Evaluating the model</a>
   <ul class="collapse">
   <li><a href="#overall-model-fit" id="toc-overall-model-fit" class="nav-link" data-scroll-target="#overall-model-fit">Overall model fit</a></li>
   </ul></li>
-  <li><a href="#interpreting-the-regression-coefficients" id="toc-interpreting-the-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-the-regression-coefficients"><span class="header-section-number">D.3</span> Interpreting the regression coefficients</a></li>
+  <li><a href="#interpreting-the-regression-coefficients" id="toc-interpreting-the-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-the-regression-coefficients">Interpreting the regression coefficients</a></li>
   </ul>
 </nav>
     </div>
@@ -343,8 +343,8 @@ window.Quarto = {
 </style>
 <p>In multiple regression, you have a dependent variable (the outcome you want to predict) and two or more independent variables (predictors) that you believe might influence the outcome. The goal is to create a model that best represents the relationship between the predictors and the outcome.</p>
 <p>When you want to predict a single outcome variable based on multiple predictor variables, you use multiple regression. This extends the idea of correlation where two variables are related to looking at how a combination of predictors relates to an outcome. For example, we might want to predict a person’s job satisfaction based on their salary, commute time, and relationship with their supervisor. Each of these predictors can contribute to the prediction, and multiple regression tells us how much each one matters while considering the influence of the others.</p>
-<section id="calculating-multiple-regression" class="level2" data-number="D.1">
-<h2 data-number="D.1" class="anchored" data-anchor-id="calculating-multiple-regression"><span class="header-section-number">D.1</span> Calculating Multiple Regression</h2>
+<section id="calculating-multiple-regression" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-multiple-regression">Calculating Multiple Regression</h2>
 <p>The equation of the regression line in a simple case (with only one predictor) can be represented as:</p>
 <p><span class="math display">\[
 Y = b_0 + b_1X_1
@@ -357,8 +357,8 @@ Y = b_0 + b_1X_1 + b_2X_2 + \ldots + b_kX_k
 <p>Where <span class="math inline">\(k\)</span> is the number of predictors.</p>
 <p>To calculate multiple regression, you use a method that minimizes the differences between the observed values of the dependent variable and the predicted values from the model. This method finds the best-fitting line (plane in multiple dimensions) that minimizes the sum of squared differences between observed and predicted values. This line is often referred to as the regression line or hyperplane.</p>
 </section>
-<section id="evaluating-the-model" class="level2" data-number="D.2">
-<h2 data-number="D.2" class="anchored" data-anchor-id="evaluating-the-model"><span class="header-section-number">D.2</span> Evaluating the model</h2>
+<section id="evaluating-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-the-model">Evaluating the model</h2>
 <section id="overall-model-fit" class="level3">
 <h3 class="anchored" data-anchor-id="overall-model-fit">Overall model fit</h3>
 <p>The effect size for multiple regression is often reported using the <span class="math inline">\(F\)</span>-statistic and its associated <span class="math inline">\(p\)</span>-value. The F-statistic tests whether the overall model is a significant improvement over a model with no predictors. The <span class="math inline">\(p\)</span>-value associated with the <span class="math inline">\(F\)</span>-statistic helps determine whether the predictors, as a group, have a significant effect on the dependent variable.</p>
@@ -373,8 +373,8 @@ Y = b_0 + b_1X_1 + b_2X_2 + \ldots + b_kX_k
 </section>
 </section>
 </section>
-<section id="interpreting-the-regression-coefficients" class="level2" data-number="D.3">
-<h2 data-number="D.3" class="anchored" data-anchor-id="interpreting-the-regression-coefficients"><span class="header-section-number">D.3</span> Interpreting the regression coefficients</h2>
+<section id="interpreting-the-regression-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-regression-coefficients">Interpreting the regression coefficients</h2>
 <p>In multiple regression, we don’t just have a single correlation coefficient. Instead, we have a regression coefficient for each predictor variable, represented as (B). The (B) coefficient tells us about the relationship between the predictor and the outcome when all other predictors are held constant. The mathematical calculations are more complex than for a simple correlation and typically rely on matrix algebra. For our purposes, though, we need to know what the coefficients represent.</p>
 <p>If (B) is positive, it means that as the predictor increases, the outcome also tends to increase, holding all else constant. If (B) is negative, then as the predictor increases, the outcome tends to decrease. A (B) of zero means the predictor doesn’t have a unique effect on the outcome when considering other predictors.</p>
 <p>The regression coefficients (<span class="math inline">\(b\)</span> values) represent the change in the dependent variable for a unit change in the corresponding predictor while holding other predictors constant. Positive coefficients indicate a positive relationship, while negative coefficients indicate a negative relationship.</p>

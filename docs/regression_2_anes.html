@@ -337,9 +337,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">11.1</span> Data preparation</a></li>
-  <li><a href="#describing-your-variables" id="toc-describing-your-variables" class="nav-link" data-scroll-target="#describing-your-variables"><span class="header-section-number">11.2</span> Describing your variables</a></li>
-  <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data"><span class="header-section-number">11.3</span> Visualizing the data</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a></li>
+  <li><a href="#describing-your-variables" id="toc-describing-your-variables" class="nav-link" data-scroll-target="#describing-your-variables">Describing your variables</a></li>
+  <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data">Visualizing the data</a></li>
   </ul>
 </nav>
     </div>
@@ -374,8 +374,8 @@ window.Quarto = {
 <li>Compute any required variables (scale means, number of items missing, etc)</li>
 </ul>
 </section>
-<section id="data-preparation" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">11.1</span> Data preparation</h2>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
 <p>Building on the correlation example, we will include additional variables of interest - conscientiousness and agreeableness - to examine how these factors, along with extraversion, collectively predict feelings towards the Democratic party. Similar to the correlation project, we will start by cleaning and filtering the data, recoding the negatively-worded TIPI items (taking care to note which ones need recoding; it’s not always the second question), and computing mean scores for each Big 5 trait.</p>
 <p>Here is the pipeline to prepare the data:</p>
 <div class="cell">
@@ -400,8 +400,8 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">agreeableness_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"agreeableness"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="describing-your-variables" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="describing-your-variables"><span class="header-section-number">11.2</span> Describing your variables</h2>
+<section id="describing-your-variables" class="level2">
+<h2 class="anchored" data-anchor-id="describing-your-variables">Describing your variables</h2>
 <p>Just as in the previous lab, you’ll need to compute the mean and standard deviation for each of your variables. Use the same process, replacing the variable names with your new ones:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="sc">|&gt;</span></span>
@@ -430,8 +430,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="visualizing-the-data" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="visualizing-the-data"><span class="header-section-number">11.3</span> Visualizing the data</h2>
+<section id="visualizing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-data">Visualizing the data</h2>
 <p>You can create histograms for each of your new variables, just like you did for extraversion. Since there are so many, rather than producing individual plots, I’m going to use the <code>pivot_longer()</code>, like we’ve done before grouping and summarizing several variables. In this case, however, we won’t <code>summarize()</code>. Instead, the long-formatted data gets piped into <code>ggplot()</code>, and a <code>facet_wrap()</code> layer is added. That produces several sub-plots (“facets”) based on the formula provided within the function. In this case, I want subplots for each different <code>variable</code> (the column with the names of the different variables), so the formula is just <code>~variable</code>. So the whole layer can be read as “facet wrap the plots by the different values of the”variable” column.”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="sc">|&gt;</span></span>

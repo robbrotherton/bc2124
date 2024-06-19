@@ -1,6 +1,6 @@
 # Project Planning
 
-In this session we will begin the first project of the course: investigating personality differences between people with different astrological star signs. By the end of the session you will have a plan for your project.
+In this session we will begin the first project of the course: investigating personality differences between two groups of people. By the end of the session you will have a plan for your project.
 
 ### Goals
 
@@ -11,6 +11,14 @@ In this session we will begin the first project of the course: investigating per
 ## Project overview
 
 One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particularly trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.
+
+Specifically, for this project you will be comparing scores on one of the Big 5 personality traits: openness, conscientiousness, extraversion, agreeableness, or neuroticism.
+
+![The Big 5 theory of personality](https://upload.wikimedia.org/wikipedia/commons/8/84/Big_Five_Personality_Traits_Bubble_Diagram.svg){fig-align="center" width="80%"}
+
+What groups will you compare? We're going to look for differences between people with different astrological starsigns (Pisces, Aries, Leo, Virgo, etc...). Why starsigns? Because it's something a little bit fun that I expect you will be at least somewhat familiar with, and you'll be able to come up with some idea about how people with one sign might differ from people with another sign (Leos will surely be more extraverted than Pisces, right?!). To be clear: astrology are not something that contemporary academic psychologists generally take very seriously. However, it makes for a fine introduction to ways of thinking about the reliability and validity of approaches to categorizing and describing personality, as well as constructing hypotheses and analyzing data.
+
+![The twelve astrological starsigns](astrology-chart.webp){fig-align="center" width="80%"}
 
 ### Comparing groups: the $t$-test
 
@@ -61,15 +69,15 @@ Real research doesn't happen in a vacuum; research plans and expectations should
 A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
 ::: references
-Mayo, J., White, O., & EYSENCK, H. J. (1978). An empirical study of the relation between astrological factors and personality. Journal of Social Psychology, 105(2), 229. http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2
+Clarke, D., Gabriels, T., & Barnes, J. (1996). [Astrological signs as determinants of extroversion and emotionality: An empirical study.](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226) *The Journal of Psychology, 130(2),* 131--140. [https://doi.org/10.1080/00223980.1996.9914995](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226)
 
-Smithers, A. G., & Cooper, H. J. (1978). Personality and season of birth. The journal of social psychology, 105(2), 237-241.
+Mayo, J., White, O., & Eyesenck, H. J. (1978). [An empirical study of the relation between astrological factors and personality](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2). *Journal of Social Psychology, 105*(2), 229.
 
-Clarke, D., Gabriels, T., & Barnes, J. (1996). [Astrological signs as determinants of extroversion and emotionality: An empirical study.](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226) *The Journal of Psychology, 130(2),* 131--140. https://doi.org/10.1080/00223980.1996.9914995
+McGrew, J. H., & McFall, R. M. (1990). [A scientific inquiry into the validity of astrology](https://www.scientificexploration.org/docs/4/jse_04_1_mcgrew.pdf). Journal of Scientific Exploration, 4(1), 75-83.
 
-Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). An empirical study of personality and astrological factors. Journal of Psychology, 110(2), 275.
+Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). [An empirical study of personality and astrological factors](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1). Journal of Psychology, 110(2), 275. [https://doi.org/10.1080/00223980.1982.9915349](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1)
 
-McGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of astrology. Journal of Scientific Exploration, 4(1), 75-83.
+Smithers, A. G., & Cooper, H. J. (1978). [Personality and season of birth](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis). *The Journal of Social Psychology, 105*(2), 237-241. [https://doi.org/10.1080/00224545.1978.9924120](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis)
 :::
 
 ## Step 3. Articulate your hypothesis
@@ -77,7 +85,7 @@ McGrew, J. H., & McFall, R. M. (1990). A scientific inquiry into the validity of
 By this point you should be able to state your:
 
 -   **Operational definitions** (that is, the specific questions that participants were asked and how they could answer, per the codebook)
--   The **constructs** that those operational definitions measure (i.e. does the question measure perceived political preferences *in general*? Or some more specific form of affiliation/alignment?)
+-   The **constructs** that those operational definitions measure (i.e. what exactly *is* extraversion, as a broad psychological concept that the relevant questions participants were asked somehow tap into)
 -   Your **hypothesis**
 
 Your hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn't just seem to be attributable to chance variation in the data?

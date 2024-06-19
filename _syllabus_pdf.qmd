@@ -6,7 +6,7 @@ subtitle: |
   | PSYC BC2124
   | Barnard College
   | Department of Psychology
-  | Fall 2023
+  | Fall 2024
 ---
 
 {{< include _syllabus_body.qmd >}}

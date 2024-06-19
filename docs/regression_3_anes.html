@@ -337,8 +337,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">12.1</span> Visualization</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">12.2</span> Analysis</a>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
   <ul class="collapse">
   <li><a href="#computing-regression-in-r" id="toc-computing-regression-in-r" class="nav-link" data-scroll-target="#computing-regression-in-r">Computing regression in R</a></li>
   <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results">Interpreting the results</a></li>
@@ -378,8 +378,8 @@ window.Quarto = {
 </ul>
 <!-- ## Checking model assumptions -->
 </section>
-<section id="visualization" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="visualization"><span class="header-section-number">12.1</span> Visualization</h2>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <p>Previously, we visualized a bivariate correlation using a scatterplot. One way of visualizing a regression when the predictors are all measured on the same scale (as they are in this project) is to essentially produce several scatterplots overlaid on top of one another. The outcome variable will always be on the Y axis, and the values of the predictors on the X axis. Color (or some other aesthetic) is used to differentiate the different predictors.</p>
 <p>This can be achieved by reshaping the data into long-format as we have done before. Here, however, as a parameter in <code>pivot_longer()</code> I specify <code>-feeling_thermometer</code>, meaning I want every column <em>except</em> the feeling thermometer to be pivoted longer. That keeps <code>feeling_thermometer</code> as a unique column of its own, duplicating its value across rows for each of the three predictor variables. The reshaped data can then be piped into <code>ggplot()</code>.</p>
 <div class="cell">
@@ -405,8 +405,8 @@ Defaulting to continuous.
 </div>
 <p>This kind of visualization doesn’t map on to the regression model perfectly; it essentially shows three bivariate correlations, while the regression model, in quantifying the relationship between each predictor and the outcome, also controls for the relationship between the predictor and the other predictors in the model. And with more than 3 or so predictors it can get visually messy and hard to easily interpret. For this project’s design, however, it seems an appropriate choice.</p>
 </section>
-<section id="analysis" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="analysis"><span class="header-section-number">12.2</span> Analysis</h2>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <section id="computing-regression-in-r" class="level3">
 <h3 class="anchored" data-anchor-id="computing-regression-in-r">Computing regression in R</h3>
 <p>Now we’ll compute the regression model. The model quantifies the relationship between the single outcome variable (in this case, <code>feeling_thermometer</code>) and several independent variables (<code>extraversion_mean</code>, <code>conscientiousness_mean</code>, and <code>agreeableness_mean</code>).</p>

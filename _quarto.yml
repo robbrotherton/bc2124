@@ -71,7 +71,7 @@ crossref:
 format:
   html:
     number-sections: true
-    number-depth: 2
+    number-depth: 1
     number-offset: 1
     theme:
       light: [flatly, custom.scss]
