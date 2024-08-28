@@ -14,60 +14,36 @@ You should begin this session with variables from the ANES 2016 dataset in mind 
 
 ### Getting R ready
 
-In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won't still run into issues!): `anesr` ([github.com/jamesmartherus/anesr](https://github.com/jamesmartherus/anesr)).
-
-To start exploring the data in R, you first need to set up your environment. This means installing the `anesr` package. Usually packages can be installed from within R using the `install.packages()` function. However since the `anesr` package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the `devtools` package, which has a special function for installing packages from GitHub.
-
-```{r}
-#| eval: false
-
-install.packages("devtools")
-
-devtools::install_github("jamesmartherus/anesr")
-
-```
-
-We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the `tidyverse` to make coding these common tasks easier. The `tidyverse` can be installed like so:
-
-```{r}
-#| eval: false
-
-install.packages("tidyverse")
-
-```
-
-If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to 'activate' the packages using `library()` to make their functions and data available each time you start a new R session.
+As with the first project we'll make use of the `tidyverse` package, so it needs to be 'activated' using the `library` function.
 
 ```{r}
 #| warning: false
 #| message: false
 
-library(anesr)
 library(tidyverse)
 
 ```
 
 ### Getting data into R
 
-Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you could download the ANES 2016 data file as a .csv from the ANES website and read it into R that way. However, the `anesr` package contains the data so you don't need to download it separately. Instead you can make it available by running this line of code:
+Likewise, we need to read in the relevant data file to work with in R. Like the GSS, ANES datasets can be downloaded from their website, but I've already done that for us: the data is in a .csv file in the `data` subfolder of this project.
 
 ```{r}
 
-data(timeseries_2016)
+raw_data <- read.csv("data/anes_2016.csv")
 
 ```
 
-When you execute the code you won't see any output, but you should see the name `timeseries_2016` appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you're familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant's answers.
+Remember that when you execute the code you won't see any output, but you should see the name you used on the left-hand side of the `<-` assignment operator appear in your Environment pane.
 
-Typing the name of the data.frame and running that line of code will show the first few columns and rows.
+Don't forget to take a look at the data.frame object to make sure it's as you expect. One way is to click on the name in the Environment pane to view the data as a spreadsheet in a new tab. You can also check it out using code:
 
 ```{r}
 
-timeseries_2016
+str(raw_data)
 
 ```
 
-You can also click on the name in the Environment pane to view the data in a new tab.
 
 ### Select your variables
 
@@ -79,7 +55,7 @@ For this example I'll look at the correlation between extraversion and the Democ
 
 ```{r}
 
-my_data <- timeseries_2016 |> 
+my_data <- raw_data |> 
   select(extraversion1 = "V162333", 
          extraversion2 = "V162338",
          feeling_thermometer = "V161095")
