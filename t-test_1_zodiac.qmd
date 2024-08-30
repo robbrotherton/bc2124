@@ -96,6 +96,4 @@ If you do expect a difference, you should also specify which group you expect to
 
 ## To do for next time
 
-Read up on the development of the TIPI (\[Gosling et al., 2003\](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)).
-
-The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.
+Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.
