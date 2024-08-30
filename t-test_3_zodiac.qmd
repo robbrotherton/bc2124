@@ -43,9 +43,7 @@ mean(data_cleaned$extraversion1)
 sd(data_cleaned$extraversion1)
 ```
 
-This might be a perfectly appropriate approach, but with a lot of variables it might not be the most efficient (and it kind of violates the DRY principle: don't repeat yourself).
-
-A more powerful approach is to use `tidyverse` `summarize()` function. There you can create any number of named variables, each computing some kind of summary. The biggest advantage is you can specific a grouping variable using the `.by` argument. This means that each of the statistics you ask for will be computed separately for each category of the grouping variable.
+This might be a perfectly appropriate approach, but with a lot of variables it might not be the most efficient. A more powerful approach is to use `tidyverse` `summarize()` function. There you can create any number of named variables, each computing some kind of summary. The biggest advantage is you can specific a grouping variable using the `.by` argument. This means that each of the statistics you ask for will be computed separately for each category of the grouping variable.
 
 ```{r}
 data_cleaned |>
@@ -55,11 +53,17 @@ data_cleaned |>
             .by = zodiac)
 ```
 
+When it comes to visualizing the data later, I will want to show the *confidence interval* associated with each group mean. I can compute this right now as part of `summarize`. There's no built-in confidence interval function, but we can easily make one ourselves.
 
 ```{r}
 ci <- function(x) {
   qt(.975, df = length(x) - 1) * sqrt( var(x) / length(x) )
 }
+```
+
+And, having created the function, use it within `summarize()` just like any other function.
+
+```{r}
 
 summary <- data_cleaned |>
   summarize(n = n(),
@@ -67,6 +71,8 @@ summary <- data_cleaned |>
             sd = sd(extraversion_mean),
             ci = ci(extraversion_mean),
             .by = zodiac)
+
+summary
 ```
 
 ### Visualizing the data
@@ -163,13 +169,17 @@ If you need to refresh your memory from a past statistics class, refer to [the $
 
 ### The $t$-test
 
-R has a built-in `t.test()` function.
+R has a built-in `t.test()` function. When the data is organized with one column containing the grouping variable (the IV) and one column containing the numeric DV scores, the `t.test` function requires a "formula" argument. This allows us to provide the names of those columns in the format "DV ~ IV", i.e. compare scores on the DV across the groups of the IV. We also supply a "data" argument which points R to the data.frame containing those columns, and we can perform the $t$-test with the assumption of equal variances by stating `var.equal = TRUE` as another argument.
+
 
 ```{r}
 t.test(formula = extraversion_mean ~ zodiac, data = data_cleaned, var.equal = TRUE)
 ```
 
 ### Visualizing the difference
+
+Lastly, it is always helpful to visualize the comparison that the $t$-test is making, to supplement the numeric results. One option is a bar graph in which the height of each bar represents the mean score for each group. We can also add error bars showing those confidence intervals we computed earlier.
+
 
 ```{r}
 summary |> 
@@ -180,3 +190,7 @@ summary |>
   theme_apa
 ```
 
+
+## To do for next time
+
+Prepare your presentation! Share your google slides with Prof. Brotherton in advance. See guidelines under [next week's lab section](t-test_4_zodiac.qmd).
