@@ -21,10 +21,8 @@ Running with my example from last week, my variables were average extraversion s
 #| message: false
 
 library(tidyverse)
-library(anesr)
-data(timeseries_2016)
 
-my_data_complete <- timeseries_2016 |> 
+my_data_complete <- read.csv("data/anes_2016.csv") |> 
   select(extraversion1 = "V162333", 
          extraversion2 = "V162338",
          feeling_thermometer = "V161095") |> 
@@ -236,3 +234,7 @@ my_data_complete |>
 Most of that will look familiar from the previous plots we made. The only major difference is that instead of making a histogram I'm making a scatterplot, for which the "geometry" is points rather than histogram bars. Therefore I use `geom_point()` rather than `geom_histogram()` for the geometry layer. One new element is the `position = position_jitter()` part inside `geom_point()`. Its purpose is to add some random noise to each individual data point, moving it to the left or right a little bit along the x-axis. This is helpful here since there are many data points but only 5 possible answers along each axis. Try making the graph without including the jitter; it'll just look like a grid of points. Any pattern in the data will likely be hard to see. It may seem counterintuitive to change the data by adding randomness, but for the purposes of the visualization, doing so actually makes any patterns easier to detect.
 
 Looking at the scatterplot, you can see horizontal bands which correspond to those big spikes on the feeling thermometer that the histogram revealed. Consistent with the correlation coefficient which was close to zero with a nonsignificant $p$-value, visually it doesn't look like there's much of an association between the feeling thermometer responses and extraversion scores.
+
+## To do for next time
+
+Prepare your presentation! Again, see guidelines [under next week's lab section](correlation_4_anes.qmd).
