@@ -36,13 +36,7 @@ raw_data <- read.csv("data/anes_2016.csv")
 
 Remember that when you execute the code you won't see any output, but you should see the name you used on the left-hand side of the `<-` assignment operator appear in your Environment pane.
 
-Don't forget to take a look at the data.frame object to make sure it's as you expect. One way is to click on the name in the Environment pane to view the data as a spreadsheet in a new tab. You can also check it out using code:
-
-```{r}
-
-str(raw_data)
-
-```
+Don't forget to take a look at the data.frame object to make sure it's as you expect. One way is to click on the name in the Environment pane to view the data as a spreadsheet in a new tab. 
 
 
 ### Select your variables
@@ -65,7 +59,10 @@ my_data <- raw_data |>
 Let's see what this new data.frame looks like:
 
 ```{r}
-my_data
+
+head(my_data)
+
+summary(my_data)
 ```
 
 It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you'll notice that there are some negative numbers in the data. That's from survey codes which record missing data. If you try to calculate an average score with those included it'll mess up the sums, so we need to do some data cleaning to handle things like that.
@@ -119,7 +116,9 @@ my_data_complete <- my_data_complete |>
 Let's see how it looks.
 
 ```{r}
-my_data_complete
+head(my_data_complete)
+
+summary(my_data_complete)
 ```
 
 We have our two extraversion items (one reverse-coded), the feeling thermometer rating, and the computed extraversion mean scores for each of the 3,540 participants with complete data. We're ready to analyze the data!
