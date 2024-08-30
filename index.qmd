@@ -4,7 +4,7 @@ number-sections: false
 ---
 
 > Human personalities are rather like fractals. It is not just that what we do in the large-scale narratives of our lives—love, career, friendships—tends to be somewhat consistent over time, with us often repeating the same kinds of triumph or mistakes. Rather, what we do in tiny interactions like the way we shop, dress or talk to a stranger on a train or decorate our houses, shows the same kinds of patterns as can be observed from examining a whole life.
->
+> 
 > -- <cite>Daniel Nettle; [Personality: What Makes You the Way You Are](http://www.columbia.edu/cgi-bin/cul/resolve?clio14146523)</cite>
 
 
