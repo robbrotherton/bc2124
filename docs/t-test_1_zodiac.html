@@ -308,8 +308,12 @@ window.Quarto = {
   <li><a href="#comparing-groups-the-t-test" id="toc-comparing-groups-the-t-test" class="nav-link" data-scroll-target="#comparing-groups-the-t-test">Comparing groups: the <span class="math inline">\(t\)</span>-test</a></li>
   </ul></li>
   <li><a href="#step-1.-examine-the-data" id="toc-step-1.-examine-the-data" class="nav-link" data-scroll-target="#step-1.-examine-the-data">Step 1. Examine the data</a></li>
-  <li><a href="#step-2.-read-relevant-research" id="toc-step-2.-read-relevant-research" class="nav-link" data-scroll-target="#step-2.-read-relevant-research">Step 2. Read relevant research</a></li>
+  <li><a href="#sec-astrology-references" id="toc-sec-astrology-references" class="nav-link" data-scroll-target="#sec-astrology-references">Step 2. Read relevant research</a>
+  <ul class="collapse">
+  <li><a href="#sec-astro-refs" id="toc-sec-astro-refs" class="nav-link" data-scroll-target="#sec-astro-refs">References</a></li>
+  </ul></li>
   <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
+  <li><a href="#to-do-for-next-time" id="toc-to-do-for-next-time" class="nav-link" data-scroll-target="#to-do-for-next-time">To do for next time</a></li>
   </ul>
 </nav>
     </div>
@@ -346,7 +350,7 @@ window.Quarto = {
 </section>
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project overview</h2>
-<p>One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particularly trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.</p>
+<p>One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particular trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.</p>
 <p>Specifically, for this project you will be comparing scores on one of the Big 5 personality traits: openness, conscientiousness, extraversion, agreeableness, or neuroticism.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -354,7 +358,7 @@ window.Quarto = {
 <figcaption>The Big 5 theory of personality</figcaption>
 </figure>
 </div>
-<p>What groups will you compare? We’re going to look for differences between people with different astrological starsigns (Pisces, Aries, Leo, Virgo, etc…). Why starsigns? Because it’s something a little bit fun that I expect you will be at least somewhat familiar with, and you’ll be able to come up with some idea about how people with one sign might differ from people with another sign (Leos will surely be more extraverted than Pisces, right?!). To be clear: astrology are not something that contemporary academic psychologists generally take very seriously. However, it makes for a fine introduction to ways of thinking about the reliability and validity of approaches to categorizing and describing personality, as well as constructing hypotheses and analyzing data.</p>
+<p>What groups will you compare? We’re going to look for differences between people with different astrological starsigns (Pisces, Aries, Leo, Virgo, etc…). Why starsigns? Because it’s something a little bit fun that I expect you will be at least somewhat familiar with, and you’ll be able to come up with some idea about how people with one sign might differ from people with another sign (<em>Leos will surely be more extraverted than Pisces, right?!</em>). To be clear: astrology is not something that contemporary academic psychologists generally take very seriously. However, it makes for a fine introduction to ways of thinking about the reliability and validity of approaches to categorizing and describing personality, as well as constructing hypotheses and analyzing data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="astrology-chart.webp" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -363,7 +367,7 @@ window.Quarto = {
 </div>
 <section id="comparing-groups-the-t-test" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-groups-the-t-test">Comparing groups: the <span class="math inline">\(t\)</span>-test</h3>
-<p>The way we compare groups like this is to statistically test the “null hypothesis” (<span class="math inline">\(H_0\)</span>) using a <span class="math inline">\(t\)</span>-test. <span class="math inline">\(H_0\)</span> states that there is <em>no difference</em> between the group averages at all. The <span class="math inline">\(t\)</span>-test quantifies exactly how much our sample averages do differ and put it in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn’t a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently improbably to have occurred if there really is no difference; we reject <span class="math inline">\(H_0\)</span> and tentatively accept the “alternative hypothesis”, (<span class="math inline">\(H_1\)</span>) which states that there <em>is</em> a difference between the groups.</p>
+<p>The way we compare groups like this is to statistically test the “null hypothesis” (<span class="math inline">\(H_0\)</span>) using a <span class="math inline">\(t\)</span>-test. <span class="math inline">\(H_0\)</span> states that there is <em>no difference</em> between the group averages at all. Because of the inherent randomness in sample data, however, we wouldn’t expect to find precisely <em>no</em> difference between two groups even if that null hypothesis is correct in reality. The <span class="math inline">\(t\)</span>-test quantifies exactly how much our sample averages differ in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn’t a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently unlikely under the <span class="math inline">\(H_0\)</span> model of reality; we reject <span class="math inline">\(H_0\)</span> and tentatively accept the “alternative hypothesis”, (<span class="math inline">\(H_1\)</span>) which states that there <em>is</em> a difference between the groups.</p>
 <p>Note that this is a statistical statement about a general tendency, not a rigid law. If we reject the null hypothesis, we’re saying that there seems to be a difference in the groups averages, not that everyone in one group scores higher than everyone in the other group.</p>
 <p>Note also that this kind of analysis, and all the empirical findings you learn about in the personality psychology lecture (and beyond) are the product of research and statistical procedures. Researchers decide what psychological constructs they want to investigate; how to measure those constructs; what statistical analyses are appropriate; and what conclusions may be drawn. There are strengths, limitations, and trade offs involved in every decision along the way.</p>
 </section>
@@ -401,17 +405,20 @@ GSS description
 <p>Your <strong>quasi-independent</strong> variable will be Zodiac star sign (<code>zodiac</code>). Specifically, you will select two groups to compare (e.g.&nbsp;Leo versus Virgo).</p>
 <p>To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the <code>big5xx</code> and <code>zodiac</code> codes in parentheses above) in the <a href="https://gss.norc.org/documents/codebook/gss_codebook.pdf">GSS Codebook</a>.</p>
 </section>
-<section id="step-2.-read-relevant-research" class="level2">
-<h2 class="anchored" data-anchor-id="step-2.-read-relevant-research">Step 2. Read relevant research</h2>
+<section id="sec-astrology-references" class="level2">
+<h2 class="anchored" data-anchor-id="sec-astrology-references">Step 2. Read relevant research</h2>
 <p>Real research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.</p>
-<p>A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything; pick one of these papers to skim to give you an idea of what has been found.</p>
+<p>A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything. For now, pick one of these papers to skim to give you an idea of what has been found.</p>
+<section id="sec-astro-refs" class="level3">
+<h3 class="anchored" data-anchor-id="sec-astro-refs">References</h3>
 <div class="references">
 <p>Clarke, D., Gabriels, T., &amp; Barnes, J. (1996). <a href="http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226">Astrological signs as determinants of extroversion and emotionality: An empirical study.</a> <em>The Journal of Psychology, 130(2),</em> 131–140. <a href="http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226">https://doi.org/10.1080/00223980.1996.9914995</a></p>
 <p>Mayo, J., White, O., &amp; Eyesenck, H. J. (1978). <a href="http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2">An empirical study of the relation between astrological factors and personality</a>. <em>Journal of Social Psychology, 105</em>(2), 229.</p>
-<p>McGrew, J. H., &amp; McFall, R. M. (1990). <a href="https://www.scientificexploration.org/docs/4/jse_04_1_mcgrew.pdf">A scientific inquiry into the validity of astrology</a>. Journal of Scientific Exploration, 4(1), 75-83.</p>
-<p>Saklofske, D. H., Kelly, I. W., &amp; McKerracher, D. W. (1982). <a href="https://www.proquest.com/docview/1290616495?accountid=10226&amp;sourcetype=Scholarly%20Journals&amp;imgSeq=1">An empirical study of personality and astrological factors</a>. Journal of Psychology, 110(2), 275. <a href="https://www.proquest.com/docview/1290616495?accountid=10226&amp;sourcetype=Scholarly%20Journals&amp;imgSeq=1">https://doi.org/10.1080/00223980.1982.9915349</a></p>
+<p>McGrew, J. H., &amp; McFall, R. M. (1990). <a href="http://www.skepticalmedia.com/astrology/Scientific%20Inquiry%20into%20Astrology.pdf">A scientific inquiry into the validity of astrology</a>. <em>Journal of Scientific Exploration, 4</em>(1), 75-83.</p>
+<p>Saklofske, D. H., Kelly, I. W., &amp; McKerracher, D. W. (1982). <a href="https://www.proquest.com/docview/1290616495?accountid=10226&amp;sourcetype=Scholarly%20Journals&amp;imgSeq=1">An empirical study of personality and astrological factors</a>. <em>Journal of Psychology, 110</em>(2), 275. <a href="https://www.proquest.com/docview/1290616495?accountid=10226&amp;sourcetype=Scholarly%20Journals&amp;imgSeq=1">https://doi.org/10.1080/00223980.1982.9915349</a></p>
 <p>Smithers, A. G., &amp; Cooper, H. J. (1978). <a href="https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&amp;sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis">Personality and season of birth</a>. <em>The Journal of Social Psychology, 105</em>(2), 237-241. <a href="https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&amp;sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis">https://doi.org/10.1080/00224545.1978.9924120</a></p>
 </div>
+</section>
 </section>
 <section id="step-3.-articulate-your-hypothesis" class="level2">
 <h2 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h2>
@@ -423,9 +430,10 @@ GSS description
 </ul>
 <p>Your hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn’t just seem to be attributable to chance variation in the data?</p>
 <p>If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e.&nbsp;a weak, moderate, or strong effect size; see <a href="appendix-correlation.html#sec-cor-effect-size">Appendix B</a>).</p>
-<!-- ## To do for next time -->
-<!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
-<!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
+</section>
+<section id="to-do-for-next-time" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-for-next-time">To do for next time</h2>
+<p>Read up on the development of the TIPI (<a href="https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf">Gosling et al., 2003</a>). The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.</p>
 
 
 </section>

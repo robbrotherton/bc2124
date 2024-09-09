@@ -1,6 +1,6 @@
 # Data preparation
 
-You should begin this session with your Big 5 trait (dependent variable) and Zodiac signs (quais-independent variable) in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
+You should begin this session with your Big 5 trait (dependent variable) and Zodiac signs (quasi-independent variable) in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.
 
 ### Goals
 
@@ -23,7 +23,7 @@ install.packages("tidyverse")
 
 ```
 
-However the Projects template I set up for you in posit.cloud already has the package installed. Packages only need to be installed once, so there's no need for you to do so again. You will, however, need to 'activate' the packages using `library()` to make their functions available.
+However the Projects template I set up for you in posit.cloud already has the package installed. Packages only need to be installed once, so there's no need for you to do so again. You will, however, need to 'activate' the packages using the `library()` function to make their functions available.
 
 ```{r}
 #| warning: false
@@ -35,7 +35,7 @@ library(tidyverse)
 
 ### Getting data into R
 
-Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you can go to the GSS website and download the data in a variety of forms. For our convenience, I have already done that. Your posit.cloud project has a folder called `data` and inside that folder there is a file named `gss_2006.csv`. To start working with that data, we first need to 'read' it into R.
+Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you can go to the GSS website and download the data in a variety of forms. For our convenience, I have already done that. Your posit.cloud project has a folder called `data` and inside that folder there is a file named `gss_2006.csv`. That's the complete GSS data for the year 2006. To start working with that data, we first need to 'read' it into R.
 
 ```{r}
 
@@ -88,7 +88,7 @@ You'll notice that the Zodiac data is coded as numbers; it would be helpful to t
 
 First let's label the `zodiac` column. The original data is recorded as the numbers 1 through 12 corresponding to the 12 star signs. Since R doesn't know any better, it assumes these numbers should be treated as regular numbers, so it will compute an average score and things like that even though you and I know it doesn't make a lot of sense to compute the average star sign for a bunch of people. It would make more sense to turn that variable into a "factor", meaning a categorical variable. 
 
-To change something about the data like this, we can use the `mutate()` function. It can either create a new column or change the data in an existing column, depending on the name you specific first. After the name, the equals sign indicates what that column will contain. In this case, we use the `factor()` function to create the new factor data. It consists of the original numeric `zodiac` data where the original score (the `level` of the resulting factor) is either 5 or 12; those numbers will be assigned `labels` "Leo" and "Pisces" respectively. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as `NA`).
+To change something about the data like this, we can use the `mutate()` function. It can either create a new column or change the data in an existing column, depending on the name you specify first. After the name, the equals sign indicates what that resulting column will contain. In this case, we use the `factor()` function to create the new factor data. It consists of the original numeric `zodiac` data where the original score (the `level` of the resulting factor) is either 5 or 12; those numbers will be assigned `labels` "Leo" and "Pisces" respectively. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as `NA`).
 
 ```{r}
 data_cleaned <- data |> 
@@ -151,3 +151,7 @@ pisces <- nrow(filter(data_cleaned, zodiac == "Pisces"))
 ```
 
 After filtering to keep only rows with complete data, we're left with `r format(nrow(data_cleaned), big.mark = ",")` valid responses (`r leos` Leos and `r pisces` Pisces).
+
+## To do for next time
+
+Read and take notes on another of the research papers listed under [Lab @sec-astro-refs]

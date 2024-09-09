@@ -307,8 +307,12 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#step-1.-examine-the-data" id="toc-step-1.-examine-the-data" class="nav-link" data-scroll-target="#step-1.-examine-the-data">Step 1. Examine the data</a></li>
   <li><a href="#step-2.-read-relevant-research" id="toc-step-2.-read-relevant-research" class="nav-link" data-scroll-target="#step-2.-read-relevant-research">Step 2. Read relevant research</a></li>
+  </ul></li>
+  <li><a href="#sec-politics-references" id="toc-sec-politics-references" class="nav-link" data-scroll-target="#sec-politics-references">References</a>
+  <ul class="collapse">
   <li><a href="#step-3.-articulate-your-hypothesis" id="toc-step-3.-articulate-your-hypothesis" class="nav-link" data-scroll-target="#step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</a></li>
   </ul></li>
+  <li><a href="#to-do-for-next-time" id="toc-to-do-for-next-time" class="nav-link" data-scroll-target="#to-do-for-next-time">To do for next time</a></li>
   </ul>
 </nav>
     </div>
@@ -354,17 +358,17 @@ window.Quarto = {
 <p>For this project, you will pick one of these traits and investigate its correlation with another question from the survey. The full dataset contains almost 2,000 questions in total. Since this is your first project, however, I am going to constrain your choice. For this kind of correlation analysis you will have two variables. You can think of one as the “predictor” and the other as the “outcome”; you want to see if the predictor has any association with the outcome.</p>
 <p>Your <strong>predictor</strong> variable will be one of the Big Five traits:</p>
 <ul>
-<li>Extraversion (V162333 &amp; V162338)</li>
-<li>Agreeableness (V162334 &amp; V162339)</li>
-<li>Conscientiousness (V162335 &amp; V162340)</li>
-<li>Neuroticism (V162336 &amp; V162341)</li>
-<li>Openness (V162337 &amp; V162342)</li>
+<li>Extraversion (<code>V162333</code> &amp; <code>V162338</code>)</li>
+<li>Agreeableness (<code>V162334</code> &amp; <code>V162339</code>)</li>
+<li>Conscientiousness (<code>V162335</code> &amp; <code>V162340</code>)</li>
+<li>Neuroticism (<code>V162336</code> &amp; <code>V162341</code>)</li>
+<li>Openness (<code>V162337</code> &amp; <code>V162342</code>)</li>
 </ul>
 <p>Your <strong>outcome</strong> variable will be one of the following “feeling thermometer” questions, referring to the two main presidential candidates, political parties, or liberals/conservatives in general:</p>
 <ul>
-<li>Democratic presidential candidate (V162078) OR Republican presidential candidate (V162079)</li>
-<li>Democratic party (V161095) OR Republican party (V161096)</li>
-<li>Liberals (V162097) OR Conservatives (V162101)</li>
+<li>Democratic presidential candidate (<code>V162078</code>) OR Republican presidential candidate (<code>V162079</code>)</li>
+<li>Democratic party (<code>V161095</code>) OR Republican party (<code>V161096</code>)</li>
+<li>Liberals (<code>V162097</code>) OR Conservatives (<code>V162101</code>)</li>
 </ul>
 <p>To see exactly how these constructs were measured you will look up the variable IDs (the V16… codes in parentheses above) in the <a href="https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf">Codebook</a>.</p>
 </section>
@@ -372,11 +376,15 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="step-2.-read-relevant-research">Step 2. Read relevant research</h3>
 <p>Real research doesn’t happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you know which variables you will analyze, you will see what other researchers have found about these (or related) personality traits.</p>
 <p>A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don’t need to read everything; pick one of these papers to skim to give you an idea of what has been found.</p>
+</section>
+</section>
+<section id="sec-politics-references" class="level2">
+<h2 class="anchored" data-anchor-id="sec-politics-references">References</h2>
 <div class="references">
+<p>Aidt, T., &amp; Rauh, C. (2018). The Big Five personality traits and partisanship in England. <em>Electoral Studies, 54,</em> 1-21. <a href="https://doi.org/10.1016/j.electstud.2018.04.017" class="uri">https://doi.org/10.1016/j.electstud.2018.04.017</a></p>
 <p>Gerber, A. S., Huber, G. A., Doherty, D., &amp; Dowling, C. M. (2011). <a href="https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-051010-111659">The big five personality traits in the political arena.</a> <em>Annual Review of Political Science, 14,</em> 265-287.</p>
 <p>Cooper, C. A., Golden, L., &amp; Socha, A. (2013). <a href="https://onlinelibrary-wiley-com.ezproxy.cul.columbia.edu/doi/full/10.1111/j.1559-1816.2012.00982.x">The big five personality factors and mass politics.</a> <em>Journal of Applied Social Psychology, 43(1)</em>, 68-82.</p>
 </div>
-</section>
 <section id="step-3.-articulate-your-hypothesis" class="level3">
 <h3 class="anchored" data-anchor-id="step-3.-articulate-your-hypothesis">Step 3. Articulate your hypothesis</h3>
 <p>By this point you should be able to state your:</p>
@@ -388,12 +396,13 @@ window.Quarto = {
 <p>Your hypothesis is a formal statement of your expectation about how your constructs are (or aren’t) associated, and it will be tested quantitatively by calculating a correlation statistic.</p>
 <p>The main question that your hypothesis addresses is: do you think the two variables will be significantly correlated? That is, will you find an association consistent enough that it doesn’t just seem to be attributable to chance variation in the data?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong you expect it to be (i.e.&nbsp;weak, moderate, strong; see <a href="appendix-correlation.html#sec-cor-effect-size">Appendix B</a>).</p>
-<!-- ## To do for next time -->
-<!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
-<!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
-
-
 </section>
+</section>
+<section id="to-do-for-next-time" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-for-next-time">To do for next time</h2>
+<p>Read another of the papers listed above.</p>
+
+
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

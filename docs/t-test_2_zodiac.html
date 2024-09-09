@@ -344,6 +344,7 @@ window.Quarto = {
   <li><a href="#select-your-variables" id="toc-select-your-variables" class="nav-link" data-scroll-target="#select-your-variables">Select your variables</a></li>
   <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the data</a></li>
   </ul></li>
+  <li><a href="#to-do-for-next-time" id="toc-to-do-for-next-time" class="nav-link" data-scroll-target="#to-do-for-next-time">To do for next time</a></li>
   </ul>
 </nav>
     </div>
@@ -369,7 +370,7 @@ window.Quarto = {
 </header>
 
 
-<p>You should begin this session with your Big 5 trait (dependent variable) and Zodiac signs (quais-independent variable) in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.</p>
+<p>You should begin this session with your Big 5 trait (dependent variable) and Zodiac signs (quasi-independent variable) in mind for your analysis. In class we will introduce the R language and RStudio environment, and demonstrate necessary data cleaning and manipulation in preparation for analysis. By the end of the class you should have modified the example code to work with your selected variables.</p>
 <section id="goals" class="level3">
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <ul>
@@ -388,14 +389,14 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>However the Projects template I set up for you in posit.cloud already has the package installed. Packages only need to be installed once, so there’s no need for you to do so again. You will, however, need to ‘activate’ the packages using <code>library()</code> to make their functions available.</p>
+<p>However the Projects template I set up for you in posit.cloud already has the package installed. Packages only need to be installed once, so there’s no need for you to do so again. You will, however, need to ‘activate’ the packages using the <code>library()</code> function to make their functions available.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-data-into-r" class="level3">
 <h3 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h3>
-<p>Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you can go to the GSS website and download the data in a variety of forms. For our convenience, I have already done that. Your posit.cloud project has a folder called <code>data</code> and inside that folder there is a file named <code>gss_2006.csv</code>. To start working with that data, we first need to ‘read’ it into R.</p>
+<p>Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you can go to the GSS website and download the data in a variety of forms. For our convenience, I have already done that. Your posit.cloud project has a folder called <code>data</code> and inside that folder there is a file named <code>gss_2006.csv</code>. That’s the complete GSS data for the year 2006. To start working with that data, we first need to ‘read’ it into R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/gss_2006.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -485,7 +486,7 @@ lgl   (18): away7, where7, mar8, relate9, gender9, old9, relate10, gender10,...
 <section id="re-labelling-categorical-variables" class="level4">
 <h4 class="anchored" data-anchor-id="re-labelling-categorical-variables">Re-labelling categorical variables</h4>
 <p>First let’s label the <code>zodiac</code> column. The original data is recorded as the numbers 1 through 12 corresponding to the 12 star signs. Since R doesn’t know any better, it assumes these numbers should be treated as regular numbers, so it will compute an average score and things like that even though you and I know it doesn’t make a lot of sense to compute the average star sign for a bunch of people. It would make more sense to turn that variable into a “factor”, meaning a categorical variable.</p>
-<p>To change something about the data like this, we can use the <code>mutate()</code> function. It can either create a new column or change the data in an existing column, depending on the name you specific first. After the name, the equals sign indicates what that column will contain. In this case, we use the <code>factor()</code> function to create the new factor data. It consists of the original numeric <code>zodiac</code> data where the original score (the <code>level</code> of the resulting factor) is either 5 or 12; those numbers will be assigned <code>labels</code> “Leo” and “Pisces” respectively. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as <code>NA</code>).</p>
+<p>To change something about the data like this, we can use the <code>mutate()</code> function. It can either create a new column or change the data in an existing column, depending on the name you specify first. After the name, the equals sign indicates what that resulting column will contain. In this case, we use the <code>factor()</code> function to create the new factor data. It consists of the original numeric <code>zodiac</code> data where the original score (the <code>level</code> of the resulting factor) is either 5 or 12; those numbers will be assigned <code>labels</code> “Leo” and “Pisces” respectively. Since for this project you are comparing just two signs, you only need to explicitly label those two. The others then become missing data (represented as <code>NA</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_cleaned <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zodiac =</span> <span class="fu">factor</span>(zodiac, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">12</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Leo"</span>, <span class="st">"Pisces"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -543,10 +544,14 @@ lgl   (18): away7, where7, mar8, relate9, gender9, old9, relate10, gender10,...
 </div>
 </div>
 <p>After filtering to keep only rows with complete data, we’re left with 248 valid responses (119 Leos and 129 Pisces).</p>
-
-
 </section>
 </section>
+</section>
+<section id="to-do-for-next-time" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-for-next-time">To do for next time</h2>
+<p>Read and take notes on another of the research papers listed under <a href="t-test_1_zodiac.html#sec-astro-refs" class="quarto-xref">Lab&nbsp;<span>2.3.1</span></a></p>
+
+
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

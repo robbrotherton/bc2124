@@ -2,22 +2,30 @@
 #| echo: false
 
 schedule <- tibble::tribble(
-  ~"Date",  ~"Topic",                   ~"Assignment*",
-  "9/9",    "Course overview",           "",
-  "9/16",   "Project planning",          "",
-  "9/23",   "Data cleaning",             "",
-  "9/30",   "Analysis",                  "Presentation slide",
-  "10/7",   "Presentations",             "Project 1 report",
-  "10/14",  "Project planning",          "",
-  "10/21",  "Data cleaning & analysis",  "",
-  "10/28",  "Visualization & reporting", "Presentation slide",
-  "11/4",   "No class (academic holiday)","",
-  "11/11",  "Presentations",             "Project 2 report",
-  "11/18",  "Project planning",          "",
-  "11/25",  "Data cleaning & analysis",  "",
-  "12/2",   "Visualization & reporting", "Presentation slide",
-  "12/9",   "Presentations",             "Project 3 report"
+  ~"Date",  ~"Topic",
+  "9/9",    "Course overview", 
+  "9/16",   "Project planning",
+  "9/23",   "Data cleaning",
+  "9/30",   "Analysis",
+  "10/7",   "Presentations", 
+  "10/14",  "Project planning", 
+  "10/21",  "Data cleaning & analysis", 
+  "10/28",  "Visualization & reporting",
+  "11/4",   "No class (academic holiday)",
+  "11/11",  "Presentations",
+  "11/18",  "Project planning",
+  "11/25",  "Data cleaning & analysis",
+  "12/2",   "Visualization & reporting",
+  "12/9",   "Presentations",
 )
+
+deadlines <- c(
+  "Project 1 report" = "10/14",
+  "Project 2 report" = "11/18",
+  "Project 3 report" = "12/16"
+)
+
+deadlines_table <- knitr::kable(deadlines, col.names = "Due Date")
 
 no_class_row <- stringr::str_which(schedule$Topic, "No class")
 
@@ -26,13 +34,13 @@ schedule_table <- knitr::kable(schedule) |>
   kableExtra::pack_rows("Project 1: t-test", 2, 5, indent = FALSE) |>
   kableExtra::pack_rows("Project 2: Correlation", 6, 10, indent = FALSE) |>
   kableExtra::pack_rows("Project 3: Regression", 11, 14, indent = FALSE) |>
-  kableExtra::add_footnote("due by the following class", notation = "symbol") |>
   kableExtra::kable_styling(full_width = TRUE)
 
 ```
 
 __Pre-requisites__: PSYC BC1001 Introduction to Psychology; PSYC BC1101 Statistics; PSYC BC1020 Research Methods  
 __Co-requisite__: PSYC BC2125 Personality Psychology
+
 
 ### Time, venue & instructor
 
@@ -43,12 +51,34 @@ Office hour: Wednesday 10-11AM, Milbank 415M
 
 
 
+### Overview
 
-## Course overview
+This lab will usually be taken concurrently with BC2125 Personality lecture. It will expand upon some of the theoretical, methodological and analytic issues introduced there, as well as giving you the opportunity to explore topics from within and beyond those covered in the lectures in greater depth through hands-on experience with research design and data analysis.
 
-This lab will usually be taken concurrently with BC2125 Personality lecture. It will expand upon some of the theoretical, methodological and analytic issues introduced there, as well as giving you the opportunity to explore topics of your choosing from within (or beyond) those covered in the lectures in greater depth through hands-on experience with research design and data analysis.
+The semester is broken into 3 projects, each illustrating a common methodological and analytic approach in personality psychology. Through these projects you will gain experience in formulating psychological research questions relating to personality; analyzing and visualizing data; and interpreting and communicating your findings. Projects will be undertaken in small groups; group members will collaborate on design and analysis. Each project will culminate in an in-class group presentation and submission of a brief individual write up of your project.
 
-The semester is broken into 3 projects, each involving an analysis of existing data. The first will involve planning and executing a correlational analysis. The second will involve performing a regression analysis. For the third project, you will design your own analysis to explore a topic of your own choice. Through these projects you will gain experience in formulating psychological research questions relating to personality; analyzing and visualizing data; and interpreting and communicating your findings. Projects will be undertaken in groups; group members will collaborate on design and analysis. Each project will culminate in an in-class group presentation and submission of a brief individual write up of your project.
+
+### Schedule and deadlines
+
+```{r}
+#| echo: false
+
+schedule_table
+
+```
+
+
+    
+Written project reports are due one week following the in-class presentation (before the next week's lab session) on the following dates.
+
+
+```{r}
+#| echo: false
+
+deadlines_table
+
+```
+
 
 
 
@@ -66,7 +96,7 @@ At a minimum (i.e. for a passing grade), I’ll be looking for some form of part
 
 ### Workload
 
-As a general rule for the amount of time students should expect to commit to classes, the college suggests three hours per week in or outside of class per credit. Since this class is worth 1.5 credits, that corresponds to 4.5 hours per week, split between time in the classroom and time spent completing the associated assignments.
+As a general rule for the amount of time students should expect to commit to classes, the college suggests three hours per week in or outside of class per credit. Since this class is worth 2.5 credits, that corresponds to 7.5 hours per week, split between time in the classroom and time spent completing the associated assignments.
 
 
 
@@ -104,13 +134,11 @@ In-person attendance of every lab session is expected, and you should expect to 
 When you are attending, please arrive on time for class. Frequent lateness will impact your participation grade.
 
 
-### Assignment deadlines & late policy {#sec-late-policy}
+### Assignment late policy {#sec-late-policy}
 
-Assignments are listed in the class schedule next to the class in which details about completing the assignment will be provided. The assignment must be completed and submitted before the following class, i.e. requirements for the first presentation slide will be explained in class on `r schedule$Date[4]`, and the slide must be submitted before the next class on `r schedule$Date[5]`.
+Presentations will be given in-class on the dates listed in the class schedule. It is expected that all group members contribute equally to the presentation preparation and delivery. Therefore, all group members will receive the same group score, except in exceptional circumstances when it is clear that contributions were not equal. If a group member is unable to present in-person on the day of the presentation due to unforeseen circumstances, please notify Prof. Brotherton. The presentation will be given by the remaining group members, and the absent member may be assigned the group score, assuming equal contributions to the preparation of the presentation.
 
-For the written project reports, a grade penalty of 5 points will be applied for each day (or part thereof) that an assignment is late (up to a maximum of 6 days; work not submitted before the next lab will receive a score of zero). For example, if your work is A+ quality but is submitted a day-and-a-half late, you will only receive a B+. This policy is intended to incentivize timely submission while easing the stress of genuine emergencies. When things come up that prevent timely submission you can prioritize accordingly, knowing that a small penalty on one assignment for this lab will not tank your final grade.
-
-Late submission for the presentation slides will not be possible; failure to submit a link to your slides in advance of the presentation will obviously limit your presentation grade.
+Written project reports are due one week following the in-class presentation, i.e. before the next week's lab session--see dates below. A grade penalty of 5 points will be applied for each day (or part thereof) that an assignment is late (up to a maximum of 6 days; work not submitted before the next lab will receive a score of zero). For example, if your work is A+ quality but is submitted a day-and-a-half late, you will only receive a B+. This policy is intended to incentivize timely submission while easing the stress of genuine emergencies. When things come up that prevent timely submission you can prioritize accordingly, knowing that a small penalty on one assignment for this lab will not tank your final grade.
 
 
 ### Academic integrity
@@ -119,18 +147,13 @@ Students are expected to follow the Barnard Honor Code, available at <https://ba
 
 Note that while you will collaborate with group members on the design, analysis, and presentation of research projects, you may not collaborate on the written report: each group member must write their own individual reports. 
 
+### Use of generative AI (e.g. ChatGPT)
+
+Generative AI is an extremely useful tool for many purposes; real researchers are of course using it to help with their research. For this class, you are welcome to use AI tools to help with idea generation, help you understand readings, help formulate your ideas for written reports, etc. However, note the emphasis on *helping* rather than doing things for you. Passing someone else's work off as your own is plagiarism and a violation of the honor code, and that includes the work of AI assistants. AI tools can enhance, but should not substitute for, your own efforts. Please be aware that it is generally obvious when someone has put little thought of their own into their work. Relying on ChatGPT (or similar) to do most of the work for you will result in bad work (and will accordingly earn you a bad grade).
+
 
 ### Academic accommodations and general wellness
 
 It is always important to recognize the different pressures, burdens, and stressors you may be facing, whether personal, emotional, physical, financial, mental, or academic. The faculty and administration recognize this, and are prepared to provide assistance to students in need. I encourage you to seek advice from your advisor, Dean, the [Center for Accessibility Resources & Disability Services (CARDS)](https://barnard.edu/disability-services), or [Barnard Health & Wellness](https://barnard.edu/health-wellness) as needed. Please let me know of any issues you wish to share with me that you feel are impacting your ability to complete the course to the best of your ability. Though it isn’t always easy, it is better to proactively seek help rather than letting problems build up.
 
 
-
-## Class schedule
-
-```{r}
-#| echo: false
-
-schedule_table
-
-```

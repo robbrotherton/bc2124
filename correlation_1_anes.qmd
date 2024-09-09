@@ -27,18 +27,18 @@ For this project, you will pick one of these traits and investigate its correlat
 
 Your __predictor__ variable will be one of the Big Five traits:
 
-- Extraversion (V162333 & V162338)
-- Agreeableness (V162334 & V162339)
-- Conscientiousness (V162335 & V162340)
-- Neuroticism (V162336 & V162341)
-- Openness (V162337 & V162342)
+- Extraversion (`V162333` & `V162338`)
+- Agreeableness (`V162334` & `V162339`)
+- Conscientiousness (`V162335` & `V162340`)
+- Neuroticism (`V162336` & `V162341`)
+- Openness (`V162337` & `V162342`)
 
 
 Your __outcome__ variable will be one of the following "feeling thermometer" questions, referring to the two main presidential candidates, political parties, or liberals/conservatives in general:
 
-- Democratic presidential candidate (V162078) OR Republican presidential candidate (V162079)
-- Democratic party (V161095) OR Republican party (V161096)
-- Liberals (V162097) OR Conservatives (V162101)
+- Democratic presidential candidate (`V162078`) OR Republican presidential candidate (`V162079`)
+- Democratic party (`V161095`) OR Republican party (`V161096`)
+- Liberals (`V162097`) OR Conservatives (`V162101`)
 
 
 To see exactly how these constructs were measured you will look up the variable IDs (the V16... codes in parentheses above) in the [Codebook](https://electionstudies.org/wp-content/uploads/2018/12/anes_timeseries_2016_userguidecodebook.pdf).
@@ -50,7 +50,11 @@ Real research doesn't happen in a vacuum; research plans and expectations should
 
 A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
 
+## References {#sec-politics-references}
+
 ::: {.references}
+Aidt, T., & Rauh, C. (2018). The Big Five personality traits and partisanship in England. *Electoral Studies, 54,* 1-21. <https://doi.org/10.1016/j.electstud.2018.04.017>
+
 Gerber, A. S., Huber, G. A., Doherty, D., & Dowling, C. M. (2011). [The big five personality traits in the political arena.](https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-051010-111659) *Annual Review of Political Science, 14,* 265-287.
 
 Cooper, C. A., Golden, L., & Socha, A. (2013). [The big five personality factors and mass politics.](https://onlinelibrary-wiley-com.ezproxy.cul.columbia.edu/doi/full/10.1111/j.1559-1816.2012.00982.x) *Journal of Applied Social Psychology, 43(1)*, 68-82.
@@ -71,8 +75,6 @@ The main question that your hypothesis addresses is: do you think the two variab
 If you do expect a significant correlation, you should also specify whether you expect it to be positive or negative, and how strong you expect it to be (i.e. weak, moderate, strong; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
 
 
-<!-- ## To do for next time -->
+## To do for next time
 
-<!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
-
-<!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
+Read another of the papers listed above.

@@ -345,6 +345,7 @@ window.Quarto = {
   <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the data</a></li>
   <li><a href="#computing-scale-averages" id="toc-computing-scale-averages" class="nav-link" data-scroll-target="#computing-scale-averages">Computing scale averages</a></li>
   </ul></li>
+  <li><a href="#to-do-for-next-time" id="toc-to-do-for-next-time" class="nav-link" data-scroll-target="#to-do-for-next-time">To do for next time</a></li>
   </ul>
 </nav>
     </div>
@@ -385,57 +386,19 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="working-with-data-in-r">Working with data in R</h2>
 <section id="getting-r-ready" class="level3">
 <h3 class="anchored" data-anchor-id="getting-r-ready">Getting R ready</h3>
-<p>In addition to containing a Big 5 personality scale, the ANES 2016 dataset is convenient for our purposes because someone went to the trouble of creating an R package which makes working with the ANES data relatively straightforward (not that you won’t still run into issues!): <code>anesr</code> (<a href="https://github.com/jamesmartherus/anesr">github.com/jamesmartherus/anesr</a>).</p>
-<p>To start exploring the data in R, you first need to set up your environment. This means installing the <code>anesr</code> package. Usually packages can be installed from within R using the <code>install.packages()</code> function. However since the <code>anesr</code> package is hosted on GitHub (as opposed to the official R repository of packages), the easiest way to install it is by first installing the <code>devtools</code> package, which has a special function for installing packages from GitHub.</p>
+<p>As with the first project we’ll make use of the <code>tidyverse</code> package, so it needs to be ‘activated’ using the <code>library</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jamesmartherus/anesr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We will also use some other packages for data wrangling and analysis. Developers have created a collection of packages for R called the <code>tidyverse</code> to make coding these common tasks easier. The <code>tidyverse</code> can be installed like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If you execute those lines of code the packages will be installed on your system. That step only needs to be done once, but you need to ‘activate’ the packages using <code>library()</code> to make their functions and data available each time you start a new R session.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(anesr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-data-into-r" class="level3">
 <h3 class="anchored" data-anchor-id="getting-data-into-r">Getting data into R</h3>
-<p>Getting data into R often involves reading in a .csv (comma-separated values) spreadsheet file that you downloaded to your computer. Indeed, you could download the ANES 2016 data file as a .csv from the ANES website and read it into R that way. However, the <code>anesr</code> package contains the data so you don’t need to download it separately. Instead you can make it available by running this line of code:</p>
+<p>Likewise, we need to read in the relevant data file to work with in R. Like the GSS, ANES datasets can be downloaded from their website, but I’ve already done that for us: the data is in a .csv file in the <code>data</code> subfolder of this project.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(timeseries_2016)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/anes_2016.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When you execute the code you won’t see any output, but you should see the name <code>timeseries_2016</code> appear in your Environment pane. That is now an object in R called a data.frame. You can think of it as a spreadsheet like you’re familiar with from Excel or Google Sheets; a set of columns, one for each variable in the dataset, and a row for each participant’s answers.</p>
-<p>Typing the name of the data.frame and running that line of code will show the first few columns and rows.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>timeseries_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,270 × 1,842
-   version       V160001 V160001_orig V160101 V160101f V160101w V160102 V160102f
-   &lt;chr&gt;           &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
- 1 ANES2016Time…       1       300001   0.827    0.888        0   0.842    0.927
- 2 ANES2016Time…       2       300002   1.08     1.16         0   1.01     1.08 
- 3 ANES2016Time…       3       300003   0.388    0.416        0   0.367    0.398
- 4 ANES2016Time…       4       300004   0.360    0.385        0   0.366    0.418
- 5 ANES2016Time…       5       300006   0.647    0.693        0   0.646    0.726
- 6 ANES2016Time…       6       300007   0.706    0.759        0   0.688    0.725
- 7 ANES2016Time…       7       300008   3.96     4.25         0   4.62     4.79 
- 8 ANES2016Time…       8       300012   0.962    1.03         0   0.943    1.04 
- 9 ANES2016Time…       9       300018   0.976    1.05         0   1.01     1.07 
-10 ANES2016Time…      10       300020   0.618    0.664        0   0.600    0.638
-# ℹ 4,260 more rows
-# ℹ 1,834 more variables: V160102w &lt;dbl&gt;, V160201 &lt;dbl&gt;, V160201f &lt;dbl&gt;,
-#   V160201w &lt;dbl&gt;, V160202 &lt;dbl&gt;, V160202f &lt;dbl&gt;, V160202w &lt;dbl&gt;,
-#   V160501 &lt;hvn_lbll&gt;, V160502 &lt;hvn_lbll&gt;, V161001 &lt;hvn_lbll&gt;,
-#   V161002 &lt;hvn_lbll&gt;, V161003 &lt;hvn_lbll&gt;, V161004 &lt;hvn_lbll&gt;,
-#   V161005 &lt;hvn_lbll&gt;, V161006 &lt;hvn_lbll&gt;, V161007 &lt;hvn_lbll&gt;,
-#   V161008 &lt;hvn_lbll&gt;, V161009 &lt;hvn_lbll&gt;, V161010a &lt;hvn_lbll&gt;, …</code></pre>
-</div>
-</div>
-<p>You can also click on the name in the Environment pane to view the data in a new tab.</p>
+<p>Remember that when you execute the code you won’t see any output, but you should see the name you used on the left-hand side of the <code>&lt;-</code> assignment operator appear in your Environment pane.</p>
+<p>Don’t forget to take a look at the data.frame object to make sure it’s as you expect. One way is to click on the name in the Environment pane to view the data as a spreadsheet in a new tab.</p>
 </section>
 <section id="select-your-variables" class="level3">
 <h3 class="anchored" data-anchor-id="select-your-variables">Select your variables</h3>
@@ -443,29 +406,32 @@ window.Quarto = {
 <p>There are a lot of ways to do this. The simplest would be to make a note of the variable IDs from the codebook and use the <code>select()</code> function.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This allows us to simply type in variable names separated by commas.</p>
 <p>For this example I’ll look at the correlation between extraversion and the Democratic party feeling thermometer. Extraversion has two TIPI items; their IDs (from the codebook) are <code>V162333</code> and <code>V162338</code>. The ID for the Democratic Party feeling thermometer is <code>V161095</code>. Since I’ll probably forget which ID is which, I’ll give the columns more meaningful names as I select them.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> timeseries_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">extraversion1 =</span> <span class="st">"V162333"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">feeling_thermometer =</span> <span class="st">"V161095"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> raw_data <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">extraversion1 =</span> <span class="st">"V162333"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extraversion2 =</span> <span class="st">"V162338"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">feeling_thermometer =</span> <span class="st">"V161095"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s see what this new data.frame looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,270 × 3
-   extraversion1 extraversion2 feeling_thermometer
-   &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;         
- 1 6             5              0                 
- 2 6             6             15                 
- 3 6             2             50                 
- 4 6             4             30                 
- 5 5             7             70                 
- 6 5             6             15                 
- 7 5             1             85                 
- 8 6             3              0                 
- 9 7             1             15                 
-10 5             5             50                 
-# ℹ 4,260 more rows</code></pre>
+<pre><code>  extraversion1 extraversion2 feeling_thermometer
+1             6             5                   0
+2             6             6                  15
+3             6             2                  50
+4             6             4                  30
+5             5             7                  70
+6             5             6                  15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> extraversion1    extraversion2   feeling_thermometer
+ Min.   :-9.000   Min.   :-9.00   Min.   :-99.00     
+ 1st Qu.: 2.000   1st Qu.: 2.00   1st Qu.: 16.25     
+ Median : 5.000   Median : 4.00   Median : 50.00     
+ Mean   : 3.041   Mean   : 2.69   Mean   : 45.81     
+ 3rd Qu.: 6.000   3rd Qu.: 6.00   3rd Qu.: 70.00     
+ Max.   : 7.000   Max.   : 7.00   Max.   :100.00     </code></pre>
 </div>
 </div>
 <p>It all looks good so far. But if you inspect the data more extensively (click the name in your Environment to open a tab showing the data and scroll down a bit) you’ll notice that there are some negative numbers in the data. That’s from survey codes which record missing data. If you try to calculate an average score with those included it’ll mess up the sums, so we need to do some data cleaning to handle things like that.</p>
@@ -476,16 +442,16 @@ window.Quarto = {
 <p>The ANES coding scheme uses negative values for the various kinds of missing or inappropriate data, which makes things simple: only positive values are valid and should be retained.</p>
 <p>To implement this as a <code>filter()</code>, we can use the <code>if_all()</code> function; i.e., we are going to select some columns and <em>if all</em> the values in those columns meet some condition the row will be retained. To select the columns we can use the <code>everything()</code> function, since the positive-valid/negative-invalid rule is true of every column in our data. The part after the comma, <code>~ . &gt;= 0</code>, articulates the condition. The <code>~</code> prefix is necessary because instead of naming one specific column to refer to its values we use <code>.</code> as a placeholder representing the values in each of the selected columns; the value must be greater than or equal to 0 to be retained.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice that the number of rows in the data.frame has changed, because rows that didn’t meet that condition have been dropped.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4270</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(my_data_complete) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3540</code></pre>
 </div>
@@ -498,38 +464,45 @@ window.Quarto = {
 <p>The TIPI has 10 questions in total, two for each of the Big 5 personality traits, so it may be desirable to compute a mean trait score by averaging its two respective items.</p>
 <p>Notice, however, that for each of the 5 traits, one question is positively worded and one is negatively worded. For extraversion, item <code>V162333</code> (which I renamed <code>extraversion1</code>) is “extraverted, enthusiastic”, while item <code>V162338</code> (renamed <code>extraversion2</code>) is “reserved, quiet”. The second one needs to be reverse-coded, so that higher scores on both items indicate greater extraversion. Since answers can range from 1 to 7, an easy way to recode the scores is to subtract the participant’s response from 8; 1 becomes 7, 2 becomes 6, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion2 =</span> <span class="dv">8</span> <span class="sc">-</span> extraversion2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can go ahead and compute the average, using <code>mutate()</code> to create a new column (named <code>extraversion_mean</code>) consisting of the <code>rowMeans()</code> (i.e.&nbsp;an average for each row) <code>across()</code> the specified columns (those for which the column name <code>contains("extraversion")</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> my_data_complete <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">extraversion_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"extraversion"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s see how it looks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_data_complete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,540 × 4
-   extraversion1 extraversion2 feeling_thermometer extraversion_mean
-   &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;    &lt;hvn_lbll&gt;                      &lt;dbl&gt;
- 1 6             3              0                                4.5
- 2 6             2             15                                4  
- 3 6             6             50                                6  
- 4 6             4             30                                5  
- 5 5             1             70                                3  
- 6 5             2             15                                3.5
- 7 5             7             85                                6  
- 8 6             5              0                                5.5
- 9 7             7             15                                7  
-10 5             3             50                                4  
-# ℹ 3,530 more rows</code></pre>
+<pre><code>  extraversion1 extraversion2 feeling_thermometer extraversion_mean
+1             6             3                   0               4.5
+2             6             2                  15               4.0
+3             6             6                  50               6.0
+4             6             4                  30               5.0
+5             5             1                  70               3.0
+6             5             2                  15               3.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_data_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> extraversion1   extraversion2  feeling_thermometer extraversion_mean
+ Min.   :1.000   Min.   :1.00   Min.   :  0.00      Min.   :1.000    
+ 1st Qu.:4.000   1st Qu.:2.00   1st Qu.: 25.00      1st Qu.:3.500    
+ Median :5.000   Median :3.00   Median : 50.00      Median :4.000    
+ Mean   :4.787   Mean   :3.65   Mean   : 48.32      Mean   :4.218    
+ 3rd Qu.:6.000   3rd Qu.:5.00   3rd Qu.: 70.00      3rd Qu.:5.000    
+ Max.   :7.000   Max.   :7.00   Max.   :100.00      Max.   :7.000    </code></pre>
 </div>
 </div>
 <p>We have our two extraversion items (one reverse-coded), the feeling thermometer rating, and the computed extraversion mean scores for each of the 3,540 participants with complete data. We’re ready to analyze the data!</p>
-
-
 </section>
+</section>
+<section id="to-do-for-next-time" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-for-next-time">To do for next time</h2>
+<p>Read another research paper from <a href="correlation_1_anes.html#sec-politics-references" class="quarto-xref">Lab&nbsp;<span>6.2</span></a>.</p>
+
+
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

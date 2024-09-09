@@ -10,19 +10,19 @@ In this session we will begin the first project of the course: investigating per
 
 ## Project overview
 
-One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particularly trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.
+One way we can investigate personality is to look for differences between groups of people: does one group of people tend to score higher or lower on some particular trait than another group? With this project, you will look at whether a personality trait seems to differ (on average) between two different groups of people by analyzing an existing data set.
 
 Specifically, for this project you will be comparing scores on one of the Big 5 personality traits: openness, conscientiousness, extraversion, agreeableness, or neuroticism.
 
 ![The Big 5 theory of personality](https://upload.wikimedia.org/wikipedia/commons/8/84/Big_Five_Personality_Traits_Bubble_Diagram.svg){fig-align="center" width="80%"}
 
-What groups will you compare? We're going to look for differences between people with different astrological starsigns (Pisces, Aries, Leo, Virgo, etc...). Why starsigns? Because it's something a little bit fun that I expect you will be at least somewhat familiar with, and you'll be able to come up with some idea about how people with one sign might differ from people with another sign (Leos will surely be more extraverted than Pisces, right?!). To be clear: astrology are not something that contemporary academic psychologists generally take very seriously. However, it makes for a fine introduction to ways of thinking about the reliability and validity of approaches to categorizing and describing personality, as well as constructing hypotheses and analyzing data.
+What groups will you compare? We're going to look for differences between people with different astrological starsigns (Pisces, Aries, Leo, Virgo, etc...). Why starsigns? Because it's something a little bit fun that I expect you will be at least somewhat familiar with, and you'll be able to come up with some idea about how people with one sign might differ from people with another sign (*Leos will surely be more extraverted than Pisces, right?!*). To be clear: astrology is not something that contemporary academic psychologists generally take very seriously. However, it makes for a fine introduction to ways of thinking about the reliability and validity of approaches to categorizing and describing personality, as well as constructing hypotheses and analyzing data.
 
 ![The twelve astrological starsigns](astrology-chart.webp){fig-align="center" width="80%"}
 
 ### Comparing groups: the $t$-test
 
-The way we compare groups like this is to statistically test the "null hypothesis" ($H_0$) using a $t$-test. $H_0$ states that there is *no difference* between the group averages at all. The $t$-test quantifies exactly how much our sample averages do differ and put it in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn't a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently improbably to have occurred if there really is no difference; we reject $H_0$ and tentatively accept the "alternative hypothesis", ($H_1$) which states that there *is* a difference between the groups.
+The way we compare groups like this is to statistically test the "null hypothesis" ($H_0$) using a $t$-test. $H_0$ states that there is *no difference* between the group averages at all. Because of the inherent randomness in sample data, however, we wouldn't expect to find precisely *no* difference between two groups even if that null hypothesis is correct in reality. The $t$-test quantifies exactly how much our sample averages differ in the context of the general variability in the data. This gives a measure of how much of a difference we have observed over and above what we would expect by chance alone, assuming that there really isn't a difference. If the difference between our samples is sufficiently big, we can say that it is sufficiently unlikely under the $H_0$ model of reality; we reject $H_0$ and tentatively accept the "alternative hypothesis", ($H_1$) which states that there *is* a difference between the groups.
 
 Note that this is a statistical statement about a general tendency, not a rigid law. If we reject the null hypothesis, we're saying that there seems to be a difference in the groups averages, not that everyone in one group scores higher than everyone in the other group.
 
@@ -62,20 +62,22 @@ Your **quasi-independent** variable will be Zodiac star sign (`zodiac`). Specifi
 
 To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the `big5xx` and `zodiac` codes in parentheses above) in the [GSS Codebook](https://gss.norc.org/documents/codebook/gss_codebook.pdf).
 
-## Step 2. Read relevant research
+## Step 2. Read relevant research {#sec-astrology-references}
 
 Real research doesn't happen in a vacuum; research plans and expectations should be informed by what has come before. Therefore once you have a general idea for your study, you will see what other researchers have found and refine your plans and expectations based on what you learn.
 
-A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything; pick one of these papers to skim to give you an idea of what has been found.
+A real research project would involve an exhaustive literature review, in which you attempt to find and understand all the research relevant to your question. Since this project of ours is just for practice and our time is limited, you don't need to read everything. For now, pick one of these papers to skim to give you an idea of what has been found.
+
+### References {#sec-astro-refs}
 
 ::: references
 Clarke, D., Gabriels, T., & Barnes, J. (1996). [Astrological signs as determinants of extroversion and emotionality: An empirical study.](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226) *The Journal of Psychology, 130(2),* 131--140. [https://doi.org/10.1080/00223980.1996.9914995](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/astrological-signs-as-determinants-extroversion/docview/213826452/se-2?accountid=10226)
 
 Mayo, J., White, O., & Eyesenck, H. J. (1978). [An empirical study of the relation between astrological factors and personality](http://ezproxy.cul.columbia.edu/login?url=https://www.proquest.com/scholarly-journals/empirical-study-relation-between-astrological/docview/1290725876/se-2). *Journal of Social Psychology, 105*(2), 229.
 
-McGrew, J. H., & McFall, R. M. (1990). [A scientific inquiry into the validity of astrology](https://www.scientificexploration.org/docs/4/jse_04_1_mcgrew.pdf). Journal of Scientific Exploration, 4(1), 75-83.
+McGrew, J. H., & McFall, R. M. (1990). [A scientific inquiry into the validity of astrology](http://www.skepticalmedia.com/astrology/Scientific%20Inquiry%20into%20Astrology.pdf). *Journal of Scientific Exploration, 4*(1), 75-83.
 
-Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). [An empirical study of personality and astrological factors](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1). Journal of Psychology, 110(2), 275. [https://doi.org/10.1080/00223980.1982.9915349](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1)
+Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). [An empirical study of personality and astrological factors](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1). *Journal of Psychology, 110*(2), 275. [https://doi.org/10.1080/00223980.1982.9915349](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1)
 
 Smithers, A. G., & Cooper, H. J. (1978). [Personality and season of birth](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis). *The Journal of Social Psychology, 105*(2), 237-241. [https://doi.org/10.1080/00224545.1978.9924120](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis)
 :::
@@ -92,8 +94,6 @@ Your hypothesis is a formal statement of your expectation about the outcome of y
 
 If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
 
-<!-- ## To do for next time -->
+## To do for next time
 
-<!-- Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). -->
-
-<!-- The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis. -->
+Read up on the development of the TIPI ([Gosling et al., 2003](https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/JRP-03-tipi.pdf)). The more detailed your understanding of how the Big Five trait was measured, the better you will be able to interpret the results of your analysis.
