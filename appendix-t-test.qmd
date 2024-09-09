@@ -1,3 +1,7 @@
+---
+echo: false
+---
+
 ```{=html}
 <style>
   #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
@@ -7,6 +11,7 @@
     content: unset;
   }
 </style>
+
 ```
 # $t$-test
 
@@ -22,33 +27,181 @@ There are three main types of $t$-tests:
 
 3.  **Paired samples** $t$-test: compares means from the same group at different times (e.g., before and after a treatment).
 
+We'll focus on the independent-samples $t$-test, since we'll be comparing to different groups of people (people with one astrological star sign versus people of another sign).
+
 ## Calculating the t-statistic
 
 For an independent samples $t$-test, the formula for the $t$-statistic is:
 
 $$
-t = \frac{(M_1 - M_2)}{\sqrt{\frac{S^2_1}{n_1} + \frac{S^2_2}{n_2}}}
+t = \frac{(M_1 - M_2)}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}}
 $$
 
 Where:
 
 -   $M_1$ and $M_2$ are the means of the two groups.
 
--   $S^2_1$ and $S^2_2$ are the variances of the two groups.
+-   $s^2_1$ and $s^2_2$ are the variances of the two groups.
 
 -   $n_1$ and $n_2$ are the sample sizes of the two groups.
 
 This formula essentially measures the difference between the group means relative to the variability of the scores within each group.
 
+```{ojs}
+import { plotter } from '50dadfdec01c15a8'
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+d3 = require("https://d3js.org/d3.v5.min.js")
+```
+
+```{ojs}
+
+viewof mean_diff = Inputs.range(
+  [-1, 1],
+  {step: 0.01,
+  value: 0.2,
+  title: "d",
+  label: "Difference between means"})
+  
+viewof variance = Inputs.range(
+  [0.1, 1],
+  {step: 0.01,
+  value: 1,
+  title: "var",
+  label: "Variances"})
+  
+viewof n = Inputs.range(
+  [10, 300],
+  {step: 1,
+  value: 30,
+  title: "n",
+  label: "Sample size"})
+  
+denominator = Math.sqrt(variance / n + variance / n)
+
+t_stat = mean_diff / Math.sqrt(variance / n + variance / n)
+
+// t_stat
+  
+```
+
+```{ojs}
+t_distributions = {
+  let dof = n - 2;
+  let w = Math.min(900, width);
+  let h = 0.5 * w;
+  let plot = plotter({
+    xDomain: [-1, 1],
+    yDomain: [jStat.normal.pdf(0, 0, denominator), 0],
+    grid: false,
+    width: w,
+    height: h,
+    xLabel: '',
+    yLabel: '',
+    yTickCount: 5
+  });
+
+  // create the svg element to append shapes manually
+  const svg = d3.select(DOM.svg(w, h))
+    .attr("viewBox", `0 0 ${w} ${h}`);
+    
+  // helper function to generate valid data for the t-distributions
+  function generateDistributionData(mean_shift) {
+    let data = d3.range(-1, 1, 0.01).map(x => ({ x: x, y: jStat.normal.pdf(x + mean_shift, 0, denominator) }));
+    // close the polygon at the x-axis
+    data.push({ x: 1, y: 0 }, { x: -1, y: 0 });
+    return data;
+  }
+
+  // generate the two distributions with shifted means
+  let redDistribution = generateDistributionData(-mean_diff / 2); // red t-distribution shifted left
+  let blueDistribution = generateDistributionData(mean_diff / 2);  // blue t-distribution shifted right
+
+  // plot red t-distribution as a filled polygon
+  plot.polygon(redDistribution, { fill: 'red', stroke: 'none', width: 2, opacity: 0.3 });
+
+  // plot blue t-distribution as a filled polygon
+  plot.polygon(blueDistribution, { fill: 'blue', stroke: 'none', width: 2, opacity: 0.3 });
+
+  return plot.node;
+}
+
+```
+
 ## Interpreting the $t$-statistic
 
-After calculating the $t$-statistic, you compare it to a critical value from the $t$-distribution table, which depends on your chosen significance level (typically $0.05$) and the degrees of freedom. If your calculated $t$-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).
+After calculating the $t$-statistic for your data, you compare it to [a critical value from the $t$-distribution table](https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf), which depends on your chosen significance level (typically $0.05$) and the degrees of freedom. If your calculated $t$-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).
+
+```{ojs}
+
+viewof dof = Inputs.range(
+  [2, 500],
+  {step: 1,
+  value: n - 2,
+  title: "DOF",
+  label: "Degrees of Freedom"})
+  
+```
+
+```{ojs}
+t_with_normal_pic = {
+  let w = Math.min(900, width);
+  let h = 0.5 * w;
+  let plot = plotter({
+    xDomain: [-4, 4],
+    yDomain: [0.4, 0],
+    grid: false,
+    width: w,
+    height: h,
+    xLabel: '',
+    yLabel: '',
+    yTickCount: 5
+  });
+
+  // create the svg element to append shapes manually
+  const svg = d3.select(DOM.svg(w, h))
+    .attr("viewBox", `0 0 ${w} ${h}`);
+    
+// helper function to ensure no NaN values in data
+  function validPdf(x, dof) {
+    let density = jStat.studentt.pdf(x, dof);
+    return isNaN(density) ? 0 : density;
+  }
+
+  // generate data points for left tail (x <= -criticalValue)
+  let leftTailData = d3.range(-4, -criticalValue, 0.01).map(x => ({ x: x, y: validPdf(x, dof) }));
+  leftTailData.push({ x: -criticalValue, y: 0 }); // close the polygon at the x-axis
+  leftTailData.push({ x: -4, y: 0 }); // close the polygon at the x-axis
+
+// generate data points for right tail (x >= criticalValue)
+  let rightTailData = d3.range(criticalValue, 4, 0.01).map(x => ({ x: x, y: validPdf(x, dof) }));
+  rightTailData.push({ x: 4, y: 0 }); // close the polygon at the x-axis
+  rightTailData.push({ x: criticalValue, y: 0 }); // close the polygon at the x-axis, but in reverse order
+
+
+  // plot left tail polygon
+  plot.polygon(leftTailData, { fill: 'red', stroke: 'none' });
+
+  // plot right tail polygon
+  plot.polygon(rightTailData, { fill: 'red', stroke: 'none' });
+  
+  plot.func(x => jStat.studentt.pdf(x, dof), { stroke: 'red', width: 2 });
+  return plot.node;
+}
+
+```
+
+```{ojs}
+alpha = 0.05
+criticalValue = jStat.studentt.inv(1 - alpha / 2, dof) // calculate critical value based on DOF
+```
+
+```{ojs}
+tex`t_{critical} = \pm${criticalValue.toFixed(2)}`
+```
 
 ## Confidence Intervals
 
-For each point estimate--that is, each group mean--a confidence interval (CI) can be calculated. The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really $\mu = 3.25$, then 95% of 95% CIs would include $M = 3.25$ within their range.
-
-Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.
+For each point estimate--that is, each group mean--a confidence interval (CI) can be calculated according to this formula:
 
 $$
 M \pm t_{critical} \times \sqrt{\frac{s^2}{n} }
@@ -61,12 +214,17 @@ Where:
 -   $s^2$ is the sample's standard deviation squared (i.e. variance).
 -   $n$ is the sample size.
 
+The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really $\mu = 3.25$, then 95% of 95% CIs would include $M = 3.25$ within their range.
+
+Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.
+
+
 ## Effect size for $t$-tests
 
-The effect size for a $t$-test is often measured using Cohen's d, which standardizes the difference between the means. the formula is:
+The effect size for a $t$-test is often measured using Cohen's $d$, which standardizes the difference between the means. the formula is:
 
 $$
-d = \frac{M_1 - M_2}{\sqrt{\frac{(S^2_1 + S^2_2)}{2}}}
+d = \frac{M_1 - M_2}{\sqrt{\frac{(s^2_1 + s^2_2)}{2}}}
 $$
 
 Cohen suggested the following thresholds for interpreting $d$:
@@ -77,8 +235,26 @@ Cohen suggested the following thresholds for interpreting $d$:
 
 -   0.8 = large effect
 
-However, context matters, and these rules of thumb might not always apply. It's crucial to consider the practical significance and the specific field of study.
+However, context matters, and these rules of thumb might not always apply. It's crucial to consider the practical significance and the specific field of study. More recent researchers have proposed more nuanced and empirically-grounded interpretations. [Funder and Ozer (2019)](https://doi.org/10.1177/2515245919847202) proposed the following:
 
-## Summary
+```{r}
+#| echo: false
 
-The $t$-test is a fundamental tool in statistics for comparing group means. It helps you determine whether observed differences are likely to be real or just due to random chance. By understanding the calculation and interpretation of the $t$-statistic and effect size, you can make informed decisions about your data.
+
+funder <- tibble::tribble(
+  ~"$d$", ~"Description",
+  "0.1", "Very small for the explanation of single events but potentially consequential in longer run",
+  "0.2", "Still small at the level of single events but potentially more ultimately consequential",
+  "0.4", "Medium effect of some explanatory and practical use even in the short run",
+  "0.6", "Large effect that is potentially powerful in both the short and the long run",
+  "0.9", "A very large effect in the context of psychological research; likely to be a gross overestimate"
+)
+
+# - .05: Very small for the explanation of single events but potentially consequential in longer run
+# - .10: Still small at the level of single events but potentially more ultimately consequential
+# - .20: Medium effect of some explanatory and practical use even in the short run
+# - .30: Large effect that is potentially powerful in both the short and the long run
+# - .40: A very large effect in the context of psychological research; likely to be a gross overestimate
+
+knitr::kable(funder)
+```

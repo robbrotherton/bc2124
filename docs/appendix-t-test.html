@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -70,6 +104,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -307,7 +343,6 @@ window.Quarto = {
   <li><a href="#interpreting-the-t-statistic" id="toc-interpreting-the-t-statistic" class="nav-link" data-scroll-target="#interpreting-the-t-statistic">Interpreting the <span class="math inline">\(t\)</span>-statistic</a></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
   <li><a href="#effect-size-for-t-tests" id="toc-effect-size-for-t-tests" class="nav-link" data-scroll-target="#effect-size-for-t-tests">Effect size for <span class="math inline">\(t\)</span>-tests</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -341,6 +376,7 @@ window.Quarto = {
     content: unset;
   }
 </style>
+
 <p>When you want to compare the means of two groups to see if they differ significantly, you can use a <span class="math inline">\(t\)</span>-test. It’s a statistical test that helps determine if the difference in sample means (averages) is likely due to random chance or if it’s unlikely enough to infer a true difference in the population means.</p>
 <section id="types-of-t-tests" class="level2">
 <h2 class="anchored" data-anchor-id="types-of-t-tests">Types of <span class="math inline">\(t\)</span>-tests</h2>
@@ -350,29 +386,252 @@ window.Quarto = {
 <li><p><strong>Independent samples</strong> <span class="math inline">\(t\)</span>-test: compares the means of two independent groups.</p></li>
 <li><p><strong>Paired samples</strong> <span class="math inline">\(t\)</span>-test: compares means from the same group at different times (e.g., before and after a treatment).</p></li>
 </ol>
+<p>We’ll focus on the independent-samples <span class="math inline">\(t\)</span>-test, since we’ll be comparing to different groups of people (people with one astrological star sign versus people of another sign).</p>
 </section>
 <section id="calculating-the-t-statistic" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-the-t-statistic">Calculating the t-statistic</h2>
 <p>For an independent samples <span class="math inline">\(t\)</span>-test, the formula for the <span class="math inline">\(t\)</span>-statistic is:</p>
 <p><span class="math display">\[
-t = \frac{(M_1 - M_2)}{\sqrt{\frac{S^2_1}{n_1} + \frac{S^2_2}{n_2}}}
+t = \frac{(M_1 - M_2)}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}}
 \]</span></p>
 <p>Where:</p>
 <ul>
 <li><p><span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are the means of the two groups.</p></li>
-<li><p><span class="math inline">\(S^2_1\)</span> and <span class="math inline">\(S^2_2\)</span> are the variances of the two groups.</p></li>
+<li><p><span class="math inline">\(s^2_1\)</span> and <span class="math inline">\(s^2_2\)</span> are the variances of the two groups.</p></li>
 <li><p><span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of the two groups.</p></li>
 </ul>
 <p>This formula essentially measures the difference between the group means relative to the variability of the scores within each group.</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="51" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { plotter } <span class="im">from</span> <span class="st">'50dadfdec01c15a8'</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://d3js.org/d3.v5.min.js"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="58" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 57;"><span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>viewof mean_diff <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  [<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"d"</span><span class="op">,</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Difference between means"</span>})</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>viewof variance <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  [<span class="fl">0.1</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"var"</span><span class="op">,</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Variances"</span>})</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">10</span><span class="op">,</span> <span class="dv">300</span>]<span class="op">,</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Sample size"</span>})</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>denominator <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(variance <span class="op">/</span> n <span class="op">+</span> variance <span class="op">/</span> n)</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>t_stat <span class="op">=</span> mean_diff <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(variance <span class="op">/</span> n <span class="op">+</span> variance <span class="op">/</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="87" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 86;"><span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>t_distributions <span class="op">=</span> {</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> dof <span class="op">=</span> n <span class="op">-</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> w <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">900</span><span class="op">,</span> width)<span class="op">;</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> h <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> w<span class="op">;</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> plot <span class="op">=</span> <span class="fu">plotter</span>({</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xDomain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yDomain</span><span class="op">:</span> [jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> denominator)<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> w<span class="op">,</span></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> h<span class="op">,</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xLabel</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yLabel</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yTickCount</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>  <span class="co">// create the svg element to append shapes manually</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(w<span class="op">,</span> h))</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> <span class="vs">`0 0 </span><span class="sc">${</span>w<span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>  <span class="co">// helper function to generate valid data for the t-distributions</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">generateDistributionData</span>(mean_shift) {</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="fl">0.01</span>)<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({ <span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(x <span class="op">+</span> mean_shift<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> denominator) }))<span class="op">;</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    <span class="co">// close the polygon at the x-axis</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    data<span class="op">.</span><span class="fu">push</span>({ <span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> }<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> })<span class="op">;</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>  <span class="co">// generate the two distributions with shifted means</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> redDistribution <span class="op">=</span> <span class="fu">generateDistributionData</span>(<span class="op">-</span>mean_diff <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// red t-distribution shifted left</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> blueDistribution <span class="op">=</span> <span class="fu">generateDistributionData</span>(mean_diff <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span>  <span class="co">// blue t-distribution shifted right</span></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>  <span class="co">// plot red t-distribution as a filled polygon</span></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>  plot<span class="op">.</span><span class="fu">polygon</span>(redDistribution<span class="op">,</span> { <span class="dt">fill</span><span class="op">:</span> <span class="st">'red'</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">'none'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.3</span> })<span class="op">;</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>  <span class="co">// plot blue t-distribution as a filled polygon</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>  plot<span class="op">.</span><span class="fu">polygon</span>(blueDistribution<span class="op">,</span> { <span class="dt">fill</span><span class="op">:</span> <span class="st">'blue'</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">'none'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.3</span> })<span class="op">;</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> plot<span class="op">.</span><span class="at">node</span><span class="op">;</span></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </section>
 <section id="interpreting-the-t-statistic" class="level2">
 <h2 class="anchored" data-anchor-id="interpreting-the-t-statistic">Interpreting the <span class="math inline">\(t\)</span>-statistic</h2>
-<p>After calculating the <span class="math inline">\(t\)</span>-statistic, you compare it to a critical value from the <span class="math inline">\(t\)</span>-distribution table, which depends on your chosen significance level (typically <span class="math inline">\(0.05\)</span>) and the degrees of freedom. If your calculated <span class="math inline">\(t\)</span>-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).</p>
+<p>After calculating the <span class="math inline">\(t\)</span>-statistic for your data, you compare it to <a href="https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf">a critical value from the <span class="math inline">\(t\)</span>-distribution table</a>, which depends on your chosen significance level (typically <span class="math inline">\(0.05\)</span>) and the degrees of freedom. If your calculated <span class="math inline">\(t\)</span>-value exceeds the critical value, you reject the null hypothesis (which states that there is no difference between the group means).</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="134" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 133;"><span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>viewof dof <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">2</span><span class="op">,</span> <span class="dv">500</span>]<span class="op">,</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> n <span class="op">-</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"DOF"</span><span class="op">,</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Degrees of Freedom"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="145" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>t_with_normal_pic <span class="op">=</span> {</span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> w <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">900</span><span class="op">,</span> width)<span class="op">;</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> h <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> w<span class="op">;</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> plot <span class="op">=</span> <span class="fu">plotter</span>({</span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xDomain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yDomain</span><span class="op">:</span> [<span class="fl">0.4</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> w<span class="op">,</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> h<span class="op">,</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xLabel</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yLabel</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yTickCount</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a>  <span class="co">// create the svg element to append shapes manually</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(w<span class="op">,</span> h))</span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> <span class="vs">`0 0 </span><span class="sc">${</span>w<span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a><span class="co">// helper function to ensure no NaN values in data</span></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">validPdf</span>(x<span class="op">,</span> dof) {</span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> density <span class="op">=</span> jStat<span class="op">.</span><span class="at">studentt</span><span class="op">.</span><span class="fu">pdf</span>(x<span class="op">,</span> dof)<span class="op">;</span></span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="pp">isNaN</span>(density) <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> density<span class="op">;</span></span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>  <span class="co">// generate data points for left tail (x &lt;= -criticalValue)</span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> leftTailData <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="op">-</span>criticalValue<span class="op">,</span> <span class="fl">0.01</span>)<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({ <span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">validPdf</span>(x<span class="op">,</span> dof) }))<span class="op">;</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>  leftTailData<span class="op">.</span><span class="fu">push</span>({ <span class="dt">x</span><span class="op">:</span> <span class="op">-</span>criticalValue<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> })<span class="op">;</span> <span class="co">// close the polygon at the x-axis</span></span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>  leftTailData<span class="op">.</span><span class="fu">push</span>({ <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> })<span class="op">;</span> <span class="co">// close the polygon at the x-axis</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a><span class="co">// generate data points for right tail (x &gt;= criticalValue)</span></span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> rightTailData <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(criticalValue<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="fl">0.01</span>)<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({ <span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">validPdf</span>(x<span class="op">,</span> dof) }))<span class="op">;</span></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>  rightTailData<span class="op">.</span><span class="fu">push</span>({ <span class="dt">x</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> })<span class="op">;</span> <span class="co">// close the polygon at the x-axis</span></span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>  rightTailData<span class="op">.</span><span class="fu">push</span>({ <span class="dt">x</span><span class="op">:</span> criticalValue<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span> })<span class="op">;</span> <span class="co">// close the polygon at the x-axis, but in reverse order</span></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a>  <span class="co">// plot left tail polygon</span></span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>  plot<span class="op">.</span><span class="fu">polygon</span>(leftTailData<span class="op">,</span> { <span class="dt">fill</span><span class="op">:</span> <span class="st">'red'</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">'none'</span> })<span class="op">;</span></span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>  <span class="co">// plot right tail polygon</span></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>  plot<span class="op">.</span><span class="fu">polygon</span>(rightTailData<span class="op">,</span> { <span class="dt">fill</span><span class="op">:</span> <span class="st">'red'</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">'none'</span> })<span class="op">;</span></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>  plot<span class="op">.</span><span class="fu">func</span>(x <span class="kw">=&gt;</span> jStat<span class="op">.</span><span class="at">studentt</span><span class="op">.</span><span class="fu">pdf</span>(x<span class="op">,</span> dof)<span class="op">,</span> { <span class="dt">stroke</span><span class="op">:</span> <span class="st">'red'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">2</span> })<span class="op">;</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> plot<span class="op">.</span><span class="at">node</span><span class="op">;</span></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="194" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>criticalValue <span class="op">=</span> jStat<span class="op">.</span><span class="at">studentt</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> dof)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="198" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a><span class="fu">tex</span><span class="vs">`t_{critical} = </span><span class="sc">\p</span><span class="vs">m</span><span class="sc">${</span>criticalValue<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </section>
 <section id="confidence-intervals" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
-<p>For each point estimate–that is, each group mean–a confidence interval (CI) can be calculated. The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really <span class="math inline">\(\mu = 3.25\)</span>, then 95% of 95% CIs would include <span class="math inline">\(M = 3.25\)</span> within their range.</p>
-<p>Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.</p>
+<p>For each point estimate–that is, each group mean–a confidence interval (CI) can be calculated according to this formula:</p>
 <p><span class="math display">\[
 M \pm t_{critical} \times \sqrt{\frac{s^2}{n} }
 \]</span></p>
@@ -383,12 +642,14 @@ M \pm t_{critical} \times \sqrt{\frac{s^2}{n} }
 <li><span class="math inline">\(s^2\)</span> is the sample’s standard deviation squared (i.e.&nbsp;variance).</li>
 <li><span class="math inline">\(n\)</span> is the sample size.</li>
 </ul>
+<p>The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really <span class="math inline">\(\mu = 3.25\)</span>, then 95% of 95% CIs would include <span class="math inline">\(M = 3.25\)</span> within their range.</p>
+<p>Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.</p>
 </section>
 <section id="effect-size-for-t-tests" class="level2">
 <h2 class="anchored" data-anchor-id="effect-size-for-t-tests">Effect size for <span class="math inline">\(t\)</span>-tests</h2>
-<p>The effect size for a <span class="math inline">\(t\)</span>-test is often measured using Cohen’s d, which standardizes the difference between the means. the formula is:</p>
+<p>The effect size for a <span class="math inline">\(t\)</span>-test is often measured using Cohen’s <span class="math inline">\(d\)</span>, which standardizes the difference between the means. the formula is:</p>
 <p><span class="math display">\[
-d = \frac{M_1 - M_2}{\sqrt{\frac{(S^2_1 + S^2_2)}{2}}}
+d = \frac{M_1 - M_2}{\sqrt{\frac{(s^2_1 + s^2_2)}{2}}}
 \]</span></p>
 <p>Cohen suggested the following thresholds for interpreting <span class="math inline">\(d\)</span>:</p>
 <ul>
@@ -396,16 +657,61 @@ d = \frac{M_1 - M_2}{\sqrt{\frac{(S^2_1 + S^2_2)}{2}}}
 <li><p>0.5 = medium effect</p></li>
 <li><p>0.8 = large effect</p></li>
 </ul>
-<p>However, context matters, and these rules of thumb might not always apply. It’s crucial to consider the practical significance and the specific field of study.</p>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>The <span class="math inline">\(t\)</span>-test is a fundamental tool in statistics for comparing group means. It helps you determine whether observed differences are likely to be real or just due to random chance. By understanding the calculation and interpretation of the <span class="math inline">\(t\)</span>-statistic and effect size, you can make informed decisions about your data.</p>
+<p>However, context matters, and these rules of thumb might not always apply. It’s crucial to consider the practical significance and the specific field of study. More recent researchers have proposed more nuanced and empirically-grounded interpretations. <a href="https://doi.org/10.1177/2515245919847202">Funder and Ozer (2019)</a> proposed the following:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 96%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(d\)</span></th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0.1</td>
+<td style="text-align: left;">Very small for the explanation of single events but potentially consequential in longer run</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">Still small at the level of single events but potentially more ultimately consequential</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.4</td>
+<td style="text-align: left;">Medium effect of some explanatory and practical use even in the short run</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">Large effect that is potentially powerful in both the short and the long run</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.9</td>
+<td style="text-align: left;">A very large effect in the context of psychological research; likely to be a gross overestimate</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IHBsb3R0ZXIgfSBmcm9tICc1MGRhZGZkZWMwMWMxNWE4J1xualN0YXQgPSByZXF1aXJlKFwiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L25wbS9qc3RhdEBsYXRlc3QvZGlzdC9qc3RhdC5taW4uanNcIilcbmQzID0gcmVxdWlyZShcImh0dHBzOi8vZDNqcy5vcmcvZDMudjUubWluLmpzXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnZpZXdvZiBtZWFuX2RpZmYgPSBJbnB1dHMucmFuZ2UoXG4gIFstMSwgMV0sXG4gIHtzdGVwOiAwLjAxLFxuICB2YWx1ZTogMC4yLFxuICB0aXRsZTogXCJkXCIsXG4gIGxhYmVsOiBcIkRpZmZlcmVuY2UgYmV0d2VlbiBtZWFuc1wifSlcbiAgXG52aWV3b2YgdmFyaWFuY2UgPSBJbnB1dHMucmFuZ2UoXG4gIFswLjEsIDFdLFxuICB7c3RlcDogMC4wMSxcbiAgdmFsdWU6IDEsXG4gIHRpdGxlOiBcInZhclwiLFxuICBsYWJlbDogXCJWYXJpYW5jZXNcIn0pXG4gIFxudmlld29mIG4gPSBJbnB1dHMucmFuZ2UoXG4gIFsxMCwgMzAwXSxcbiAge3N0ZXA6IDEsXG4gIHZhbHVlOiAzMCxcbiAgdGl0bGU6IFwiblwiLFxuICBsYWJlbDogXCJTYW1wbGUgc2l6ZVwifSlcbiAgXG5kZW5vbWluYXRvciA9IE1hdGguc3FydCh2YXJpYW5jZSAvIG4gKyB2YXJpYW5jZSAvIG4pXG5cbnRfc3RhdCA9IG1lYW5fZGlmZiAvIE1hdGguc3FydCh2YXJpYW5jZSAvIG4gKyB2YXJpYW5jZSAvIG4pXG5cbi8vIHRfc3RhdFxuICBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRfZGlzdHJpYnV0aW9ucyA9IHtcbiAgbGV0IGRvZiA9IG4gLSAyO1xuICBsZXQgdyA9IE1hdGgubWluKDkwMCwgd2lkdGgpO1xuICBsZXQgaCA9IDAuNSAqIHc7XG4gIGxldCBwbG90ID0gcGxvdHRlcih7XG4gICAgeERvbWFpbjogWy0xLCAxXSxcbiAgICB5RG9tYWluOiBbalN0YXQubm9ybWFsLnBkZigwLCAwLCBkZW5vbWluYXRvciksIDBdLFxuICAgIGdyaWQ6IGZhbHNlLFxuICAgIHdpZHRoOiB3LFxuICAgIGhlaWdodDogaCxcbiAgICB4TGFiZWw6ICcnLFxuICAgIHlMYWJlbDogJycsXG4gICAgeVRpY2tDb3VudDogNVxuICB9KTtcblxuICAvLyBjcmVhdGUgdGhlIHN2ZyBlbGVtZW50IHRvIGFwcGVuZCBzaGFwZXMgbWFudWFsbHlcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KERPTS5zdmcodywgaCkpXG4gICAgLmF0dHIoXCJ2aWV3Qm94XCIsIGAwIDAgJHt3fSAke2h9YCk7XG4gICAgXG4gIC8vIGhlbHBlciBmdW5jdGlvbiB0byBnZW5lcmF0ZSB2YWxpZCBkYXRhIGZvciB0aGUgdC1kaXN0cmlidXRpb25zXG4gIGZ1bmN0aW9uIGdlbmVyYXRlRGlzdHJpYnV0aW9uRGF0YShtZWFuX3NoaWZ0KSB7XG4gICAgbGV0IGRhdGEgPSBkMy5yYW5nZSgtMSwgMSwgMC4wMSkubWFwKHggPT4gKHsgeDogeCwgeTogalN0YXQubm9ybWFsLnBkZih4ICsgbWVhbl9zaGlmdCwgMCwgZGVub21pbmF0b3IpIH0pKTtcbiAgICAvLyBjbG9zZSB0aGUgcG9seWdvbiBhdCB0aGUgeC1heGlzXG4gICAgZGF0YS5wdXNoKHsgeDogMSwgeTogMCB9LCB7IHg6IC0xLCB5OiAwIH0pO1xuICAgIHJldHVybiBkYXRhO1xuICB9XG5cbiAgLy8gZ2VuZXJhdGUgdGhlIHR3byBkaXN0cmlidXRpb25zIHdpdGggc2hpZnRlZCBtZWFuc1xuICBsZXQgcmVkRGlzdHJpYnV0aW9uID0gZ2VuZXJhdGVEaXN0cmlidXRpb25EYXRhKC1tZWFuX2RpZmYgLyAyKTsgLy8gcmVkIHQtZGlzdHJpYnV0aW9uIHNoaWZ0ZWQgbGVmdFxuICBsZXQgYmx1ZURpc3RyaWJ1dGlvbiA9IGdlbmVyYXRlRGlzdHJpYnV0aW9uRGF0YShtZWFuX2RpZmYgLyAyKTsgIC8vIGJsdWUgdC1kaXN0cmlidXRpb24gc2hpZnRlZCByaWdodFxuXG4gIC8vIHBsb3QgcmVkIHQtZGlzdHJpYnV0aW9uIGFzIGEgZmlsbGVkIHBvbHlnb25cbiAgcGxvdC5wb2x5Z29uKHJlZERpc3RyaWJ1dGlvbiwgeyBmaWxsOiAncmVkJywgc3Ryb2tlOiAnbm9uZScsIHdpZHRoOiAyLCBvcGFjaXR5OiAwLjMgfSk7XG5cbiAgLy8gcGxvdCBibHVlIHQtZGlzdHJpYnV0aW9uIGFzIGEgZmlsbGVkIHBvbHlnb25cbiAgcGxvdC5wb2x5Z29uKGJsdWVEaXN0cmlidXRpb24sIHsgZmlsbDogJ2JsdWUnLCBzdHJva2U6ICdub25lJywgd2lkdGg6IDIsIG9wYWNpdHk6IDAuMyB9KTtcblxuICByZXR1cm4gcGxvdC5ub2RlO1xufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnZpZXdvZiBkb2YgPSBJbnB1dHMucmFuZ2UoXG4gIFsyLCA1MDBdLFxuICB7c3RlcDogMSxcbiAgdmFsdWU6IG4gLSAyLFxuICB0aXRsZTogXCJET0ZcIixcbiAgbGFiZWw6IFwiRGVncmVlcyBvZiBGcmVlZG9tXCJ9KVxuICBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRfd2l0aF9ub3JtYWxfcGljID0ge1xuICBsZXQgdyA9IE1hdGgubWluKDkwMCwgd2lkdGgpO1xuICBsZXQgaCA9IDAuNSAqIHc7XG4gIGxldCBwbG90ID0gcGxvdHRlcih7XG4gICAgeERvbWFpbjogWy00LCA0XSxcbiAgICB5RG9tYWluOiBbMC40LCAwXSxcbiAgICBncmlkOiBmYWxzZSxcbiAgICB3aWR0aDogdyxcbiAgICBoZWlnaHQ6IGgsXG4gICAgeExhYmVsOiAnJyxcbiAgICB5TGFiZWw6ICcnLFxuICAgIHlUaWNrQ291bnQ6IDVcbiAgfSk7XG5cbiAgLy8gY3JlYXRlIHRoZSBzdmcgZWxlbWVudCB0byBhcHBlbmQgc2hhcGVzIG1hbnVhbGx5XG4gIGNvbnN0IHN2ZyA9IGQzLnNlbGVjdChET00uc3ZnKHcsIGgpKVxuICAgIC5hdHRyKFwidmlld0JveFwiLCBgMCAwICR7d30gJHtofWApO1xuICAgIFxuLy8gaGVscGVyIGZ1bmN0aW9uIHRvIGVuc3VyZSBubyBOYU4gdmFsdWVzIGluIGRhdGFcbiAgZnVuY3Rpb24gdmFsaWRQZGYoeCwgZG9mKSB7XG4gICAgbGV0IGRlbnNpdHkgPSBqU3RhdC5zdHVkZW50dC5wZGYoeCwgZG9mKTtcbiAgICByZXR1cm4gaXNOYU4oZGVuc2l0eSkgPyAwIDogZGVuc2l0eTtcbiAgfVxuXG4gIC8vIGdlbmVyYXRlIGRhdGEgcG9pbnRzIGZvciBsZWZ0IHRhaWwgKHggPD0gLWNyaXRpY2FsVmFsdWUpXG4gIGxldCBsZWZ0VGFpbERhdGEgPSBkMy5yYW5nZSgtNCwgLWNyaXRpY2FsVmFsdWUsIDAuMDEpLm1hcCh4ID0+ICh7IHg6IHgsIHk6IHZhbGlkUGRmKHgsIGRvZikgfSkpO1xuICBsZWZ0VGFpbERhdGEucHVzaCh7IHg6IC1jcml0aWNhbFZhbHVlLCB5OiAwIH0pOyAvLyBjbG9zZSB0aGUgcG9seWdvbiBhdCB0aGUgeC1heGlzXG4gIGxlZnRUYWlsRGF0YS5wdXNoKHsgeDogLTQsIHk6IDAgfSk7IC8vIGNsb3NlIHRoZSBwb2x5Z29uIGF0IHRoZSB4LWF4aXNcblxuLy8gZ2VuZXJhdGUgZGF0YSBwb2ludHMgZm9yIHJpZ2h0IHRhaWwgKHggPj0gY3JpdGljYWxWYWx1ZSlcbiAgbGV0IHJpZ2h0VGFpbERhdGEgPSBkMy5yYW5nZShjcml0aWNhbFZhbHVlLCA0LCAwLjAxKS5tYXAoeCA9PiAoeyB4OiB4LCB5OiB2YWxpZFBkZih4LCBkb2YpIH0pKTtcbiAgcmlnaHRUYWlsRGF0YS5wdXNoKHsgeDogNCwgeTogMCB9KTsgLy8gY2xvc2UgdGhlIHBvbHlnb24gYXQgdGhlIHgtYXhpc1xuICByaWdodFRhaWxEYXRhLnB1c2goeyB4OiBjcml0aWNhbFZhbHVlLCB5OiAwIH0pOyAvLyBjbG9zZSB0aGUgcG9seWdvbiBhdCB0aGUgeC1heGlzLCBidXQgaW4gcmV2ZXJzZSBvcmRlclxuXG5cbiAgLy8gcGxvdCBsZWZ0IHRhaWwgcG9seWdvblxuICBwbG90LnBvbHlnb24obGVmdFRhaWxEYXRhLCB7IGZpbGw6ICdyZWQnLCBzdHJva2U6ICdub25lJyB9KTtcblxuICAvLyBwbG90IHJpZ2h0IHRhaWwgcG9seWdvblxuICBwbG90LnBvbHlnb24ocmlnaHRUYWlsRGF0YSwgeyBmaWxsOiAncmVkJywgc3Ryb2tlOiAnbm9uZScgfSk7XG4gIFxuICBwbG90LmZ1bmMoeCA9PiBqU3RhdC5zdHVkZW50dC5wZGYoeCwgZG9mKSwgeyBzdHJva2U6ICdyZWQnLCB3aWR0aDogMiB9KTtcbiAgcmV0dXJuIHBsb3Qubm9kZTtcbn1cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYWxwaGEgPSAwLjA1XG5jcml0aWNhbFZhbHVlID0galN0YXQuc3R1ZGVudHQuaW52KDEgLSBhbHBoYSAvIDIsIGRvZikgLy8gY2FsY3VsYXRlIGNyaXRpY2FsIHZhbHVlIGJhc2VkIG9uIERPRlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidGV4YHRfe2NyaXRpY2FsfSA9IFxccG0ke2NyaXRpY2FsVmFsdWUudG9GaXhlZCgyKX1gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ21lYW5fZGlmZicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd2YXJpYW5jZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RvZicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
