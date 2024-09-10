@@ -1,3 +1,7 @@
+---
+echo: false
+---
+
 <style>
   #quarto-header > nav > div > nav > ol > li:nth-child(2) > a > span.chapter-number::before     {
     content: unset;
@@ -29,6 +33,177 @@ $$
 
 Here, $SS_X$ and $SS_Y$ are the Sums of Squares for each variable. Multiplying them and taking the square root gets us a measure of the variability in $X$ and $Y$ separately. The numerator, $SP$, represents the covariability of $X$ and $Y$. So the equation results in covariability as a proportion of all variability. It can range from $-1$, meaning a perfect negative correlation, to $0$, meaning no correlation at all, to $+1$, meaning a perfect positive correlation.
 
+
+::: {#container style="text-align: center; margin: 1em;"}
+:::
+
+<label for="target-r" class="form-label">Strength of correlation</label>
+<input id="target-r" type="range" class="form-range" min=-1 max = 1 step = 0.01>
+
+<label for="showRegions" class="form-label">Shade deviation regions</label>
+<input id="showRegions" type="checkBox" class="form-checkBox">
+
+```{ojs}
+//| echo: false
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+chart = {
+
+const width = 500
+const height = 400
+const margins = {top: 10, right: 15, bottom: 15, left: 15}
+const expansion = 0.05;
+
+const xScale = d3.scaleLinear()
+  .domain([0 - expansion, 1 + expansion])
+  .range([margins.left, width - margins.right])
+let yScale = d3.scaleLinear()
+  .domain([0 - expansion, 1 + expansion])
+  .range([height - margins.bottom, margins.top])
+  
+const svg = d3.select("#container").append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`);
+  
+const regions = svg.append("g");
+const meanLines = svg.append("g");
+const axisLines = svg.append("g");
+
+axisLines.append("line")
+  .attr("class", "axis-line")
+  .attr("x1", xScale(0 - expansion)).attr("x2", xScale(1 + expansion))
+  .attr("y1", yScale(0 - expansion)).attr("y2", yScale(0 - expansion))
+  .style("stroke", "black")
+axisLines.append("line")
+  .attr("class", "axis-line")
+  .attr("x1", xScale(0 - expansion)).attr("x2", xScale(0 - expansion))
+  .attr("y1", yScale(0 - expansion)).attr("y2", yScale(1 + expansion))
+  .style("stroke", "black")
+axisLines.append("text")
+  .attr("class", "TEX-I")
+  .attr("x", xScale(1))
+  .attr("y", height)
+  .text("X")
+axisLines.append("text")
+  .attr("class", "TEX-I")
+  .attr("x", 0)
+  .attr("y", yScale(1))
+  .text("Y")
+
+function makePolygonPoints(x0, y0) {
+  return [
+    [xScale(x0), yScale(y0)],
+    [xScale(x0 + 0.5 + expansion), yScale(y0)],
+    [xScale(x0 + 0.5 + expansion), yScale(y0 - 0.5 - expansion)],
+    [xScale(x0), yScale(y0 - 0.5 - expansion)]
+  ]
+}
+regions.append("polygon").attr("class", "regions")
+    .attr("points", makePolygonPoints(0.5, 0.5))
+    .attr("fill", "red")
+    .attr("opacity", 0.2)
+    .style("visibility", "hidden")
+regions.append("polygon").attr("class", "regions")
+    .attr("points", makePolygonPoints(0 - expansion, 1 + expansion))
+    .attr("fill", "red")
+    .attr("opacity", 0.2)
+    .style("visibility", "hidden")
+regions.append("polygon").attr("class", "regions")
+    .attr("points", makePolygonPoints(0.5, 1 + expansion))
+    .attr("fill", "green")
+    .attr("opacity", 0.2)
+    .style("visibility", "hidden")
+regions.append("polygon").attr("class", "regions")
+    .attr("points", makePolygonPoints(0 - expansion, 0.5))
+    .attr("fill", "green")
+    .attr("opacity", 0.2)
+    .style("visibility", "hidden")
+    
+  meanLines.append("line").attr("class", "regions")
+    .attr("x1", xScale(0 - expansion)).attr("x2", xScale(1 + expansion))
+    .attr("y1", yScale(0.5)).attr("y2", yScale(0.5))
+    .attr("stroke", "black")
+    .attr("stroke-dasharray", [5,5])
+    .style("visibility", "hidden")
+  meanLines.append("line").attr("class", "regions")
+    .attr("x1", xScale(0.5)).attr("x2", xScale(0.5))
+    .attr("y1", yScale(0 - expansion)).attr("y2", yScale(1 + expansion))
+    .attr("stroke", "black")
+    .attr("stroke-dasharray", [5,5])
+    .style("visibility", "hidden")
+
+const rInput = d3.select("#target-r");
+rInput.on("input", () => updateChart(rInput.property("value")))
+
+const shadeInput = d3.select("#showRegions");
+shadeInput.on('input', () => {
+  svg.selectAll(".regions")
+    .style("visibility", shadeInput.property("checked") ? "visible" : "hidden");
+});
+
+let data = makeInitialData(100);
+  
+  
+
+function makeInitialData(n) {
+    let arr = [];
+    for (var i = 0; i < n; i++) {
+        var A = Math.random();
+        var B = Math.random();
+        arr.push({xVal: A, y0: B});
+    }
+
+    return arr;
+}
+
+function computeYValue(x, y, r) {
+ return x * r + y * Math.pow(1 - Math.pow(r, 2), 0.5);
+}
+
+
+function updateChart(targetR) {
+  
+  let newData = [];
+  
+  for (let i = 0; i < data.length; i++) {
+    newData.push({
+      xVal: data[i].xVal,
+      yVal: computeYValue(data[i].xVal, data[i].y0, targetR)
+    });
+  }
+
+
+  let yMin = Math.min(...newData.map(obj => obj.yVal));
+  let yMax = Math.max(...newData.map(obj => obj.yVal));
+  
+  // Normalize the y-values to the range 0 to 1.
+  for (let i = 0; i < newData.length; i++) {
+    newData[i].yVal = (newData[i].yVal - yMin) / (yMax - yMin);
+  }
+  
+  svg.selectAll("circle").remove()
+  svg.selectAll("circle").data(newData).enter().append("circle")
+    .attr("cx", d => xScale(d.xVal))
+    .attr("r", 2)
+    .attr("cy", d => yScale(d.yVal));
+    
+  let xArr = newData.map(obj => obj.xVal);
+  let yArr = newData.map(obj => obj.yVal);
+  
+  let meanX = jStat.mean(xArr);
+  let meanY = jStat.mean(yArr);
+
+  
+  let actualR = jStat.corrcoeff(xArr, yArr);
+  console.log("target r: " + targetR);
+  console.log("actual r: " + actualR);
+  
+}
+
+updateChart(rInput.property("value"));
+
+
+}
+```
 
 ## Effect size for correlation {#sec-cor-effect-size}
 
