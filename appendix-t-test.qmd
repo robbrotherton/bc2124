@@ -219,7 +219,7 @@ The CI quantifies the uncertainty around that point estimate, providing a margin
 Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.
 
 
-## Effect size for $t$-tests
+## Effect size for $t$-tests {#sec-t-effect-size}
 
 The effect size for a $t$-test is often measured using Cohen's $d$, which standardizes the difference between the means. the formula is:
 

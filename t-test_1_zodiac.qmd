@@ -60,7 +60,7 @@ Your **dependent** variable will be one of the Big Five traits:
 
 Your **quasi-independent** variable will be Zodiac star sign (`zodiac`). Specifically, you will select two groups to compare (e.g. Leo versus Virgo).
 
-To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the `big5xx` and `zodiac` codes in parentheses above) in the [GSS Codebook](https://gss.norc.org/documents/codebook/gss_codebook.pdf).
+To see exactly how these constructs were measured and how the data is coded you will look up the variable IDs (the `big5xx` and `zodiac` codes in parentheses above) in the [GSS data explorer](https://gssdataexplorer.norc.org/variables/vfilter).
 
 ## Step 2. Read relevant research {#sec-astrology-references}
 
@@ -79,7 +79,7 @@ McGrew, J. H., & McFall, R. M. (1990). [A scientific inquiry into the validity o
 
 Saklofske, D. H., Kelly, I. W., & McKerracher, D. W. (1982). [An empirical study of personality and astrological factors](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1). *Journal of Psychology, 110*(2), 275. [https://doi.org/10.1080/00223980.1982.9915349](https://www.proquest.com/docview/1290616495?accountid=10226&sourcetype=Scholarly%20Journals&imgSeq=1)
 
-Smithers, A. G., & Cooper, H. J. (1978). [Personality and season of birth](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis). *The Journal of Social Psychology, 105*(2), 237-241. [https://doi.org/10.1080/00224545.1978.9924120](https://web.p.ebscohost.com/ehost/pdfviewer/pdfviewer?vid=0&sid=fc7dc348-7557-4cea-98b8-0a499a94241e%40redis)
+Smithers, A. G., & Cooper, H. J. (1978). [Personality and season of birth](https://www.proquest.com/docview/1290725896). *The Journal of Social Psychology, 105*(2), 237-241. [https://doi.org/10.1080/00224545.1978.9924120](https://www.proquest.com/docview/1290725896)
 :::
 
 ## Step 3. Articulate your hypothesis
@@ -92,7 +92,7 @@ By this point you should be able to state your:
 
 Your hypothesis is a formal statement of your expectation about the outcome of your statistical test. For this project the main question that your hypothesis addresses is: do you think there will be a difference between the two groups you are comparing? That is, will you find a difference between group averages big enough that it doesn't just seem to be attributable to chance variation in the data?
 
-If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see [Appendix B](appendix-correlation.html#sec-cor-effect-size)).
+If you do expect a difference, you should also specify which group you expect to score higher/lower, and how substantial you expect it to be (i.e. a weak, moderate, or strong effect size; see [Appendix](appendix-t-test.html#sec-t-effect-size)).
 
 ## To do for next time
 

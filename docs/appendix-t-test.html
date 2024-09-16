@@ -342,7 +342,7 @@ window.Quarto = {
   <li><a href="#calculating-the-t-statistic" id="toc-calculating-the-t-statistic" class="nav-link" data-scroll-target="#calculating-the-t-statistic">Calculating the t-statistic</a></li>
   <li><a href="#interpreting-the-t-statistic" id="toc-interpreting-the-t-statistic" class="nav-link" data-scroll-target="#interpreting-the-t-statistic">Interpreting the <span class="math inline">\(t\)</span>-statistic</a></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
-  <li><a href="#effect-size-for-t-tests" id="toc-effect-size-for-t-tests" class="nav-link" data-scroll-target="#effect-size-for-t-tests">Effect size for <span class="math inline">\(t\)</span>-tests</a></li>
+  <li><a href="#sec-t-effect-size" id="toc-sec-t-effect-size" class="nav-link" data-scroll-target="#sec-t-effect-size">Effect size for <span class="math inline">\(t\)</span>-tests</a></li>
   </ul>
 </nav>
     </div>
@@ -645,8 +645,8 @@ M \pm t_{critical} \times \sqrt{\frac{s^2}{n} }
 <p>The CI quantifies the uncertainty around that point estimate, providing a margin of error (a range of values) around the point estimate. The CI is about long-run probabilities; if samples were repeatedly drawn from the same population, 95% of the sample CIs would include the true population parameter. For example, if the population average extraversion score for every Leo was really <span class="math inline">\(\mu = 3.25\)</span>, then 95% of 95% CIs would include <span class="math inline">\(M = 3.25\)</span> within their range.</p>
 <p>Of course we only have a single CI for each group, so they are used to help clarify the binary decision to reject (or fail to reject) the null hypothesis; if the CIs for two groups overlap, then the data does not provide sufficient evidence of a difference between the groups to reject the null hypothesis. If the CIs do not overlap, we reject the null hypothesis.</p>
 </section>
-<section id="effect-size-for-t-tests" class="level2">
-<h2 class="anchored" data-anchor-id="effect-size-for-t-tests">Effect size for <span class="math inline">\(t\)</span>-tests</h2>
+<section id="sec-t-effect-size" class="level2">
+<h2 class="anchored" data-anchor-id="sec-t-effect-size">Effect size for <span class="math inline">\(t\)</span>-tests</h2>
 <p>The effect size for a <span class="math inline">\(t\)</span>-test is often measured using Cohen’s <span class="math inline">\(d\)</span>, which standardizes the difference between the means. the formula is:</p>
 <p><span class="math display">\[
 d = \frac{M_1 - M_2}{\sqrt{\frac{(s^2_1 + s^2_2)}{2}}}
